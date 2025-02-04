@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     void Update()
     {
-        moveHorizontal = Input.GetAxis("Horizontal");     
-        moveVertical = Input.GetAxis("Vertical");      
-        rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, moveVertical * moveSpeed);
+        moveHorizontal = Input.GetAxisRaw("Horizontal");     
+        moveVertical = Input.GetAxisRaw("Vertical");      
+        rb.linearVelocity = new Vector2(moveHorizontal, moveVertical).normalized * moveSpeed;
     }
 }
