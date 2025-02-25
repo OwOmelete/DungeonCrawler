@@ -11,6 +11,7 @@ public class Rotation : MonoBehaviour
     [SerializeField] private float angleBeforeRestartMovement = 10f;
     private SpriteRenderer spriteRenderer;
     public bool canMove = true;
+    public float angleDiff;
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -33,7 +34,7 @@ public class Rotation : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
-        float angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
+        angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
         if (Mathf.Abs(angleDiff) > angleBeforeRestartMovement) 
         {
             canMove = false;
