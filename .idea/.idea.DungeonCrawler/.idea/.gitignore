@@ -4,8 +4,13 @@
 # Rider ignored files
 /modules.xml
 /contentModel.xml
+Edouard
+/projectSettingsUpdater.xml
+/.idea.DungeonCrawler.iml
+
 /.idea.DungeonCrawler.iml
 /projectSettingsUpdater.xml
+
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
