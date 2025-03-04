@@ -8,8 +8,8 @@ public class LightManager : MonoBehaviour
     [SerializeField] private Light2D playerLight;   // objet light du player pour changer son intensité
     [SerializeField] private float maxLight = 100;  // capacité maximale de lumière
     [SerializeField] private float looseLightValue = 1; // ce que va perdre la jauge de lumiere toutes les secondes
-    private GameObject playerReference;
-    [SerializeField] private float actualLight;  // valeure actuelle de la lumière
+    private GameObject playerReference; 
+    private float actualLight;  // valeure actuelle de la lumière
     private bool lightActive = true; // verifie si il reste de la lumière
 
     private void Start()
