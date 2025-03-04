@@ -2,12 +2,34 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ToxicGarbage : MonoBehaviour
+public class DamageOverTimeZone : MonoBehaviour
 {
+    public TestPlayer testPlayerScriptReference;
     
-    /*private void OnTriggerEnter2D(Collider2D other)
+    bool isInZone = false;
+    
+    public int damage;
+    
+    public void DamageOverTime()
     {
-        if (other.GetComponent<script>())
+        testPlayerScriptReference.health -= damage;
     }
-    */
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        isInZone = true;
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        isInZone = false;
+    }
+
+    private void Update()
+    {
+        if (isInZone)
+        {
+            DamageOverTime();
+        }
+    }
 }
