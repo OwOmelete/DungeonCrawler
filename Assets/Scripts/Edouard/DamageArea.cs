@@ -1,35 +1,37 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class DamageOverTimeZone : MonoBehaviour
 {
-    public TestPlayer testPlayerScriptReference;
-    
-    bool isInZone = false;
-    
-    public int damage;
-    
-    public void DamageOverTime()
-    {
-        testPlayerScriptReference.health -= damage;
-    }
+    public int damagePerSecond = 10; 
+    private Dictionary<GameObject, Coroutine> activeCoroutines = new Dictionary<GameObject, Coroutine>();
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        isInZone = true;
+        TestPlayer player = other.GetComponent<TestPlayer>(); 
+        if (player != null && !activeCoroutines.ContainsKey(other.gameObject))
+        {
+            Coroutine damageCoroutine = StartCoroutine(ApplyDamageOverTime(player, other.gameObject));
+            activeCoroutines[other.gameObject] = damageCoroutine;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        isInZone = false;
+        if (activeCoroutines.ContainsKey(other.gameObject))
+        {
+            StopCoroutine(activeCoroutines[other.gameObject]);
+            activeCoroutines.Remove(other.gameObject);
+        }
     }
 
-    private void FixedUpdate()
+    private IEnumerator ApplyDamageOverTime(TestPlayer targetPlayer, GameObject target)
     {
-        if (isInZone)
+        while (true)
         {
-            DamageOverTime();
+            targetPlayer.TakeDamage(damagePerSecond);
+            yield return new WaitForSeconds(1f);
         }
     }
 }

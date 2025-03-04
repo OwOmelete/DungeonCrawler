@@ -1,34 +1,55 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class OxigenRegenZone : MonoBehaviour
+public class OxygenRegenZone : MonoBehaviour
 {
-    public TestPlayer testPlayerScriptReference;
-    
-    bool isInZone = false;
-    
-    public int oxygenRegen;
-    
-    public void RegenOxygenOverTime()
-    {
-        testPlayerScriptReference.oxygen += oxygenRegen;
-    }
+    private TestPlayer player; 
+    private bool isInZone = false;
+    public int oxygenRegen = 5; 
+    public float regenInterval = 1f; 
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        isInZone = true;
-    }
+    private Coroutine regenCoroutine;
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        isInZone = false;
-    }
-
-    private void FixedUpdate()
-    {
-        if (isInZone)
+        player = other.GetComponent<TestPlayer>(); 
+        if (player != null)
         {
-            RegenOxygenOverTime();
+            isInZone = true;
+            player.oxygenLoss = 0; 
+            
+            if (regenCoroutine == null)
+            {
+                regenCoroutine = StartCoroutine(RegenOxygenOverTime());
+            }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (player != null && other.gameObject == player.gameObject)
+        {
+            isInZone = false;
+            player.oxygenLoss = 1; 
+            
+            if (regenCoroutine != null)
+            {
+                StopCoroutine(regenCoroutine);
+                regenCoroutine = null;
+            }
+        }
+    }
+
+    private IEnumerator RegenOxygenOverTime()
+    {
+        while (isInZone && player != null)
+        {
+            player.oxygen += oxygenRegen;
+            player.oxygen = Mathf.Clamp(player.oxygen, 0, 100); 
+            Debug.Log("Oxygen regenerated: " + player.oxygen);
+            yield return new WaitForSeconds(regenInterval);
+        }
+
+        regenCoroutine = null; 
     }
 }
