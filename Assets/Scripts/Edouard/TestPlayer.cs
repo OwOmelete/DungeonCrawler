@@ -7,11 +7,20 @@ public class TestPlayer : MonoBehaviour
     public int health;
     int maxHealth = 100;
 
+    public int oxygen;
+    int maxOxygen = 100;
+    public int oxygenLoss;
+
     private void Start()
     {
         health = maxHealth;
+        oxygen = maxOxygen;
     }
 
+    private void Update()
+    {
+        oxygen -= oxygenLoss;
+    }
     void Death()
     {
         if (health <= 0)

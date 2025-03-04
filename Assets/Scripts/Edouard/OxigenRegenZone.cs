@@ -1,18 +1,17 @@
-using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class DamageOverTimeZone : MonoBehaviour
+public class OxigenRegenZone : MonoBehaviour
 {
     public TestPlayer testPlayerScriptReference;
     
     bool isInZone = false;
     
-    public int damage;
+    public int oxygenRegen;
     
-    public void DamageOverTime()
+    public void RegenOxygenOverTime()
     {
-        testPlayerScriptReference.health -= damage;
+        testPlayerScriptReference.oxygen += oxygenRegen;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -29,7 +28,7 @@ public class DamageOverTimeZone : MonoBehaviour
     {
         if (isInZone)
         {
-            DamageOverTime();
+            RegenOxygenOverTime();
         }
     }
 }
