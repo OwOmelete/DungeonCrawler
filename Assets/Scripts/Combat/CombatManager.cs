@@ -6,11 +6,26 @@ public class CombatManager : MonoBehaviour
 {
     [SerializeField] PlayerData _playerData;
     [SerializeField] List<FishData> _fishDatas;
+    private List<Fish> fishes = new List<Fish>();
     private Entity[,] grid;
-    void Start()
+
+    private void Start()
     {
+        foreach (var fish in _fishDatas)
+        {
+            Fish newFish = new Fish();
+            newFish.fishData = fish;
+            newFish.fishDataInstance = (FishDataInstance)fish.Instance();
+            fishes.Add(newFish);
+        }
         grid = createGrid(10,10);
         spawnEntitys();
+        foreach (var fish in fishes)
+        {
+            fish.fishDataInstance.hp -= 1;
+            Debug.Log(fish.fishDataInstance.hp);
+            Debug.Log(fish.fishData.hp);
+        }
         for (int i = 0; i < grid.GetLength(0); i++)
         {
             for (int j = 0; j < grid.GetLength(1); j++)

@@ -5,8 +5,20 @@ using UnityEngine.UI;
 public class FishData : Entity
 {
     //Position weaknesses
-    //effects weaknesses
+    //effects weaknesses( ? )
     //spawn zone (corail/kayou/carcasse)
 
     //IA behavior
+    public override EntityInstance Instance()
+    {
+        return new FishDataInstance(this);
+    }
+}
+
+public class FishDataInstance : EntityInstance
+{
+    public FishDataInstance(FishData data) : base(data)
+    {
+        
+    }
 }
