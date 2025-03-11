@@ -285,10 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f47be5b6afe2914aac05925d6f0e31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerData: {fileID: 0}
+  _playerData: {fileID: 11400000, guid: 240ed27209d86da44b50200ba971ae5d, type: 2}
   _fishDatas:
   - {fileID: 11400000, guid: 79caeba5458b6524ea92bb521fea7c3c, type: 2}
-  - {fileID: 11400000, guid: 57bb6145c58b77b4097e1debfe428df1, type: 2}
 --- !u!4 &1489350259
 Transform:
   m_ObjectHideFlags: 0
@@ -298,7 +297,7 @@ Transform:
   m_GameObject: {fileID: 1489350257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.51867056, y: -0.55694944, z: -4.615969}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
