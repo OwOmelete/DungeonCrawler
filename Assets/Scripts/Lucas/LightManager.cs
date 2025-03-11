@@ -5,51 +5,73 @@ using UnityEngine.Rendering.Universal;
 
 public class LightManager : MonoBehaviour
 {
-    [SerializeField] private Light2D playerLight;   // objet light du player pour changer son intensité
-    [SerializeField] private float maxLight = 100;  // capacité maximale de lumière
+    public float maxLight = 100;  // capacité maximale de lumière
+    public Light2D playerLight;   // objet light du player pour changer son intensité
+    [HideInInspector] public bool canLooseLight = true; // ici pour stopper la perte de lumière dans certains cas
+    [HideInInspector]public float actualLight;  // valeure actuelle de la lumière
+    
+    [SerializeField] private float minLight = 1;  // capacité minimale de lumière
     [SerializeField] private float looseLightValue = 1; // ce que va perdre la jauge de lumiere toutes les secondes
-    private GameObject playerReference; 
-    private float actualLight;  // valeure actuelle de la lumière
-    private bool lightActive = true; // verifie si il reste de la lumière
+    [SerializeField] private float lerpSpeed = 0.01f; // ce que va perdre la jauge de lumiere toutes les secondes
+    
+    private bool haveLight = true; // verifie si il reste de la lumière
+    private float t = 0;    // sers a faire une baisse de lumière smooth 
+
+    
 
     private void Start()
     {
-        playerReference = GameObject.FindGameObjectWithTag("Player");
         actualLight = maxLight;
-        StartCoroutine(LooseLight());
+        playerLight.pointLightOuterRadius = actualLight;
+        playerLight.pointLightInnerRadius = actualLight / 2;
+        StartLooseLight();
     }
 
-    IEnumerator LooseLight()    // coroutine qui  fait baisser peut a peu la lumiere
+    IEnumerator LooseLight()    // coroutine qui fait baisser peut a peu le niveau de lumiere
     {
-        while (lightActive)
+        while (haveLight && canLooseLight)
         {
-            yield return new WaitForSeconds(1f);
             actualLight -= looseLightValue;
-            if (actualLight <= 0)
+            StartCoroutine(LerpLight(lerpSpeed));
+            if (actualLight <= minLight)
             {
-                lightActive = false;
-                playerLight.intensity = 0;
-                playerReference.GetComponent<Animation>().Play("LightPlayerOff");   // animation de clignotement 
+                haveLight = false;
             }
+            yield return new WaitForSeconds(1f);
         }
+    }
+
+    IEnumerator LerpLight(float speed)
+    {
+        t = 0;
+        while (playerLight.pointLightOuterRadius != actualLight)
+        {
+            playerLight.pointLightOuterRadius = Mathf.SmoothStep(actualLight + looseLightValue, actualLight, t);
+            playerLight.pointLightInnerRadius = Mathf.SmoothStep(actualLight + looseLightValue, actualLight, t) / 2;
+            t += speed * Time.deltaTime;
+            yield return null;
+        }
+        playerLight.pointLightOuterRadius = actualLight;
+        playerLight.pointLightInnerRadius = actualLight / 2;
     }
 
     public void AddLight(float value)   // recharge la lumière
     {
-        if (actualLight + value >=maxLight)
+        actualLight += value;
+        
+        if (!haveLight || !canLooseLight)
         {
-            actualLight = maxLight;
-        }
-        else
-        {
-            actualLight += value;
-        }
-        if (!lightActive)
-        {
-            playerReference.GetComponent<Animation>().Play("LightPlayerOn");
-            lightActive = true;
-            StartCoroutine(LooseLight());
+            haveLight = true;
+            canLooseLight = true;
+            StartLooseLight();
         }
     }
+
+    private void StartLooseLight()
+    {
+        StartCoroutine(LooseLight());
+    }
+
+    
     
 }
