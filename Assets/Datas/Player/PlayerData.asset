@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   width: 1
-  height: 1
+  height: 2
   positionX: 0
   positionY: 0
   hp: 10

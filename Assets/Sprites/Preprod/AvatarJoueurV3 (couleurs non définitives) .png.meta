@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "AvatarJoueurV3 (couleurs non d\xE9finitives) _0": 5869323704741319923
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

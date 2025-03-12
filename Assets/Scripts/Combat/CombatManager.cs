@@ -7,6 +7,8 @@ public class CombatManager : MonoBehaviour
 {
     [SerializeField] PlayerData _playerData;
     [SerializeField] List<FishData> _fishDatas;
+    [SerializeField] int gridHeight;
+    [SerializeField] int gridWidth;
     private List<Fish> fishes = new List<Fish>();
     private PlayerDataInstance player;
     private EntityInstance[,] grid;
@@ -22,7 +24,7 @@ public class CombatManager : MonoBehaviour
             fishes.Add(newFish);
         }
 
-        grid = CreateGrid(10, 10);
+        grid = CreateGrid(gridHeight, gridWidth);
         SpawnEntitys();
         for (int i = 0; i < grid.GetLength(0); i++)
         {
@@ -58,19 +60,19 @@ public class CombatManager : MonoBehaviour
             Move(player, player.positionX - 1, player.positionY);
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad5))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             Attack(player.attackList[0], player, player.positionX, player.positionY + 1);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             Attack(player.attackList[0], player, player.positionX, player.positionY - 1);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Attack(player.attackList[0], player, player.positionX + 1, player.positionY);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             Attack(player.attackList[0], player, player.positionX - 1, player.positionY);
         }

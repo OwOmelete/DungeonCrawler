@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "FishData", menuName = "Scriptable Objects/Entity/Fish")]
+[CreateAssetMenu(fileName = "FishData", menuName = "Scriptable Objects/Entity/FishData")]
 public class FishData : Entity
 {
     //Position weaknesses
