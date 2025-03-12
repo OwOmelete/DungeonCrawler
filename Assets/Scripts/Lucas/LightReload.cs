@@ -1,24 +1,41 @@
 using System;
 using System.Collections;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LightReload : MonoBehaviour
 {
-    [SerializeField] private float regen = 5;
-    [SerializeField] private LightManager lightManagerReference;
-    [SerializeField] private GameObject interactDisplay;
-    [SerializeField] private float lerpSpeed = 0.1f;
-    private bool canTake = false;
-    private float t = 0;
+    #region Variables
     
+    [Header("Reference")]
+    [SerializeField] private LightManager lightManagerReference;    // Reference au light manager
+    [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche 
     
+    [Header("Values")]
+    [SerializeField] private float regen = 5;   // Quantitée de lumière que va regenerer l'objet
+    [SerializeField] private float lerpDuration = 0.5f; // Temps que va prendre la lumière a se restaurer totalement
+    [SerializeField] private float interactTextFadeDuration = 0.2f; // Temps que va prendre le texte a apparaitre et a disparaitre
+    
+    private bool canTake = false;   // Savoir si on peut prendre l'objet
+    
+    #endregion
+
+    #region Triggers
     private void OnTriggerEnter2D(Collider2D other)
     {
-        interactDisplay.SetActive(true);
+        interactDisplay.GetComponent<SpriteRenderer>().DOFade(1f, interactTextFadeDuration);
         canTake = true;
         StartCoroutine(TakeLight());
     }
-
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        interactDisplay.GetComponent<SpriteRenderer>().DOFade(0f, interactTextFadeDuration);
+        canTake = false;
+    }
+    #endregion
+    
     IEnumerator TakeLight()
     {
         while (canTake)
@@ -30,12 +47,7 @@ public class LightReload : MonoBehaviour
             yield return null;
         }
     }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        interactDisplay.SetActive(false);
-        canTake = false;
-    }
-
+    
     void AddLight()
     {
         Destroy(GetComponent<Collider2D>());
@@ -45,23 +57,7 @@ public class LightReload : MonoBehaviour
         {
             regen = lightManagerReference.maxLight - lightManagerReference.actualLight;
         }
-        StartCoroutine(LerpLight());
-        
-    }
-
-    IEnumerator LerpLight()
-    {
-        t = 0;
-        while (t < 1)
-        {
-            lightManagerReference.playerLight.pointLightOuterRadius = Mathf.SmoothStep(lightManagerReference.actualLight , lightManagerReference.actualLight + regen, t);
-            lightManagerReference.playerLight.pointLightInnerRadius = Mathf.SmoothStep(lightManagerReference.actualLight , lightManagerReference.actualLight + regen, t) / 2;
-            t += lerpSpeed * Time.deltaTime;
-            yield return null;
-        }
-        
         lightManagerReference.AddLight(regen);
-        Destroy(gameObject);
     }
     
 }

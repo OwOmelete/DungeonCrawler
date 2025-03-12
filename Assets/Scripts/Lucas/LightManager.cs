@@ -1,38 +1,44 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class LightManager : MonoBehaviour
 {
-    public float maxLight = 100;  // capacité maximale de lumière
+    #region Variables
+    
+    [Header("References")]
     public Light2D playerLight;   // objet light du player pour changer son intensité
-    [HideInInspector] public bool canLooseLight = true; // ici pour stopper la perte de lumière dans certains cas
-    [HideInInspector]public float actualLight;  // valeure actuelle de la lumière
     
+    [Header("Values")]
+    public float maxLight = 10;  // capacité maximale de lumière
     [SerializeField] private float minLight = 1;  // capacité minimale de lumière
-    [SerializeField] private float looseLightValue = 1; // ce que va perdre la jauge de lumiere toutes les secondes
-    [SerializeField] private float lerpSpeed = 0.01f; // ce que va perdre la jauge de lumiere toutes les secondes
+    [SerializeField] private float looseLightValue = 0.1f; // ce que va perdre la jauge de lumiere toutes les secondes
+    [SerializeField] private float lerpDuration = 1f; // ce que va perdre la jauge de lumiere toutes les secondes
     
+    [HideInInspector] public bool canLooseLight = true; // ici pour stopper la perte de lumière dans certains cas
+    [HideInInspector] public float actualLight;  // valeure actuelle de la lumière
     private bool haveLight = true; // verifie si il reste de la lumière
-    private float t = 0;    // sers a faire une baisse de lumière smooth 
-
     
-
+    #endregion
+    
     private void Start()
     {
         actualLight = maxLight;
         playerLight.pointLightOuterRadius = actualLight;
         playerLight.pointLightInnerRadius = actualLight / 2;
-        StartLooseLight();
+        StartCoroutine(LooseLight());
     }
 
-    IEnumerator LooseLight()    // coroutine qui fait baisser peut a peu le niveau de lumiere
+    IEnumerator LooseLight()    // coroutine qui fait baisser peu a peu le niveau de lumiere
     {
         while (haveLight && canLooseLight)
         {
             actualLight -= looseLightValue;
-            StartCoroutine(LerpLight(lerpSpeed));
+            DOTween.To(() => playerLight.pointLightOuterRadius, x => playerLight.pointLightOuterRadius = x, actualLight, lerpDuration);
+            DOTween.To(() => playerLight.pointLightInnerRadius, x => playerLight.pointLightInnerRadius = x, actualLight / 2, lerpDuration);
+            yield return null;
             if (actualLight <= minLight)
             {
                 haveLight = false;
@@ -40,38 +46,20 @@ public class LightManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
-
-    IEnumerator LerpLight(float speed)
-    {
-        t = 0;
-        while (playerLight.pointLightOuterRadius != actualLight)
-        {
-            playerLight.pointLightOuterRadius = Mathf.SmoothStep(actualLight + looseLightValue, actualLight, t);
-            playerLight.pointLightInnerRadius = Mathf.SmoothStep(actualLight + looseLightValue, actualLight, t) / 2;
-            t += speed * Time.deltaTime;
-            yield return null;
-        }
-        playerLight.pointLightOuterRadius = actualLight;
-        playerLight.pointLightInnerRadius = actualLight / 2;
-    }
+    
 
     public void AddLight(float value)   // recharge la lumière
     {
         actualLight += value;
-        
+        DOTween.To(() => playerLight.pointLightOuterRadius, x => 
+            playerLight.pointLightOuterRadius = x, actualLight, lerpDuration);
+        DOTween.To(() => playerLight.pointLightInnerRadius, x => 
+            playerLight.pointLightInnerRadius = x, actualLight / 2, lerpDuration);
+        canLooseLight = true;
         if (!haveLight || !canLooseLight)
         {
             haveLight = true;
-            canLooseLight = true;
-            StartLooseLight();
+            StartCoroutine(LooseLight());
         }
     }
-
-    private void StartLooseLight()
-    {
-        StartCoroutine(LooseLight());
-    }
-
-    
-    
 }
