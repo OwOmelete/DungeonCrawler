@@ -41,6 +41,56 @@ public class CombatManager : MonoBehaviour
     
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Move(player, player.positionX, player.positionY + 1);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Move(player, player.positionX, player.positionY - 1);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Move(player, player.positionX + 1, player.positionY);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Move(player, player.positionX - 1, player.positionY);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            Attack(player.attackList[0], player, player.positionX, player.positionY + 1);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            Attack(player.attackList[0], player, player.positionX, player.positionY - 1);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            Attack(player.attackList[0], player, player.positionX + 1, player.positionY);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            Attack(player.attackList[0], player, player.positionX - 1, player.positionY);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX, fishes[0].fishDataInstance.positionY + 1);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX, fishes[0].fishDataInstance.positionY - 1);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX + 1, fishes[0].fishDataInstance.positionY);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX - 1, fishes[0].fishDataInstance.positionY);
+        }
         
     }
 
@@ -76,29 +126,31 @@ public class CombatManager : MonoBehaviour
 
     void Move(EntityInstance entity, int posX, int posY)
     {
-        int rangeY = Mathf.Abs(entity.positionY - posY);
-        int rangeX = Mathf.Abs(entity.positionX - posX);
-        int range = rangeY + rangeX;
-        for (int i = 1; i < range+1; i++)
-        {
-            float tempPosY = entity.positionY + (float)rangeY / range * i;
-            float tempPosX = entity.positionX + (float)rangeX / range * i;
-            if(!CanMove(entity, (int)tempPosY, (int)tempPosX))
-            { 
-                return;
-            }
-            else
-            {
-            }
+        if(!CanMove(entity, posX, posY))
+        { 
+            return;
         }
+        else
+        {
+                
+        }
+        
         for (int i = 0; i < entity.height; i++)
         {
             for (int j = 0; j < entity.width; j++)
             {
                 grid[entity.positionY + i,entity.positionX + j] = null;
+            }
+        }
+
+        for (int i = 0; i < entity.height; i++)
+        {
+            for (int j = 0; j < entity.width; j++)
+            {
                 grid[posY + i,posX + j] = entity;
             }
         }
+
         entity.prefab.transform.position = new Vector3(posX, posY, 0);
         entity.positionX = posX;
         entity.positionY = posY;
@@ -122,7 +174,7 @@ public class CombatManager : MonoBehaviour
         }
         return true;
     }
-
+    
     void Attack(AttackData attack,EntityInstance entity, int x, int y)
     {
         int dirX = x - entity.positionX;
@@ -133,24 +185,44 @@ public class CombatManager : MonoBehaviour
             {
                 Debug.Log("touché");
                 Damage(grid[y, x], attack.Damage);
-            }*/
-            
+            }
             Debug.Log( entity.positionY + (entity.height) * NegativeToZero(GetSign(dirY)) +
                        i * GetSign(dirY)-NegativeToOne(dirY));
             Debug.Log(entity.positionX + (entity.width) * NegativeToZero(GetSign(dirX)) +
-                      i * GetSign(dirX)-NegativeToOne(dirX));
-            EntityInstance tile = grid[
-                entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) +
-                i * GetSign(dirY)-NegativeToOne(dirY),
-                entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) +
-                i * GetSign(dirX)-NegativeToOne(dirX)];
-
+                      i * GetSign(dirX)-NegativeToOne(dirX));*/
+            EntityInstance tile = GetAttackTile(entity, dirY, dirX, i);
             if (tile != null && tile != entity)
             {
+                Debug.Log(tile);
                 Debug.Log("touché");
-                Damage(grid[y, x], attack.Damage);
+                Damage(tile, attack.Damage);
+            }
+            else
+            {
+                Debug.Log("cantAttack");
             }
         }
+    }
+
+    EntityInstance GetAttackTile(EntityInstance entity, int dirY, int dirX, int actualRange)
+    {
+        int y = GetOutTileY(entity, dirY) + (actualRange - 1) * GetSign(dirY);
+        int x = GetOutTileX(entity, dirX) + (actualRange - 1) * GetSign(dirX);
+        if (y < 0 || y >= grid.GetLength(0) || x < 0 || x >= grid.GetLength(1))
+        {
+            return null;
+        }
+        return grid[y,x];
+    }
+    int GetOutTileX(EntityInstance entity, int dirX)
+    {
+        return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) +
+            1 * GetSign(dirX)-NegativeToOne(dirX);
+    }
+    int GetOutTileY(EntityInstance entity, int dirY)
+    {
+        return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) +
+            1 * GetSign(dirY)-NegativeToOne(dirY);
     }
 
     void Damage(EntityInstance entity, int dmg)
@@ -184,6 +256,6 @@ public class CombatManager : MonoBehaviour
         {
             return 1;
         }
-        else return 0;
+        return 0;
     }
 }
