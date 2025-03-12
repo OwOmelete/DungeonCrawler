@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DamageOverTimeZone : MonoBehaviour
 {
-    public int damagePerSecond = 10; 
     private Dictionary<GameObject, Coroutine> activeCoroutines = new Dictionary<GameObject, Coroutine>();
 
-    void OnTriggerEnter2D(Collider2D other)
+    [Header("DamageOverTime options")]
+    public int damageEachSecond = 10;
+    public float damageInterval = 1f;
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
         TestPlayer player = other.GetComponent<TestPlayer>(); 
         if (player != null && !activeCoroutines.ContainsKey(other.gameObject))
@@ -17,7 +21,7 @@ public class DamageOverTimeZone : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (activeCoroutines.ContainsKey(other.gameObject))
         {
@@ -30,8 +34,8 @@ public class DamageOverTimeZone : MonoBehaviour
     {
         while (true)
         {
-            targetPlayer.TakeDamage(damagePerSecond);
-            yield return new WaitForSeconds(1f);
+            targetPlayer.TakeDamage(damageEachSecond);
+            yield return new WaitForSeconds(damageInterval);
         }
     }
 }
