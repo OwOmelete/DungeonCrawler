@@ -15,8 +15,8 @@ public class LightReload : MonoBehaviour
     
     [Header("Values")]
     [SerializeField] private float regen = 5;   // Quantitée de lumière que va regenerer l'objet
-    [SerializeField] private float lerpDuration = 0.5f; // Temps que va prendre la lumière a se restaurer totalement
     [SerializeField] private float interactTextFadeDuration = 0.2f; // Temps que va prendre le texte a apparaitre et a disparaitre
+    [SerializeField] private float timeToDespawn = 0.3f;
     
     private bool canTake = false;   // Savoir si on peut prendre l'objet
     
@@ -51,13 +51,18 @@ public class LightReload : MonoBehaviour
     void AddLight()
     {
         Destroy(GetComponent<Collider2D>());
-        Destroy(GetComponent<SpriteRenderer>());
+        gameObject.GetComponent<Transform>().DOScale(Vector3.zero, timeToDespawn).SetEase(Ease.OutCubic);
         lightManagerReference.canLooseLight = false;
         if (lightManagerReference.actualLight + regen >= lightManagerReference.maxLight)
         {
             regen = lightManagerReference.maxLight - lightManagerReference.actualLight;
         }
         lightManagerReference.AddLight(regen);
+        StartCoroutine(DespawnCoroutine());
     }
-    
+    IEnumerator DespawnCoroutine()
+    {
+        yield return new WaitForSeconds(timeToDespawn);
+        Destroy(gameObject);
+    }
 }
