@@ -26,7 +26,7 @@ public class TestPlayer : MonoBehaviour
             yield return new WaitForSeconds(oxygenLossInterval);
             oxygen -= oxygenLoss;
             oxygen = Mathf.Clamp(oxygen, 0, 100);
-            Debug.Log("Oxygen: " + oxygen);
+            //Debug.Log("Oxygen: " + oxygen);
             Death();
         }
     }
@@ -44,7 +44,7 @@ public class TestPlayer : MonoBehaviour
     {
         health -= damageAmount;
         health = Mathf.Clamp(health, 0, maxHealth); 
-        Debug.Log("Player took " + damageAmount + " damage. Health: " + health);
+        //Debug.Log("Player took " + damageAmount + " damage. Health: " + health);
 
         Death(); 
     }

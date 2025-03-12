@@ -5,10 +5,13 @@ public class OxygenRegenZone : MonoBehaviour
 {
     private TestPlayer player; 
     private bool isInZone = false;
+    private Coroutine regenCoroutine;
+    
+    [Header("OxygenRegen options")]
     public int oxygenRegen = 5; 
     public float regenInterval = 1f; 
 
-    private Coroutine regenCoroutine;
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -49,7 +52,6 @@ public class OxygenRegenZone : MonoBehaviour
             Debug.Log("Oxygen regenerated: " + player.oxygen);
             yield return new WaitForSeconds(regenInterval);
         }
-
         regenCoroutine = null; 
     }
 }
