@@ -5,18 +5,12 @@ using UnityEngine.Serialization;
 public class Current : MonoBehaviour
 {
     [Header("Current Options")]
-    public float currentStrenght;
-    public Vector2 direction;
-
-    private void OnTriggerStay2D(Collider2D other)
+    public float strenght = 20000;
+    void OnTriggerStay2D(Collider2D other)
     {
-        other.attachedRigidbody.AddForce(direction * currentStrenght, ForceMode2D.Force);
+        //Debug.Log("Object is in trigger");
+        other.attachedRigidbody.AddForce (Vector2.right*strenght*Time.deltaTime);
+
     }
-
-    /*private void OnTriggerExit2D(Collider2D other)
-    {
-        currentStrenght = 0;
-        other.attachedRigidbody.AddForce(-currentStrenght * direction, 0f);
-    }*/
 }
  
