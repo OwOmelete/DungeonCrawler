@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -12,70 +13,34 @@ public class CombatManager : MonoBehaviour
     private List<Fish> fishes = new List<Fish>();
     private PlayerDataInstance player;
     private EntityInstance[,] grid;
+    private List<EntityInstance> turnOrder = new List<EntityInstance>();
+    private bool combatFinished;
+    private int currentTurnIndex = 0;
+    private bool isPlayerTurn;
+    private bool isPlaying;
+    private int frameCap = 60;
+    
 
     private void Start()
     {
-        player = (PlayerDataInstance)_playerData.Instance();
-        foreach (var fish in _fishDatas)
-        {
-            Fish newFish = new Fish();
-            newFish.fishData = fish;
-            newFish.fishDataInstance = (FishDataInstance)fish.Instance();
-            fishes.Add(newFish);
-        }
-
+        Application.targetFrameRate = frameCap;
+        combatFinished = false;
+        isPlayerTurn = true;
         grid = CreateGrid(gridHeight, gridWidth);
         SpawnEntitys();
+        StartTurn();
+
+        ///////// TESTS //////////
         for (int i = 0; i < grid.GetLength(0); i++)
         {
             for (int j = 0; j < grid.GetLength(1); j++)
             {
             }
         }
-        
-        ///////// TESTS //////////
-
-        Move(fishes[0].fishDataInstance, 1, 8);
-        Move(player, 5, 8);
-        Attack(player.attackList[0], player, 1, 8);
-        Debug.Log(fishes[0].fishDataInstance.hp);
-}
-    
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Move(player, player.positionX, player.positionY + 1);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Move(player, player.positionX, player.positionY - 1);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Move(player, player.positionX + 1, player.positionY);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Move(player, player.positionX - 1, player.positionY);
-        }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Attack(player.attackList[0], player, player.positionX, player.positionY + 1);
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Attack(player.attackList[0], player, player.positionX, player.positionY - 1);
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Attack(player.attackList[0], player, player.positionX + 1, player.positionY);
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Attack(player.attackList[0], player, player.positionX - 1, player.positionY);
-        }
+        #region inputs
         
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -93,7 +58,151 @@ public class CombatManager : MonoBehaviour
         {
             Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX - 1, fishes[0].fishDataInstance.positionY);
         }
-        
+        #endregion
+    }
+    
+    private void StartTurn()
+    {
+        if (combatFinished)
+        {
+            return;
+        }
+        EntityInstance currentEntity = turnOrder[currentTurnIndex];
+        if (currentEntity == player)
+        {
+            Debug.Log("C'est le tour du joueur.");
+            StartCoroutine(turn(player));
+        }
+        else
+        {
+            Debug.Log("C'est le tour de " + currentEntity.GetType().Name);
+            StartCoroutine(turn(currentEntity));
+        }
+    }
+
+    private void EndTurn()
+    {
+        currentTurnIndex = (currentTurnIndex + 1) % turnOrder.Count;
+        StartTurn();
+    }
+
+    IEnumerator turn(PlayerDataInstance playerEntity)
+    {
+        bool turnFinished = false;
+        while (!turnFinished)
+        {
+            Action(playerEntity);
+            if (playerEntity.actionPoint == 0)
+            {
+                Debug.Log("plus d'action point");
+                turnFinished = true;
+                playerEntity.actionPoint = _playerData.actionPoint;
+            }
+            yield return new WaitForSeconds(1/60f);
+        }
+        EndTurn();
+    }
+    
+    IEnumerator turn(EntityInstance entity)
+    {
+        bool turnFinished = false;
+        while (!turnFinished)
+        {
+            Action(entity);
+            if (entity.actionPoint == 0)
+            {
+                Debug.Log("plus d'action point");
+                turnFinished = true;
+                entity.actionPoint = fishes[currentTurnIndex-1].fishData.actionPoint;
+            }
+            yield return new WaitForSeconds(1/60f);
+        }
+        EndTurn();
+    }
+
+    void Action(PlayerDataInstance playerEntity)
+    {
+        if (!isPlayerTurn) return;
+        #region Actions
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Move(playerEntity, playerEntity.positionX, playerEntity.positionY + 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Move(playerEntity, playerEntity.positionX, playerEntity.positionY - 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Move(playerEntity, playerEntity.positionX + 1, playerEntity.positionY);
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Move(playerEntity, playerEntity.positionX - 1, playerEntity.positionY);
+        }
+        else if (Input.GetKeyDown(KeyCode.I))
+        {
+            Attack(player.attackList[0], player, player.positionX, player.positionY + 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            Attack(player.attackList[0], player, player.positionX, player.positionY - 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            Attack(player.attackList[0], player, player.positionX + 1, player.positionY);
+        }
+        else if (Input.GetKeyDown(KeyCode.J))
+        {
+            Attack(player.attackList[0], player, player.positionX - 1, player.positionY);
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("passer son tour");
+            playerEntity.actionPoint = 0;
+            return;
+        }
+        else
+        {
+            return;
+        }
+        #endregion
+        playerEntity.actionPoint -= 1;
+        Debug.Log("points d'action restants : " + playerEntity.actionPoint);
+    }
+    
+    void Action(EntityInstance entity)
+    {
+        #region Actions
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Move(entity, entity.positionX, entity.positionY + 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Move(entity, entity.positionX, entity.positionY - 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Move(entity, entity.positionX + 1, entity.positionY);
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Move(entity, entity.positionX - 1, entity.positionY);
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("passer son tour");
+            entity.actionPoint = 0;
+            return;
+        }
+        else
+        {
+            return;
+        }
+        #endregion
+        entity.actionPoint -= 1;
+        Debug.Log("points d'action restants : " + entity.actionPoint);
     }
 
     EntityInstance[,] CreateGrid(int y, int x)
@@ -103,6 +212,18 @@ public class CombatManager : MonoBehaviour
 
     void SpawnEntitys()
     {
+        player = (PlayerDataInstance)_playerData.Instance();
+        turnOrder.Add(player);
+        foreach (var fish in _fishDatas)
+        {
+            Fish newFish = new Fish
+            {
+                fishData = fish,
+                fishDataInstance = (FishDataInstance)fish.Instance()
+            };
+            fishes.Add(newFish);
+            turnOrder.Add(newFish.fishDataInstance);
+        }
         for (int i = 0; i < player.height; i++)
         {
             for (int j = 0; j < player.width; j++)
@@ -181,6 +302,7 @@ public class CombatManager : MonoBehaviour
     {
         int dirX = x - entity.positionX;
         int dirY = y - entity.positionY;
+        EntityInstance lastEnnemyTouched = null;
         for (int i = 0; i < attack.range; i++)
         {
             /*if (grid[y+i*(int)Mathf.Sign(dirY), x+i*(int)Mathf.Sign(dirX)] != null)
@@ -193,11 +315,12 @@ public class CombatManager : MonoBehaviour
             Debug.Log(entity.positionX + (entity.width) * NegativeToZero(GetSign(dirX)) +
                       i * GetSign(dirX)-NegativeToOne(dirX));*/
             EntityInstance tile = GetAttackTile(entity, dirY, dirX, i);
-            if (tile != null && tile != entity)
+            if (tile != null && tile != entity && tile != lastEnnemyTouched)
             {
                 Debug.Log(tile);
                 Debug.Log("touché");
                 Damage(tile, attack.Damage);
+                lastEnnemyTouched = tile;
             }
             else
             {
@@ -230,6 +353,11 @@ public class CombatManager : MonoBehaviour
     void Damage(EntityInstance entity, int dmg)
     {
         entity.TakeDamage(dmg);
+        if (entity.hp <= 0)
+        {
+            turnOrder.Remove(entity);
+            Destroy(entity.prefab);
+        }
     }
 
     int NegativeToZero(int value)
