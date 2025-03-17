@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AlgueGrande_06_VerteDroite_0: 2936292693915193439
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AlguePetite_03_Rose_Silhouette_0: 4178592810490209642
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

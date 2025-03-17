@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AlgueGrande_05_VerteZigzag_0: -3244755620635092989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AlgueLumineuse_02_0: -8940939810198177338
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
