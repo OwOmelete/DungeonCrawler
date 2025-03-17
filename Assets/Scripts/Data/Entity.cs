@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public abstract class Entity : ScriptableObject
@@ -8,12 +10,16 @@ public abstract class Entity : ScriptableObject
     public int positionY;
     public int hp;
     public int armor;
+
+    public GameObject prefab;
+
+    public List<AttackData> attackList;
     // movement list
     // attack list
 
     public abstract EntityInstance Instance();
 
-    //take damage
+    
 
     //isDead
 }
@@ -26,6 +32,8 @@ public class EntityInstance
     public int positionY;
     public int hp;
     public int armor;
+    public GameObject prefab;
+    public List<AttackData> attackList;
 
     public EntityInstance(Entity data)
     {
@@ -35,5 +43,12 @@ public class EntityInstance
         positionY = data.positionY;
         hp = data.hp;
         armor = data.armor;
+        prefab = data.prefab;
+        attackList = data.attackList;
+    }
+    
+    public void TakeDamage(int dmg)
+    {
+        hp -= dmg-armor;
     }
 }

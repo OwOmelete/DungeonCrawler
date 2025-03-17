@@ -28,11 +28,11 @@ public class Rotation : MonoBehaviour
         float currentAngle = NormalizeAngle(transform.eulerAngles.z);
         if (currentAngle > 0)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
         else
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
         angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
         if (Mathf.Abs(angleDiff) > angleBeforeRestartMovement) 
