@@ -1999,8 +1999,8 @@ MonoBehaviour:
   _playerData: {fileID: 11400000, guid: 240ed27209d86da44b50200ba971ae5d, type: 2}
   _fishDatas:
   - {fileID: 11400000, guid: 79caeba5458b6524ea92bb521fea7c3c, type: 2}
-  gridHeight: 0
-  gridWidth: 0
+  gridHeight: 10
+  gridWidth: 10
 --- !u!4 &1489350259
 Transform:
   m_ObjectHideFlags: 0

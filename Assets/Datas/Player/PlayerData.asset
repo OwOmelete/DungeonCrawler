@@ -18,6 +18,7 @@ MonoBehaviour:
   positionY: 0
   hp: 10
   armor: 0
+  actionPoint: 5
   prefab: {fileID: 8827070973172318893, guid: 7025b064c33fc554f9273625bbd41d0d, type: 3}
   attackList:
   - {fileID: 11400000, guid: 2a095878a8aa8c046834562cff23d986, type: 2}

@@ -10,6 +10,7 @@ public abstract class Entity : ScriptableObject
     public int positionY;
     public int hp;
     public int armor;
+    public int actionPoint;
 
     public GameObject prefab;
 
@@ -34,6 +35,7 @@ public class EntityInstance
     public int armor;
     public GameObject prefab;
     public List<AttackData> attackList;
+    public int actionPoint;
 
     public EntityInstance(Entity data)
     {
@@ -45,6 +47,7 @@ public class EntityInstance
         armor = data.armor;
         prefab = data.prefab;
         attackList = data.attackList;
+        actionPoint = data.actionPoint;
     }
     
     public void TakeDamage(int dmg)
