@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour
 {
-    [SerializeField] PlayerData _playerData;
-    [SerializeField] List<FishData> _fishDatas;
+    public PlayerData _playerData;
+    public PlayerDataInstance player;
+    public List<FishData> _fishDatas;
     [SerializeField] int gridHeight;
     [SerializeField] int gridWidth;
     private List<Fish> fishes = new List<Fish>();
-    private PlayerDataInstance player;
     private EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
     private bool combatFinished;
@@ -19,10 +20,8 @@ public class CombatManager : MonoBehaviour
     private bool isPlaying;
     private int frameCap = 60;
     
-
-    private void Start()
+    public void InitCombat()
     {
-        Application.targetFrameRate = frameCap;
         combatFinished = false;
         grid = CreateGrid(gridHeight, gridWidth);
         SpawnEntitys();
@@ -214,7 +213,10 @@ public class CombatManager : MonoBehaviour
 
     void SpawnEntitys()
     {
-        player = (PlayerDataInstance)_playerData.Instance();
+        if (player == null)
+        {
+            player = (PlayerDataInstance)_playerData.Instance();
+        }
         turnOrder.Add(player);
         foreach (var fish in _fishDatas)
         {
@@ -314,11 +316,6 @@ public class CombatManager : MonoBehaviour
         }
         return true;
     }
-
-    Vector3 GetPrefabPosition(EntityInstance entity, int x, int y)
-    {
-        return new Vector3(entity.width / 2 + x, entity.height / 2 + y, 0);
-    }
     
     void Attack(AttackData attack,EntityInstance entity, int x, int y)
     {
@@ -341,7 +338,15 @@ public class CombatManager : MonoBehaviour
             {
                 Debug.Log(tile);
                 Debug.Log("touché");
-                Damage(tile, attack.Damage);
+                int dmg = attack.Damage;
+                int r = Random.Range(0,1);
+                if (r <= attack.critChance)
+                {
+                    Debug.Log("crit !");
+                    dmg = (int)(dmg * attack.critMultiplier);
+                    Debug.Log(dmg);
+                }
+                Damage(tile, dmg);
                 lastEnnemyTouched = tile;
             }
             else
