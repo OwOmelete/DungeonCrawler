@@ -11,6 +11,7 @@ public class PlayerData : Entity
 
 public class PlayerDataInstance : EntityInstance
 {
+    public bool isStanding = true;
     public PlayerDataInstance(PlayerData data) : base(data)
     {
         

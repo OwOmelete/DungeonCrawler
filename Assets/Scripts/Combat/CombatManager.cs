@@ -16,7 +16,6 @@ public class CombatManager : MonoBehaviour
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
     private bool combatFinished;
     private int currentTurnIndex = 0;
-    private bool isPlayerTurn;
     private bool isPlaying;
     private int frameCap = 60;
     
@@ -25,10 +24,8 @@ public class CombatManager : MonoBehaviour
     {
         Application.targetFrameRate = frameCap;
         combatFinished = false;
-        isPlayerTurn = true;
         grid = CreateGrid(gridHeight, gridWidth);
         SpawnEntitys();
-        StartTurn();
 
         ///////// TESTS //////////
         for (int i = 0; i < grid.GetLength(0); i++)
@@ -40,105 +37,80 @@ public class CombatManager : MonoBehaviour
     }
     void Update()
     {
-        #region inputs
-        
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX, fishes[0].fishDataInstance.positionY + 1);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX, fishes[0].fishDataInstance.positionY - 1);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX + 1, fishes[0].fishDataInstance.positionY);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Move(fishes[0].fishDataInstance, fishes[0].fishDataInstance.positionX - 1, fishes[0].fishDataInstance.positionY);
-        }
-        #endregion
-    }
-    
-    private void StartTurn()
-    {
         if (combatFinished)
         {
+            Debug.Log("vous avez gagné !!");
             return;
         }
         EntityInstance currentEntity = turnOrder[currentTurnIndex];
         if (currentEntity == player)
         {
-            Debug.Log("C'est le tour du joueur.");
-            StartCoroutine(turn(player));
+            PlayerTurn(player);
         }
         else
         {
-            Debug.Log("C'est le tour de " + currentEntity.GetType().Name);
-            StartCoroutine(turn(currentEntity));
+            IATurn(currentEntity);
         }
     }
+
 
     private void EndTurn()
     {
         currentTurnIndex = (currentTurnIndex + 1) % turnOrder.Count;
-        StartTurn();
     }
 
-    IEnumerator turn(PlayerDataInstance playerEntity)
+    void PlayerTurn(PlayerDataInstance playerEntity)
     {
-        bool turnFinished = false;
-        while (!turnFinished)
+        Action(playerEntity);
+        if (playerEntity.actionPoint == 0)
         {
-            Action(playerEntity);
-            if (playerEntity.actionPoint == 0)
-            {
-                Debug.Log("plus d'action point");
-                turnFinished = true;
-                playerEntity.actionPoint = _playerData.actionPoint;
-            }
-            yield return new WaitForSeconds(1/60f);
+            EndTurn();
+            Debug.Log("plus d'action point");
+            playerEntity.actionPoint = _playerData.actionPoint;
         }
-        EndTurn();
     }
     
-    IEnumerator turn(EntityInstance entity)
+    void IATurn(EntityInstance entity)
     {
-        bool turnFinished = false;
-        while (!turnFinished)
+        Action(entity);
+        if (entity.actionPoint == 0)
         {
-            Action(entity);
-            if (entity.actionPoint == 0)
-            {
-                Debug.Log("plus d'action point");
-                turnFinished = true;
-                entity.actionPoint = fishes[currentTurnIndex-1].fishData.actionPoint;
-            }
-            yield return new WaitForSeconds(1/60f);
+            EndTurn();
+            Debug.Log("plus d'action point");
+            entity.actionPoint = entity.initialActionPoint;
         }
-        EndTurn();
     }
 
     void Action(PlayerDataInstance playerEntity)
     {
-        if (!isPlayerTurn) return;
+        int verticalSpeed;
+        int horizontalSpeed;
+        if (playerEntity.isStanding)
+        {
+            verticalSpeed = 2;
+            horizontalSpeed = 1;
+        }
+        else
+        {
+            verticalSpeed = 1;
+            horizontalSpeed = 2;
+        }
         #region Actions
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Move(playerEntity, playerEntity.positionX, playerEntity.positionY + 1);
+            Move(playerEntity, playerEntity.positionX, playerEntity.positionY + verticalSpeed);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Move(playerEntity, playerEntity.positionX, playerEntity.positionY - 1);
+            Move(playerEntity, playerEntity.positionX, playerEntity.positionY - verticalSpeed);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Move(playerEntity, playerEntity.positionX + 1, playerEntity.positionY);
+            Move(playerEntity, playerEntity.positionX + horizontalSpeed, playerEntity.positionY);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Move(playerEntity, playerEntity.positionX - 1, playerEntity.positionY);
+            Move(playerEntity, playerEntity.positionX - horizontalSpeed, playerEntity.positionY);
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {
@@ -156,6 +128,10 @@ public class CombatManager : MonoBehaviour
         {
             Attack(player.attackList[0], player, player.positionX - 1, player.positionY);
         }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            FlipPlayer();
+        }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("passer son tour");
@@ -169,6 +145,32 @@ public class CombatManager : MonoBehaviour
         #endregion
         playerEntity.actionPoint -= 1;
         Debug.Log("points d'action restants : " + playerEntity.actionPoint);
+    }
+
+    void FlipPlayer()
+    {
+        if (player.isStanding && player.positionX + player.width <grid.GetLength(1)-1)
+        {
+            if (grid[player.positionX + player.width, player.positionY] == null)
+            {
+                player.height = 1;
+                player.width = 2;
+                player.prefab.transform.position = new Vector3(player.positionX, player.positionY + 1,0);
+                player.prefab.transform.rotation = Quaternion.Euler(0,0,-90);
+                player.isStanding = !player.isStanding;
+            }
+        }
+        else if (player.positionY + player.height <grid.GetLength(0)-1)
+        {
+            if (grid[player.positionX, player.positionY + player.height] == null)
+            {
+                player.height = 2;
+                player.width = 1;
+                player.prefab.transform.rotation = Quaternion.Euler(0,0,0);
+                player.isStanding = !player.isStanding;
+            }
+        }
+        
     }
     
     void Action(EntityInstance entity)
@@ -243,7 +245,8 @@ public class CombatManager : MonoBehaviour
                 }
             }
             fish.fishDataInstance.prefab = Instantiate(fish.fishData.prefab,
-                new Vector3(fish.fishData.positionX, fish.fishData.positionY, 0),quaternion.identity);
+                new Vector3(fish.fishData.positionX,
+                    fish.fishData.positionY, 0),quaternion.identity);
         }
     }
 
@@ -274,7 +277,21 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        entity.prefab.transform.position = new Vector3(posX, posY, 0);
+        if (entity == player)
+        {
+            if (!player.isStanding)
+            {
+                entity.prefab.transform.position = new Vector3(posX, posY+1, 0);
+            }
+            else
+            {
+                entity.prefab.transform.position = new Vector3(posX, posY, 0);
+            }
+        }
+        else
+        {
+            entity.prefab.transform.position = new Vector3(posX, posY, 0);
+        }
         entity.positionX = posX;
         entity.positionY = posY;
     }
@@ -296,6 +313,11 @@ public class CombatManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+    Vector3 GetPrefabPosition(EntityInstance entity, int x, int y)
+    {
+        return new Vector3(entity.width / 2 + x, entity.height / 2 + y, 0);
     }
     
     void Attack(AttackData attack,EntityInstance entity, int x, int y)
@@ -355,9 +377,29 @@ public class CombatManager : MonoBehaviour
         entity.TakeDamage(dmg);
         if (entity.hp <= 0)
         {
-            turnOrder.Remove(entity);
-            Destroy(entity.prefab);
+            if (entity == player)
+            {
+                // gérer mort player
+            }
+            Die(entity);
+            if (turnOrder.Count == 1)
+            {
+                combatFinished = true;
+            }
         }
+    }
+
+    void Die(EntityInstance entity)
+    {
+        for (int i = 0; i < entity.height; i++)
+        {
+            for (int j = 0; j < entity.width; j++)
+            {
+                grid[entity.positionY + i,entity.positionX + j] = null ;
+            }
+        }
+        turnOrder.Remove(entity);
+        Destroy(entity.prefab);
     }
 
     int NegativeToZero(int value)
