@@ -36,6 +36,7 @@ public class EntityInstance
     public GameObject prefab;
     public List<AttackData> attackList;
     public int actionPoint;
+    public int initialActionPoint;
 
     public EntityInstance(Entity data)
     {
@@ -48,6 +49,7 @@ public class EntityInstance
         prefab = data.prefab;
         attackList = data.attackList;
         actionPoint = data.actionPoint;
+        initialActionPoint = data.actionPoint;
     }
     
     public void TakeDamage(int dmg)
