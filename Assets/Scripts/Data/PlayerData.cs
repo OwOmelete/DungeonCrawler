@@ -12,6 +12,7 @@ public class PlayerData : Entity
 public class PlayerDataInstance : EntityInstance
 {
     public bool isStanding = true;
+    public float light = 10;
     public PlayerDataInstance(PlayerData data) : base(data)
     {
         

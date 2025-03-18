@@ -53,9 +53,9 @@ public class LightReload : MonoBehaviour
         Destroy(GetComponent<Collider2D>());
         gameObject.GetComponent<Transform>().DOScale(Vector3.zero, timeToDespawn).SetEase(Ease.OutCubic);
         lightManagerReference.canLooseLight = false;
-        if (lightManagerReference.actualLight + regen >= lightManagerReference.maxLight)
+        if (lightManagerReference.player.light + regen >= lightManagerReference.maxLight)
         {
-            regen = lightManagerReference.maxLight - lightManagerReference.actualLight;
+            regen = lightManagerReference.maxLight - lightManagerReference.player.light;
         }
         lightManagerReference.AddLight(regen);
         StartCoroutine(DespawnCoroutine());
