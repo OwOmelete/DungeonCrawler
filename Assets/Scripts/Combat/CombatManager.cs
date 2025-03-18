@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour
 {
     public PlayerData _playerData;
     public PlayerDataInstance player;
+    public Light2D playerLight;
     public List<FishData> _fishDatas;
     [SerializeField] int gridHeight;
     [SerializeField] int gridWidth;
+    [SerializeField] float lightLostPerTurn;
+    [SerializeField] GameObject combatScene;
+    [SerializeField] GameObject playerExploration;
     private List<Fish> fishes = new List<Fish>();
     private EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -19,12 +24,15 @@ public class CombatManager : MonoBehaviour
     private int currentTurnIndex = 0;
     private bool isPlaying;
     private int frameCap = 60;
-    
+    private bool isFirstFight = false;
+
     public void InitCombat()
     {
         combatFinished = false;
         grid = CreateGrid(gridHeight, gridWidth);
         SpawnEntitys();
+        playerLight = player.prefab.transform.GetChild(0).GetComponent<Light2D>();
+        UpdateLight();
 
         ///////// TESTS //////////
         for (int i = 0; i < grid.GetLength(0); i++)
@@ -34,11 +42,27 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
+
+    void UpdateLight()
+    {
+        playerLight.pointLightOuterRadius = player.light;
+        playerLight.pointLightInnerRadius = player.light / 2;
+    }
     void Update()
     {
         if (combatFinished)
         {
             Debug.Log("vous avez gagné !!");
+            player.positionX = _playerData.positionX;
+            player.positionY = _playerData.positionY;
+            player.actionPoint = player.initialActionPoint;
+            Destroy(player.prefab);
+            turnOrder.Clear();
+            fishes.Clear();
+            currentTurnIndex = 0;
+            player.prefab.SetActive(false);
+            playerExploration.SetActive(true);
+            combatScene.SetActive(false);
             return;
         }
         EntityInstance currentEntity = turnOrder[currentTurnIndex];
@@ -56,6 +80,12 @@ public class CombatManager : MonoBehaviour
     private void EndTurn()
     {
         currentTurnIndex = (currentTurnIndex + 1) % turnOrder.Count;
+        if (currentTurnIndex % turnOrder.Count == 0)
+        {
+            player.light -= lightLostPerTurn;
+            player.light = Mathf.Clamp(player.light, 1, 10);
+            UpdateLight();
+        }
     }
 
     void PlayerTurn(PlayerDataInstance playerEntity)
@@ -213,10 +243,13 @@ public class CombatManager : MonoBehaviour
 
     void SpawnEntitys()
     {
-        if (player == null)
+        if (isFirstFight)
         {
             player = (PlayerDataInstance)_playerData.Instance();
+            isFirstFight = false;
         }
+        player.prefab = Instantiate(_playerData.prefab,
+                new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
         turnOrder.Add(player);
         foreach (var fish in _fishDatas)
         {
@@ -235,8 +268,7 @@ public class CombatManager : MonoBehaviour
                 grid[player.positionY + i,player.positionX + j] = player;
             }
         }
-        player.prefab = Instantiate(player.prefab,
-            new Vector3(player.positionX, player.positionY, 0),quaternion.identity);
+        
         foreach (var fish in fishes)
         {
             for (int i = 0; i < fish.fishData.height; i++)
@@ -339,7 +371,7 @@ public class CombatManager : MonoBehaviour
                 Debug.Log(tile);
                 Debug.Log("touché");
                 int dmg = attack.Damage;
-                int r = Random.Range(0,1);
+                float r = Random.Range(0,1);
                 if (r <= attack.critChance)
                 {
                     Debug.Log("crit !");
@@ -380,12 +412,14 @@ public class CombatManager : MonoBehaviour
     void Damage(EntityInstance entity, int dmg)
     {
         entity.TakeDamage(dmg);
+        Debug.Log(entity.hp);
         if (entity.hp <= 0)
         {
             if (entity == player)
             {
                 // gérer mort player
             }
+            Debug.Log("mort théorique");
             Die(entity);
             if (turnOrder.Count == 1)
             {

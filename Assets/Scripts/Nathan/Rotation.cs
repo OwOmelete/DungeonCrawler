@@ -10,8 +10,8 @@ public class Rotation : MonoBehaviour
     [SerializeField] private float lerpSpeed;
     [SerializeField] private float angleBeforeRestartMovement = 10f;
     private SpriteRenderer spriteRenderer;
-    public bool canMove = true;
-    public float angleDiff;
+    [HideInInspector] public bool canMove = true;
+    [HideInInspector] public float angleDiff;
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

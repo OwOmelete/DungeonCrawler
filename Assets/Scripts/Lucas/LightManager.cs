@@ -18,17 +18,17 @@ public class LightManager : MonoBehaviour
     [SerializeField] private float lerpDuration = 1f; // ce que va perdre la jauge de lumiere toutes les secondes
     
     [HideInInspector] public bool canLooseLight = true; // ici pour stopper la perte de lumière dans certains cas
-    [HideInInspector] public float actualLight;  // valeure actuelle de la lumière
     private bool haveLight = true; // verifie si il reste de la lumière
+
+    [HideInInspector] public PlayerDataInstance player;
     
     #endregion
     
     private void Start()
     {
-        
-        actualLight = maxLight;
-        playerLight.pointLightOuterRadius = actualLight;
-        playerLight.pointLightInnerRadius = actualLight / 2;
+        player.light = maxLight;
+        playerLight.pointLightOuterRadius = player.light;
+        playerLight.pointLightInnerRadius = player.light / 2;
         StartCoroutine(LooseLight());
     }
 
@@ -36,25 +36,24 @@ public class LightManager : MonoBehaviour
     {
         while (haveLight && canLooseLight)
         {
-            actualLight -= looseLightValue;
-            DOTween.To(() => playerLight.pointLightOuterRadius, x => playerLight.pointLightOuterRadius = x, actualLight, lerpDuration);
-            DOTween.To(() => playerLight.pointLightInnerRadius, x => playerLight.pointLightInnerRadius = x, actualLight / 2, lerpDuration);
-            if (actualLight <= minLight)
+            player.light -= looseLightValue;
+            DOTween.To(() => playerLight.pointLightOuterRadius, x => playerLight.pointLightOuterRadius = x, player.light, lerpDuration);
+            DOTween.To(() => playerLight.pointLightInnerRadius, x => playerLight.pointLightInnerRadius = x, player.light / 2, lerpDuration);
+            if (player.light <= minLight)
             {
                 haveLight = false;
             }
             yield return new WaitForSeconds(1f);
         }
     }
-    
 
     public void AddLight(float value)   // recharge la lumière
     {
-        actualLight += value;
+        player.light += value;
         DOTween.To(() => playerLight.pointLightOuterRadius, x => 
-            playerLight.pointLightOuterRadius = x, actualLight, lerpDuration);
+            playerLight.pointLightOuterRadius = x, player.light, lerpDuration);
         DOTween.To(() => playerLight.pointLightInnerRadius, x => 
-            playerLight.pointLightInnerRadius = x, actualLight / 2, lerpDuration);
+            playerLight.pointLightInnerRadius = x, player.light / 2, lerpDuration);
         canLooseLight = true;
         if (!haveLight || !canLooseLight)
         {

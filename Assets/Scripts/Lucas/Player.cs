@@ -12,6 +12,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float accelerationSpeed = 3f;
     [SerializeField] private Rotation rotationReference ;
     private Rigidbody2D rb;
+
+    [SerializeField] private PlayerData _playerData;
+    [SerializeField] private LightManager lightManager;
+    public PlayerDataInstance player;
+
+    private void Awake()
+    {
+        player = (PlayerDataInstance)_playerData.Instance();
+        lightManager.player = player;
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
