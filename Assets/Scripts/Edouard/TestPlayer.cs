@@ -4,15 +4,19 @@ using System.Collections;
 public class TestPlayer : MonoBehaviour
 {
     // ATTENTION!!! Ce script n'est qu'un test, ne pas le confondre avec le vrai PLAYER!
-    private int maxHealth = 100;
+    [Header("Player Stats")]
     public int health;
-    
-    private int maxOxygen = 100;
     public int oxygen;
+    
+    [Header("Player Max Stats")]
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxOxygen = 100;
+    
+    [Header("Oxygen Stettings")]
     public int oxygenLoss = 1; 
     public float oxygenLossInterval = 2f; 
 
-    
+    [Header("Player Speed and Rotation (Lucas)")]
     [SerializeField] private float moveSpeed = 55f;
     [SerializeField] private float turningMoveSpeed = 15f;
     [SerializeField] private Rotation rotationReference;

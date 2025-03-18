@@ -50,7 +50,7 @@ public class OxygenRegenArea : MonoBehaviour
         {
             player.oxygen += oxygen;
             player.oxygen = Mathf.Clamp(player.oxygen, 0, 100); 
-            Debug.Log("Oxygen regenerated: " + player.oxygen);
+            //Debug.Log("Oxygen regenerated: " + player.oxygen);
             yield return new WaitForSeconds(regenInterval);
         }
         regenCoroutine = null; 
