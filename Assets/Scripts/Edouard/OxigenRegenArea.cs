@@ -1,14 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class OxygenRegenZone : MonoBehaviour
+public class OxygenRegenArea : MonoBehaviour
 {
     private TestPlayer player; 
     private bool isInZone = false;
     private Coroutine regenCoroutine;
     
     [Header("OxygenRegen options")]
-    public int oxygenRegen = 5; 
+    public int oxygen = 5; 
     public float regenInterval = 1f; 
 
     
@@ -47,7 +48,7 @@ public class OxygenRegenZone : MonoBehaviour
     {
         while (isInZone && player != null)
         {
-            player.oxygen += oxygenRegen;
+            player.oxygen += oxygen;
             player.oxygen = Mathf.Clamp(player.oxygen, 0, 100); 
             Debug.Log("Oxygen regenerated: " + player.oxygen);
             yield return new WaitForSeconds(regenInterval);
