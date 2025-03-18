@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class DamageOverTimeZone : MonoBehaviour
+public class DamageOverTimeArea : MonoBehaviour
 {
     private Dictionary<GameObject, Coroutine> activeCoroutines = new Dictionary<GameObject, Coroutine>();
 
     [Header("DamageOverTime options")]
-    public int damageEachSecond = 10;
+    public int damage = 10;
     public float damageInterval = 1f;
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,7 +34,7 @@ public class DamageOverTimeZone : MonoBehaviour
     {
         while (true)
         {
-            targetPlayer.TakeDamage(damageEachSecond);
+            targetPlayer.TakeDamage(damage);
             yield return new WaitForSeconds(damageInterval);
         }
     }
