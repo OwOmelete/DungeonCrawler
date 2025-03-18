@@ -25,6 +25,7 @@ public class LightManager : MonoBehaviour
     
     private void Start()
     {
+        
         actualLight = maxLight;
         playerLight.pointLightOuterRadius = actualLight;
         playerLight.pointLightInnerRadius = actualLight / 2;
@@ -38,7 +39,6 @@ public class LightManager : MonoBehaviour
             actualLight -= looseLightValue;
             DOTween.To(() => playerLight.pointLightOuterRadius, x => playerLight.pointLightOuterRadius = x, actualLight, lerpDuration);
             DOTween.To(() => playerLight.pointLightInnerRadius, x => playerLight.pointLightInnerRadius = x, actualLight / 2, lerpDuration);
-            yield return null;
             if (actualLight <= minLight)
             {
                 haveLight = false;

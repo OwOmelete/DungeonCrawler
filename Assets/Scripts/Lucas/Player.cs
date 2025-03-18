@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
@@ -7,8 +8,9 @@ public class Player : MonoBehaviour
 
     private float moveHorizontal = 0f;    
     private float moveVertical = 0f;
-    [SerializeField] private float moveSpeed = 55f;
-    [SerializeField] private Rotation rotationReference;
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float accelerationSpeed = 3f;
+    [SerializeField] private Rotation rotationReference ;
     private Rigidbody2D rb;
     private void Start()
     {
@@ -23,23 +25,24 @@ public class Player : MonoBehaviour
         {
             if (moveHorizontal != 0 || moveVertical != 0)
             {
-                rb.linearVelocity = new Vector2(moveHorizontal, moveVertical).normalized * moveSpeed;
-            }
-            else
-            {
-                rb.linearVelocity = Vector2.zero;
+                rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized * accelerationSpeed);
             }
         }
         else
         {
             if (moveHorizontal != 0 || moveVertical != 0)
             {
-                rb.linearVelocity = new Vector2(moveHorizontal, moveVertical).normalized * (moveSpeed * ((180 - Mathf.Abs(rotationReference.angleDiff))/180));
+                rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized *
+                            (accelerationSpeed * ((180 - Mathf.Abs(rotationReference.angleDiff)) / 180)));
+                
             }
-            else
-            {
-                rb.linearVelocity = Vector2.zero;
-            }
+        }
+    }
+    void FixedUpdate()
+    {
+        if (rb.linearVelocity.magnitude > moveSpeed)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * moveSpeed;
         }
     }
 }
