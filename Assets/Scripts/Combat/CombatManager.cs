@@ -42,6 +42,7 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
+    
 
     void UpdateLight()
     {
@@ -55,7 +56,7 @@ public class CombatManager : MonoBehaviour
             Debug.Log("vous avez gagné !!");
             player.positionX = _playerData.positionX;
             player.positionY = _playerData.positionY;
-            player.actionPoint = player.initialActionPoint;
+            player.actionPoint = player.RespirationDatas[player.respirationIndex].actionPoints;
             Destroy(player.prefab);
             turnOrder.Clear();
             fishes.Clear();
@@ -95,7 +96,7 @@ public class CombatManager : MonoBehaviour
         {
             EndTurn();
             Debug.Log("plus d'action point");
-            playerEntity.actionPoint = _playerData.actionPoint;
+            playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
         }
     }
     
@@ -125,6 +126,28 @@ public class CombatManager : MonoBehaviour
             horizontalSpeed = 2;
         }
         #region Actions
+
+        if (playerEntity.actionPoint == playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                playerEntity.respirationIndex = 0;
+                Debug.Log(playerEntity.RespirationDatas[playerEntity.respirationIndex]);
+                playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
+            }
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                playerEntity.respirationIndex = 1;
+                Debug.Log(playerEntity.RespirationDatas[playerEntity.respirationIndex]);
+                playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
+            }
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                playerEntity.respirationIndex = 2;
+                Debug.Log(playerEntity.RespirationDatas[playerEntity.respirationIndex]);
+                playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
+            }
+        }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Move(playerEntity, playerEntity.positionX, playerEntity.positionY + verticalSpeed);
@@ -377,6 +400,11 @@ public class CombatManager : MonoBehaviour
                     Debug.Log("crit !");
                     dmg = (int)(dmg * attack.critMultiplier);
                     Debug.Log(dmg);
+                }
+
+                if (entity == player)
+                {
+                    dmg = (int)(dmg * player.RespirationDatas[player.respirationIndex].damageMultiplier);
                 }
                 Damage(tile, dmg);
                 lastEnnemyTouched = tile;

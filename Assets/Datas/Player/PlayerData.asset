@@ -22,3 +22,7 @@ MonoBehaviour:
   prefab: {fileID: 8827070973172318893, guid: 7025b064c33fc554f9273625bbd41d0d, type: 3}
   attackList:
   - {fileID: 11400000, guid: 2a095878a8aa8c046834562cff23d986, type: 2}
+  RespirationDatas:
+  - {fileID: 11400000, guid: 1e05344a589534e48b2fb1935b6c071f, type: 2}
+  - {fileID: 11400000, guid: a222e3ee6961bc44ea7d7444d330e76c, type: 2}
+  - {fileID: 11400000, guid: ccf591fc8944f4e47889ff0fe6260d47, type: 2}
