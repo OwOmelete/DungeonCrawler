@@ -10,6 +10,7 @@ public class LightManager : MonoBehaviour
     
     [Header("References")]
     public Light2D playerLight;   // objet light du player pour changer son intensité
+    [SerializeField] private UiBar LightBar;
     
     [Header("Values")]
     public float maxLight = 10;  // capacité maximale de lumière
@@ -34,14 +35,34 @@ public class LightManager : MonoBehaviour
 
     IEnumerator LooseLight()    // coroutine qui fait baisser peu a peu le niveau de lumiere
     {
+        float quarterMaxLight = (maxLight - minLight) / 4;
+        
         while (haveLight && canLooseLight)
         {
             player.light -= looseLightValue;
             DOTween.To(() => playerLight.pointLightOuterRadius, x => playerLight.pointLightOuterRadius = x, player.light, lerpDuration);
             DOTween.To(() => playerLight.pointLightInnerRadius, x => playerLight.pointLightInnerRadius = x, player.light / 2, lerpDuration);
-            if (player.light <= minLight)
+            
+            if (player.light <= quarterMaxLight * 3 && player.light > quarterMaxLight * 2 )
             {
+                LightBar.ChangeSprite(1);
+            }
+            else if (player.light <= quarterMaxLight * 2 && player.light > quarterMaxLight)
+            {
+                LightBar.ChangeSprite(2);
+            }
+            else if (player.light <= quarterMaxLight && player.light > minLight)
+            {
+                LightBar.ChangeSprite(3);
+            }
+            else if (player.light <= minLight)
+            {
+                LightBar.ChangeSprite(4);
                 haveLight = false;
+            }
+            else
+            {
+                LightBar.ChangeSprite(0);
             }
             yield return new WaitForSeconds(1f);
         }
