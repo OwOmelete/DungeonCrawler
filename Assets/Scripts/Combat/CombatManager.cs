@@ -51,6 +51,13 @@ public class CombatManager : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            for (int i = 0; i < grid.GetLength(0); i++)
+            {
+                Debug.Log(grid[0, i]);
+            }
+        }
         if (combatFinished)
         {
             Debug.Log("vous avez gagné !!");
@@ -115,6 +122,7 @@ public class CombatManager : MonoBehaviour
     {
         int verticalSpeed;
         int horizontalSpeed;
+        int actionPointLost = 1;
         if (playerEntity.isStanding)
         {
             verticalSpeed = 2;
@@ -166,19 +174,23 @@ public class CombatManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {
-            Attack(player.attackList[0], player, player.positionX, player.positionY + 1);
+            Attack(player.currentAttack, player, player.positionX, player.positionY + 1);
+            actionPointLost = player.currentAttack.actionCost;
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            Attack(player.attackList[0], player, player.positionX, player.positionY - 1);
+            Attack(player.currentAttack, player, player.positionX, player.positionY - 1);
+            actionPointLost = player.currentAttack.actionCost;
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            Attack(player.attackList[0], player, player.positionX + 1, player.positionY);
+            Attack(player.currentAttack, player, player.positionX + 1, player.positionY);
+            actionPointLost = player.currentAttack.actionCost;
         }
         else if (Input.GetKeyDown(KeyCode.J))
         {
-            Attack(player.attackList[0], player, player.positionX - 1, player.positionY);
+            Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
+            actionPointLost = player.currentAttack.actionCost;
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -195,7 +207,7 @@ public class CombatManager : MonoBehaviour
             return;
         }
         #endregion
-        playerEntity.actionPoint -= 1;
+        playerEntity.actionPoint -= actionPointLost;
         Debug.Log("points d'action restants : " + playerEntity.actionPoint);
     }
 
@@ -203,8 +215,10 @@ public class CombatManager : MonoBehaviour
     {
         if (player.isStanding && player.positionX + player.width <grid.GetLength(1)-1)
         {
-            if (grid[player.positionX + player.width, player.positionY] == null)
+            if (grid[player.positionY,player.positionX + player.width] == null)
             {
+                grid[player.positionY,player.positionX + player.width] = player;
+                grid[ player.positionY + player.height-1,player.positionX] = null;
                 player.height = 1;
                 player.width = 2;
                 player.prefab.transform.position = new Vector3(player.positionX, player.positionY + 1,0);
@@ -214,10 +228,14 @@ public class CombatManager : MonoBehaviour
         }
         else if (player.positionY + player.height <grid.GetLength(0)-1)
         {
-            if (grid[player.positionX, player.positionY + player.height] == null)
+            Debug.Log(grid[player.positionX, player.positionY + player.height-1]);
+            if (grid[ player.positionY + player.height,player.positionX] == null)
             {
+                grid[ player.positionY + player.height,player.positionX] = player;
+                grid[player.positionY,player.positionX + player.width-1] = null;
                 player.height = 2;
                 player.width = 1;
+                player.prefab.transform.position = new Vector3(player.positionX, player.positionY,0);
                 player.prefab.transform.rotation = Quaternion.Euler(0,0,0);
                 player.isStanding = !player.isStanding;
             }
@@ -388,7 +406,7 @@ public class CombatManager : MonoBehaviour
                        i * GetSign(dirY)-NegativeToOne(dirY));
             Debug.Log(entity.positionX + (entity.width) * NegativeToZero(GetSign(dirX)) +
                       i * GetSign(dirX)-NegativeToOne(dirX));*/
-            EntityInstance tile = GetAttackTile(entity, dirY, dirX, i);
+            EntityInstance tile = GetAttackTile(entity, dirY, dirX, i, attack);
             if (tile != null && tile != entity && tile != lastEnnemyTouched)
             {
                 Debug.Log(tile);
@@ -416,24 +434,34 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    EntityInstance GetAttackTile(EntityInstance entity, int dirY, int dirX, int actualRange)
+    EntityInstance GetAttackTile(EntityInstance entity, int dirY, int dirX, int actualRange, AttackData attack)
     {
-        int y = GetOutTileY(entity, dirY) + (actualRange - 1) * GetSign(dirY);
-        int x = GetOutTileX(entity, dirX) + (actualRange - 1) * GetSign(dirX);
+        int y = GetOutTileY(entity, dirY, attack) + (actualRange - 1) * GetSign(dirY);
+        int x = GetOutTileX(entity, dirX, attack) + (actualRange - 1) * GetSign(dirX);
         if (y < 0 || y >= grid.GetLength(0) || x < 0 || x >= grid.GetLength(1))
         {
             return null;
         }
         return grid[y,x];
     }
-    int GetOutTileX(EntityInstance entity, int dirX)
+    int GetOutTileX(EntityInstance entity, int dirX, AttackData attack)
     {
-        return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) +
+        int Xoffset = attack.Xoffset;
+        if (!entity.isStanding)
+        {
+            Xoffset = attack.Yoffset;
+        }
+        return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) + Xoffset*ZeroToOne(dirX) +
             1 * GetSign(dirX)-NegativeToOne(dirX);
     }
-    int GetOutTileY(EntityInstance entity, int dirY)
+    int GetOutTileY(EntityInstance entity, int dirY,AttackData attack)
     {
-        return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) +
+        int Yoffset = attack.Yoffset;
+        if (!entity.isStanding)
+        {
+            Yoffset = attack.Xoffset;
+        }
+        return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) + Yoffset*ZeroToOne(dirY) +
             1 * GetSign(dirY)-NegativeToOne(dirY);
     }
 
@@ -495,6 +523,16 @@ public class CombatManager : MonoBehaviour
         {
             return 1;
         }
+        return 0;
+    }
+
+    int ZeroToOne(int value)
+    {
+        if (value == 0)
+        {
+            return 1;
+        }
+
         return 0;
     }
 }

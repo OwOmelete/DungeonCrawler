@@ -37,6 +37,7 @@ public class EntityInstance
     public List<AttackData> attackList;
     public int actionPoint;
     public int initialActionPoint;
+    public bool isStanding = true;
 
     public EntityInstance(Entity data)
     {
