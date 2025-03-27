@@ -32,6 +32,7 @@ public class OxygenRegenZone : MonoBehaviour
         while (isInZone)
         {
             oxygenManagerReference.AddOxygen(oxygenRegen);
+            oxygenManagerReference.UpdateUi();
             yield return new WaitForSeconds(regenInterval);
         }
     }

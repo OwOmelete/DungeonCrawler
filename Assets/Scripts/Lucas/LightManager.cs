@@ -35,36 +35,39 @@ public class LightManager : MonoBehaviour
 
     IEnumerator LooseLight()    // coroutine qui fait baisser peu a peu le niveau de lumiere
     {
-        float quarterMaxLight = (maxLight - minLight) / 4;
-        
         while (haveLight && canLooseLight)
         {
             player.light -= looseLightValue;
             DOTween.To(() => playerLight.pointLightOuterRadius, x => playerLight.pointLightOuterRadius = x, player.light, lerpDuration);
             DOTween.To(() => playerLight.pointLightInnerRadius, x => playerLight.pointLightInnerRadius = x, player.light / 2, lerpDuration);
-            
-            if (player.light <= quarterMaxLight * 3 && player.light > quarterMaxLight * 2 )
-            {
-                LightBar.ChangeSprite(1);
-            }
-            else if (player.light <= quarterMaxLight * 2 && player.light > quarterMaxLight)
-            {
-                LightBar.ChangeSprite(2);
-            }
-            else if (player.light <= quarterMaxLight && player.light > minLight)
-            {
-                LightBar.ChangeSprite(3);
-            }
-            else if (player.light <= minLight)
-            {
-                LightBar.ChangeSprite(4);
-                haveLight = false;
-            }
-            else
-            {
-                LightBar.ChangeSprite(0);
-            }
+            UpdateUi();
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    public void UpdateUi()
+    {
+        float quarterMaxLight = (maxLight - minLight) / 4;
+        if (player.light <= quarterMaxLight * 3 && player.light > quarterMaxLight * 2 )
+        {
+            LightBar.ChangeSprite(1);
+        }
+        else if (player.light <= quarterMaxLight * 2 && player.light > quarterMaxLight)
+        {
+            LightBar.ChangeSprite(2);
+        }
+        else if (player.light <= quarterMaxLight && player.light > minLight)
+        {
+            LightBar.ChangeSprite(3);
+        }
+        else if (player.light <= minLight)
+        {
+            LightBar.ChangeSprite(4);
+            haveLight = false;
+        }
+        else
+        {
+            LightBar.ChangeSprite(0);
         }
     }
 
@@ -80,7 +83,12 @@ public class LightManager : MonoBehaviour
         {
             canLooseLight = true;
             haveLight = true;
-            StartCoroutine(LooseLight());
+            RestartCoroutine();
         }
+    }
+
+    public void RestartCoroutine()
+    {
+        StartCoroutine(LooseLight());
     }
 }

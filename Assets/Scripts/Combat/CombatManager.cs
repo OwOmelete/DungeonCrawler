@@ -71,7 +71,8 @@ public class CombatManager : MonoBehaviour
             fishes.Clear();
             currentTurnIndex = 0;
             player.prefab.SetActive(false);
-            lightManager.AddLight(0);
+            lightManager.canLooseLight = true;
+            lightManager.RestartCoroutine();
             oxygenManager.canLooseOxygen = true;
             oxygenManager.RestartCoroutine();
             playerExploration.SetActive(true);
