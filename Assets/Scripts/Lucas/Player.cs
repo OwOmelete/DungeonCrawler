@@ -15,12 +15,14 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private LightManager lightManager;
+    [SerializeField] private OxygenManager oxygenManager;
     public PlayerDataInstance player;
 
     private void Awake()
     {
         player = (PlayerDataInstance)_playerData.Instance();
         lightManager.player = player;
+        oxygenManager.player = player;
     }
 
     private void Start()
