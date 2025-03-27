@@ -50,6 +50,7 @@ public class LightManager : MonoBehaviour
     public void AddLight(float value)   // recharge la lumière
     {
         player.light += value;
+        player.light = Mathf.Clamp(player.oxygen, minLight, maxLight);
         DOTween.To(() => playerLight.pointLightOuterRadius, x => 
             playerLight.pointLightOuterRadius = x, player.light, lerpDuration);
         DOTween.To(() => playerLight.pointLightInnerRadius, x => 
