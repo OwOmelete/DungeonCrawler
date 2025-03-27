@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Econome
   m_EditorClassIdentifier: 
   damageMultiplier: 1
-  oxygenMultiplier: 0.8
+  oxygenLoss: 2
   actionPoints: 4

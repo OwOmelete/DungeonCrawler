@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Normale
   m_EditorClassIdentifier: 
   damageMultiplier: 1
-  oxygenMultiplier: 1
+  oxygenLoss: 5
   actionPoints: 5

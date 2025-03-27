@@ -25,8 +25,10 @@ public class StartCombat : MonoBehaviour
         combatScene.SetActive(true);
         combatManagerReference._fishDatas.Clear();
         combatManagerReference._fishDatas = fishDatas;
-        combatManagerReference.player = player.GetComponent<Player>().player;
-        lightManagerReference.canLooseLight = false;
+        Player playerScript = player.GetComponent<Player>();
+        combatManagerReference.player = playerScript.player;
+        playerScript.lightManager.canLooseLight = false;
+        playerScript.oxygenManager.canLooseOxygen = false;
         combatManagerReference.InitCombat();
         Destroy(enemyFollow);
     }

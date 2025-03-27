@@ -55,9 +55,9 @@ public class LightManager : MonoBehaviour
             playerLight.pointLightOuterRadius = x, player.light, lerpDuration);
         DOTween.To(() => playerLight.pointLightInnerRadius, x => 
             playerLight.pointLightInnerRadius = x, player.light / 2, lerpDuration);
-        canLooseLight = true;
         if (!haveLight || !canLooseLight)
         {
+            canLooseLight = true;
             haveLight = true;
             StartCoroutine(LooseLight());
         }

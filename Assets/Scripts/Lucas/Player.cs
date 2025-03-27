@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private PlayerData _playerData;
-    [SerializeField] private LightManager lightManager;
-    [SerializeField] private OxygenManager oxygenManager;
+    public LightManager lightManager;
+    public OxygenManager oxygenManager;
     public PlayerDataInstance player;
 
     private void Awake()

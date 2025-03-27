@@ -18,7 +18,6 @@ public class EnemyChase : MonoBehaviour
     void Attack()
     {
         transform.DOMove(playerReference.transform.position , enemyMoveDuration).SetDelay(enemyAttackDelay);
-        // Rajouter ici lancement combat
     }
 
     private void OnTriggerEnter2D(Collider2D other)

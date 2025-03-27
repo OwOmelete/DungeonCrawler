@@ -4,7 +4,7 @@ using UnityEngine;
 public class RespirationData : ScriptableObject
 {
     public float damageMultiplier;
-    public float oxygenMultiplier;
+    public float oxygenLoss;
     public int actionPoints;
 
 }

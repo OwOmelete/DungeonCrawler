@@ -17,6 +17,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField] float lightLostPerTurn;
     [SerializeField] GameObject combatScene;
     [SerializeField] GameObject playerExploration;
+    [SerializeField] LightManager lightManager;
+    [SerializeField] OxygenManager oxygenManager;
     private List<Fish> fishes = new List<Fish>();
     private EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -69,6 +71,9 @@ public class CombatManager : MonoBehaviour
             fishes.Clear();
             currentTurnIndex = 0;
             player.prefab.SetActive(false);
+            lightManager.AddLight(0);
+            oxygenManager.canLooseOxygen = true;
+            oxygenManager.RestartCoroutine();
             playerExploration.SetActive(true);
             combatScene.SetActive(false);
             return;
@@ -102,7 +107,9 @@ public class CombatManager : MonoBehaviour
         if (playerEntity.actionPoint == 0)
         {
             EndTurn();
+            player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
             Debug.Log("plus d'action point");
+            Debug.Log("oxygen : " + player.oxygen);
             playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
         }
     }
@@ -284,7 +291,7 @@ public class CombatManager : MonoBehaviour
 
     void SpawnEntitys()
     {
-        if (isFirstFight)
+        if (1==0)
         {
             player = (PlayerDataInstance)_playerData.Instance();
             isFirstFight = false;

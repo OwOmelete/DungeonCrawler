@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Profonde
   m_EditorClassIdentifier: 
   damageMultiplier: 1
-  oxygenMultiplier: 1.5
+  oxygenLoss: 7
   actionPoints: 7
