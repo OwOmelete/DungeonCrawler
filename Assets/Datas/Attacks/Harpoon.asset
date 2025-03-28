@@ -19,3 +19,4 @@ MonoBehaviour:
   actionCost: 2
   critChance: 0.2
   critMultiplier: 2
+  precision: 1
