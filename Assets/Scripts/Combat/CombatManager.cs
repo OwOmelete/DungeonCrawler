@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class CombatManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CombatManager : MonoBehaviour
     public List<FishData> _fishDatas;
     [SerializeField] int gridHeight;
     [SerializeField] int gridWidth;
+    [SerializeField] float moveDuration;
     [SerializeField] float lightLostPerTurn;
     [SerializeField] GameObject combatScene;
     [SerializeField] GameObject playerExploration;
@@ -25,8 +27,8 @@ public class CombatManager : MonoBehaviour
     private bool combatFinished;
     private int currentTurnIndex = 0;
     private bool isPlaying;
-    private int frameCap = 60;
-    private bool isFirstFight = false;
+    private int attackCordsX;
+    private int attackCordsY;
 
     public void InitCombat()
     {
@@ -53,13 +55,6 @@ public class CombatManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            for (int i = 0; i < grid.GetLength(0); i++)
-            {
-                Debug.Log(grid[0, i]);
-            }
-        }
         if (combatFinished)
         {
             Debug.Log("vous avez gagné !!");
@@ -107,9 +102,9 @@ public class CombatManager : MonoBehaviour
         if (playerEntity.actionPoint == 0)
         {
             EndTurn();
-            player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
+            //player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
             Debug.Log("plus d'action point");
-            Debug.Log("oxygen : " + player.oxygen);
+            //Debug.Log("oxygen : " + player.oxygen);
             playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
         }
     }
@@ -179,25 +174,67 @@ public class CombatManager : MonoBehaviour
         {
             Move(playerEntity, playerEntity.positionX - horizontalSpeed, playerEntity.positionY);
         }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            player.currentAttack = player.attackList[0];
+            actionPointLost = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            player.currentAttack = player.attackList[1];
+            actionPointLost = 0;
+        }
         else if (Input.GetKeyDown(KeyCode.I))
         {
-            Attack(player.currentAttack, player, player.positionX, player.positionY + 1);
-            actionPointLost = player.currentAttack.actionCost;
+            if (player.actionPoint >= player.currentAttack.actionCost)
+            {
+                Attack(player.currentAttack, player, player.positionX, player.positionY + 1);
+                actionPointLost = player.currentAttack.actionCost;
+            }
+            else
+            {
+                actionPointLost = 0;
+                Debug.Log("pas assez d'action points");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            Attack(player.currentAttack, player, player.positionX, player.positionY - 1);
-            actionPointLost = player.currentAttack.actionCost;
+            if (player.actionPoint >= player.currentAttack.actionCost)
+            {
+                Attack(player.currentAttack, player, player.positionX, player.positionY - 1);
+                actionPointLost = player.currentAttack.actionCost;
+            }
+            else
+            {
+                actionPointLost = 0;
+                Debug.Log("pas assez d'action points");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            Attack(player.currentAttack, player, player.positionX + 1, player.positionY);
-            actionPointLost = player.currentAttack.actionCost;
+            if (player.actionPoint >= player.currentAttack.actionCost)
+            {
+                Attack(player.currentAttack, player, player.positionX + 1, player.positionY);
+                actionPointLost = player.currentAttack.actionCost;
+            }
+            else
+            {
+                actionPointLost = 0;
+                Debug.Log("pas assez d'action points");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.J))
         {
-            Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
-            actionPointLost = player.currentAttack.actionCost;
+            if (player.actionPoint >= player.currentAttack.actionCost)
+            {
+                Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
+                actionPointLost = player.currentAttack.actionCost;
+            }
+            else
+            {
+                actionPointLost = 0;
+                Debug.Log("pas assez d'action points");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -214,6 +251,12 @@ public class CombatManager : MonoBehaviour
             return;
         }
         #endregion
+
+        if (playerEntity.actionPoint == playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints)
+        {
+            player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
+            Debug.Log("oxygen : " + player.oxygen);
+        }
         playerEntity.actionPoint -= actionPointLost;
         Debug.Log("points d'action restants : " + playerEntity.actionPoint);
     }
@@ -228,22 +271,21 @@ public class CombatManager : MonoBehaviour
                 grid[ player.positionY + player.height-1,player.positionX] = null;
                 player.height = 1;
                 player.width = 2;
-                player.prefab.transform.position = new Vector3(player.positionX, player.positionY + 1,0);
-                player.prefab.transform.rotation = Quaternion.Euler(0,0,-90);
+                player.prefab.transform.DOMove(new Vector3(player.positionX, player.positionY + 1,0), moveDuration).SetEase(Ease.InOutCubic);
+                player.prefab.transform.DORotate(new Vector3(0,0,-90), moveDuration).SetEase(Ease.InOutCubic);
                 player.isStanding = !player.isStanding;
             }
         }
         else if (player.positionY + player.height <grid.GetLength(0)-1)
         {
-            Debug.Log(grid[player.positionX, player.positionY + player.height-1]);
             if (grid[ player.positionY + player.height,player.positionX] == null)
             {
                 grid[ player.positionY + player.height,player.positionX] = player;
                 grid[player.positionY,player.positionX + player.width-1] = null;
                 player.height = 2;
                 player.width = 1;
-                player.prefab.transform.position = new Vector3(player.positionX, player.positionY,0);
-                player.prefab.transform.rotation = Quaternion.Euler(0,0,0);
+                player.prefab.transform.DOMove(new Vector3(player.positionX, player.positionY,0), moveDuration).SetEase(Ease.InOutCubic);
+                player.prefab.transform.DORotate(new Vector3(0,0,0), moveDuration).SetEase(Ease.InOutCubic);
                 player.isStanding = !player.isStanding;
             }
         }
@@ -291,11 +333,6 @@ public class CombatManager : MonoBehaviour
 
     void SpawnEntitys()
     {
-        if (1==0)
-        {
-            player = (PlayerDataInstance)_playerData.Instance();
-            isFirstFight = false;
-        }
         player.prefab = Instantiate(_playerData.prefab,
                 new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
         turnOrder.Add(player);
@@ -363,16 +400,16 @@ public class CombatManager : MonoBehaviour
         {
             if (!player.isStanding)
             {
-                entity.prefab.transform.position = new Vector3(posX, posY+1, 0);
+                entity.prefab.transform.DOMove(new Vector3(posX, posY+1, 0), moveDuration).SetEase(Ease.InOutCubic);
             }
             else
             {
-                entity.prefab.transform.position = new Vector3(posX, posY, 0);
+                entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
             }
         }
         else
         {
-            entity.prefab.transform.position = new Vector3(posX, posY, 0);
+            entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
         }
         entity.positionX = posX;
         entity.positionY = posY;
@@ -419,18 +456,27 @@ public class CombatManager : MonoBehaviour
                 Debug.Log(tile);
                 Debug.Log("touché");
                 int dmg = attack.Damage;
-                float r = Random.Range(0,1);
-                if (r <= attack.critChance)
+                float r = Random.Range(0, 100);
+                Debug.Log(r);
+                if (r >= attack.precision * 100)
+                {
+                    Debug.Log("loupé");
+                    break;
+                }
+                r = Random.Range(0, 100);
+                Debug.Log(r);
+                if (r <= attack.critChance*100)
                 {
                     Debug.Log("crit !");
                     dmg = (int)(dmg * attack.critMultiplier);
                     Debug.Log(dmg);
                 }
-
                 if (entity == player)
                 {
                     dmg = (int)(dmg * player.RespirationDatas[player.respirationIndex].damageMultiplier);
                 }
+
+                dmg = WeakPointDetection(tile,entity,attack, attackCordsX, attackCordsY, dmg);
                 Damage(tile, dmg);
                 lastEnnemyTouched = tile;
             }
@@ -441,16 +487,65 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    int WeakPointDetection(EntityInstance attackedEntity,EntityInstance attackerEntity,AttackData attack, int x, int y, int dmg)
+    {
+        foreach (var weakPoint in attackedEntity.weakPointList)
+        {
+            if (x == attackedEntity.positionX + weakPoint.posX && y == attackedEntity.positionY + weakPoint.posY)
+            {
+                if (weakPoint.direction == WeakPointData.dir.any)
+                {
+                    Debug.Log("any");
+                    return (dmg * weakPoint.damageMulti);
+                }
+                if (weakPoint.direction == WeakPointData.dir.up)
+                {
+                    if (attackedEntity.positionY < attackerEntity.positionY+attack.Yoffset)
+                    {
+                        Debug.Log("up");
+                        return (dmg * weakPoint.damageMulti);
+                    }
+                }
+                if (weakPoint.direction == WeakPointData.dir.down)
+                {
+                    if (attackedEntity.positionY > attackerEntity.positionY+attack.Yoffset)
+                    {
+                        Debug.Log("down");
+                        return (dmg * weakPoint.damageMulti);
+                    }
+                }
+                if (weakPoint.direction == WeakPointData.dir.left)
+                {
+                    if (attackedEntity.positionX > attackerEntity.positionX+attack.Xoffset)
+                    {
+                        Debug.Log("left");
+                        return (dmg * weakPoint.damageMulti);
+                    }
+                }
+                if (weakPoint.direction == WeakPointData.dir.right)
+                {
+                    if (attackedEntity.positionX < attackerEntity.positionX+attack.Xoffset)
+                    {
+                        Debug.Log("right");
+                        return (dmg * weakPoint.damageMulti);
+                    }
+                }
+            }
+        }
+        return dmg;
+    }
+
     EntityInstance GetAttackTile(EntityInstance entity, int dirY, int dirX, int actualRange, AttackData attack)
     {
-        int y = GetOutTileY(entity, dirY, attack) + (actualRange - 1) * GetSign(dirY);
-        int x = GetOutTileX(entity, dirX, attack) + (actualRange - 1) * GetSign(dirX);
-        if (y < 0 || y >= grid.GetLength(0) || x < 0 || x >= grid.GetLength(1))
+        attackCordsY = GetOutTileY(entity, dirY, attack) + (actualRange - 1) * GetSign(dirY);
+        attackCordsX = GetOutTileX(entity, dirX, attack) + (actualRange - 1) * GetSign(dirX);
+        if (attackCordsY < 0 || attackCordsY >= grid.GetLength(0) || attackCordsX < 0 || attackCordsX >= grid.GetLength(1))
         {
             return null;
         }
-        return grid[y,x];
+        return grid[attackCordsY,attackCordsX];
     }
+    
     int GetOutTileX(EntityInstance entity, int dirX, AttackData attack)
     {
         int Xoffset = attack.Xoffset;

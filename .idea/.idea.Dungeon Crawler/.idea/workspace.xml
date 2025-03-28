@@ -15,7 +15,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/Fish.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/WeakPointData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Nathan/Rotation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../POO/Assets/Scripts/DOTween/popup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Work/CoursAlgo2e/CoursAlgo2/Assets/Scripts/FightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Work/CoursAlgo2e/CoursAlgo2/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Work/Rider/RPGCsharp/RPGCsharp/Scripts/Actions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -107,6 +109,8 @@
       <workItem from="1742288446572" duration="11030000" />
       <workItem from="1742907824940" duration="3999000" />
       <workItem from="1743066629473" duration="7472000" />
+      <workItem from="1743095142419" duration="323000" />
+      <workItem from="1743152539557" duration="5945000" />
     </task>
     <servers />
   </component>

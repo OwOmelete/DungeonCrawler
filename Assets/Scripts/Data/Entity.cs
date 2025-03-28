@@ -15,6 +15,7 @@ public abstract class Entity : ScriptableObject
     public GameObject prefab;
 
     public List<AttackData> attackList;
+    public List<WeakPointData> weakPointList;
     // movement list
     // attack list
 
@@ -35,6 +36,7 @@ public class EntityInstance
     public int armor;
     public GameObject prefab;
     public List<AttackData> attackList;
+    public List<WeakPointData> weakPointList;
     public int actionPoint;
     public int initialActionPoint;
     public bool isStanding = true;
@@ -49,6 +51,7 @@ public class EntityInstance
         armor = data.armor;
         prefab = data.prefab;
         attackList = data.attackList;
+        weakPointList = data.weakPointList;
         actionPoint = data.actionPoint;
         initialActionPoint = data.actionPoint;
     }

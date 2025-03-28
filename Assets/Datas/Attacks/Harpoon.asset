@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4579fa09605c9b4cb24ca336bda7b69, type: 3}
-  m_Name: KnifeHit
+  m_Name: Harpoon
   m_EditorClassIdentifier: 
-  Damage: 2
-  range: 1
+  Damage: 1
+  range: 3
   Yoffset: 1
   Xoffset: 0
-  actionCost: 1
+  actionCost: 2
   critChance: 0.2
   critMultiplier: 2

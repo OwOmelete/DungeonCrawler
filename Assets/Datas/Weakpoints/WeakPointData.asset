@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4579fa09605c9b4cb24ca336bda7b69, type: 3}
-  m_Name: KnifeHit
+  m_Script: {fileID: 11500000, guid: c258416dc2bc9454eb06deacaf803bf5, type: 3}
+  m_Name: WeakPointData
   m_EditorClassIdentifier: 
-  Damage: 2
-  range: 1
-  Yoffset: 1
-  Xoffset: 0
-  actionCost: 1
-  critChance: 0.2
-  critMultiplier: 2
+  posX: 0
+  posY: 0
+  damageMulti: 0

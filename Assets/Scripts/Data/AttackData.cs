@@ -10,4 +10,5 @@ public class AttackData : ScriptableObject
     public int actionCost;
     public float critChance;
     public float critMultiplier;
+    public float precision;
 }
