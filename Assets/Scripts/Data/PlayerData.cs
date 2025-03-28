@@ -20,6 +20,7 @@ public class PlayerDataInstance : EntityInstance
     public int respirationIndex = 1;
     public List<RespirationData> RespirationDatas;
     public AttackData currentAttack;
+    public bool booster = true;
     public PlayerDataInstance(PlayerData data) : base(data)
     {
         light = data.ligth;

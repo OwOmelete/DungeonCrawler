@@ -122,15 +122,15 @@ public class CombatManager : MonoBehaviour
 
     void Action(PlayerDataInstance playerEntity)
     {
-        int verticalSpeed;
-        int horizontalSpeed;
+        int verticalSpeed = 1;
+        int horizontalSpeed = 1;
         int actionPointLost = 1;
-        if (playerEntity.isStanding)
+        if (playerEntity.isStanding && player.booster)
         {
             verticalSpeed = 2;
             horizontalSpeed = 1;
         }
-        else
+        else if (player.booster)
         {
             verticalSpeed = 1;
             horizontalSpeed = 2;
@@ -157,6 +157,12 @@ public class CombatManager : MonoBehaviour
                 Debug.Log(playerEntity.RespirationDatas[playerEntity.respirationIndex]);
                 playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            player.booster = !player.booster;
+            actionPointLost = 0;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -273,6 +279,8 @@ public class CombatManager : MonoBehaviour
                 player.width = 2;
                 player.prefab.transform.DOMove(new Vector3(player.positionX, player.positionY + 1,0), moveDuration).SetEase(Ease.InOutCubic);
                 player.prefab.transform.DORotate(new Vector3(0,0,-90), moveDuration).SetEase(Ease.InOutCubic);
+                //player.prefab.transform.position = new Vector3(player.positionX, player.positionY + 1, 0);
+                //player.prefab.transform.rotation = Quaternion.Euler(0, 0, -90);
                 player.isStanding = !player.isStanding;
             }
         }
@@ -286,6 +294,8 @@ public class CombatManager : MonoBehaviour
                 player.width = 1;
                 player.prefab.transform.DOMove(new Vector3(player.positionX, player.positionY,0), moveDuration).SetEase(Ease.InOutCubic);
                 player.prefab.transform.DORotate(new Vector3(0,0,0), moveDuration).SetEase(Ease.InOutCubic);
+                //player.prefab.transform.position = new Vector3(player.positionX, player.positionY, 0);
+                //player.prefab.transform.rotation = Quaternion.Euler(0, 0, 0);
                 player.isStanding = !player.isStanding;
             }
         }
