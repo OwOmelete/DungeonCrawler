@@ -7,19 +7,8 @@ public class StartCombat : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject combatScene;
     [SerializeField] private CombatManager combatManagerReference;
-    [SerializeField] private LightManager lightManagerReference;
-    [SerializeField] private GameObject enemyFollow;
-    [SerializeField] List<FishData> fishDatas;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            SwitchToCombat();
-        }
-    }
-
-    void SwitchToCombat()
+    public void SwitchToCombat(List<FishData> fishDatas)
     {
         player.SetActive(false);
         combatScene.SetActive(true);
@@ -30,6 +19,5 @@ public class StartCombat : MonoBehaviour
         playerScript.lightManager.canLooseLight = false;
         playerScript.oxygenManager.canLooseOxygen = false;
         combatManagerReference.InitCombat();
-        Destroy(enemyFollow);
     }
 }
