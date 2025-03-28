@@ -22,8 +22,11 @@ public class EnemyChase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        playerOnTrigger = true;
-        StartCoroutine(RaycastUpdate());
+        if (other.CompareTag("Player"))
+        {
+            playerOnTrigger = true;
+            StartCoroutine(RaycastUpdate());
+        }
     }
 
     IEnumerator RaycastUpdate()
@@ -45,11 +48,12 @@ public class EnemyChase : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-
-
-
+    
     private void OnTriggerExit2D(Collider2D other)
     {
-        playerOnTrigger = false;
+        if (other.CompareTag("Player"))
+        {
+            playerOnTrigger = false;
+        }
     }
 }
