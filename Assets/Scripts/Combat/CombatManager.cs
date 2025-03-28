@@ -53,13 +53,6 @@ public class CombatManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            for (int i = 0; i < grid.GetLength(0); i++)
-            {
-                Debug.Log(grid[0, i]);
-            }
-        }
         if (combatFinished)
         {
             Debug.Log("vous avez gagné !!");
@@ -107,9 +100,9 @@ public class CombatManager : MonoBehaviour
         if (playerEntity.actionPoint == 0)
         {
             EndTurn();
-            player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
+            //player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
             Debug.Log("plus d'action point");
-            Debug.Log("oxygen : " + player.oxygen);
+            //Debug.Log("oxygen : " + player.oxygen);
             playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
         }
     }
@@ -179,25 +172,67 @@ public class CombatManager : MonoBehaviour
         {
             Move(playerEntity, playerEntity.positionX - horizontalSpeed, playerEntity.positionY);
         }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            player.currentAttack = player.attackList[0];
+            actionPointLost = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            player.currentAttack = player.attackList[1];
+            actionPointLost = 0;
+        }
         else if (Input.GetKeyDown(KeyCode.I))
         {
-            Attack(player.currentAttack, player, player.positionX, player.positionY + 1);
-            actionPointLost = player.currentAttack.actionCost;
+            if (player.actionPoint >= player.currentAttack.actionCost)
+            {
+                Attack(player.currentAttack, player, player.positionX, player.positionY + 1);
+                actionPointLost = player.currentAttack.actionCost;
+            }
+            else
+            {
+                actionPointLost = 0;
+                Debug.Log("pas assez d'action points");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            Attack(player.currentAttack, player, player.positionX, player.positionY - 1);
-            actionPointLost = player.currentAttack.actionCost;
+            if (player.actionPoint >= player.currentAttack.actionCost)
+            {
+                Attack(player.currentAttack, player, player.positionX, player.positionY - 1);
+                actionPointLost = player.currentAttack.actionCost;
+            }
+            else
+            {
+                actionPointLost = 0;
+                Debug.Log("pas assez d'action points");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            Attack(player.currentAttack, player, player.positionX + 1, player.positionY);
-            actionPointLost = player.currentAttack.actionCost;
+            if (player.actionPoint >= player.currentAttack.actionCost)
+            {
+                Attack(player.currentAttack, player, player.positionX + 1, player.positionY);
+                actionPointLost = player.currentAttack.actionCost;
+            }
+            else
+            {
+                actionPointLost = 0;
+                Debug.Log("pas assez d'action points");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.J))
         {
-            Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
-            actionPointLost = player.currentAttack.actionCost;
+            if (player.actionPoint >= player.currentAttack.actionCost)
+            {
+                Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
+                actionPointLost = player.currentAttack.actionCost;
+            }
+            else
+            {
+                actionPointLost = 0;
+                Debug.Log("pas assez d'action points");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -214,6 +249,12 @@ public class CombatManager : MonoBehaviour
             return;
         }
         #endregion
+
+        if (playerEntity.actionPoint == playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints)
+        {
+            player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
+            Debug.Log("oxygen : " + player.oxygen);
+        }
         playerEntity.actionPoint -= actionPointLost;
         Debug.Log("points d'action restants : " + playerEntity.actionPoint);
     }
@@ -235,7 +276,6 @@ public class CombatManager : MonoBehaviour
         }
         else if (player.positionY + player.height <grid.GetLength(0)-1)
         {
-            Debug.Log(grid[player.positionX, player.positionY + player.height-1]);
             if (grid[ player.positionY + player.height,player.positionX] == null)
             {
                 grid[ player.positionY + player.height,player.positionX] = player;
