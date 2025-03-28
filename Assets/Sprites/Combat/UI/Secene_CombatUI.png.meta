@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Secene_CombatUI_0: 7799255575167622614
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -19,6 +19,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] float lightLostPerTurn;
     [SerializeField] GameObject combatScene;
     [SerializeField] GameObject playerExploration;
+    [SerializeField] GameObject UiExplo;
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
     private List<Fish> fishes = new List<Fish>();
@@ -71,6 +72,7 @@ public class CombatManager : MonoBehaviour
             oxygenManager.canLooseOxygen = true;
             oxygenManager.RestartCoroutine();
             playerExploration.SetActive(true);
+            UiExplo.SetActive(true);
             combatScene.SetActive(false);
             return;
         }

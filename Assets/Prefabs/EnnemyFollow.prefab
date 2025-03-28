@@ -243,6 +243,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startCombatReference: {fileID: 0}
   fish: {fileID: 7208794075487571838}
-  fishDatas:
-  - {fileID: 11400000, guid: 79caeba5458b6524ea92bb521fea7c3c, type: 2}
-  - {fileID: 11400000, guid: 57bb6145c58b77b4097e1debfe428df1, type: 2}
+  fishDatas: []
