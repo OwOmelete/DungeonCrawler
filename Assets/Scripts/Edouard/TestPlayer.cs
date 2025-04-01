@@ -5,9 +5,13 @@ public class TestPlayer : MonoBehaviour
 {
     public int health;
     private int maxHealth = 100;
+    private int maxOxygen = 100;
+    public int oxygenLoss = 1;
+    public int oxygen = 1;
     
     private void Death()
     {
+        oxygen = maxOxygen;
         if (health <= 0)
         {
             Destroy(gameObject); 
