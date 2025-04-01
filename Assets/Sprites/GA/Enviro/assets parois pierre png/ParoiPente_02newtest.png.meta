@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 70b65fb64d26ee844b454309a068a958
+guid: 5b135619939a9334da2a17202849d142
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3752988380765098389
-    second: ParoiPente_02_0
+      213: -5540020032430309659
+    second: ParoiPente_02newtest_0
   - first:
-      213: -8410000273635777012
-    second: ParoiPente_02_1
+      213: -588748366870108378
+    second: ParoiPente_02newtest_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ParoiPente_02_0
+      name: ParoiPente_02newtest_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5911ca15c0b451430800000000000000
-      internalID: 3752988380765098389
+      spriteID: 5ee717ef125ed13b0800000000000000
+      internalID: -5540020032430309659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ParoiPente_02_1
+      name: ParoiPente_02newtest_1
       rect:
         serializedVersion: 2
         x: 246
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c0660092f4da94b80800000000000000
-      internalID: -8410000273635777012
+      spriteID: 627ad9aca7854d7f0800000000000000
+      internalID: -588748366870108378
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ParoiPente_02newtest_0: -5540020032430309659
+      ParoiPente_02newtest_1: -588748366870108378
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

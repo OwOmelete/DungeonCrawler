@@ -124,7 +124,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -775,7 +775,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -784,7 +784,34 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_V3_ContourExplo_0: -213549596820149230
+      UI_V3_ContourExplo_1: 3580752393675968452
+      UI_V3_ContourExplo_10: 603858359133439804
+      UI_V3_ContourExplo_11: 8610585873747886855
+      UI_V3_ContourExplo_12: -620402200456075997
+      UI_V3_ContourExplo_13: -7769261320733764108
+      UI_V3_ContourExplo_14: 573320555975031482
+      UI_V3_ContourExplo_15: -6803539093891328224
+      UI_V3_ContourExplo_16: -7707363213727542098
+      UI_V3_ContourExplo_17: -4866278634265763822
+      UI_V3_ContourExplo_18: 3867975104111586086
+      UI_V3_ContourExplo_19: -3847454057991290771
+      UI_V3_ContourExplo_2: 1494640292216435606
+      UI_V3_ContourExplo_20: -6165367139218890092
+      UI_V3_ContourExplo_21: -2122935799881893301
+      UI_V3_ContourExplo_22: -7283743905896312909
+      UI_V3_ContourExplo_23: -4278109286746960181
+      UI_V3_ContourExplo_24: 3717359973938627689
+      UI_V3_ContourExplo_25: 6095346083961210060
+      UI_V3_ContourExplo_26: -1581851951594249508
+      UI_V3_ContourExplo_3: 1911030885804488704
+      UI_V3_ContourExplo_4: -670749576212181228
+      UI_V3_ContourExplo_5: 8430595646544900800
+      UI_V3_ContourExplo_6: -8690538152629400200
+      UI_V3_ContourExplo_7: -7784801888881883431
+      UI_V3_ContourExplo_8: 8254965240835479935
+      UI_V3_ContourExplo_9: -1739302387401421406
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
