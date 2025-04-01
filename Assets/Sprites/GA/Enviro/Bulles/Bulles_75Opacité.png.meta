@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "Bulles_75Opacit\xE9_0": -4221799437242613439
+      "Bulles_75Opacit\xE9_1": -8672085093339686232
+      "Bulles_75Opacit\xE9_2": 2322134611560130404
+      "Bulles_75Opacit\xE9_3": -6054758837690836196
+      "Bulles_75Opacit\xE9_4": -7950120936796604377
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

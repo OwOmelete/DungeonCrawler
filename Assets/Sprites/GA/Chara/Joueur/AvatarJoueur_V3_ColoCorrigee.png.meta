@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AvatarJoueur_V3_ColoCorrigee_0: 2649985369000215066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
