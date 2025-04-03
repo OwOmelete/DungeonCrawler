@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ParoiAngle_02_0: 8302640752076289101
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

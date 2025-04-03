@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AlguePetite_03_Violette_0: -1665083987220419374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

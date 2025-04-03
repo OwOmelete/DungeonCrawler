@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "LeurreLumi\xE8re_0": 6098043550427855196
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

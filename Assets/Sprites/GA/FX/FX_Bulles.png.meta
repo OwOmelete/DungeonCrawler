@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FX_Bulles_0: -4400921691212345321
+      FX_Bulles_1: -155671009402174049
+      FX_Bulles_2: -7030960322231095857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
