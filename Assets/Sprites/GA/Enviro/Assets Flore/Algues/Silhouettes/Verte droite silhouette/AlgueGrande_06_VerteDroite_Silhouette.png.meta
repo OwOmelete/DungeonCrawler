@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AlgueGrande_06_VerteDroite_Silhouette_0: 2337754131024384765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Corail_02_Noir_02_0: 3616996603284506479
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

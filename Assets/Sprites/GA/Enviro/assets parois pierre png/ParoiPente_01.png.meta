@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ParoiPente_01_0: 8611018912855030199
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

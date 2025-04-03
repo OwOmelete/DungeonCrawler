@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Corail_01_RoseDroite_0: -363847398357126945
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
