@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class RockManager : MonoBehaviour
 {
-    public float delay = 5f;
-    public float damage;
+    [SerializeField] public TestPlayer testPlayer;
+    public int delay = 5;
+    public int damage;
     private void Start()
     {
         Destroy(gameObject, delay);
@@ -12,6 +13,7 @@ public class RockManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        testPlayer.health -= damage;
         Debug.Log(other.gameObject.name + " collision" + gameObject.name);
     }
 }
