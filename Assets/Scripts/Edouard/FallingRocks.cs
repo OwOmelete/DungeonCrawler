@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 public class FallingRocks : MonoBehaviour
 {
     public GameObject fallingRock;
-    public float ySpawnCenter;
+    //public float ySpawnCenter;
     public float activationChance = 50f; 
     public int rockCount = 5; 
     public float minX = -100f, maxX = 100f;

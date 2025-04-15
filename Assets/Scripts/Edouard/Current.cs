@@ -1,6 +1,6 @@
-using System;
+
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class Current : MonoBehaviour
 {
