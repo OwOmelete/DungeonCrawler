@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 public class FishHitPlayer : MonoBehaviour
@@ -9,10 +8,12 @@ public class FishHitPlayer : MonoBehaviour
     [SerializeField] private GameObject fish;
     [SerializeField] private List<FishData> fishDatas;
     
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        startCombatReference.SwitchToCombat(fishDatas);
-        fish.transform.DOKill();
-        Destroy(fish);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            startCombatReference.SwitchToCombat(fishDatas);
+            Destroy(fish);
+        }
     }
 }
