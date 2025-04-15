@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_Rewards_Anim03_0: 7320389542575987021
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
