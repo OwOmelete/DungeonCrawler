@@ -18,7 +18,6 @@ public class EnemyChase : MonoBehaviour
     
     IEnumerator DashToPlayer()
     {
-        yield return new WaitForSeconds(enemyAttackDelay);
         Vector2 direction = (playerReference.transform.position - transform.position).normalized;
         float duration = 0.2f;
         float elapsed = 0f;
