@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_Danger_Anim_108_0: -4811884506760449671
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
