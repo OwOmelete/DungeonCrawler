@@ -1,19 +1,23 @@
-using System;
+
 using UnityEngine;
 
 public class RockManager : MonoBehaviour
 {
-    [SerializeField] public TestPlayer testPlayer;
+    [SerializeField] private TestPlayer testPlayer;
     public int delay = 5;
     public int damage;
     private void Start()
     {
+        testPlayer = FindObjectOfType<TestPlayer>();
         Destroy(gameObject, delay);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        testPlayer.health -= damage;
-        Debug.Log(other.gameObject.name + " collision" + gameObject.name);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            testPlayer.health -= damage;
+            Debug.Log(gameObject.name + " collision with " + other.gameObject.name);
+        }
     }
 }
