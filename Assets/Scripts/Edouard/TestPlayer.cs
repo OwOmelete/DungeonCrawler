@@ -1,16 +1,34 @@
+using System;
 using UnityEngine;
 using System.Collections;
+using UnityEditor;
+using UnityEngine.Serialization;
 
 public class TestPlayer : MonoBehaviour
 {
     public int health;
     private int maxHealth = 100;
-    
-    private void Death()
+    public bool debugPauseEditorOnDeath;
+
+    void Start()
+    {
+        health = maxHealth;
+    }
+
+    private void Update()
     {
         if (health <= 0)
         {
-            Destroy(gameObject); 
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        Debug.Log(gameObject.name + " is death");
+        if (debugPauseEditorOnDeath)
+        {
+            Debug.Break();
         }
     }
 

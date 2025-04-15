@@ -129,8 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa180598df84bff44984b26e6d0fcde9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testPlayer: {fileID: 0}
   delay: 5
-  damage: 0
+  damage: 5
 --- !u!58 &-4251136150981894358
 CircleCollider2D:
   m_ObjectHideFlags: 0
