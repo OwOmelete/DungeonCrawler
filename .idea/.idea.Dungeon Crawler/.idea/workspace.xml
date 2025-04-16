@@ -17,6 +17,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/Fish.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/WeakPointData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Nathan/Rotation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui/Editor/UGUI/UI/ScrollbarEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui/Editor/UGUI/UI/SliderEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../POO/Assets/Scripts/DOTween/popup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Work/CoursAlgo2e/CoursAlgo2/Assets/Scripts/FightManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Work/CoursAlgo2e/CoursAlgo2/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -32,7 +34,9 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.3884712&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Nathan&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -111,7 +115,10 @@
       <workItem from="1743066629473" duration="7472000" />
       <workItem from="1743095142419" duration="323000" />
       <workItem from="1743152539557" duration="5945000" />
-      <workItem from="1743494952765" duration="10405000" />
+      <workItem from="1743494952765" duration="13235000" />
+      <workItem from="1744711139759" duration="20619000" />
+      <workItem from="1744797934831" duration="195000" />
+      <workItem from="1744798145364" duration="9588000" />
     </task>
     <servers />
   </component>
@@ -127,5 +134,63 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
+          <line>385</line>
+          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'assignDirection'">
+            <startOffsets>
+              <option value="14292" />
+            </startOffsets>
+            <endOffsets>
+              <option value="14313" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
+          <line>358</line>
+          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'DoRotateLeft'">
+            <startOffsets>
+              <option value="13227" />
+            </startOffsets>
+            <endOffsets>
+              <option value="13252" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
+          <line>308</line>
+          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'FlipPlayerLeft'">
+            <startOffsets>
+              <option value="10961" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10962" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
+          <line>437</line>
+          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'canTurnRight'">
+            <startOffsets>
+              <option value="15997" />
+            </startOffsets>
+            <endOffsets>
+              <option value="15998" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
