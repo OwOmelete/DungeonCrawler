@@ -30,6 +30,8 @@ public class CombatManager : MonoBehaviour
     private bool isPlaying;
     private int attackCordsX;
     private int attackCordsY;
+    private SpriteRenderer playerEntityRenderer;
+    private Transform playerEntityChild;
 
     public void InitCombat()
     {
@@ -102,6 +104,11 @@ public class CombatManager : MonoBehaviour
     void PlayerTurn(PlayerDataInstance playerEntity)
     {
         Action(playerEntity);
+        /*playerEntityRenderer.flipX = playerEntity.direction == EntityInstance.dir.upLeft ||
+                                     playerEntity.direction == EntityInstance.dir.downRight;
+        playerEntityRenderer.flipY = playerEntity.direction == EntityInstance.dir.rightUp ||
+                                     playerEntity.direction == EntityInstance.dir.leftDown;*/
+        
         if (playerEntity.actionPoint == 0)
         {
             EndTurn();
@@ -247,7 +254,11 @@ public class CombatManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            FlipPlayer();
+            FlipPlayerRight(player);
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            FlipPlayerLeft(player);
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -270,54 +281,179 @@ public class CombatManager : MonoBehaviour
         Debug.Log("points d'action restants : " + playerEntity.actionPoint);
     }
 
-    void FlipPlayer()
+    void FlipPlayerRight(EntityInstance entity)
     {
-        Debug.Log(player.isStanding);
-        if (player.isStanding && player.positionX + player.width < grid.GetLength(1))
+        if (canTurnRight(entity))
         {
-            if (grid[player.positionY,player.positionX + player.width] == null)
+            if (entity.direction == EntityInstance.dir.left && (grid[entity.positionY + 1 , entity.positionX] == null ||grid[entity.positionY +1 , entity.positionX] == entity))
             {
-                grid[player.positionY,player.positionX + player.width] = player;
-                grid[ player.positionY + player.height-1,player.positionX] = null;
-                player.height = 1;
-                player.width = 2;
-                player.prefab.transform.DOMove(new Vector3(player.positionX, player.positionY + 1,0), moveDuration).SetEase(Ease.InOutCubic);
-                player.prefab.transform.DORotate(new Vector3(0,0,-90), moveDuration).SetEase(Ease.InOutCubic);
-                //player.prefab.transform.position = new Vector3(player.positionX, player.positionY + 1, 0);
-                //player.prefab.transform.rotation = Quaternion.Euler(0, 0, -90);
-                player.isStanding = !player.isStanding;
-                Debug.Log("caca1");
+                DoRotateRight(entity);
             }
-            else
+            else if (entity.direction == EntityInstance.dir.up && (grid[entity.positionY , entity.positionX+1] == null||grid[entity.positionY, entity.positionX+1] == entity))
             {
-                Debug.Log("marche pas");
+                DoRotateRight(entity);            
+            }
+            else if (entity.direction == EntityInstance.dir.right && (grid[entity.positionY -1 , entity.positionX] == null ||grid[entity.positionY -1 , entity.positionX] == entity ))
+            {
+                DoRotateRight(entity);            
+            }
+            else if (entity.direction == EntityInstance.dir.down && (grid[entity.positionY, entity.positionX-1] == null||grid[entity.positionY , entity.positionX-1] == entity))
+            {
+                DoRotateRight(entity);            
             }
         }
-        else if (!player.isStanding && player.positionY + player.height <grid.GetLength(0))
+    }
+    void FlipPlayerLeft(EntityInstance entity)
+    {
+        if (canTurnLeft(entity)) 
         {
-            if (grid[ player.positionY + player.height,player.positionX] == null)
+            if (entity.direction == EntityInstance.dir.left && (grid[entity.positionY - 1, entity.positionX] == null ||grid[entity.positionY -1 , entity.positionX] == entity))
             {
-                grid[ player.positionY + player.height,player.positionX] = player;
-                grid[player.positionY,player.positionX + player.width-1] = null;
-                player.height = 2;
-                player.width = 1;
-                player.prefab.transform.DOMove(new Vector3(player.positionX, player.positionY,0), moveDuration).SetEase(Ease.InOutCubic);
-                player.prefab.transform.DORotate(new Vector3(0,0,0), moveDuration).SetEase(Ease.InOutCubic);
-                //player.prefab.transform.position = new Vector3(player.positionX, player.positionY, 0);
-                //player.prefab.transform.rotation = Quaternion.Euler(0, 0, 0);
-                player.isStanding = !player.isStanding;
-                Debug.Log("caca2");
+                DoRotateLeft(entity);
             }
-            else
+
+            else if (entity.direction == EntityInstance.dir.up && (grid[entity.positionY , entity.positionX-1] == null||grid[entity.positionY, entity.positionX-1] == entity))
             {
-                Debug.Log("marche pas");
+                DoRotateLeft(entity);
             }
-        }
-        else
-        {
             
+            else if (entity.direction == EntityInstance.dir.right && (grid[entity.positionY +1 , entity.positionX] == null ||grid[entity.positionY +1 , entity.positionX] == entity ))
+            {
+                DoRotateLeft(entity);
+            }
+            
+            else if (entity.direction == EntityInstance.dir.down && (grid[entity.positionY, entity.positionX+1] == null||grid[entity.positionY , entity.positionX+1] == entity))
+            {
+                DoRotateLeft(entity);
+            }
         }
-        Debug.Log(player.isStanding);
+    }
+    
+    private void DoRotateRight(EntityInstance entity)
+    {
+        entity.entityChild.DOLocalRotate(new Vector3(0,0,entity.entityChild.localEulerAngles.z - 90), moveDuration).SetEase(Ease.InOutCubic);
+        switch (entity.direction)
+        {
+            case EntityInstance.dir.up:
+                assignDirection(EntityInstance.dir.right, entity);
+                break;
+            case EntityInstance.dir.down:
+                assignDirection(EntityInstance.dir.left, entity);
+                break;
+            case EntityInstance.dir.left:
+                assignDirection(EntityInstance.dir.up, entity);
+                break;
+            case EntityInstance.dir.right:
+                assignDirection(EntityInstance.dir.down, entity);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        //player.prefab.transform.position = new Vector3(player.positionX, player.positionY, 0);
+        //player.prefab.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private void DoRotateLeft(EntityInstance entity)
+    {
+        entity.entityChild.DOLocalRotate(new Vector3(0,0,entity.entityChild.localEulerAngles.z + 90), moveDuration).SetEase(Ease.InOutCubic);
+        switch (entity.direction)
+        {
+            case EntityInstance.dir.up:
+                assignDirection(EntityInstance.dir.left, entity);
+                break;
+            case EntityInstance.dir.down:
+                assignDirection(EntityInstance.dir.right, entity);
+                break;
+            case EntityInstance.dir.left:
+                assignDirection(EntityInstance.dir.down, entity);
+                break;
+            case EntityInstance.dir.right:
+                assignDirection(EntityInstance.dir.up, entity);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        //player.prefab.transform.position = new Vector3(player.positionX, player.positionY, 0);
+        //player.prefab.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    void assignDirection(EntityInstance.dir newDirection, EntityInstance entity)
+    {
+        entity.direction = newDirection;
+        int tempHeight = entity.height;
+        Debug.Log(entity.height);
+        Debug.Log(entity.width);
+        switch (newDirection)
+        {
+            case EntityInstance.dir.up:
+                entity.height = entity.width;
+                entity.width = tempHeight;
+                entity.isStanding = true;
+                break;
+            case EntityInstance.dir.down:
+                entity.height = entity.width;
+                entity.width = tempHeight;
+                entity.isStanding = true;
+                break;
+            case EntityInstance.dir.left:
+                entity.height = entity.width;
+                entity.width = tempHeight;
+                entity.isStanding = false;
+                break;
+            case EntityInstance.dir.right:
+                entity.height = entity.width;
+                entity.width = tempHeight;
+                entity.isStanding = false;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newDirection), newDirection, null);
+        }
+        Debug.Log(entity.height);
+        Debug.Log(entity.width);
+
+    }
+
+    public bool canTurnLeft(EntityInstance entity)
+    {
+        if (entity.direction == EntityInstance.dir.right && entity.positionY < grid.GetLength(0) - 1)
+        {
+            return true;
+        }
+        if (entity.direction == EntityInstance.dir.up && entity.positionX > 0)
+        {
+            return true;
+        }
+        if (entity.direction == EntityInstance.dir.left && entity.positionY > 0)
+        {
+            return true;
+        }
+        if (entity.direction == EntityInstance.dir.down && entity.positionX < grid.GetLength(1) - 1)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    public bool canTurnRight(EntityInstance entity)
+    {
+        if (entity.direction == EntityInstance.dir.right && entity.positionY > 0)
+        {
+            return true;
+        }
+        if (entity.direction == EntityInstance.dir.up && entity.positionX < grid.GetLength(1) - 1)
+        {
+            return true;
+        }
+        if (entity.direction == EntityInstance.dir.left && entity.positionY < grid.GetLength(0) - 1)
+        {
+            return true;
+        }
+        if (entity.direction == EntityInstance.dir.down && entity.positionX > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
     
     void Action(EntityInstance entity)
@@ -363,6 +499,9 @@ public class CombatManager : MonoBehaviour
     {
         player.prefab = Instantiate(_playerData.prefab,
                 new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
+        playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
+        player.entityChild = player.prefab.transform.GetChild(0);
+        Debug.Log(player.entityChild);
         turnOrder.Add(player);
         foreach (var fish in _fishDatas)
         {
@@ -389,6 +528,7 @@ public class CombatManager : MonoBehaviour
                 for (int j = 0; j < fish.fishData.width; j++)
                 {
                     grid[fish.fishData.positionY + i,fish.fishData.positionX + j] = fish.fishDataInstance;
+                    fish.fishDataInstance.entityChild = fish.fishDataInstance.prefab.transform.GetChild(0);
                 }
             }
             fish.fishDataInstance.prefab = Instantiate(fish.fishData.prefab,
@@ -403,44 +543,60 @@ public class CombatManager : MonoBehaviour
         { 
             return;
         }
-        else
-        {
-                
-        }
         
-        for (int i = 0; i < entity.height; i++)
-        {
-            for (int j = 0; j < entity.width; j++)
-            {
-                grid[entity.positionY + i,entity.positionX + j] = null;
-            }
-        }
-
-        for (int i = 0; i < entity.height; i++)
-        {
-            for (int j = 0; j < entity.width; j++)
-            {
-                grid[posY + i,posX + j] = entity;
-            }
-        }
-
-        if (entity == player)
-        {
-            if (!player.isStanding)
-            {
-                entity.prefab.transform.DOMove(new Vector3(posX, posY+1, 0), moveDuration).SetEase(Ease.InOutCubic);
-            }
-            else
-            {
-                entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
-            }
-        }
-        else
-        {
-            entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
-        }
+        UpdateGrid(entity, posX, posY);
+        entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
         entity.positionX = posX;
         entity.positionY = posY;
+    }
+
+    void UpdateGrid(EntityInstance entity, int posX, int posY)
+    {
+        for (int i = 0; i < entity.height; i++)
+        {
+            for (int j = 0; j < entity.width; j++)
+            {
+                if (player.direction == EntityInstance.dir.up)
+                {
+                    grid[entity.positionY + i,entity.positionX + j] = null;
+                }
+                if (player.direction == EntityInstance.dir.right)
+                {
+                    grid[entity.positionY + i,entity.positionX + j] = null;
+                }
+                if (player.direction == EntityInstance.dir.left)
+                {
+                    grid[entity.positionY - i,entity.positionX - j] = null;
+                }
+                if (player.direction == EntityInstance.dir.down)
+                {
+                    grid[entity.positionY - i,entity.positionX - j] = null;
+                }
+            }
+        }
+
+        for (int i = 0; i < entity.height; i++)
+        {
+            for (int j = 0; j < entity.width; j++)
+            {
+                if (player.direction == EntityInstance.dir.up)
+                {
+                    grid[posY + i,posX + j] = entity;
+                }
+                if (player.direction == EntityInstance.dir.right)
+                {
+                    grid[posY + i,posX + j] = entity;
+                }
+                if (player.direction == EntityInstance.dir.left)
+                {
+                    grid[posY - i,posX - j] = entity;
+                }
+                if (player.direction == EntityInstance.dir.down)
+                {
+                    grid[posY - i,posX - j] = entity;
+                }
+            }
+        }
     }
     
     bool CanMove(EntityInstance entity, int newX, int newY)
@@ -449,16 +605,57 @@ public class CombatManager : MonoBehaviour
         {
             for (int j = 0; j < entity.width; j++)
             {
-                if (newY+i < 0 || newY+i > grid.GetLength(0)-1 || newX+j < 0 || newX+j > grid.GetLength(1)-1)
+                if (player.direction == EntityInstance.dir.up)
                 {
-                    return false;
+                    if (newY+i < 0 || newY+i > grid.GetLength(0)-1 || newX+j < 0 || newX+j > grid.GetLength(1)-1)
+                    {
+                        return false;
+                    }
+                    if (grid[newY+i, newX+j] != null && grid[newY+i, newX+j] != entity)
+                    {
+                        return false;
+                    }
                 }
-                if (grid[newY+i, newX+j] != null && grid[newY+i, newX+j] != entity)
+                if (player.direction == EntityInstance.dir.right)
                 {
-                    return false;
+                    if (newY+i < 0 || newY+i > grid.GetLength(0)-1 || newX+j < 0 || newX+j > grid.GetLength(1)-1)
+                    {
+                        return false;
+                    }
+                    if (grid[newY+i, newX+j] != null && grid[newY+i, newX+j] != entity)
+                    {
+                        return false;
+                    }                
+                }
+                if (player.direction == EntityInstance.dir.left)
+                {
+                    if (newY - i < 0 || newY - i > grid.GetLength(0) - 1 || newX - j < 0 ||
+                        newX - j > grid.GetLength(1) - 1)
+                    {
+                        return false;
+                    }
+
+                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity)
+                    {
+                        return false;
+                    }
+                }
+                if (player.direction == EntityInstance.dir.down)
+                {
+                    if (newY - i < 0 || newY - i > grid.GetLength(0) - 1 || newX - j < 0 ||
+                        newX - j > grid.GetLength(1) - 1)
+                    {
+                        return false;
+                    }
+
+                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity)
+                    {
+                        return false;
+                    }
                 }
             }
         }
+        
         return true;
     }
     
@@ -485,14 +682,12 @@ public class CombatManager : MonoBehaviour
                 Debug.Log("touché");
                 int dmg = attack.Damage;
                 float r = Random.Range(0, 100);
-                Debug.Log(r);
                 if (r >= attack.precision * 100)
                 {
                     Debug.Log("loupé");
                     break;
                 }
                 r = Random.Range(0, 100);
-                Debug.Log(r);
                 if (r <= attack.critChance*100)
                 {
                     Debug.Log("crit !");
@@ -571,6 +766,8 @@ public class CombatManager : MonoBehaviour
         {
             return null;
         }
+        Debug.Log(attackCordsX);
+        Debug.Log(attackCordsY);
         return grid[attackCordsY,attackCordsX];
     }
     
@@ -581,8 +778,24 @@ public class CombatManager : MonoBehaviour
         {
             Xoffset = attack.Yoffset;
         }
-        return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) + Xoffset*ZeroToOne(dirX) +
-            1 * GetSign(dirX)-NegativeToOne(dirX);
+
+        switch (entity.direction)
+        {
+            case EntityInstance.dir.up:
+                return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) + Xoffset*ZeroToOne(dirX) +
+                    1 * GetSign(dirX)-NegativeToOne(dirX);
+            case EntityInstance.dir.down:
+                return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) - Xoffset*ZeroToOne(dirX) +
+                    1 * GetSign(dirX)-NegativeToOne(dirX);
+            case EntityInstance.dir.left:
+                return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) - Xoffset*ZeroToOne(dirX) + 
+                    1 * GetSign(dirX)-NegativeToOne(dirX) - Mathf.Abs(dirX);
+            case EntityInstance.dir.right:
+                return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) + Xoffset*ZeroToOne(dirX) +
+                    1 * GetSign(dirX)-NegativeToOne(dirX);
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
     int GetOutTileY(EntityInstance entity, int dirY,AttackData attack)
     {
@@ -591,8 +804,25 @@ public class CombatManager : MonoBehaviour
         {
             Yoffset = attack.Xoffset;
         }
-        return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) + Yoffset*ZeroToOne(dirY) +
-            1 * GetSign(dirY)-NegativeToOne(dirY);
+
+        switch (entity.direction)
+        {
+            case EntityInstance.dir.up:
+                return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) + Yoffset*ZeroToOne(dirY) +
+                    1 * GetSign(dirY)-NegativeToOne(dirY);
+            case EntityInstance.dir.down:
+                return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) - Yoffset*ZeroToOne(dirY) +
+                    1 * GetSign(dirY)-NegativeToOne(dirY)- Mathf.Abs(dirY);
+            case EntityInstance.dir.left:
+                return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) + Yoffset*ZeroToOne(dirY) +
+                    1 * GetSign(dirY)-NegativeToOne(dirY);
+            case EntityInstance.dir.right:
+                return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) - Yoffset * ZeroToOne(dirY) +
+                    1 * GetSign(dirY) - NegativeToOne(dirY);
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
     }
 
     void Damage(EntityInstance entity, int dmg)
