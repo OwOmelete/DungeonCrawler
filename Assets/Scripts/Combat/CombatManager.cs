@@ -32,6 +32,7 @@ public class CombatManager : MonoBehaviour
     private int attackCordsY;
     private SpriteRenderer playerEntityRenderer;
     private Transform playerEntityChild;
+    private bool canRotate = true;
 
     public void InitCombat()
     {
@@ -252,11 +253,11 @@ public class CombatManager : MonoBehaviour
                 Debug.Log("pas assez d'action points");
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Q))
+        else if (Input.GetKeyDown(KeyCode.Q) && canRotate)
         {
             FlipPlayerRight(player);
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E) && canRotate)
         {
             FlipPlayerLeft(player);
         }
@@ -331,7 +332,11 @@ public class CombatManager : MonoBehaviour
     
     private void DoRotateRight(EntityInstance entity)
     {
-        entity.entityChild.DOLocalRotate(new Vector3(0,0,entity.entityChild.localEulerAngles.z - 90), moveDuration).SetEase(Ease.InOutCubic);
+        canRotate = false;
+        entity.entityChild.DOLocalRotate(new Vector3(0,0,entity.entityChild.localEulerAngles.z - 90), moveDuration).SetEase(Ease.InOutCubic).OnComplete(() =>
+        {
+            canRotate = true;
+        });
         switch (entity.direction)
         {
             case EntityInstance.dir.up:
@@ -355,7 +360,11 @@ public class CombatManager : MonoBehaviour
 
     private void DoRotateLeft(EntityInstance entity)
     {
-        entity.entityChild.DOLocalRotate(new Vector3(0,0,entity.entityChild.localEulerAngles.z + 90), moveDuration).SetEase(Ease.InOutCubic);
+        canRotate = false;
+        entity.entityChild.DOLocalRotate(new Vector3(0,0,entity.entityChild.localEulerAngles.z + 90), moveDuration).SetEase(Ease.InOutCubic).OnComplete(() =>
+        {
+            canRotate = true;
+        });
         switch (entity.direction)
         {
             case EntityInstance.dir.up:
@@ -381,8 +390,6 @@ public class CombatManager : MonoBehaviour
     {
         entity.direction = newDirection;
         int tempHeight = entity.height;
-        Debug.Log(entity.height);
-        Debug.Log(entity.width);
         switch (newDirection)
         {
             case EntityInstance.dir.up:
@@ -408,9 +415,6 @@ public class CombatManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(newDirection), newDirection, null);
         }
-        Debug.Log(entity.height);
-        Debug.Log(entity.width);
-
     }
 
     public bool canTurnLeft(EntityInstance entity)
