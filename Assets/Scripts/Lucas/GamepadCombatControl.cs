@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEditor.Build.Content;
 using UnityEditor.Searcher;
 using UnityEngine;
@@ -12,6 +13,11 @@ public class GamepadCombatControl : MonoBehaviour
     [SerializeField] private float waitTimeBeforeNextSelection = 0.2f;
     [SerializeField] private int tabHeight = 5;
     [SerializeField] private int tabWidth = 6;
+    [SerializeField] private TMP_Text fishName;
+    [SerializeField] private TMP_Text fishHp;
+    [SerializeField] private TMP_Text fishArmor;
+    [SerializeField] private Transform menuActionsPlayer;
+    [SerializeField] private Vector3 uiOffset = new Vector3(1f, 1f);
     private bool canChangeSelection = true;
     private GameObject[,] selectionTab = new GameObject[5,6];
     private int[] actualPlacement = new int[2];
@@ -94,10 +100,29 @@ public class GamepadCombatControl : MonoBehaviour
 
     void ShowInformations()
     {
-        if (combatManagerReference.grid[actualPlacement[0], actualPlacement[1]] != null)
+        EntityInstance actualCase = combatManagerReference.grid[actualPlacement[0], actualPlacement[1]];
+        if ( actualCase != null)
         {
-            // Ici implémenter l'ui afin d'afficher les element de l'entité selectionnée
+            if (actualCase == combatManagerReference.player)
+            {
+                if (actualCase == combatManagerReference.player)
+                {
+                    menuActionsPlayer.position =
+                        selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + uiOffset;
+                }
+            }
+            else
+            {
+                UpdateInformations(actualCase);
+            }
         }
+    }
+
+    void UpdateInformations(EntityInstance entity)  // nathan ici si tu peux mettre genre quand on attaque ça update l'ui sur le poisson qu'on vient de toucher
+    {
+        fishName.text = entity.name;
+        fishHp.text = ("Hp : " + entity.hp);
+        fishArmor.text = ("Armor : " + entity.armor);
     }
 }
 
