@@ -17,7 +17,8 @@ public class GamepadCombatControl : MonoBehaviour
     [SerializeField] private TMP_Text fishHp;
     [SerializeField] private TMP_Text fishArmor;
     [SerializeField] private Transform menuActionsPlayer;
-    [SerializeField] private Vector3 uiOffset = new Vector3(1f, 1f);
+    [SerializeField] private float uiOffsetX = 1f;
+    [SerializeField] private float uiOffsetY = 1f;
     private bool canChangeSelection = true;
     private GameObject[,] selectionTab = new GameObject[5,6];
     private int[] actualPlacement = new int[2];
@@ -107,8 +108,17 @@ public class GamepadCombatControl : MonoBehaviour
             {
                 if (actualCase == combatManagerReference.player)
                 {
-                    menuActionsPlayer.position =
-                        selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + uiOffset;
+                    if (actualPlacement[1] == tabWidth - 1 )
+                    {
+                        menuActionsPlayer.position =
+                            selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(-uiOffsetX * 2.2f, uiOffsetY, 0);
+                    }
+                    else
+                    {
+                        menuActionsPlayer.position =
+                            selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                    }
+                    
                 }
             }
             else
