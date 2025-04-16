@@ -119,8 +119,6 @@
       <workItem from="1744711139759" duration="20619000" />
       <workItem from="1744797934831" duration="195000" />
       <workItem from="1744798145364" duration="9588000" />
-      <workItem from="1744892077174" duration="162000" />
-      <workItem from="1744892263209" duration="888000" />
     </task>
     <servers />
   </component>
@@ -142,52 +140,52 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>392</line>
+          <line>385</line>
           <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'assignDirection'">
             <startOffsets>
-              <option value="14476" />
+              <option value="14292" />
             </startOffsets>
             <endOffsets>
-              <option value="14497" />
+              <option value="14313" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>367</line>
+          <line>358</line>
           <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'DoRotateLeft'">
             <startOffsets>
-              <option value="13478" />
+              <option value="13227" />
             </startOffsets>
             <endOffsets>
-              <option value="13503" />
+              <option value="13252" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>309</line>
+          <line>308</line>
           <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'FlipPlayerLeft'">
             <startOffsets>
-              <option value="11022" />
+              <option value="10961" />
             </startOffsets>
             <endOffsets>
-              <option value="11023" />
+              <option value="10962" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>441</line>
+          <line>437</line>
           <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'canTurnRight'">
             <startOffsets>
-              <option value="16113" />
+              <option value="15997" />
             </startOffsets>
             <endOffsets>
-              <option value="16114" />
+              <option value="15998" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="9" />
