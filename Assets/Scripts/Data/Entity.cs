@@ -40,6 +40,16 @@ public class EntityInstance
     public int actionPoint;
     public int initialActionPoint;
     public bool isStanding = true;
+    public Transform entityChild;
+    public enum dir
+    {
+        up,
+        down,
+        left,
+        right
+    }
+
+    public dir direction;
 
     public EntityInstance(Entity data)
     {

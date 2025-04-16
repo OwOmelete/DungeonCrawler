@@ -4,6 +4,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "FishData", menuName = "Scriptable Objects/Entity/FishData")]
 public class FishData : Entity
 {
+    public string name;
     //Position weaknesses
     //effects weaknesses( ? )
     //spawn zone (corail/kayou/carcasse)
@@ -17,8 +18,9 @@ public class FishData : Entity
 
 public class FishDataInstance : EntityInstance
 {
+    public string name;
     public FishDataInstance(FishData data) : base(data)
     {
-        
+        name = data.name;
     }
 }
