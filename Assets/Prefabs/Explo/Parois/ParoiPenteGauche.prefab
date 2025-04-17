@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7853555073368243468}
   - component: {fileID: 5726058038508073854}
+  - component: {fileID: 8828821189555513974}
   m_Layer: 0
   m_Name: ParoiPenteGauche
   m_TagString: Untagged
@@ -87,3 +88,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &8828821189555513974
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819119414328792788}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 1.28}
+    newSize: {x: 2.56, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.18, y: 0.51}
+      - {x: 1.13, y: 0.57}
+      - {x: 0.96, y: 0.59}
+      - {x: 0.55, y: 0.63}
+      - {x: 0.5, y: 0.63}
+      - {x: 0.08, y: 0.35999998}
+      - {x: -0.06, y: 0.13}
+      - {x: -0.14, y: 0.089999996}
+      - {x: -0.32, y: 0.14999999}
+      - {x: -0.5, y: 0.089999996}
+      - {x: -0.71, y: -0.06}
+      - {x: -1.02, y: -0.07}
+      - {x: -1.09, y: -0.12}
+      - {x: -1.1899999, y: -0.19999999}
+      - {x: -1.26, y: -0.26}
+      - {x: -1.27, y: -0.32}
+      - {x: -1.27, y: -0.39999998}
+      - {x: -1.25, y: -0.45}
+      - {x: -1.12, y: -0.48}
+      - {x: -1.1, y: -0.56}
+      - {x: -1.06, y: -0.64}
+      - {x: 1.2099999, y: -0.64}
+      - {x: 1.22, y: 0.01}
+      - {x: 1.27, y: 0.14}
+      - {x: 1.27, y: 0.26}
+  m_UseDelaunayMesh: 0
