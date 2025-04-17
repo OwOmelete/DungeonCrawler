@@ -272,7 +272,8 @@ public class CombatManager : MonoBehaviour
 
     void FlipPlayer()
     {
-        if (player.isStanding && player.positionX + player.width <grid.GetLength(1)-1)
+        Debug.Log(player.isStanding);
+        if (player.isStanding && player.positionX + player.width < grid.GetLength(1))
         {
             if (grid[player.positionY,player.positionX + player.width] == null)
             {
@@ -285,9 +286,14 @@ public class CombatManager : MonoBehaviour
                 //player.prefab.transform.position = new Vector3(player.positionX, player.positionY + 1, 0);
                 //player.prefab.transform.rotation = Quaternion.Euler(0, 0, -90);
                 player.isStanding = !player.isStanding;
+                Debug.Log("caca1");
+            }
+            else
+            {
+                Debug.Log("marche pas");
             }
         }
-        else if (player.positionY + player.height <grid.GetLength(0)-1)
+        else if (!player.isStanding && player.positionY + player.height <grid.GetLength(0))
         {
             if (grid[ player.positionY + player.height,player.positionX] == null)
             {
@@ -300,9 +306,18 @@ public class CombatManager : MonoBehaviour
                 //player.prefab.transform.position = new Vector3(player.positionX, player.positionY, 0);
                 //player.prefab.transform.rotation = Quaternion.Euler(0, 0, 0);
                 player.isStanding = !player.isStanding;
+                Debug.Log("caca2");
+            }
+            else
+            {
+                Debug.Log("marche pas");
             }
         }
-        
+        else
+        {
+            
+        }
+        Debug.Log(player.isStanding);
     }
     
     void Action(EntityInstance entity)
