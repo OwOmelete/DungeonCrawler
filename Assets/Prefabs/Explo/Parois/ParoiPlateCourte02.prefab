@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7747593813099934918}
   - component: {fileID: 4874155872276812228}
+  - component: {fileID: 3152558812339678032}
   m_Layer: 0
   m_Name: ParoiPlateCourte02
   m_TagString: Untagged
@@ -87,3 +88,76 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &3152558812339678032
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7420825510460606390}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 1.28}
+    newSize: {x: 2.56, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.1899999, y: -0.13}
+      - {x: 1.1999999, y: -0.01}
+      - {x: 1.26, y: 0.11}
+      - {x: 1.26, y: 0.16}
+      - {x: 1.1999999, y: 0.19}
+      - {x: 1.02, y: 0.21}
+      - {x: 0.84, y: 0.26999998}
+      - {x: 0.53999996, y: 0.35999998}
+      - {x: 0.42, y: 0.39}
+      - {x: 0.08, y: 0.19999999}
+      - {x: -0.21, y: 0.25}
+      - {x: -0.44, y: 0.24}
+      - {x: -0.51, y: 0.17999999}
+      - {x: -0.65, y: 0.26}
+      - {x: -0.7, y: 0.29}
+      - {x: -0.84999996, y: 0.28}
+      - {x: -1.03, y: 0.22999999}
+      - {x: -1.23, y: 0.08}
+      - {x: -1.23, y: 0}
+      - {x: -1.02, y: -0.13}
+      - {x: -0.85999995, y: -0.17}
+      - {x: -0.85999995, y: -0.64}
+      - {x: 1.09, y: -0.64}
+      - {x: 1.09, y: -0.37}
+      - {x: 1.1, y: -0.26999998}
+      - {x: 1.17, y: -0.22}
+  m_UseDelaunayMesh: 0
