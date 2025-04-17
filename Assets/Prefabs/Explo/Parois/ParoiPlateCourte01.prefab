@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7197682844358010327}
   - component: {fileID: 4325025117920946855}
   - component: {fileID: 3346359886745989685}
+  - component: {fileID: -4874271723940349501}
   m_Layer: 0
   m_Name: ParoiPlateCourte01
   m_TagString: Untagged
@@ -150,3 +151,15 @@ PolygonCollider2D:
       - {x: 1.15, y: 0.13}
       - {x: 1.15, y: 0.25}
   m_UseDelaunayMesh: 0
+--- !u!114 &-4874271723940349501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437431311264172233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dacff1bf382da914483baf363f2456d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3606692528848247096}
   - component: {fileID: 943015950122249494}
   - component: {fileID: -1561164092631216382}
+  - component: {fileID: -2874094850483339868}
   m_Layer: 0
   m_Name: ParoiGrosCoin
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.47, y: 0.34, z: 0.05405948}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,3 +171,15 @@ PolygonCollider2D:
       - {x: -0.89, y: -1.28}
       - {x: 1.28, y: -1.28}
   m_UseDelaunayMesh: 0
+--- !u!114 &-2874094850483339868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264503447837118385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dacff1bf382da914483baf363f2456d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
