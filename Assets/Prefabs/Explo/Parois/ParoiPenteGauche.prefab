@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7853555073368243468}
   - component: {fileID: 5726058038508073854}
   - component: {fileID: 8828821189555513974}
+  - component: {fileID: 255373012189124785}
   m_Layer: 0
   m_Name: ParoiPenteGauche
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.39834735, y: -0.80562735, z: 0.05405948}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -160,3 +161,15 @@ PolygonCollider2D:
       - {x: 1.27, y: 0.14}
       - {x: 1.27, y: 0.26}
   m_UseDelaunayMesh: 0
+--- !u!114 &255373012189124785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819119414328792788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dacff1bf382da914483baf363f2456d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
