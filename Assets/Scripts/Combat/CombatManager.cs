@@ -302,7 +302,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log("points d'action restants : " + playerEntity.actionPoint);
     }
 
-    void FlipPlayerRight(EntityInstance entity)
+    public void FlipPlayerRight(EntityInstance entity)
     {
         if (canTurnRight(entity))
         {
@@ -324,7 +324,7 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
-    void FlipPlayerLeft(EntityInstance entity)
+    public void FlipPlayerLeft(EntityInstance entity)
     {
         if (canTurnLeft(entity)) 
         {
