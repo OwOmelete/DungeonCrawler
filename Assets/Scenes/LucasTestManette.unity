@@ -5236,8 +5236,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 805899792}
   - {fileID: 408517209}
+  - {fileID: 805899792}
   - {fileID: 1167002216}
   m_Father: {fileID: 1457128049}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7687,13 +7687,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 841447013}
+  - component: {fileID: 841447014}
   m_Layer: 0
   m_Name: MenuActionPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &841447013
 Transform:
   m_ObjectHideFlags: 0
@@ -7711,6 +7712,19 @@ Transform:
   - {fileID: 1198444309}
   m_Father: {fileID: 1167002216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &841447014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841447012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d36c8c04dce371479b37655663a4793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstButton: {fileID: 1848240570}
 --- !u!1 &842245597
 GameObject:
   m_ObjectHideFlags: 0
@@ -10407,7 +10421,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1198444311}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2098524351}
+        m_TargetAssemblyTypeName: GamepadCombatControl, Assembly-CSharp
+        m_MethodName: Rotation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1198444311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17825,7 +17851,8 @@ MonoBehaviour:
   fishHp: {fileID: 758962592}
   fishArmor: {fileID: 745416230}
   menuActionsPlayer: {fileID: 841447013}
-  uiOffset: {x: 1, y: 1, z: 0}
+  uiOffsetX: 0.8
+  uiOffsetY: 1
 --- !u!1 &2103406153
 GameObject:
   m_ObjectHideFlags: 0
