@@ -719,7 +719,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParoiGrosCoin_003
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1561164092631216382, guid: fe24354b3ef82834b91cb9c16f60d050, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4699,7 +4700,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParoiGrosCoin_001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1561164092631216382, guid: fe24354b3ef82834b91cb9c16f60d050, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -20149,7 +20151,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParoiGrosCoin
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1561164092631216382, guid: fe24354b3ef82834b91cb9c16f60d050, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -24159,7 +24162,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParoiGrosCoin_005
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1561164092631216382, guid: fe24354b3ef82834b91cb9c16f60d050, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -41243,7 +41247,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParoiGrosCoin_004
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1561164092631216382, guid: fe24354b3ef82834b91cb9c16f60d050, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -48713,7 +48718,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParoiGrosCoin_002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1561164092631216382, guid: fe24354b3ef82834b91cb9c16f60d050, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
