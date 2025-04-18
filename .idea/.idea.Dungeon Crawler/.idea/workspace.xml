@@ -121,7 +121,7 @@
       <workItem from="1744798145364" duration="9588000" />
       <workItem from="1744892077174" duration="162000" />
       <workItem from="1744892262575" duration="5536000" />
-      <workItem from="1744964549497" duration="3799000" />
+      <workItem from="1744964549497" duration="6603000" />
     </task>
     <servers />
   </component>
@@ -141,19 +141,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>392</line>
-          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'assignDirection'">
-            <startOffsets>
-              <option value="14476" />
-            </startOffsets>
-            <endOffsets>
-              <option value="14497" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
           <line>367</line>
@@ -182,13 +169,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>441</line>
+          <line>462</line>
           <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'canTurnRight'">
             <startOffsets>
-              <option value="16113" />
+              <option value="17064" />
             </startOffsets>
             <endOffsets>
-              <option value="16114" />
+              <option value="17065" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="9" />
