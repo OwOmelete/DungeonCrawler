@@ -388,26 +388,47 @@ public class CombatManager : MonoBehaviour
 
     void assignDirection(EntityInstance.dir newDirection, EntityInstance entity)
     {
+        switch (entity.direction)
+        {
+            case EntityInstance.dir.up:
+                grid[entity.positionY + 1, entity.positionX] = null;
+                break;
+            case EntityInstance.dir.down:
+                grid[entity.positionY - 1, entity.positionX] = null;
+                break;
+            case EntityInstance.dir.left:
+                grid[entity.positionY, entity.positionX - 1] = null;
+                break;
+            case EntityInstance.dir.right:
+                grid[entity.positionY, entity.positionX + 1] = null;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
         entity.direction = newDirection;
         int tempHeight = entity.height;
         switch (newDirection)
         {
             case EntityInstance.dir.up:
+                grid[entity.positionY + 1, entity.positionX] = player;
                 entity.height = entity.width;
                 entity.width = tempHeight;
                 entity.isStanding = true;
                 break;
             case EntityInstance.dir.down:
+                grid[entity.positionY - 1, entity.positionX] = player;
                 entity.height = entity.width;
                 entity.width = tempHeight;
                 entity.isStanding = true;
                 break;
             case EntityInstance.dir.left:
+                grid[entity.positionY, entity.positionX - 1] = player;
                 entity.height = entity.width;
                 entity.width = tempHeight;
                 entity.isStanding = false;
                 break;
             case EntityInstance.dir.right:
+                grid[entity.positionY, entity.positionX + 1] = player;
                 entity.height = entity.width;
                 entity.width = tempHeight;
                 entity.isStanding = false;
