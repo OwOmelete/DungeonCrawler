@@ -786,17 +786,17 @@ public class CombatManager : MonoBehaviour
         switch (entity.direction)
         {
             case EntityInstance.dir.up:
-                return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) + Xoffset*ZeroToOne(dirX) +
-                    1 * GetSign(dirX)-NegativeToOne(dirX);
+                return entity.positionX + GetSign(dirX) + entity.width * NegativeToZero(GetSign(dirX)) +
+                       Xoffset * ZeroToOne(dirX) - NegativeToOne(dirX);
             case EntityInstance.dir.down:
-                return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) - Xoffset*ZeroToOne(dirX) +
-                    1 * GetSign(dirX)-NegativeToOne(dirX);
+                return entity.positionX + GetSign(dirX) + entity.width * PositiveToZero(GetSign(dirX)) -
+                       Xoffset * ZeroToOne(dirX) + PositiveToOne(dirX);
             case EntityInstance.dir.left:
-                return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) - Xoffset*ZeroToOne(dirX) + 
-                    1 * GetSign(dirX)-NegativeToOne(dirX) - Mathf.Abs(dirX);
+                return entity.positionX + GetSign(dirX) + entity.width * PositiveToZero(GetSign(dirX)) -
+                    Xoffset * ZeroToOne(dirX) + PositiveToOne(dirX);
             case EntityInstance.dir.right:
-                return entity.positionX + entity.width * NegativeToZero(GetSign(dirX)) + Xoffset*ZeroToOne(dirX) +
-                    1 * GetSign(dirX)-NegativeToOne(dirX);
+                return entity.positionX + GetSign(dirX) + entity.width * NegativeToZero(GetSign(dirX)) +
+                    Xoffset * ZeroToOne(dirX) - NegativeToOne(dirX);
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -812,17 +812,17 @@ public class CombatManager : MonoBehaviour
         switch (entity.direction)
         {
             case EntityInstance.dir.up:
-                return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) + Yoffset*ZeroToOne(dirY) +
-                    1 * GetSign(dirY)-NegativeToOne(dirY);
+                return entity.positionY + GetSign(dirY) + entity.height * NegativeToZero(GetSign(dirY)) +
+                    Yoffset * ZeroToOne(dirY) - NegativeToOne(dirY);
             case EntityInstance.dir.down:
-                return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) - Yoffset*ZeroToOne(dirY) +
-                    1 * GetSign(dirY)-NegativeToOne(dirY)- Mathf.Abs(dirY);
+                return entity.positionY + GetSign(dirY) + entity.height * PositiveToZero(GetSign(dirY)) -
+                    Yoffset * ZeroToOne(dirY) + PositiveToOne(dirY);
             case EntityInstance.dir.left:
-                return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) + Yoffset*ZeroToOne(dirY) +
-                    1 * GetSign(dirY)-NegativeToOne(dirY);
+                return entity.positionY + GetSign(dirY) + entity.height * NegativeToZero(GetSign(dirY)) +
+                    Yoffset * ZeroToOne(dirY) - NegativeToOne(dirY);
             case EntityInstance.dir.right:
-                return entity.positionY + entity.height * NegativeToZero(GetSign(dirY)) - Yoffset * ZeroToOne(dirY) +
-                    1 * GetSign(dirY) - NegativeToOne(dirY);
+                return entity.positionY + GetSign(dirY) + entity.height * PositiveToZero(GetSign(dirY)) -
+                    Yoffset * ZeroToOne(dirY) + PositiveToOne(dirY);
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -870,6 +870,15 @@ public class CombatManager : MonoBehaviour
 
         return value;
     }
+    int PositiveToZero(int value)
+    {
+        if (value > 0)
+        {
+            return 0;
+        }
+
+        return value;
+    }
 
     int GetSign(int value)
     {
@@ -889,12 +898,29 @@ public class CombatManager : MonoBehaviour
         }
         return 0;
     }
+    int PositiveToOne(int value)
+    {
+        if (value > 0)
+        {
+            return 1;
+        }
+        return 0;
+    }
 
     int ZeroToOne(int value)
     {
         if (value == 0)
         {
             return 1;
+        }
+
+        return 0;
+    }
+    int ZeroToMinusOne(int value)
+    {
+        if (value == 0)
+        {
+            return -1;
         }
 
         return 0;
