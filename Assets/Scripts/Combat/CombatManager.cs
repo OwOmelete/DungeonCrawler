@@ -562,7 +562,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void Move(EntityInstance entity, int posX, int posY)
+    public void Move(EntityInstance entity, int posX, int posY)
     {
         if(!CanMove(entity, posX, posY))
         { 
