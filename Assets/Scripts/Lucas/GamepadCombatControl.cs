@@ -19,13 +19,19 @@ public class GamepadCombatControl : MonoBehaviour
     [SerializeField] private Transform menuActionsPlayer;
     [SerializeField] private float uiOffsetX = 1f;
     [SerializeField] private float uiOffsetY = 1f;
-    private bool waitForClick;
+    private bool waitForRotation;
+    private bool waitForMove;
+    private bool waitForAttack;
     private bool canChangeSelection = true;
     private GameObject[,] selectionTab = new GameObject[5,6];
     private int[] actualPlacement = new int[2];
+    private int horizontalSpeed;
+    private int verticalSpeed;
+    
     
     private void Awake()
     {
+        
         actualPlacement[0] = 0;
         actualPlacement[1] = 0;
         for (int i = 0; i < tabHeight; i++)
@@ -42,67 +48,129 @@ public class GamepadCombatControl : MonoBehaviour
     {
         float dpadX = Input.GetAxis("DPadHorizontal");
         float dpadY = Input.GetAxis("DPadVertical");
-
+        if (combatManagerReference.player.isStanding && combatManagerReference.player.booster)
+        {
+            verticalSpeed = 2;
+            horizontalSpeed = 1;
+        }
+        else if (combatManagerReference.player.booster)
+        {
+            verticalSpeed = 1;
+            horizontalSpeed = 2;
+        }
+        // gauche
         if (dpadX < -0.5f && canChangeSelection)
         {
-            if (waitForClick)
+            if (waitForRotation)
             {
-                StartCoroutine(WaitBeforeNextSelection());
                 combatManagerReference.FlipPlayerLeft(combatManagerReference.player);
-                waitForClick = false;
+                waitForRotation = false;
+            }
+            else if (waitForMove)
+            {
+                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - horizontalSpeed, combatManagerReference.player.positionY);
+                waitForMove = false;
+            }
+            else if (waitForAttack)
+            {
+                Attack(actualPlacement[0], actualPlacement[1] - 1);
+                waitForAttack = false;
             }
             else if (actualPlacement[1] != 0)
             {
-                StartCoroutine(WaitBeforeNextSelection());
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
                 actualPlacement[1] -= 1;
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(true);
             }
+            StartCoroutine(WaitBeforeNextSelection());
         }
+        // droite
         else if (dpadX > 0.5f && canChangeSelection)
         {
-            if (waitForClick)
+            if (waitForRotation)
             {
-                StartCoroutine(WaitBeforeNextSelection());
                 combatManagerReference.FlipPlayerRight(combatManagerReference.player);
-                waitForClick = false;
+                waitForRotation = false;
+            }
+            else if (waitForMove)
+            {
+                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + horizontalSpeed, combatManagerReference.player.positionY);
+                waitForMove = false;
+            }
+            else if (waitForAttack)
+            {
+                Attack(actualPlacement[0], actualPlacement[1] + 1);
+                waitForAttack = false;
             }
             else if (actualPlacement[1] != tabWidth - 1)
             {
-                StartCoroutine(WaitBeforeNextSelection());
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
                 actualPlacement[1] += 1;
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(true);
             }
+            StartCoroutine(WaitBeforeNextSelection());
         }
-        if (dpadY < -0.5f && canChangeSelection && !waitForClick)
+        // bas
+        if (dpadY < -0.5f && canChangeSelection && !waitForRotation)
         {
-            if (actualPlacement[0] != 0 )
+            if (waitForMove)
             {
-                StartCoroutine(WaitBeforeNextSelection());
+                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - verticalSpeed);
+                waitForMove = false;
+            }
+            else if (waitForAttack)
+            {
+                Attack(actualPlacement[0] - 1, actualPlacement[1]);
+                waitForAttack = false;
+            }
+            else if (actualPlacement[0] != 0 )
+            {
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
                 actualPlacement[0] -= 1;
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(true);
             }
+            StartCoroutine(WaitBeforeNextSelection());
         }
-        else if (dpadY > 0.5f && canChangeSelection && !waitForClick)
+        // haut
+        else if (dpadY > 0.5f && canChangeSelection && !waitForRotation)
         {
-            
-            if (actualPlacement[0] != tabHeight - 1)
+            if (waitForMove)
+            {
+                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + verticalSpeed);
+                waitForMove = false;
+            }
+            else if (waitForAttack)
+            {
+                Attack(actualPlacement[0] + 1, actualPlacement[1]);
+                waitForAttack = false;
+            }
+            else if (actualPlacement[0] != tabHeight - 1)
             {  
-                StartCoroutine(WaitBeforeNextSelection());
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
                 actualPlacement[0] += 1;
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(true);
             }
+            StartCoroutine(WaitBeforeNextSelection());
         }
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton0)&& canChangeSelection && !waitForClick)
+        if (Input.GetKeyDown(KeyCode.JoystickButton0)&& canChangeSelection && !waitForRotation && !waitForMove && !waitForAttack)
         {
-            ShowInformations();
-            StartCoroutine(WaitBeforeNextSelection());
-            
+            StartCoroutine(WaitBeforeShowMenu());
         }
+        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        {
+            PlayerButtonUnactive();
+            waitForRotation = false;
+            waitForMove = false;
+            waitForAttack = false;
+            canChangeSelection = true;
+        }
+    }
+
+    IEnumerator WaitBeforeShowMenu()
+    {
+        yield return new WaitForSeconds(0.2f);
+        ShowInformations();
     }
 
     IEnumerator WaitBeforeNextSelection()
@@ -112,6 +180,7 @@ public class GamepadCombatControl : MonoBehaviour
         canChangeSelection = true;
     }
 
+
     void ShowInformations()
     {
         EntityInstance actualCase = combatManagerReference.grid[actualPlacement[0], actualPlacement[1]];
@@ -120,16 +189,42 @@ public class GamepadCombatControl : MonoBehaviour
             
             if (actualCase == combatManagerReference.player)
             {
-                menuActionsPlayer.gameObject.SetActive(true);
+                canChangeSelection = false;
+                StartCoroutine(ActivateMenuWithSelectionDelay());
                 if (actualPlacement[1] == tabWidth - 1 )
                 {
-                    menuActionsPlayer.position =
-                        selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(-uiOffsetX * 2.2f, uiOffsetY, 0);
+                    if (combatManagerReference.grid[actualPlacement[0], actualPlacement[1] - 1] == combatManagerReference.player)
+                    {
+                        menuActionsPlayer.position =
+                            selectionTab[actualPlacement[0], actualPlacement[1] - 1].transform.position + new Vector3(-uiOffsetX * 2.2f, uiOffsetY, 0);
+                    }
+                    else
+                    {
+                        menuActionsPlayer.position =
+                            selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(-uiOffsetX * 2.2f, uiOffsetY, 0);
+                    }
                 }
                 else
                 {
-                    menuActionsPlayer.position =
-                        selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                    if (combatManagerReference.grid[actualPlacement[0], actualPlacement[1] + 1] == combatManagerReference.player)
+                    {
+                        if (actualPlacement[1] + 1 == tabWidth - 1)
+                        {
+                            menuActionsPlayer.position =
+                                selectionTab[actualPlacement[0] - 1, actualPlacement[1]].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                        }
+                        else
+                        {
+                            menuActionsPlayer.position =
+                                selectionTab[actualPlacement[0], actualPlacement[1] + 1].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                        }
+                    }
+                    else
+                    {
+                        menuActionsPlayer.position =
+                            selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                    }
+                    
                 }
                 
             }
@@ -139,6 +234,13 @@ public class GamepadCombatControl : MonoBehaviour
                 UpdateInformations(actualCase);
             }
         }
+    }
+    IEnumerator ActivateMenuWithSelectionDelay()
+    {
+        menuActionsPlayer.gameObject.SetActive(true);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForSeconds(0.1f); 
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(menuActionsPlayer.transform.GetChild(0).gameObject);
     }
 
     void UpdateInformations(EntityInstance entity)  // nathan ici si tu peux mettre genre quand on attaque ça update l'ui sur le poisson qu'on vient de toucher
@@ -150,14 +252,33 @@ public class GamepadCombatControl : MonoBehaviour
 
     public void PlayerButtonUnactive()
     {
+        canChangeSelection = true;
         menuActionsPlayer.gameObject.SetActive(false);
     }
 
     public void Rotation()
     {
-        waitForClick = true;
+        
+        waitForRotation = true;
         PlayerButtonUnactive();
     }
-    
+
+    public void Move()
+    {
+        waitForMove = true;
+        PlayerButtonUnactive();
+    }
+
+    public void CanAttack()
+    {
+        waitForAttack = true;
+        PlayerButtonUnactive();
+    }
+
+    void Attack(int x, int y)
+    {
+        PlayerButtonUnactive();
+        combatManagerReference.Attack(combatManagerReference.player.currentAttack, combatManagerReference.player, x, y);
+    }
 }
 
