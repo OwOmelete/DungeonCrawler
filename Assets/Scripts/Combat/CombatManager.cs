@@ -684,7 +684,7 @@ public class CombatManager : MonoBehaviour
         return true;
     }
     
-    void Attack(AttackData attack,EntityInstance entity, int x, int y)
+    public void Attack(AttackData attack,EntityInstance entity, int x, int y)
     {
         int dirX = x - entity.positionX;
         int dirY = y - entity.positionY;

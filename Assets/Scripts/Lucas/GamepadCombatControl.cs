@@ -21,6 +21,7 @@ public class GamepadCombatControl : MonoBehaviour
     [SerializeField] private float uiOffsetY = 1f;
     private bool waitForRotation;
     private bool waitForMove;
+    private bool waitForAttack;
     private bool canChangeSelection = true;
     private GameObject[,] selectionTab = new GameObject[5,6];
     private int[] actualPlacement = new int[2];
@@ -57,82 +58,99 @@ public class GamepadCombatControl : MonoBehaviour
             verticalSpeed = 1;
             horizontalSpeed = 2;
         }
-
+        // gauche
         if (dpadX < -0.5f && canChangeSelection)
         {
             if (waitForRotation)
             {
                 combatManagerReference.FlipPlayerLeft(combatManagerReference.player);
                 waitForRotation = false;
-                StartCoroutine(WaitBeforeNextSelection());
             }
             else if (waitForMove)
             {
                 combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - horizontalSpeed, combatManagerReference.player.positionY);
                 waitForMove = false;
-                StartCoroutine(WaitBeforeNextSelection());
+            }
+            else if (waitForAttack)
+            {
+                Attack(actualPlacement[0], actualPlacement[1] - 1);
+                waitForAttack = false;
             }
             else if (actualPlacement[1] != 0)
             {
-                StartCoroutine(WaitBeforeNextSelection());
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
                 actualPlacement[1] -= 1;
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(true);
             }
+            StartCoroutine(WaitBeforeNextSelection());
         }
+        // droite
         else if (dpadX > 0.5f && canChangeSelection)
         {
             if (waitForRotation)
             {
                 combatManagerReference.FlipPlayerRight(combatManagerReference.player);
                 waitForRotation = false;
-                StartCoroutine(WaitBeforeNextSelection());
             }
             else if (waitForMove)
             {
                 combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + horizontalSpeed, combatManagerReference.player.positionY);
                 waitForMove = false;
-                StartCoroutine(WaitBeforeNextSelection());
+            }
+            else if (waitForAttack)
+            {
+                Attack(actualPlacement[0], actualPlacement[1] + 1);
+                waitForAttack = false;
             }
             else if (actualPlacement[1] != tabWidth - 1)
             {
-                StartCoroutine(WaitBeforeNextSelection());
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
                 actualPlacement[1] += 1;
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(true);
             }
+            StartCoroutine(WaitBeforeNextSelection());
         }
+        // bas
         if (dpadY < -0.5f && canChangeSelection && !waitForRotation)
         {
             if (waitForMove)
             {
                 combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - verticalSpeed);
                 waitForMove = false;
-                StartCoroutine(WaitBeforeNextSelection());
+            }
+            else if (waitForAttack)
+            {
+                Attack(actualPlacement[0] - 1, actualPlacement[1]);
+                waitForAttack = false;
             }
             else if (actualPlacement[0] != 0 )
             {
-                StartCoroutine(WaitBeforeNextSelection());
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
                 actualPlacement[0] -= 1;
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(true);
             }
+            StartCoroutine(WaitBeforeNextSelection());
         }
+        // haut
         else if (dpadY > 0.5f && canChangeSelection && !waitForRotation)
         {
             if (waitForMove)
             {
                 combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + verticalSpeed);
                 waitForMove = false;
-                StartCoroutine(WaitBeforeNextSelection());
+            }
+            else if (waitForAttack)
+            {
+                Attack(actualPlacement[0] + 1, actualPlacement[1]);
+                waitForAttack = false;
             }
             else if (actualPlacement[0] != tabHeight - 1)
             {  
-                StartCoroutine(WaitBeforeNextSelection());
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
                 actualPlacement[0] += 1;
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(true);
             }
+            StartCoroutine(WaitBeforeNextSelection());
         }
 
         if (Input.GetKeyDown(KeyCode.JoystickButton0)&& canChangeSelection && !waitForRotation && !waitForMove)
@@ -167,13 +185,38 @@ public class GamepadCombatControl : MonoBehaviour
                 StartCoroutine(ActivateMenuWithSelectionDelay());
                 if (actualPlacement[1] == tabWidth - 1 )
                 {
-                    menuActionsPlayer.position =
-                        selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(-uiOffsetX * 2.2f, uiOffsetY, 0);
+                    if (combatManagerReference.grid[actualPlacement[0], actualPlacement[1] - 1] == combatManagerReference.player)
+                    {
+                        menuActionsPlayer.position =
+                            selectionTab[actualPlacement[0], actualPlacement[1] - 1].transform.position + new Vector3(-uiOffsetX * 2.2f, uiOffsetY, 0);
+                    }
+                    else
+                    {
+                        menuActionsPlayer.position =
+                            selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(-uiOffsetX * 2.2f, uiOffsetY, 0);
+                    }
                 }
                 else
                 {
-                    menuActionsPlayer.position =
-                        selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                    if (combatManagerReference.grid[actualPlacement[0], actualPlacement[1] + 1] == combatManagerReference.player)
+                    {
+                        if (actualPlacement[1] + 1 == tabWidth - 1)
+                        {
+                            menuActionsPlayer.position =
+                                selectionTab[actualPlacement[0] - 1, actualPlacement[1]].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                        }
+                        else
+                        {
+                            menuActionsPlayer.position =
+                                selectionTab[actualPlacement[0], actualPlacement[1] + 1].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                        }
+                    }
+                    else
+                    {
+                        menuActionsPlayer.position =
+                            selectionTab[actualPlacement[0], actualPlacement[1]].transform.position + new Vector3(uiOffsetX,uiOffsetY,0);
+                    }
+                    
                 }
                 
             }
@@ -217,6 +260,16 @@ public class GamepadCombatControl : MonoBehaviour
         waitForMove = true;
         PlayerButtonUnactive();
     }
-    
+
+    public void CanAttack()
+    {
+        waitForAttack = true;
+        PlayerButtonUnactive();
+    }
+
+    void Attack(int x, int y)
+    {
+        combatManagerReference.Attack(combatManagerReference.player.currentAttack, combatManagerReference.player, x, y);
+    }
 }
 
