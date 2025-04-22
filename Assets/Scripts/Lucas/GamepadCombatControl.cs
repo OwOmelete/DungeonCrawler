@@ -153,9 +153,17 @@ public class GamepadCombatControl : MonoBehaviour
             StartCoroutine(WaitBeforeNextSelection());
         }
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton0)&& canChangeSelection && !waitForRotation && !waitForMove)
+        if (Input.GetKeyDown(KeyCode.JoystickButton0)&& canChangeSelection && !waitForRotation && !waitForMove && !waitForAttack)
         {
             StartCoroutine(WaitBeforeShowMenu());
+        }
+        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        {
+            PlayerButtonUnactive();
+            waitForRotation = false;
+            waitForMove = false;
+            waitForAttack = false;
+            canChangeSelection = true;
         }
     }
 
@@ -269,6 +277,7 @@ public class GamepadCombatControl : MonoBehaviour
 
     void Attack(int x, int y)
     {
+        PlayerButtonUnactive();
         combatManagerReference.Attack(combatManagerReference.player.currentAttack, combatManagerReference.player, x, y);
     }
 }
