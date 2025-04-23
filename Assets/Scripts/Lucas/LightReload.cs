@@ -25,14 +25,21 @@ public class LightReload : MonoBehaviour
     #region Triggers
     private void OnTriggerEnter2D(Collider2D other)
     {
-        interactDisplay.GetComponent<SpriteRenderer>().DOFade(1f, interactTextFadeDuration);
-        canTake = true;
-        StartCoroutine(TakeLight());
+        if (other.CompareTag("Player"))
+        {
+            interactDisplay.GetComponent<SpriteRenderer>().DOFade(1f, interactTextFadeDuration);
+            canTake = true;
+            StartCoroutine(TakeLight());
+        }
+        
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        interactDisplay.GetComponent<SpriteRenderer>().DOFade(0f, interactTextFadeDuration);
-        canTake = false;
+        if (other.CompareTag("Player"))
+        {
+            interactDisplay.GetComponent<SpriteRenderer>().DOFade(0f, interactTextFadeDuration);
+            canTake = false;
+        }
     }
     #endregion
     

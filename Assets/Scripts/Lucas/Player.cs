@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float accelerationSpeed = 3f;
     [SerializeField] private Rotation rotationReference ;
     private Rigidbody2D rb;
+    private Animator animator;
 
     [SerializeField] private PlayerData _playerData;
     public LightManager lightManager;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         player = (PlayerDataInstance)_playerData.Instance();
+        animator = transform.GetChild(0).GetComponent<Animator>();
         lightManager.player = player;
         oxygenManager.player = player;
     }
@@ -39,7 +41,13 @@ public class Player : MonoBehaviour
             if (moveHorizontal != 0 || moveVertical != 0)
             {
                 rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized * accelerationSpeed);
+                animator.SetBool("isMoving", true);
             }
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
+            
         }
         else
         {
@@ -47,9 +55,13 @@ public class Player : MonoBehaviour
             {
                 rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized *
                             (accelerationSpeed * ((180 - Mathf.Abs(rotationReference.angleDiff)) / 180)));
-                
+            }
+            else
+            {
+                animator.SetBool("isMoving", false);
             }
         }
+        
     }
     void FixedUpdate()
     {
