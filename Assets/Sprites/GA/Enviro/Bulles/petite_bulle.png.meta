@@ -1,10 +1,19 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Sprites/GA/Enviro/Bulles/petite_bulle.png.meta
 guid: 51075bd462ff9f44093a09266d351b02
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 2249855091858175710
     second: petite_bulle_0
+========
+guid: 70680504b3b03ba4f9c22ffe473168d2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4090047245226939733
+    second: ParoiAngle_01_0
+>>>>>>>> 7abcc51377d730990a21b25db54888f02e3c6216:Assets/Sprites/GA/Enviro/ParoisAméliorées/Paroi02Angle_01.png.meta
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,6 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+<<<<<<<< HEAD:Assets/Sprites/GA/Enviro/Bulles/petite_bulle.png.meta
       name: petite_bulle_0
       rect:
         serializedVersion: 2
@@ -107,6 +117,15 @@ TextureImporter:
         y: 6
         width: 23
         height: 18
+========
+      name: ParoiAngle_01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+>>>>>>>> 7abcc51377d730990a21b25db54888f02e3c6216:Assets/Sprites/GA/Enviro/ParoisAméliorées/Paroi02Angle_01.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +134,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
+<<<<<<<< HEAD:Assets/Sprites/GA/Enviro/Bulles/petite_bulle.png.meta
       spriteID: ed67f4a2947193f10800000000000000
       internalID: 2249855091858175710
+========
+      spriteID: baaeea153bb3d37c0800000000000000
+      internalID: -4090047245226939733
+>>>>>>>> 7abcc51377d730990a21b25db54888f02e3c6216:Assets/Sprites/GA/Enviro/ParoisAméliorées/Paroi02Angle_01.png.meta
       vertices: []
       indices: 
       edges: []
@@ -125,7 +149,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +159,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<<< HEAD:Assets/Sprites/GA/Enviro/Bulles/petite_bulle.png.meta
       petite_bulle_0: 2249855091858175710
+========
+      ParoiAngle_01_0: -4090047245226939733
+>>>>>>>> 7abcc51377d730990a21b25db54888f02e3c6216:Assets/Sprites/GA/Enviro/ParoisAméliorées/Paroi02Angle_01.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
