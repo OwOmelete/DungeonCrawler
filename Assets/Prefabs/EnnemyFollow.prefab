@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c90dcd6ddd8838498dbc9ecbbc94d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMoveSpeed: 5
+  dashSpeed: 10
   enemyAttackDelay: 1
 --- !u!50 &7361521791468484922
 Rigidbody2D:
@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 8906904658782571511}
   - component: {fileID: 3527871802065585932}
   - component: {fileID: 4752716105255890855}
+  - component: {fileID: 4302022756017987209}
   m_Layer: 0
   m_Name: CombatCollider
   m_TagString: Untagged
@@ -312,3 +313,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.027861718, y: -0.0000000033213752}
   m_Size: {x: 1.4086618, y: 1.0000064}
   m_Direction: 1
+--- !u!114 &4302022756017987209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978640770609959084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ce80e93462f8940858eb2586a2de1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topLeftCorner: {fileID: 0}
+  bottomRightCorner: {fileID: 0}
+  speed: 2
+  rb: {fileID: 7361521791468484922}
