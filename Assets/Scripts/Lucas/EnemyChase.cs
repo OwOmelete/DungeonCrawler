@@ -1,24 +1,38 @@
 using System;
 using System.Collections;
-using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyChase : MonoBehaviour
 {
-    [SerializeField] private float enemyMoveDuration = 1f;
+    private Rigidbody2D rb;
+    [SerializeField] float dashSpeed = 10f;
     [SerializeField] private float enemyAttackDelay = 1f;
     private GameObject playerReference;
     private bool playerOnTrigger;
     private void Awake()
     {
         playerReference = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+    }
+    
+    IEnumerator DashToPlayer()
+    {
+        yield return new WaitForSeconds(enemyAttackDelay);
+        Vector2 direction = (playerReference.transform.position - transform.position).normalized;
+        float duration = 0.2f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            Vector2 newPosition = rb.position + direction * dashSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(newPosition);
+
+            elapsed += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
     }
 
-    void Attack()
-    {
-        transform.DOMove(playerReference.transform.position , enemyMoveDuration).SetDelay(enemyAttackDelay);
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -42,7 +56,7 @@ public class EnemyChase : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
-                    Attack();
+                    StartCoroutine(DashToPlayer());
                 }
             }
             yield return new WaitForSeconds(0.1f);

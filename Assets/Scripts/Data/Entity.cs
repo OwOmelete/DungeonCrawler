@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Entity : ScriptableObject
 {
+    public string name;
     public int width;
     public int height;
     public int positionX;
@@ -28,6 +29,7 @@ public abstract class Entity : ScriptableObject
 
 public class EntityInstance
 {
+    public string name;
     public int width;
     public int height;
     public int positionX;
@@ -53,6 +55,7 @@ public class EntityInstance
 
     public EntityInstance(Entity data)
     {
+        name = data.name;
         width = data.width;
         height = data.height;
         positionX = data.positionX;

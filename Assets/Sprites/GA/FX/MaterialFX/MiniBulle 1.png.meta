@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2c464fad8cadc444198bae57fdf5f403
+guid: f75f406c35af87f479f8c6d53f1b0c0a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2649985369000215066
-    second: AvatarJoueur_V3_ColoCorrigee_0
+      213: 6337180197017664040
+    second: MiniBulle 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AvatarJoueur_V3_ColoCorrigee_0
+      name: MiniBulle 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 111
-        height: 230
+        x: 8
+        y: 6
+        width: 98
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a128d3327a3a6c420800000000000000
-      internalID: 2649985369000215066
+      spriteID: 82ab0e830df22f750800000000000000
+      internalID: 6337180197017664040
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AvatarJoueur_V3_ColoCorrigee_0: 2649985369000215066
+      MiniBulle 1_0: 6337180197017664040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd732d4cfff561f4e851c174cf812ff9, type: 3}
   m_Name: FishTest
   m_EditorClassIdentifier: 
+  name: Grand Gousier
   width: 2
   height: 1
   positionX: 2

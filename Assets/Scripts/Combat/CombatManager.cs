@@ -23,7 +23,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
     private List<Fish> fishes = new List<Fish>();
-    private EntityInstance[,] grid;
+    [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
     private bool combatFinished;
     private int currentTurnIndex = 0;
@@ -282,7 +282,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log("points d'action restants : " + playerEntity.actionPoint);
     }
 
-    void FlipPlayerRight(EntityInstance entity)
+    public void FlipPlayerRight(EntityInstance entity)
     {
         if (canTurnRight(entity))
         {
@@ -304,7 +304,7 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
-    void FlipPlayerLeft(EntityInstance entity)
+    public void FlipPlayerLeft(EntityInstance entity)
     {
         if (canTurnLeft(entity)) 
         {
@@ -562,7 +562,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void Move(EntityInstance entity, int posX, int posY)
+    public void Move(EntityInstance entity, int posX, int posY)
     {
         if(!CanMove(entity, posX, posY))
         { 
@@ -684,7 +684,7 @@ public class CombatManager : MonoBehaviour
         return true;
     }
     
-    void Attack(AttackData attack,EntityInstance entity, int x, int y)
+    public void Attack(AttackData attack,EntityInstance entity, int x, int y)
     {
         int dirX = x - entity.positionX;
         int dirY = y - entity.positionY;
