@@ -10,16 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd732d4cfff561f4e851c174cf812ff9, type: 3}
-  m_Name: FishTest2
+  m_Name: Brotulo
   m_EditorClassIdentifier: 
   name: Brotulo
   width: 1
   height: 1
-  positionX: 4
-  positionY: 4
+  positionX: 3
+  positionY: 3
   hp: 3
   armor: 0
   actionPoint: 4
   prefab: {fileID: 8033837717210413781, guid: ca94fe1c97cd95e4da7ac61891651122, type: 3}
   attackList: []
-  weakPointList: []
+  weakPointList:
+  - {fileID: 11400000, guid: adbceff06543b2e42b322ea9bd9f5061, type: 2}
+  attacks: []
+  WeakPointsRight:
+  - {fileID: 11400000, guid: af05bb8831927b541b01e39b71f5c7a3, type: 2}
+  WeakPointsLeft:
+  - {fileID: 11400000, guid: 98db0bcbb6796714dbe0ce5303c8e97d, type: 2}
+  WeakPointsUp:
+  - {fileID: 11400000, guid: eb93b602ad48eb6469d75af91f13f2a4, type: 2}
+  WeakPointsDown:
+  - {fileID: 11400000, guid: adbceff06543b2e42b322ea9bd9f5061, type: 2}
