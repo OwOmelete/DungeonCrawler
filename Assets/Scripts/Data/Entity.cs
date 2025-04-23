@@ -43,6 +43,7 @@ public class EntityInstance
     public int initialActionPoint;
     public bool isStanding = true;
     public Transform entityChild;
+    public AbstractIA behaviour;
     public enum dir
     {
         up,
@@ -67,6 +68,7 @@ public class EntityInstance
         weakPointList = data.weakPointList;
         actionPoint = data.actionPoint;
         initialActionPoint = data.actionPoint;
+        
     }
     
     public void TakeDamage(int dmg)

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c258416dc2bc9454eb06deacaf803bf5, type: 3}
-  m_Name: WeakPointData
+  m_Name: WpGGLeftMouth
   m_EditorClassIdentifier: 
-  posX: 0
+  posX: 1
   posY: 0
-  direction: 0
+  direction: 4
   damageMulti: 2

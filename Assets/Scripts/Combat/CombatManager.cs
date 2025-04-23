@@ -34,6 +34,21 @@ public class CombatManager : MonoBehaviour
     private Transform playerEntityChild;
     private bool canRotate = true;
 
+    public static CombatManager Instance;
+    
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+    }
+
     public void InitCombat()
     {
         combatFinished = false;
@@ -122,13 +137,18 @@ public class CombatManager : MonoBehaviour
     
     void IATurn(EntityInstance entity)
     {
-        Action(entity);
-        if (entity.actionPoint == 0)
+        //Action(entity);
+        if (entity is FishDataInstance)
         {
-            EndTurn();
-            Debug.Log("plus d'action point");
-            entity.actionPoint = entity.initialActionPoint;
+            FishDataInstance fish = entity as FishDataInstance;
+            entity.behaviour.ManageTurn(fish);
         }
+        else
+        {
+            Debug.Log("pas poisson :(");
+        }
+        EndTurn();
+        Debug.Log("tour fini");
     }
 
     void Action(PlayerDataInstance playerEntity)
@@ -554,6 +574,7 @@ public class CombatManager : MonoBehaviour
                 {
                     grid[fish.fishData.positionY + i,fish.fishData.positionX + j] = fish.fishDataInstance;
                     fish.fishDataInstance.entityChild = fish.fishDataInstance.prefab.transform.GetChild(0);
+                    fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
                 }
             }
             fish.fishDataInstance.prefab = Instantiate(fish.fishData.prefab,
@@ -581,19 +602,19 @@ public class CombatManager : MonoBehaviour
         {
             for (int j = 0; j < entity.width; j++)
             {
-                if (player.direction == EntityInstance.dir.up)
+                if (entity.direction == EntityInstance.dir.up)
                 {
                     grid[entity.positionY + i,entity.positionX + j] = null;
                 }
-                if (player.direction == EntityInstance.dir.right)
+                if (entity.direction == EntityInstance.dir.right)
                 {
                     grid[entity.positionY + i,entity.positionX + j] = null;
                 }
-                if (player.direction == EntityInstance.dir.left)
+                if (entity.direction == EntityInstance.dir.left)
                 {
                     grid[entity.positionY - i,entity.positionX - j] = null;
                 }
-                if (player.direction == EntityInstance.dir.down)
+                if (entity.direction == EntityInstance.dir.down)
                 {
                     grid[entity.positionY - i,entity.positionX - j] = null;
                 }
@@ -604,19 +625,19 @@ public class CombatManager : MonoBehaviour
         {
             for (int j = 0; j < entity.width; j++)
             {
-                if (player.direction == EntityInstance.dir.up)
+                if (entity.direction == EntityInstance.dir.up)
                 {
                     grid[posY + i,posX + j] = entity;
                 }
-                if (player.direction == EntityInstance.dir.right)
+                if (entity.direction == EntityInstance.dir.right)
                 {
                     grid[posY + i,posX + j] = entity;
                 }
-                if (player.direction == EntityInstance.dir.left)
+                if (entity.direction == EntityInstance.dir.left)
                 {
                     grid[posY - i,posX - j] = entity;
                 }
-                if (player.direction == EntityInstance.dir.down)
+                if (entity.direction == EntityInstance.dir.down)
                 {
                     grid[posY - i,posX - j] = entity;
                 }
@@ -860,8 +881,11 @@ public class CombatManager : MonoBehaviour
             {
                 // gérer mort player
             }
+            else
+            {
+                Die(entity);
+            }
             Debug.Log("mort théorique");
-            Die(entity);
             if (turnOrder.Count == 1)
             {
                 combatFinished = true;

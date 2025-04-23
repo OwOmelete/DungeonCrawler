@@ -14,7 +14,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/84f0d810adef4e6c8deab33e4ae93f7c1dec00/88/c6ee26d0/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/84f0d810adef4e6c8deab33e4ae93f7c1dec00/8a/5f9ee2a8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/Fish.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/GGData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/WeakPointData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Nathan/Rotation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui/Editor/UGUI/UI/ScrollbarEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -80,10 +83,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15780">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="15780" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -122,6 +125,9 @@
       <workItem from="1744892077174" duration="162000" />
       <workItem from="1744892262575" duration="5536000" />
       <workItem from="1744964549497" duration="6603000" />
+      <workItem from="1745308939027" duration="10747000" />
+      <workItem from="1745322462399" duration="5740000" />
+      <workItem from="1745396025884" duration="4355000" />
     </task>
     <servers />
   </component>
@@ -142,43 +148,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>367</line>
-          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'DoRotateLeft'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/GrandGouzBehaviour.cs</url>
+          <line>8</line>
+          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\GrandGouzBehaviour.cs" containingFunctionPresentation="Method 'ManageTurn'">
             <startOffsets>
-              <option value="13478" />
+              <option value="182" />
             </startOffsets>
             <endOffsets>
-              <option value="13503" />
+              <option value="183" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>309</line>
-          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'FlipPlayerLeft'">
-            <startOffsets>
-              <option value="11022" />
-            </startOffsets>
-            <endOffsets>
-              <option value="11023" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatManager.cs</url>
-          <line>462</line>
-          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\CombatManager.cs" containingFunctionPresentation="Method 'canTurnRight'">
-            <startOffsets>
-              <option value="17064" />
-            </startOffsets>
-            <endOffsets>
-              <option value="17065" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
