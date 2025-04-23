@@ -306,19 +306,19 @@ public class CombatManager : MonoBehaviour
     {
         if (canTurnRight(entity))
         {
-            if (entity.direction == EntityInstance.dir.left && (grid[entity.positionY + 1 , entity.positionX] == null ||grid[entity.positionY +1 , entity.positionX] == entity))
+            if (entity.direction == EntityInstance.dir.left && (grid[entity.positionY + 1 , entity.positionX] == null ||grid[entity.positionY +1 , entity.positionX] == entity || grid[entity.positionY + 1 , entity.positionX] is SpikeInstance ))
             {
                 DoRotateRight(entity);
             }
-            else if (entity.direction == EntityInstance.dir.up && (grid[entity.positionY , entity.positionX+1] == null||grid[entity.positionY, entity.positionX+1] == entity))
+            else if (entity.direction == EntityInstance.dir.up && (grid[entity.positionY , entity.positionX+1] == null||grid[entity.positionY, entity.positionX+1] == entity || grid[entity.positionY , entity.positionX+1] is SpikeInstance))
             {
                 DoRotateRight(entity);            
             }
-            else if (entity.direction == EntityInstance.dir.right && (grid[entity.positionY -1 , entity.positionX] == null ||grid[entity.positionY -1 , entity.positionX] == entity ))
+            else if (entity.direction == EntityInstance.dir.right && (grid[entity.positionY -1 , entity.positionX] == null ||grid[entity.positionY -1 , entity.positionX] == entity || grid[entity.positionY - 1 , entity.positionX] is SpikeInstance))
             {
                 DoRotateRight(entity);            
             }
-            else if (entity.direction == EntityInstance.dir.down && (grid[entity.positionY, entity.positionX-1] == null||grid[entity.positionY , entity.positionX-1] == entity))
+            else if (entity.direction == EntityInstance.dir.down && (grid[entity.positionY, entity.positionX-1] == null||grid[entity.positionY , entity.positionX-1] == entity || grid[entity.positionY , entity.positionX-1] is SpikeInstance))
             {
                 DoRotateRight(entity);            
             }
@@ -328,22 +328,22 @@ public class CombatManager : MonoBehaviour
     {
         if (canTurnLeft(entity)) 
         {
-            if (entity.direction == EntityInstance.dir.left && (grid[entity.positionY - 1, entity.positionX] == null ||grid[entity.positionY -1 , entity.positionX] == entity))
+            if (entity.direction == EntityInstance.dir.left && (grid[entity.positionY - 1, entity.positionX] == null ||grid[entity.positionY -1 , entity.positionX] == entity || grid[entity.positionY - 1 , entity.positionX] is SpikeInstance))
             {
                 DoRotateLeft(entity);
             }
 
-            else if (entity.direction == EntityInstance.dir.up && (grid[entity.positionY , entity.positionX-1] == null||grid[entity.positionY, entity.positionX-1] == entity))
+            else if (entity.direction == EntityInstance.dir.up && (grid[entity.positionY , entity.positionX-1] == null||grid[entity.positionY, entity.positionX-1] == entity || grid[entity.positionY , entity.positionX-1] is SpikeInstance))
             {
                 DoRotateLeft(entity);
             }
             
-            else if (entity.direction == EntityInstance.dir.right && (grid[entity.positionY +1 , entity.positionX] == null ||grid[entity.positionY +1 , entity.positionX] == entity ))
+            else if (entity.direction == EntityInstance.dir.right && (grid[entity.positionY +1 , entity.positionX] == null ||grid[entity.positionY +1 , entity.positionX] == entity || grid[entity.positionY + 1 , entity.positionX] is SpikeInstance ))
             {
                 DoRotateLeft(entity);
             }
             
-            else if (entity.direction == EntityInstance.dir.down && (grid[entity.positionY, entity.positionX+1] == null||grid[entity.positionY , entity.positionX+1] == entity))
+            else if (entity.direction == EntityInstance.dir.down && (grid[entity.positionY, entity.positionX+1] == null||grid[entity.positionY , entity.positionX+1] == entity|| grid[entity.positionY , entity.positionX+1] is SpikeInstance))
             {
                 DoRotateLeft(entity);
             }
@@ -430,24 +430,44 @@ public class CombatManager : MonoBehaviour
         switch (newDirection)
         {
             case EntityInstance.dir.up:
+                if (grid[entity.positionY + 1, entity.positionX] is SpikeInstance)
+                {
+                    Damage(entity,grid[entity.positionY + 1, entity.positionX].hp);
+                    Destroy(grid[entity.positionY + 1, entity.positionX].prefab);
+                }
                 grid[entity.positionY + 1, entity.positionX] = player;
                 entity.height = entity.width;
                 entity.width = tempHeight;
                 entity.isStanding = true;
                 break;
             case EntityInstance.dir.down:
+                if (grid[entity.positionY - 1, entity.positionX] is SpikeInstance)
+                {
+                    Damage(entity,grid[entity.positionY - 1, entity.positionX].hp);
+                    Destroy(grid[entity.positionY - 1, entity.positionX].prefab);
+                }
                 grid[entity.positionY - 1, entity.positionX] = player;
                 entity.height = entity.width;
                 entity.width = tempHeight;
                 entity.isStanding = true;
                 break;
             case EntityInstance.dir.left:
+                if (grid[entity.positionY, entity.positionX - 1] is SpikeInstance)
+                {
+                    Damage(entity,grid[entity.positionY, entity.positionX - 1].hp);
+                    Destroy(grid[entity.positionY, entity.positionX - 1].prefab);
+                }
                 grid[entity.positionY, entity.positionX - 1] = player;
                 entity.height = entity.width;
                 entity.width = tempHeight;
                 entity.isStanding = false;
                 break;
             case EntityInstance.dir.right:
+                if (grid[entity.positionY, entity.positionX + 1] is SpikeInstance)
+                {
+                    Damage(entity,grid[entity.positionY, entity.positionX + 1].hp);
+                    Destroy(grid[entity.positionY, entity.positionX + 1].prefab);
+                }
                 grid[entity.positionY, entity.positionX + 1] = player;
                 entity.height = entity.width;
                 entity.width = tempHeight;
@@ -591,6 +611,12 @@ public class CombatManager : MonoBehaviour
         }
         
         UpdateGrid(entity, posX, posY);
+        if (grid[posY, posX] is SpikeInstance)
+        {
+            Damage(entity,grid[posY, posX].hp);
+            Destroy(grid[posY, posX].prefab);
+            grid[posY, posX] = null;
+        }
         entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
         entity.positionX = posX;
         entity.positionY = posY;
@@ -627,18 +653,38 @@ public class CombatManager : MonoBehaviour
             {
                 if (entity.direction == EntityInstance.dir.up)
                 {
+                    if (grid[posY + i, posX + j] is SpikeInstance)
+                    {
+                        Damage(entity,grid[posY + i, posX + j].hp);
+                        Destroy(grid[posY + i, posX + j].prefab);
+                    }
                     grid[posY + i,posX + j] = entity;
                 }
                 if (entity.direction == EntityInstance.dir.right)
                 {
+                    if (grid[posY + i, posX + j] is SpikeInstance)
+                    {
+                        Damage(entity,grid[posY + i, posX + j].hp);
+                        Destroy(grid[posY + i, posX + j].prefab);
+                    }
                     grid[posY + i,posX + j] = entity;
                 }
                 if (entity.direction == EntityInstance.dir.left)
                 {
+                    if (grid[posY - i, posX - j] is SpikeInstance)
+                    {
+                        Damage(entity,grid[posY - i, posX - j].hp);
+                        Destroy(grid[posY - i, posX - j].prefab);
+                    }
                     grid[posY - i,posX - j] = entity;
                 }
                 if (entity.direction == EntityInstance.dir.down)
                 {
+                    if (grid[posY - i, posX - j] is SpikeInstance)
+                    {
+                        Damage(entity,grid[posY - i, posX - j].hp);
+                        Destroy(grid[posY - i, posX - j].prefab);
+                    }
                     grid[posY - i,posX - j] = entity;
                 }
             }
@@ -657,7 +703,7 @@ public class CombatManager : MonoBehaviour
                     {
                         return false;
                     }
-                    if (grid[newY+i, newX+j] != null && grid[newY+i, newX+j] != entity)
+                    if (grid[newY+i, newX+j] != null && grid[newY+i, newX+j] != entity && grid[newY+i, newX+j] is not SpikeInstance)
                     {
                         return false;
                     }
@@ -668,7 +714,7 @@ public class CombatManager : MonoBehaviour
                     {
                         return false;
                     }
-                    if (grid[newY+i, newX+j] != null && grid[newY+i, newX+j] != entity)
+                    if (grid[newY+i, newX+j] != null && grid[newY+i, newX+j] != entity && grid[newY+i, newX+j] is not SpikeInstance)
                     {
                         return false;
                     }                
@@ -681,7 +727,7 @@ public class CombatManager : MonoBehaviour
                         return false;
                     }
 
-                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity)
+                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity && grid[newY+i, newX+j] is not SpikeInstance)
                     {
                         return false;
                     }
@@ -694,7 +740,7 @@ public class CombatManager : MonoBehaviour
                         return false;
                     }
 
-                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity)
+                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity && grid[newY+i, newX+j] is not SpikeInstance)
                     {
                         return false;
                     }
@@ -722,7 +768,7 @@ public class CombatManager : MonoBehaviour
             Debug.Log(entity.positionX + (entity.width) * NegativeToZero(GetSign(dirX)) +
                       i * GetSign(dirX)-NegativeToOne(dirX));*/
             EntityInstance tile = GetAttackTile(entity, dirY, dirX, i, attack);
-            if (tile != null && tile != entity && tile != lastEnnemyTouched)
+            if (tile != null && tile != entity && tile != lastEnnemyTouched && tile is not SpikeInstance)
             {
                 Debug.Log(tile);
                 Debug.Log("touché");
@@ -871,7 +917,7 @@ public class CombatManager : MonoBehaviour
         
     }
 
-    void Damage(EntityInstance entity, int dmg)
+    public void Damage(EntityInstance entity, int dmg)
     {
         entity.TakeDamage(dmg);
         Debug.Log(entity.hp);
@@ -957,15 +1003,6 @@ public class CombatManager : MonoBehaviour
         if (value == 0)
         {
             return 1;
-        }
-
-        return 0;
-    }
-    int ZeroToMinusOne(int value)
-    {
-        if (value == 0)
-        {
-            return -1;
         }
 
         return 0;
