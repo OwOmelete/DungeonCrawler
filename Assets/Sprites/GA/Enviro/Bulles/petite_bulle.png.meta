@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      petite_bulle_0: 2249855091858175710
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
