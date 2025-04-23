@@ -23,7 +23,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
     private List<Fish> fishes = new List<Fish>();
-    public EntityInstance[,] grid;
+    [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
     private bool combatFinished;
     private int currentTurnIndex = 0;
