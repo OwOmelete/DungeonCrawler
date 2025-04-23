@@ -71,9 +71,14 @@ public class GamepadCombatControl : MonoBehaviour
                 combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - horizontalSpeed, combatManagerReference.player.positionY);
                 waitForMove = false;
             }
-            else if (waitForAttack)
+            else if (waitForAttack && combatManagerReference.grid[actualPlacement[0], actualPlacement[1] - 1] != combatManagerReference.player)
             {
                 Attack(actualPlacement[0], actualPlacement[1] - 1);
+                waitForAttack = false;
+            }
+            else if (waitForAttack&& combatManagerReference.grid[actualPlacement[0], actualPlacement[1] - 1] == combatManagerReference.player)
+            {
+                Attack(actualPlacement[0], actualPlacement[1] - 2);
                 waitForAttack = false;
             }
             else if (actualPlacement[1] != 0)
@@ -97,9 +102,14 @@ public class GamepadCombatControl : MonoBehaviour
                 combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + horizontalSpeed, combatManagerReference.player.positionY);
                 waitForMove = false;
             }
-            else if (waitForAttack)
+            else if (waitForAttack && combatManagerReference.grid[actualPlacement[0], actualPlacement[1] + 1] != combatManagerReference.player)
             {
                 Attack(actualPlacement[0], actualPlacement[1] + 1);
+                waitForAttack = false;
+            }
+            else if (waitForAttack&& combatManagerReference.grid[actualPlacement[0], actualPlacement[1] + 1] == combatManagerReference.player)
+            {
+                Attack(actualPlacement[0], actualPlacement[1] + 2);
                 waitForAttack = false;
             }
             else if (actualPlacement[1] != tabWidth - 1)
@@ -118,9 +128,14 @@ public class GamepadCombatControl : MonoBehaviour
                 combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - verticalSpeed);
                 waitForMove = false;
             }
-            else if (waitForAttack)
+            else if (waitForAttack && combatManagerReference.grid[actualPlacement[0] - 1, actualPlacement[1]] != combatManagerReference.player)
             {
                 Attack(actualPlacement[0] - 1, actualPlacement[1]);
+                waitForAttack = false;
+            }
+            else if (waitForAttack&& combatManagerReference.grid[actualPlacement[0] - 1, actualPlacement[1]] == combatManagerReference.player)
+            {
+                Attack(actualPlacement[0] - 2, actualPlacement[1]);
                 waitForAttack = false;
             }
             else if (actualPlacement[0] != 0 )
@@ -139,9 +154,14 @@ public class GamepadCombatControl : MonoBehaviour
                 combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + verticalSpeed);
                 waitForMove = false;
             }
-            else if (waitForAttack)
+            else if (waitForAttack && combatManagerReference.grid[actualPlacement[0] + 1, actualPlacement[1]] != combatManagerReference.player)
             {
                 Attack(actualPlacement[0] + 1, actualPlacement[1]);
+                waitForAttack = false;
+            }
+            else if (waitForAttack&& combatManagerReference.grid[actualPlacement[0] + 1, actualPlacement[1]] == combatManagerReference.player)
+            {
+                Attack(actualPlacement[0] + 2, actualPlacement[1]);
                 waitForAttack = false;
             }
             else if (actualPlacement[0] != tabHeight - 1)
@@ -279,6 +299,11 @@ public class GamepadCombatControl : MonoBehaviour
     {
         PlayerButtonUnactive();
         combatManagerReference.Attack(combatManagerReference.player.currentAttack, combatManagerReference.player, x, y);
+    }
+
+    public void SkipTurn()
+    {
+        //ici mettre de quoi skip
     }
 }
 
