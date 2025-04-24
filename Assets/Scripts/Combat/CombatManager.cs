@@ -609,14 +609,8 @@ public class CombatManager : MonoBehaviour
         { 
             return;
         }
-        
+        Debug.Log("updating grid");
         UpdateGrid(entity, posX, posY);
-        if (grid[posY, posX] is SpikeInstance)
-        {
-            Damage(entity,grid[posY, posX].hp);
-            Destroy(grid[posY, posX].prefab);
-            grid[posY, posX] = null;
-        }
         entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
         entity.positionX = posX;
         entity.positionY = posY;
@@ -651,6 +645,7 @@ public class CombatManager : MonoBehaviour
         {
             for (int j = 0; j < entity.width; j++)
             {
+                //Debug.Log(entity.direction);
                 if (entity.direction == EntityInstance.dir.up)
                 {
                     if (grid[posY + i, posX + j] is SpikeInstance)
