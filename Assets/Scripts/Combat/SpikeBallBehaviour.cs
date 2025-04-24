@@ -7,6 +7,7 @@ public class SpikeBallBehaviour : AbstractIA
 {
     [SerializeField] SpikeData _spikeData;
     private List<SpikeInstance> spikeList = new List<SpikeInstance>();
+    private List<int> spikeIndexSupr = new List<int>();
 
     public override void ManageTurn(FishDataInstance entity)
     {
@@ -15,40 +16,52 @@ public class SpikeBallBehaviour : AbstractIA
             entity.FirstCycle = false;
             entity.HasAttacked = true;
             entity.entityChild = entity.prefab.transform.GetChild(0);
+            spikeIndexSupr.Clear();
+            spikeList.Clear();
         }
-
+        
         Debug.Log(entity.direction);
-        foreach (SpikeInstance spike in spikeList)
+        for (int i = 0; i < spikeList.Count; i++)
         {
-            CombatManager.Instance.grid[spike.positionY, spike.positionX] = null;
-            if (spike.positionY + spike.dirY < 0 ||
-                spike.positionY + spike.dirY > CombatManager.Instance.grid.GetLength(0) - 1 ||
-                spike.positionX + spike.dirX < 0 ||
-                spike.positionX + spike.dirX > CombatManager.Instance.grid.GetLength(1) - 1)
+            CombatManager.Instance.grid[spikeList[i].positionY, spikeList[i].positionX] = null;
+            if (spikeList[i].positionY + spikeList[i].dirY < 0 ||
+                spikeList[i].positionY + spikeList[i].dirY > CombatManager.Instance.grid.GetLength(0) - 1 ||
+                spikeList[i].positionX + spikeList[i].dirX < 0 ||
+                spikeList[i].positionX + spikeList[i].dirX > CombatManager.Instance.grid.GetLength(1) - 1)
             {
-                spikeList.Remove(spike);
-                Destroy(spike.prefab);
+                spikeIndexSupr.Add(i);
+                Debug.Log("objet à supprimer: "+i);
             }
             else
             {
                 EntityInstance newPos =
-                    CombatManager.Instance.grid[spike.positionY + spike.dirY, spike.positionX + spike.dirX];
+                    CombatManager.Instance.grid[spikeList[i].positionY + spikeList[i].dirY, spikeList[i].positionX + spikeList[i].dirX];
                 if (newPos != null && newPos is not SpikeInstance)
                 {
-                    spikeList.Remove(spike);
-                    CombatManager.Instance.Damage(newPos, spike.hp);
-                    Destroy(spike.prefab);
+                    spikeIndexSupr.Add(i);
+                    CombatManager.Instance.Damage(newPos, spikeList[i].hp);
                 }
                 else
                 {
-                    CombatManager.Instance.grid[spike.positionY + spike.dirY, spike.positionX + spike.dirX] = spike;
-                    spike.prefab.transform.DOMove(new Vector3
-                        (spike.positionX + spike.dirX, spike.positionY + spike.dirY, 0), 0.5f).SetEase(Ease.InOutCubic);
-                    spike.positionX += spike.dirX;
-                    spike.positionY += spike.dirY;
+                    CombatManager.Instance.grid[spikeList[i].positionY + spikeList[i].dirY, spikeList[i].positionX + spikeList[i].dirX] = spikeList[i];
+                    spikeList[i].prefab.transform.DOMove(new Vector3
+                        (spikeList[i].positionX + spikeList[i].dirX, spikeList[i].positionY + spikeList[i].dirY, 0), 0.5f).SetEase(Ease.InOutCubic);
+                    spikeList[i].positionX += spikeList[i].dirX;
+                    spikeList[i].positionY += spikeList[i].dirY;
                 }
             }
         }
+        Debug.Log("on essaie de supprimer. count= "+ spikeIndexSupr.Count);
+        for (int i = spikeIndexSupr.Count; i > 0; i--)
+        {
+            Debug.Log("objet supprimé: "+i+" / "+spikeIndexSupr.Count);
+            Destroy(spikeList[spikeIndexSupr[i-1]].prefab);
+            CombatManager.Instance.grid[spikeList[spikeIndexSupr[i - 1]].positionY,
+                spikeList[spikeIndexSupr[i - 1]].positionX] = null;
+            spikeList.Remove(spikeList[spikeIndexSupr[i-1]]);
+          //  Debug.Log("objet supprimé: "+i+" / "+spikeIndexSupr.Count);
+        }
+        spikeIndexSupr.Clear();
 
         if (entity.PreparingAttack)
         {
@@ -265,10 +278,10 @@ public class SpikeBallBehaviour : AbstractIA
 
         void ShootSpike(FishDataInstance entity, int dirX, int dirY)
         {
-            if (CombatManager.Instance.grid[entity.positionX + dirX, entity.positionY + dirY] != null)
+            if (CombatManager.Instance.grid[entity.positionY + dirY, entity.positionX + dirX] != null)
             {
                 CombatManager.Instance.Damage(
-                    CombatManager.Instance.grid[entity.positionX + dirX, entity.positionY + dirY], _spikeData.hp);
+                    CombatManager.Instance.grid[entity.positionY + dirY, entity.positionX + dirX], _spikeData.hp);
             }
             else
             {
@@ -298,8 +311,9 @@ public class SpikeBallBehaviour : AbstractIA
                 }
 
                 spike.prefab = Instantiate(spike.prefab, new Vector3(entity.positionX + dirX,
-                    entity.positionY + dirY, 0), Quaternion.Euler(0, 0, rotation));
+                    entity.positionY + dirY, 0), Quaternion.identity);
                 spike.entityChild = spike.prefab.transform.GetChild(0);
+                spike.entityChild.transform.rotation = Quaternion.Euler(0,0,rotation);
             }
         }
 
