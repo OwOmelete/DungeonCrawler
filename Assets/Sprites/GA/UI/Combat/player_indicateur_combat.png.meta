@@ -117,6 +117,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -309,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player_indicateur_combat_0: 8179250812983243661
+      player_indicateur_combat_1: -6290477976160147280
+      player_indicateur_combat_2: -5067042095836804493
+      player_indicateur_combat_3: 6609142819598665212
+      player_indicateur_combat_4: -6226292805894732675
+      player_indicateur_combat_5: -615681209212374649
+      player_indicateur_combat_6: -3824154364166811317
+      player_indicateur_combat_7: 7656847765269359588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
