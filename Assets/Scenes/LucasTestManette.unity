@@ -2574,11 +2574,14 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234761685}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!212 &242620003 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5872709919883854511, guid: f48cb9bd2c052944496768ac23a48073, type: 3}
   m_PrefabInstance: {fileID: 7057621054493582222}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> origin/Enemy
 --- !u!1 &259782342
 GameObject:
   m_ObjectHideFlags: 0
@@ -15714,10 +15717,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1791731742}
     - target: {fileID: 4302022756017987209, guid: f48cb9bd2c052944496768ac23a48073, type: 3}
+<<<<<<< HEAD
       propertyPath: sr
       value: 
       objectReference: {fileID: 242620003}
     - target: {fileID: 4302022756017987209, guid: f48cb9bd2c052944496768ac23a48073, type: 3}
+=======
+>>>>>>> origin/Enemy
       propertyPath: speed
       value: 1.5
       objectReference: {fileID: 0}
@@ -15750,10 +15756,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5872709919883854511, guid: f48cb9bd2c052944496768ac23a48073, type: 3}
+<<<<<<< HEAD
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5872709919883854511, guid: f48cb9bd2c052944496768ac23a48073, type: 3}
+=======
+>>>>>>> origin/Enemy
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8966945178157639174, guid: f8372e6dd7f076c45b18ac19191a14c1, type: 3}
