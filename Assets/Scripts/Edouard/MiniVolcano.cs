@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MiniVolcano : MonoBehaviour
 {
-    [SerializeField] private TestPlayer testPlayer;
-    public int damage;
+    private TestPlayer testPlayer;
+    public int damage = 1;
 
     private void Start()
     {
