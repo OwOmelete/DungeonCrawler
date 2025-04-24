@@ -26,7 +26,6 @@ public class IaFishExplo : MonoBehaviour
             {
                 ChangeTarget();
             }
-        
             yield return null;
         }
     }
