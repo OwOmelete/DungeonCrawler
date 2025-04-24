@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Heal : MonoBehaviour
@@ -6,13 +5,17 @@ public class Heal : MonoBehaviour
    private TestPlayer player;
    private bool isInArea = false;
    
+   public KeyCode healKey = KeyCode.E;
    public int healAmount;
    
    private void Update()
    {
       if (isInArea)
       {
-         HealPlayer();
+         if (Input.GetKeyDown(healKey))
+         {
+            HealPlayer();
+         }
       }
    }
    
@@ -24,12 +27,9 @@ public class Heal : MonoBehaviour
 
    public void HealPlayer()
    {
-      if (Input.GetKeyDown(KeyCode.E))
-      {
-         //Debug.Log(isInArea);
-         player.health += healAmount;
-         //Destroy(gameObject);
-      }
+      //Debug.Log(isInArea);
+      player.health += healAmount;
+      //Destroy(gameObject);
       
    }
 }

@@ -5092,6 +5092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3236649888e8b7448bde12cb365ad478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healKey: 101
   healAmount: 10
 --- !u!58 &530862787
 CircleCollider2D:
@@ -16843,6 +16844,8 @@ MonoBehaviour:
   rockCount: 5
   minX: -5
   maxX: 5
+  minY: 10
+  maxY: 10
 --- !u!1 &1836426780
 GameObject:
   m_ObjectHideFlags: 0
@@ -17015,9 +17018,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 1.7728891, y: 4.931668}
+      - {x: -0.0069408417, y: 6.5089993}
       - {x: -1.763547, y: 4.8951507}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+      - {x: -0.21304607, y: 0.21495157}
+      - {x: 0.21484375, y: 0.21498686}
   m_UseDelaunayMesh: 0
 --- !u!199 &1950831466
 ParticleSystemRenderer:
@@ -21901,7 +21905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55db8f267e4f7fc4182a9727ffebd674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testPlayer: {fileID: 0}
   damage: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
