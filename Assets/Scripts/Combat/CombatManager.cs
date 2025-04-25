@@ -22,7 +22,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField] GameObject UiExplo;
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
-    [SerializeField] GamepadCombatControl gamepadCombatControl;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -34,6 +33,8 @@ public class CombatManager : MonoBehaviour
     private SpriteRenderer playerEntityRenderer;
     private Transform playerEntityChild;
     private bool canRotate = true;
+    private bool hasAttacked = false;
+    private bool hasMoved = false;
 
     public static CombatManager Instance;
     
@@ -128,8 +129,8 @@ public class CombatManager : MonoBehaviour
         
         if (playerEntity.actionPoint == 0)
         {
-            gamepadCombatControl.hasAttacked = false;
-            gamepadCombatControl.hasMoved = false;
+            hasAttacked = false;
+            hasMoved = false;
             EndTurn();
             //player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
             Debug.Log("plus d'action point");
@@ -158,7 +159,7 @@ public class CombatManager : MonoBehaviour
     {
         int verticalSpeed = 1;
         int horizontalSpeed = 1;
-        int actionPointLost = 1;
+        int actionPointLost = 0;
         if (playerEntity.isStanding && player.booster)
         {
             verticalSpeed = 2;
@@ -171,7 +172,7 @@ public class CombatManager : MonoBehaviour
         }
         #region Actions
 
-        if (playerEntity.actionPoint == playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints)
+        /*if (playerEntity.actionPoint == playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -192,29 +193,66 @@ public class CombatManager : MonoBehaviour
                 playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
             }
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.W))
         {
             player.booster = !player.booster;
             actionPointLost = 0;
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !hasAttacked && !hasMoved)
         {
-            Move(playerEntity, playerEntity.positionX, playerEntity.positionY + verticalSpeed);
+            if (player.direction == EntityInstance.dir.up)
+            {
+                Move(playerEntity, playerEntity.positionX, playerEntity.positionY + verticalSpeed);
+                player.oxygen -= player.oxygenLostMove2Tiles;
+            }
+            else
+            {
+                Move(playerEntity, playerEntity.positionX, playerEntity.positionY + 1);
+                player.oxygen -= player.oxygenLostMove;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow)&& !hasAttacked && !hasMoved)
         {
-            Move(playerEntity, playerEntity.positionX, playerEntity.positionY - verticalSpeed);
+            if (player.direction == EntityInstance.dir.down)
+            {
+                Move(playerEntity, playerEntity.positionX, playerEntity.positionY - verticalSpeed);
+                player.oxygen -= player.oxygenLostMove2Tiles;
+            }
+            else
+            {
+                Move(playerEntity, playerEntity.positionX, playerEntity.positionY - 1);
+                player.oxygen -= player.oxygenLostMove;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow)&& !hasAttacked && !hasMoved)
         {
-            Move(playerEntity, playerEntity.positionX + horizontalSpeed, playerEntity.positionY);
+            if (player.direction == EntityInstance.dir.right)
+            {
+                Move(playerEntity, playerEntity.positionX + horizontalSpeed, playerEntity.positionY);
+                player.oxygen -= player.oxygenLostMove2Tiles;
+            }
+            else
+            {
+                Move(playerEntity, playerEntity.positionX + 1, playerEntity.positionY);
+                player.oxygen -= player.oxygenLostMove;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow)&& !hasAttacked && !hasMoved)
         {
-            Move(playerEntity, playerEntity.positionX - horizontalSpeed, playerEntity.positionY);
+            if (player.direction == EntityInstance.dir.left)
+            {
+                Move(playerEntity, playerEntity.positionX - horizontalSpeed, playerEntity.positionY);
+                player.oxygen -= player.oxygenLostMove2Tiles;
+            }
+            else
+            {
+                Move(playerEntity, playerEntity.positionX - 1, playerEntity.positionY);
+                player.oxygen -= player.oxygenLostMove;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        /*else if (Input.GetKeyDown(KeyCode.A))
         {
             player.currentAttack = player.attackList[0];
             actionPointLost = 0;
@@ -224,65 +262,38 @@ public class CombatManager : MonoBehaviour
             player.currentAttack = player.attackList[1];
             actionPointLost = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.I))
+        */
+        else if (Input.GetKeyDown(KeyCode.I)&& !hasAttacked)
         {
-            if (player.actionPoint >= player.currentAttack.actionCost)
-            {
-                Attack(player.currentAttack, player, player.positionX, player.positionY + 1);
-                actionPointLost = player.currentAttack.actionCost;
-            }
-            else
-            {
-                actionPointLost = 0;
-                Debug.Log("pas assez d'action points");
-            }
+            Attack(player.currentAttack, player, player.positionX, player.positionY + 1);
+            actionPointLost = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.K))
+        else if (Input.GetKeyDown(KeyCode.K)&& !hasAttacked)
         {
-            if (player.actionPoint >= player.currentAttack.actionCost)
-            {
-                Attack(player.currentAttack, player, player.positionX, player.positionY - 1);
-                actionPointLost = player.currentAttack.actionCost;
-            }
-            else
-            {
-                actionPointLost = 0;
-                Debug.Log("pas assez d'action points");
-            }
+            Attack(player.currentAttack, player, player.positionX, player.positionY - 1);
+            actionPointLost = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(KeyCode.L)&& !hasAttacked)
         {
-            if (player.actionPoint >= player.currentAttack.actionCost)
-            {
-                Attack(player.currentAttack, player, player.positionX + 1, player.positionY);
-                actionPointLost = player.currentAttack.actionCost;
-            }
-            else
-            {
-                actionPointLost = 0;
-                Debug.Log("pas assez d'action points");
-            }
+            Attack(player.currentAttack, player, player.positionX + 1, player.positionY);
+            actionPointLost = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.J))
+        else if (Input.GetKeyDown(KeyCode.J)&& !hasAttacked)
         {
-            if (player.actionPoint >= player.currentAttack.actionCost)
-            {
-                Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
-                actionPointLost = player.currentAttack.actionCost;
-            }
-            else
-            {
-                actionPointLost = 0;
-                Debug.Log("pas assez d'action points");
-            }
+            Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
+            actionPointLost = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && canRotate)
+        else if (Input.GetKeyDown(KeyCode.Q) && canRotate && !hasMoved)
         {
             FlipPlayerRight(player);
+            hasMoved = true;
+            player.oxygen -= player.oxygenLostRotate;
         }
-        else if (Input.GetKeyDown(KeyCode.E) && canRotate)
+        else if (Input.GetKeyDown(KeyCode.E) && canRotate && !hasMoved)
         {
             FlipPlayerLeft(player);
+            hasMoved = true;
+            player.oxygen -= player.oxygenLostRotate;
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -295,12 +306,6 @@ public class CombatManager : MonoBehaviour
             return;
         }
         #endregion
-
-        if (playerEntity.actionPoint == playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints)
-        {
-            player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
-            Debug.Log("oxygen : " + player.oxygen);
-        }
         playerEntity.actionPoint -= actionPointLost;
         Debug.Log("points d'action restants : " + playerEntity.actionPoint);
     }
@@ -608,6 +613,10 @@ public class CombatManager : MonoBehaviour
 
     public void Move(EntityInstance entity, int posX, int posY)
     {
+        if (entity == player)
+        {
+            hasMoved = true;
+        }
         if(!CanMove(entity, posX, posY))
         { 
             return;
@@ -751,6 +760,11 @@ public class CombatManager : MonoBehaviour
     
     public void Attack(AttackData attack,EntityInstance entity, int x, int y)
     {
+        if (entity == player)
+        {
+            hasAttacked = true;
+            player.oxygen -= player.oxygenLostAttack;
+        }
         int dirX = x - entity.positionX;
         int dirY = y - entity.positionY;
         EntityInstance lastEnnemyTouched = null;
