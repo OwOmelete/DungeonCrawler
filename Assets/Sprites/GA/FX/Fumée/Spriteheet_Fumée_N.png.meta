@@ -1,0 +1,671 @@
+fileFormatVersion: 2
+guid: 20b62866f80e2924eacfa166ba272d57
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8921862481039943264
+    second: "Tilesheet_Fum\xE9e_N_0"
+  - first:
+      213: 1221619920321794719
+    second: "Tilesheet_Fum\xE9e_N_1"
+  - first:
+      213: -1755938927007664682
+    second: "Tilesheet_Fum\xE9e_N_2"
+  - first:
+      213: -8066108123552353693
+    second: "Tilesheet_Fum\xE9e_N_3"
+  - first:
+      213: 2191545276205352526
+    second: "Tilesheet_Fum\xE9e_N_4"
+  - first:
+      213: 4886928898750692181
+    second: "Tilesheet_Fum\xE9e_N_5"
+  - first:
+      213: -2353146153478857338
+    second: "Tilesheet_Fum\xE9e_N_6"
+  - first:
+      213: 387377687784850653
+    second: "Tilesheet_Fum\xE9e_N_7"
+  - first:
+      213: 1959096083767677091
+    second: "Tilesheet_Fum\xE9e_N_8"
+  - first:
+      213: -8928991047588133364
+    second: "Tilesheet_Fum\xE9e_N_9"
+  - first:
+      213: 4864746589142843993
+    second: "Tilesheet_Fum\xE9e_N_10"
+  - first:
+      213: 9083735877539808046
+    second: "Tilesheet_Fum\xE9e_N_11"
+  - first:
+      213: -626327482753908584
+    second: "Tilesheet_Fum\xE9e_N_12"
+  - first:
+      213: -7751198902400878365
+    second: "Tilesheet_Fum\xE9e_N_13"
+  - first:
+      213: 2283020539652991435
+    second: "Tilesheet_Fum\xE9e_N_14"
+  - first:
+      213: -7238894669546748676
+    second: "Tilesheet_Fum\xE9e_N_15"
+  - first:
+      213: 4676145466739214246
+    second: "Tilesheet_Fum\xE9e_N_16"
+  - first:
+      213: 4384633310197853922
+    second: "Tilesheet_Fum\xE9e_N_17"
+  - first:
+      213: -7790659215345367668
+    second: "Tilesheet_Fum\xE9e_N_18"
+  - first:
+      213: -6694290099709534570
+    second: "Tilesheet_Fum\xE9e_N_19"
+  - first:
+      213: 7771998985819803402
+    second: "Tilesheet_Fum\xE9e_N_20"
+  - first:
+      213: 4563903504957924528
+    second: "Tilesheet_Fum\xE9e_N_21"
+  - first:
+      213: -8182961966050516103
+    second: "Tilesheet_Fum\xE9e_N_22"
+  - first:
+      213: -4845484738400499805
+    second: "Tilesheet_Fum\xE9e_N_23"
+  - first:
+      213: -9105097362968309959
+    second: "Tilesheet_Fum\xE9e_N_24"
+  - first:
+      213: 3040927418493941837
+    second: "Tilesheet_Fum\xE9e_N_25"
+  - first:
+      213: 1649340929970068509
+    second: "Tilesheet_Fum\xE9e_N_26"
+  - first:
+      213: -2883937274645302972
+    second: "Tilesheet_Fum\xE9e_N_27"
+  - first:
+      213: 5287858883297689219
+    second: "Tilesheet_Fum\xE9e_N_28"
+  - first:
+      213: -3985963007287970892
+    second: "Tilesheet_Fum\xE9e_N_29"
+  - first:
+      213: 1489885782295903473
+    second: "Tilesheet_Fum\xE9e_N_30"
+  - first:
+      213: -2683765928025085281
+    second: "Tilesheet_Fum\xE9e_N_31"
+  - first:
+      213: -894519677398681485
+    second: "Tilesheet_Fum\xE9e_N_32"
+  - first:
+      213: 7211723233538775347
+    second: "Tilesheet_Fum\xE9e_N_33"
+  - first:
+      213: -5436735998422651077
+    second: "Tilesheet_Fum\xE9e_N_34"
+  - first:
+      213: -2054878596167536402
+    second: "Tilesheet_Fum\xE9e_N_35"
+  - first:
+      213: -4984637716389918492
+    second: "Tilesheet_Fum\xE9e_N_36"
+  - first:
+      213: -4576969944851102052
+    second: "Tilesheet_Fum\xE9e_N_37"
+  - first:
+      213: -1803024791014010956
+    second: "Tilesheet_Fum\xE9e_N_38"
+  - first:
+      213: -7473616844026818314
+    second: "Tilesheet_Fum\xE9e_N_39"
+  - first:
+      213: -3413587662767141063
+    second: "Tilesheet_Fum\xE9e_N_40"
+  - first:
+      213: -3125997844373050122
+    second: "Tilesheet_Fum\xE9e_N_41"
+  - first:
+      213: 5570182672214712697
+    second: "Tilesheet_Fum\xE9e_N_42"
+  - first:
+      213: -773204770958544586
+    second: "Tilesheet_Fum\xE9e_N_43"
+  - first:
+      213: 8239521122506968626
+    second: "Tilesheet_Fum\xE9e_N_44"
+  - first:
+      213: -8123589963793037021
+    second: "Tilesheet_Fum\xE9e_N_45"
+  - first:
+      213: -1449448389952323065
+    second: "Tilesheet_Fum\xE9e_N_46"
+  - first:
+      213: -7221495279088348108
+    second: "Tilesheet_Fum\xE9e_N_47"
+  - first:
+      213: -5338295036856499394
+    second: "Tilesheet_Fum\xE9e_N_48"
+  - first:
+      213: 8568800047910487215
+    second: "Tilesheet_Fum\xE9e_N_49"
+  - first:
+      213: -5437855761741436980
+    second: "Tilesheet_Fum\xE9e_N_50"
+  - first:
+      213: 6950684445780511335
+    second: "Tilesheet_Fum\xE9e_N_51"
+  - first:
+      213: 3043587305914223873
+    second: "Tilesheet_Fum\xE9e_N_52"
+  - first:
+      213: -7140327889229000028
+    second: "Tilesheet_Fum\xE9e_N_53"
+  - first:
+      213: 6082035096769461295
+    second: "Tilesheet_Fum\xE9e_N_54"
+  - first:
+      213: 7001383784717396717
+    second: "Tilesheet_Fum\xE9e_N_55"
+  - first:
+      213: 3653648350284710045
+    second: "Tilesheet_Fum\xE9e_N_56"
+  - first:
+      213: 1663643921861978531
+    second: "Tilesheet_Fum\xE9e_N_57"
+  - first:
+      213: -3042614518415845082
+    second: "Tilesheet_Fum\xE9e_N_58"
+  - first:
+      213: 5176917434104151535
+    second: "Tilesheet_Fum\xE9e_N_59"
+  - first:
+      213: -823569104175300079
+    second: "Tilesheet_Fum\xE9e_N_60"
+  - first:
+      213: 5493261819286578455
+    second: "Tilesheet_Fum\xE9e_N_61"
+  - first:
+      213: -7271505164838015712
+    second: "Tilesheet_Fum\xE9e_N_62"
+  - first:
+      213: 1559830697478897936
+    second: "Tilesheet_Fum\xE9e_N_63"
+  - first:
+      213: -4629899757131223268
+    second: "Tilesheet_Fum\xE9e_N_64"
+  - first:
+      213: 2010515903936699350
+    second: "Tilesheet_Fum\xE9e_N_65"
+  - first:
+      213: -2172672708454562835
+    second: "Tilesheet_Fum\xE9e_N_66"
+  - first:
+      213: -8903206957540185370
+    second: "Tilesheet_Fum\xE9e_N_67"
+  - first:
+      213: 7777482676739313835
+    second: "Tilesheet_Fum\xE9e_N_68"
+  - first:
+      213: 8084513779986856661
+    second: "Tilesheet_Fum\xE9e_N_69"
+  - first:
+      213: -639263940143674677
+    second: "Tilesheet_Fum\xE9e_N_70"
+  - first:
+      213: 3201127611521218191
+    second: "Tilesheet_Fum\xE9e_N_71"
+  - first:
+      213: 5495082556382016680
+    second: "Tilesheet_Fum\xE9e_N_72"
+  - first:
+      213: 7352350014650243415
+    second: "Tilesheet_Fum\xE9e_N_73"
+  - first:
+      213: -5683401076727895855
+    second: "Tilesheet_Fum\xE9e_N_74"
+  - first:
+      213: 2851852854560680924
+    second: "Tilesheet_Fum\xE9e_N_75"
+  - first:
+      213: 3957853066883138781
+    second: "Tilesheet_Fum\xE9e_N_76"
+  - first:
+      213: -9080933686286843536
+    second: "Tilesheet_Fum\xE9e_N_77"
+  - first:
+      213: -2387610383082931541
+    second: "Tilesheet_Fum\xE9e_N_78"
+  - first:
+      213: 655804989729434248
+    second: "Tilesheet_Fum\xE9e_N_79"
+  - first:
+      213: 1939625479398274138
+    second: "Tilesheet_Fum\xE9e_N_80"
+  - first:
+      213: 2902792693746951375
+    second: "Tilesheet_Fum\xE9e_N_81"
+  - first:
+      213: -3186117648905556031
+    second: "Tilesheet_Fum\xE9e_N_82"
+  - first:
+      213: 3861490181703523456
+    second: "Tilesheet_Fum\xE9e_N_83"
+  - first:
+      213: -6210734634367068664
+    second: "Tilesheet_Fum\xE9e_N_84"
+  - first:
+      213: -7539679605882969065
+    second: "Tilesheet_Fum\xE9e_N_85"
+  - first:
+      213: 7895272071184120282
+    second: "Tilesheet_Fum\xE9e_N_86"
+  - first:
+      213: 2575990496587410739
+    second: "Tilesheet_Fum\xE9e_N_87"
+  - first:
+      213: -3004992016310967079
+    second: "Tilesheet_Fum\xE9e_N_88"
+  - first:
+      213: 5139616965162505505
+    second: "Tilesheet_Fum\xE9e_N_89"
+  - first:
+      213: -9032261484240343963
+    second: "Tilesheet_Fum\xE9e_N_90"
+  - first:
+      213: -1595282858692315051
+    second: "Tilesheet_Fum\xE9e_N_91"
+  - first:
+      213: 2136760638764409120
+    second: "Tilesheet_Fum\xE9e_N_92"
+  - first:
+      213: -4485973705631358541
+    second: "Tilesheet_Fum\xE9e_N_93"
+  - first:
+      213: -6237032543485326057
+    second: "Tilesheet_Fum\xE9e_N_94"
+  - first:
+      213: -1811955966179902346
+    second: "Tilesheet_Fum\xE9e_N_95"
+  - first:
+      213: 1678734213876866873
+    second: "Tilesheet_Fum\xE9e_N_96"
+  - first:
+      213: 6405912636586006866
+    second: "Tilesheet_Fum\xE9e_N_97"
+  - first:
+      213: 8290683249537674010
+    second: "Tilesheet_Fum\xE9e_N_98"
+  - first:
+      213: 3179976748242906956
+    second: "Tilesheet_Fum\xE9e_N_99"
+  - first:
+      213: -7849966731931226109
+    second: "Tilesheet_Fum\xE9e_N_100"
+  - first:
+      213: -2010332447599494466
+    second: "Tilesheet_Fum\xE9e_N_101"
+  - first:
+      213: 1308320819909537247
+    second: "Tilesheet_Fum\xE9e_N_102"
+  - first:
+      213: 1988499057182514011
+    second: "Tilesheet_Fum\xE9e_N_103"
+  - first:
+      213: -3191533497121555081
+    second: "Tilesheet_Fum\xE9e_N_104"
+  - first:
+      213: -903335363389248149
+    second: "Tilesheet_Fum\xE9e_N_105"
+  - first:
+      213: 1920636024542378739
+    second: "Tilesheet_Fum\xE9e_N_106"
+  - first:
+      213: -418682838646349493
+    second: "Tilesheet_Fum\xE9e_N_107"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0e8bd11297b3fe46955de1054e73aa5
+      internalID: -117650997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_1"
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e1d1196c71904547a431021a7c6be40
+      internalID: 2056736815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_2"
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a8126350f64f248bba621c8501654c
+      internalID: 744289915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_3"
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02576727224ce04c8a449723cdca7cc
+      internalID: 1028992119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_4"
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc661c4cf97595478b3009050a9ce60
+      internalID: -1263396462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_5"
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86d203e21919bcf44b9880d8974cc9ea
+      internalID: 1533566340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_6"
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1db6e80b27013a4d9222fa1c9a07b78
+      internalID: -1940859816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_7"
+      rect:
+        serializedVersion: 2
+        x: 2688
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f00d8faab305a8498a68d08c70f4160
+      internalID: 1090588924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_8"
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb04bd869d475a409cfa54d40657166
+      internalID: 1519380046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Tilesheet_Fum\xE9e_N_9"
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ad1a2712dad89468f95ad28003a439
+      internalID: 432002999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c21ddf46ba6110b4fa74ab30b8429b9a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "Tilesheet_Fum\xE9e_N_0": -117650997
+      "Tilesheet_Fum\xE9e_N_1": 2056736815
+      "Tilesheet_Fum\xE9e_N_2": 744289915
+      "Tilesheet_Fum\xE9e_N_3": 1028992119
+      "Tilesheet_Fum\xE9e_N_4": -1263396462
+      "Tilesheet_Fum\xE9e_N_5": 1533566340
+      "Tilesheet_Fum\xE9e_N_6": -1940859816
+      "Tilesheet_Fum\xE9e_N_7": 1090588924
+      "Tilesheet_Fum\xE9e_N_8": 1519380046
+      "Tilesheet_Fum\xE9e_N_9": 432002999
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
