@@ -27,6 +27,8 @@ public class GamepadCombatControl : MonoBehaviour
     private int[] actualPlacement = new int[2];
     private int horizontalSpeed;
     private int verticalSpeed;
+    public bool hasAttacked;
+    public bool hasMoved;
     
     
     private void Awake()
@@ -64,15 +66,26 @@ public class GamepadCombatControl : MonoBehaviour
             if (waitForRotation)
             {
                 combatManagerReference.FlipPlayerLeft(combatManagerReference.player);
+                hasMoved = true;
                 waitForRotation = false;
             }
             else if (waitForMove)
             {
-                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - horizontalSpeed, combatManagerReference.player.positionY);
-                waitForMove = false;
+                hasMoved = true;
+                if (combatManagerReference.player.direction == EntityInstance.dir.up)
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - horizontalSpeed, combatManagerReference.player.positionY);
+                    waitForMove = false;
+                }
+                else
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - 1, combatManagerReference.player.positionY);
+                    waitForMove = false;
+                }
             }
             else if (waitForAttack)
             {
+                hasAttacked = true;
                 Attack(combatManagerReference.player.positionX - 1,combatManagerReference.player.positionY);
                 waitForAttack = false;
                 ClearInformations();
@@ -91,16 +104,27 @@ public class GamepadCombatControl : MonoBehaviour
         {
             if (waitForRotation)
             {
+                hasMoved = true;
                 combatManagerReference.FlipPlayerRight(combatManagerReference.player);
                 waitForRotation = false;
             }
             else if (waitForMove)
             {
-                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + horizontalSpeed, combatManagerReference.player.positionY);
-                waitForMove = false;
+                hasMoved = true;
+                if (combatManagerReference.player.direction == EntityInstance.dir.up)
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + horizontalSpeed, combatManagerReference.player.positionY);
+                    waitForMove = false;
+                }
+                else
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + 1, combatManagerReference.player.positionY);
+                    waitForMove = false;
+                }
             }
             else if (waitForAttack)
             {
+                hasAttacked = true;
                 Attack(combatManagerReference.player.positionX + 1,combatManagerReference.player.positionY);
                 waitForAttack = false;
                 ClearInformations();
@@ -114,15 +138,25 @@ public class GamepadCombatControl : MonoBehaviour
             StartCoroutine(WaitBeforeNextSelection());
         }
         // bas
-        if (dpadY < -0.5f && canChangeSelection && !waitForRotation)
+        else if (dpadY < -0.5f && canChangeSelection && !waitForRotation)
         {
             if (waitForMove)
             {
-                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - verticalSpeed);
-                waitForMove = false;
+                hasMoved = true;
+                if (combatManagerReference.player.direction == EntityInstance.dir.up)
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - verticalSpeed);
+                    waitForMove = false;
+                }
+                else
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - 1);
+                    waitForMove = false;
+                }
             }
             else if (waitForAttack)
             {
+                hasAttacked = true;
                 Attack(combatManagerReference.player.positionX,combatManagerReference.player.positionY - 1);
                 waitForAttack = false;
                 ClearInformations();
@@ -140,11 +174,21 @@ public class GamepadCombatControl : MonoBehaviour
         {
             if (waitForMove)
             {
-                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + verticalSpeed);
-                waitForMove = false;
+                hasMoved = true;
+                if (combatManagerReference.player.direction == EntityInstance.dir.up)
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + verticalSpeed);
+                    waitForMove = false;
+                }
+                else
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + 1);
+                    waitForMove = false;
+                }
             }
             else if (waitForAttack)
             {
+                hasAttacked = true;
                 Attack(combatManagerReference.player.positionX,combatManagerReference.player.positionY + 1);
                 waitForAttack = false;
                 ClearInformations();
@@ -270,13 +314,13 @@ public class GamepadCombatControl : MonoBehaviour
 
     public void Rotation()
     {
-        
         waitForRotation = true;
         PlayerButtonUnactive();
     }
 
     public void Move()
     {
+        hasMoved = true;
         waitForMove = true;
         PlayerButtonUnactive();
     }

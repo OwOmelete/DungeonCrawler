@@ -22,6 +22,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] GameObject UiExplo;
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
+    [SerializeField] GamepadCombatControl gamepadCombatControl;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -127,6 +128,8 @@ public class CombatManager : MonoBehaviour
         
         if (playerEntity.actionPoint == 0)
         {
+            gamepadCombatControl.hasAttacked = false;
+            gamepadCombatControl.hasMoved = false;
             EndTurn();
             //player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
             Debug.Log("plus d'action point");

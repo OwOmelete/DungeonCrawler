@@ -4160,7 +4160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1457128049
 Transform:
   m_ObjectHideFlags: 0
@@ -5540,7 +5540,11 @@ MonoBehaviour:
   player: {fileID: 1015723164}
   combatScene: {fileID: 1457128048}
   combatManagerReference: {fileID: 2098524350}
-  UiExplo: {fileID: 584220611}
+  uiExplo: {fileID: 0}
+  animDuration: 2
+  dangerImage: {fileID: 0}
+  blackFade: {fileID: 0}
+  fadeDelay: 0.5
 --- !u!4 &1791731743
 Transform:
   m_ObjectHideFlags: 0
@@ -6068,6 +6072,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2098524349}
   - component: {fileID: 2098524350}
+  - component: {fileID: 2098524352}
+  - component: {fileID: 2098524351}
   m_Layer: 0
   m_Name: CombatManager
   m_TagString: Untagged
@@ -6116,6 +6122,45 @@ MonoBehaviour:
   UiExplo: {fileID: 584220611}
   lightManager: {fileID: 477168122}
   oxygenManager: {fileID: 477168124}
+  gamepadCombatControl: {fileID: 0}
+--- !u!114 &2098524351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098524348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d36c8c04dce371479b37655663a4793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstButton: {fileID: 0}
+--- !u!114 &2098524352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098524348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb4c7e622f653446a6966d98e1390fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatManagerReference: {fileID: 2098524350}
+  selectionParent: {fileID: 0}
+  waitTimeBeforeNextSelection: 0.2
+  tabHeight: 5
+  tabWidth: 6
+  fishName: {fileID: 0}
+  fishHp: {fileID: 0}
+  fishArmor: {fileID: 0}
+  menuActionsPlayer: {fileID: 0}
+  uiOffsetX: 1
+  uiOffsetY: 1
+  hasAttacked: 0
+  hasMoved: 0
 --- !u!1 &2103406153
 GameObject:
   m_ObjectHideFlags: 0
