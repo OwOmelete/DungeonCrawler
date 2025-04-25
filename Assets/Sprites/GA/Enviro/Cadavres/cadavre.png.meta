@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cadavre_0: -5614143837054019015
+      cadavre_1: 5898176821954709181
+      cadavre_2: -7055930964687703769
+      cadavre_3: 1225475702687016162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

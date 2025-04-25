@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cadavre_plante2_0: -8946918842157196355
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
