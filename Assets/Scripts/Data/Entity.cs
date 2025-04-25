@@ -12,7 +12,7 @@ public abstract class Entity : ScriptableObject
     public int hp;
     public int armor;
     public int actionPoint;
-    /*public enum dir
+    public enum dir
     {
         up,
         down,
@@ -20,7 +20,7 @@ public abstract class Entity : ScriptableObject
         right
     }
 
-    public dir startingdDirection;*/
+    public dir startingDirection;
 
     public GameObject prefab;
 
@@ -38,13 +38,19 @@ public abstract class Entity : ScriptableObject
 
 public class EntityInstance
 {
-    public string name;
-    public int width;
-    public int height;
-    public int positionX;
-    public int positionY;
+    [Header("Pour nos merveilleux gds")]
     public int hp;
     public int armor;
+    public string name;
+    public int positionX;
+    public int positionY;
+    
+    [Header("UNIQUEMENT POUR BROTULO")]
+    public dir direction;
+    
+    [Header("Pas touche")]
+    public int width;
+    public int height;
     public GameObject prefab;
     public List<AttackData> attackList;
     public List<WeakPointData> weakPointList;
@@ -63,8 +69,7 @@ public class EntityInstance
         right
     }
 
-    public dir direction;
-    //public Entity.dir startingDirection;
+    
 
     public EntityInstance(Entity data)
     {
@@ -80,7 +85,6 @@ public class EntityInstance
         weakPointList = data.weakPointList;
         actionPoint = data.actionPoint;
         initialActionPoint = data.actionPoint;
-        //startingDirection = data.startingdDirection;
     }
     
     public void TakeDamage(int dmg)

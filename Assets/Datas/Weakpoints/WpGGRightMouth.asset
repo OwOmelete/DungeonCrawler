@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c258416dc2bc9454eb06deacaf803bf5, type: 3}
   m_Name: WpGGRightMouth
   m_EditorClassIdentifier: 
+  damageMulti: 1000
   posX: 1
   posY: 0
   direction: 4
-  damageMulti: 2

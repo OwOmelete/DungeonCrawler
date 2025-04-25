@@ -611,8 +611,6 @@ public class CombatManager : MonoBehaviour
                 for (int j = 0; j < fish.fishData.width; j++)
                 {
                     grid[fish.fishData.positionY + i,fish.fishData.positionX + j] = fish.fishDataInstance;
-                    fish.fishDataInstance.entityChild = fish.fishDataInstance.prefab.transform.GetChild(0);
-                    fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
                     Debug.Log(fish.fishDataInstance.name);
                     Debug.Log(fish.fishDataInstance.direction);
                 }
@@ -620,27 +618,30 @@ public class CombatManager : MonoBehaviour
             fish.fishDataInstance.prefab = Instantiate(fish.fishData.prefab,
                 new Vector3(fish.fishData.positionX,
                     fish.fishData.positionY, 0),quaternion.identity);
-            /*if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
+            fish.fishDataInstance.entityChild = fish.fishDataInstance.prefab.transform.GetChild(0);
+            fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
+            if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
-                switch (fish.fishDataInstance.startingDirection)
+                Debug.Log(fish.fishData.startingDirection);
+                switch (fish.fishData.startingDirection)
                 {
                     case Entity.dir.up:
                         break;
                     case Entity.dir.down:
                         IAref.TurnRight(fish.fishDataInstance, true);
-                        IAref.TurnRight(fish.fishDataInstance);
+                        IAref.TurnRight(fish.fishDataInstance, true);
                         break;
                     case Entity.dir.left:
-                        IAref.TurnLeft(fish.fishDataInstance);
+                        IAref.TurnLeft(fish.fishDataInstance, true);
                         break;
                     case Entity.dir.right:
-                        IAref.TurnRight(fish.fishDataInstance);
+                        IAref.TurnRight(fish.fishDataInstance, true);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-            }*/
+            }
         }
     }
 

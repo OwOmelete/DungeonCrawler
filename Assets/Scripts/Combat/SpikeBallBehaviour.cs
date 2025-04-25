@@ -347,36 +347,36 @@ public class SpikeBallBehaviour : AbstractIA
         }
     }
     public void TurnRight(FishDataInstance entity)
+    {
+        switch (entity.direction)
         {
-            switch (entity.direction)
-            {
-                case EntityInstance.dir.up:
-                    entity.direction = EntityInstance.dir.right;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsRight[0]);
-                    break;
-                case EntityInstance.dir.down:
-                    entity.direction = EntityInstance.dir.left;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsLeft[0]);
-                    break;
-                case EntityInstance.dir.left:
-                    entity.direction = EntityInstance.dir.up;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsUp[0]);
-                    break;
-                case EntityInstance.dir.right:
-                    entity.direction = EntityInstance.dir.down;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsDown[0]);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z - 90), 0.5f)
-                .SetEase(Ease.InOutCubic);
+            case EntityInstance.dir.up:
+                entity.direction = EntityInstance.dir.right;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsRight[0]);
+                break;
+            case EntityInstance.dir.down:
+                entity.direction = EntityInstance.dir.left;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsLeft[0]);
+                break;
+            case EntityInstance.dir.left:
+                entity.direction = EntityInstance.dir.up;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsUp[0]);
+                break;
+            case EntityInstance.dir.right:
+                entity.direction = EntityInstance.dir.down;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsDown[0]);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+
+        entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z - 90), 0.5f)
+            .SetEase(Ease.InOutCubic);
+    }
     
     public void TurnRight(FishDataInstance entity, bool ui)
     {
@@ -409,37 +409,68 @@ public class SpikeBallBehaviour : AbstractIA
     }
     
 
-        public void TurnLeft(FishDataInstance entity)
+    public void TurnLeft(FishDataInstance entity)
+    {
+        Debug.Log("turningleft");
+        switch (entity.direction)
         {
-            Debug.Log("turningleft");
-            switch (entity.direction)
-            {
-                case EntityInstance.dir.up:
-                    entity.direction = EntityInstance.dir.left;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsLeft[0]);
-                    break;
-                case EntityInstance.dir.down:
-                    entity.direction = EntityInstance.dir.right;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsRight[0]);
-                    break;
-                case EntityInstance.dir.left:
-                    entity.direction = EntityInstance.dir.down;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsDown[0]);
-                    break;
-                case EntityInstance.dir.right:
-                    entity.direction = EntityInstance.dir.up;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsUp[0]);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            Debug.Log(entity.direction);
-
-            entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z + 90), 0.5f)
-                .SetEase(Ease.InOutCubic);
+            case EntityInstance.dir.up:
+                entity.direction = EntityInstance.dir.left;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsLeft[0]);
+                break;
+            case EntityInstance.dir.down:
+                entity.direction = EntityInstance.dir.right;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsRight[0]);
+                break;
+            case EntityInstance.dir.left:
+                entity.direction = EntityInstance.dir.down;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsDown[0]);
+                break;
+            case EntityInstance.dir.right:
+                entity.direction = EntityInstance.dir.up;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsUp[0]);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+
+        entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z + 90), 0.5f)
+            .SetEase(Ease.InOutCubic);
+    }
+    
+    public void TurnLeft(FishDataInstance entity,bool ui)
+    {
+        Debug.Log("turningleft");
+        switch (entity.direction)
+        {
+            case EntityInstance.dir.up:
+                entity.direction = EntityInstance.dir.left;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsLeft[0]);
+                break;
+            case EntityInstance.dir.down:
+                entity.direction = EntityInstance.dir.right;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsRight[0]);
+                break;
+            case EntityInstance.dir.left:
+                entity.direction = EntityInstance.dir.down;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsDown[0]);
+                break;
+            case EntityInstance.dir.right:
+                entity.direction = EntityInstance.dir.up;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsUp[0]);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        entity.entityChild.transform.rotation = Quaternion.Euler(0, 0, entity.entityChild.localEulerAngles.z + 90);
+    }
 }
