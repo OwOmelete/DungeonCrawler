@@ -7,7 +7,7 @@ public class MenuSelector : MonoBehaviour
 
     void Awake()
     {
-        EventSystem.current.SetSelectedGameObject(null); // reset
+        EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstButton);
     }
 }
