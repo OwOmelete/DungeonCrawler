@@ -13,6 +13,7 @@ public class SpikeInstance : EntityInstance
 {
     public int dirX;
     public int dirY;
+    public EntityInstance entity;
     public SpikeInstance(SpikeData data) : base(data)
     {
         

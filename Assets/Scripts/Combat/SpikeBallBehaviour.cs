@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SpikeBallBehaviour : AbstractIA
 {
     [SerializeField] SpikeData _spikeData;
-    private List<SpikeInstance> spikeList = new List<SpikeInstance>();
-    private List<int> spikeIndexSupr = new List<int>();
-
+    
     public override void ManageTurn(FishDataInstance entity)
     {
         if (entity.FirstCycle)
@@ -16,52 +15,48 @@ public class SpikeBallBehaviour : AbstractIA
             entity.FirstCycle = false;
             entity.HasAttacked = true;
             entity.entityChild = entity.prefab.transform.GetChild(0);
-            spikeIndexSupr.Clear();
-            spikeList.Clear();
+            entity.spikeIndexSupr.Clear();
+            entity.spikeList.Clear();
         }
         
-        Debug.Log(entity.direction);
-        for (int i = 0; i < spikeList.Count; i++)
+        for (int i = 0; i < entity.spikeList.Count; i++)
         {
-            CombatManager.Instance.grid[spikeList[i].positionY, spikeList[i].positionX] = null;
-            if (spikeList[i].positionY + spikeList[i].dirY < 0 ||
-                spikeList[i].positionY + spikeList[i].dirY > CombatManager.Instance.grid.GetLength(0) - 1 ||
-                spikeList[i].positionX + spikeList[i].dirX < 0 ||
-                spikeList[i].positionX + spikeList[i].dirX > CombatManager.Instance.grid.GetLength(1) - 1)
+            CombatManager.Instance.grid[entity.spikeList[i].positionY, entity.spikeList[i].positionX] = null;
+            if (entity.spikeList[i].positionY + entity.spikeList[i].dirY < 0 ||
+                entity.spikeList[i].positionY + entity.spikeList[i].dirY > CombatManager.Instance.grid.GetLength(0) - 1 ||
+                entity.spikeList[i].positionX + entity.spikeList[i].dirX < 0 ||
+                entity.spikeList[i].positionX + entity.spikeList[i].dirX > CombatManager.Instance.grid.GetLength(1) - 1)
             {
-                spikeIndexSupr.Add(i);
-                Debug.Log("objet à supprimer: "+i);
+                entity.spikeIndexSupr.Add(i);
             }
             else
             {
                 EntityInstance newPos =
-                    CombatManager.Instance.grid[spikeList[i].positionY + spikeList[i].dirY, spikeList[i].positionX + spikeList[i].dirX];
+                    CombatManager.Instance.grid[entity.spikeList[i].positionY + entity.spikeList[i].dirY, entity.spikeList[i].positionX + entity.spikeList[i].dirX];
                 if (newPos != null && newPos is not SpikeInstance)
                 {
-                    spikeIndexSupr.Add(i);
-                    CombatManager.Instance.Damage(newPos, spikeList[i].hp);
+                    entity.spikeIndexSupr.Add(i);
+                    CombatManager.Instance.Damage(newPos, entity.spikeList[i].hp);
                 }
                 else
                 {
-                    CombatManager.Instance.grid[spikeList[i].positionY + spikeList[i].dirY, spikeList[i].positionX + spikeList[i].dirX] = spikeList[i];
-                    spikeList[i].prefab.transform.DOMove(new Vector3
-                        (spikeList[i].positionX + spikeList[i].dirX, spikeList[i].positionY + spikeList[i].dirY, 0), 0.5f).SetEase(Ease.InOutCubic);
-                    spikeList[i].positionX += spikeList[i].dirX;
-                    spikeList[i].positionY += spikeList[i].dirY;
+                    CombatManager.Instance.grid[entity.spikeList[i].positionY + entity.spikeList[i].dirY, entity.spikeList[i].positionX + entity.spikeList[i].dirX] = entity.spikeList[i];
+                    entity.spikeList[i].prefab.transform.DOMove(new Vector3
+                        (entity.spikeList[i].positionX + entity.spikeList[i].dirX, entity.spikeList[i].positionY + entity.spikeList[i].dirY, 0), 0.5f).SetEase(Ease.InOutCubic);
+                    entity.spikeList[i].positionX += entity.spikeList[i].dirX;
+                    entity.spikeList[i].positionY += entity.spikeList[i].dirY;
                 }
             }
         }
-        Debug.Log("on essaie de supprimer. count= "+ spikeIndexSupr.Count);
-        for (int i = spikeIndexSupr.Count; i > 0; i--)
+        for (int i = entity.spikeIndexSupr.Count; i > 0; i--)
         {
-            Debug.Log("objet supprimé: "+i+" / "+spikeIndexSupr.Count);
-            Destroy(spikeList[spikeIndexSupr[i-1]].prefab);
-            CombatManager.Instance.grid[spikeList[spikeIndexSupr[i - 1]].positionY,
-                spikeList[spikeIndexSupr[i - 1]].positionX] = null;
-            spikeList.Remove(spikeList[spikeIndexSupr[i-1]]);
+            Destroy(entity.spikeList[entity.spikeIndexSupr[i-1]].prefab);
+            CombatManager.Instance.grid[entity.spikeList[entity.spikeIndexSupr[i - 1]].positionY,
+                entity.spikeList[entity.spikeIndexSupr[i - 1]].positionX] = null;
+            entity.spikeList.Remove(entity.spikeList[entity.spikeIndexSupr[i-1]]);
           //  Debug.Log("objet supprimé: "+i+" / "+spikeIndexSupr.Count);
         }
-        spikeIndexSupr.Clear();
+        entity.spikeIndexSupr.Clear();
 
         if (entity.PreparingAttack)
         {
@@ -219,7 +214,6 @@ public class SpikeBallBehaviour : AbstractIA
 
         void FullPlayerDetected(FishDataInstance entity)
         {
-            Debug.Log("fullDetect");
             entity.PreparingAttack = true;
         }
 
@@ -286,9 +280,10 @@ public class SpikeBallBehaviour : AbstractIA
             else
             {
                 SpikeInstance spike = new SpikeInstance(_spikeData);
-                spikeList.Add(spike);
+                entity.spikeList.Add(spike);
                 spike.dirX = dirX;
                 spike.dirY = dirY;
+                spike.entity = entity;
                 spike.positionY = entity.positionY + dirY;
                 spike.positionX = entity.positionX + dirX;
                 CombatManager.Instance.grid[spike.positionY, spike.positionX] = spike;
@@ -315,73 +310,6 @@ public class SpikeBallBehaviour : AbstractIA
                 spike.entityChild = spike.prefab.transform.GetChild(0);
                 spike.entityChild.transform.rotation = Quaternion.Euler(0,0,rotation);
             }
-        }
-
-        void TurnRight(FishDataInstance entity)
-        {
-            Debug.Log("turnRight");
-            switch (entity.direction)
-            {
-                case EntityInstance.dir.up:
-                    entity.direction = EntityInstance.dir.right;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsRight[0]);
-                    break;
-                case EntityInstance.dir.down:
-                    entity.direction = EntityInstance.dir.left;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsLeft[0]);
-                    break;
-                case EntityInstance.dir.left:
-                    entity.direction = EntityInstance.dir.up;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsUp[0]);
-                    break;
-                case EntityInstance.dir.right:
-                    entity.direction = EntityInstance.dir.down;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsDown[0]);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z - 90), 0.5f)
-                .SetEase(Ease.InOutCubic);
-        }
-
-        void TurnLeft(FishDataInstance entity)
-        {
-            Debug.Log("turnLeft");
-
-            switch (entity.direction)
-            {
-                case EntityInstance.dir.up:
-                    entity.direction = EntityInstance.dir.left;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsLeft[0]);
-                    break;
-                case EntityInstance.dir.down:
-                    entity.direction = EntityInstance.dir.right;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsRight[0]);
-                    break;
-                case EntityInstance.dir.left:
-                    entity.direction = EntityInstance.dir.down;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsDown[0]);
-                    break;
-                case EntityInstance.dir.right:
-                    entity.direction = EntityInstance.dir.up;
-                    entity.weakPointList.Clear();
-                    entity.weakPointList.Add(entity.WeakPointsUp[0]);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z + 90), 0.5f)
-                .SetEase(Ease.InOutCubic);
         }
 
         int SecondaryPlayerCoordsX()
@@ -418,4 +346,100 @@ public class SpikeBallBehaviour : AbstractIA
             }
         }
     }
+    public void TurnRight(FishDataInstance entity)
+        {
+            switch (entity.direction)
+            {
+                case EntityInstance.dir.up:
+                    entity.direction = EntityInstance.dir.right;
+                    entity.weakPointList.Clear();
+                    entity.weakPointList.Add(entity.WeakPointsRight[0]);
+                    break;
+                case EntityInstance.dir.down:
+                    entity.direction = EntityInstance.dir.left;
+                    entity.weakPointList.Clear();
+                    entity.weakPointList.Add(entity.WeakPointsLeft[0]);
+                    break;
+                case EntityInstance.dir.left:
+                    entity.direction = EntityInstance.dir.up;
+                    entity.weakPointList.Clear();
+                    entity.weakPointList.Add(entity.WeakPointsUp[0]);
+                    break;
+                case EntityInstance.dir.right:
+                    entity.direction = EntityInstance.dir.down;
+                    entity.weakPointList.Clear();
+                    entity.weakPointList.Add(entity.WeakPointsDown[0]);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z - 90), 0.5f)
+                .SetEase(Ease.InOutCubic);
+        }
+    
+    public void TurnRight(FishDataInstance entity, bool ui)
+    {
+        switch (entity.direction)
+        {
+            case EntityInstance.dir.up:
+                entity.direction = EntityInstance.dir.right;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsRight[0]);
+                break;
+            case EntityInstance.dir.down:
+                entity.direction = EntityInstance.dir.left;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsLeft[0]);
+                break;
+            case EntityInstance.dir.left:
+                entity.direction = EntityInstance.dir.up;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsUp[0]);
+                break;
+            case EntityInstance.dir.right:
+                entity.direction = EntityInstance.dir.down;
+                entity.weakPointList.Clear();
+                entity.weakPointList.Add(entity.WeakPointsDown[0]);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        entity.entityChild.transform.rotation = Quaternion.Euler(0, 0, entity.entityChild.localEulerAngles.z - 90);
+    }
+    
+
+        public void TurnLeft(FishDataInstance entity)
+        {
+            Debug.Log("turningleft");
+            switch (entity.direction)
+            {
+                case EntityInstance.dir.up:
+                    entity.direction = EntityInstance.dir.left;
+                    entity.weakPointList.Clear();
+                    entity.weakPointList.Add(entity.WeakPointsLeft[0]);
+                    break;
+                case EntityInstance.dir.down:
+                    entity.direction = EntityInstance.dir.right;
+                    entity.weakPointList.Clear();
+                    entity.weakPointList.Add(entity.WeakPointsRight[0]);
+                    break;
+                case EntityInstance.dir.left:
+                    entity.direction = EntityInstance.dir.down;
+                    entity.weakPointList.Clear();
+                    entity.weakPointList.Add(entity.WeakPointsDown[0]);
+                    break;
+                case EntityInstance.dir.right:
+                    entity.direction = EntityInstance.dir.up;
+                    entity.weakPointList.Clear();
+                    entity.weakPointList.Add(entity.WeakPointsUp[0]);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            Debug.Log(entity.direction);
+
+            entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z + 90), 0.5f)
+                .SetEase(Ease.InOutCubic);
+        }
 }

@@ -12,6 +12,15 @@ public abstract class Entity : ScriptableObject
     public int hp;
     public int armor;
     public int actionPoint;
+    /*public enum dir
+    {
+        up,
+        down,
+        left,
+        right
+    }
+
+    public dir startingdDirection;*/
 
     public GameObject prefab;
 
@@ -44,6 +53,8 @@ public class EntityInstance
     public bool isStanding = true;
     public Transform entityChild;
     public AbstractIA behaviour;
+    public List<SpikeInstance> spikeList = new List<SpikeInstance>();
+    public List<int> spikeIndexSupr = new List<int>();
     public enum dir
     {
         up,
@@ -53,6 +64,7 @@ public class EntityInstance
     }
 
     public dir direction;
+    //public Entity.dir startingDirection;
 
     public EntityInstance(Entity data)
     {
@@ -68,7 +80,7 @@ public class EntityInstance
         weakPointList = data.weakPointList;
         actionPoint = data.actionPoint;
         initialActionPoint = data.actionPoint;
-        
+        //startingDirection = data.startingdDirection;
     }
     
     public void TakeDamage(int dmg)

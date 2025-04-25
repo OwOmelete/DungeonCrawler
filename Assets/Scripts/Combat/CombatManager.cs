@@ -131,6 +131,9 @@ public class CombatManager : MonoBehaviour
         {
             hasAttacked = false;
             hasMoved = false;
+            player.light -= lightLostPerTurn;
+            Debug.Log("player oxygen : " +player.oxygen);
+            Debug.Log("player light : " + player.light);
             EndTurn();
             //player.oxygen -= player.RespirationDatas[player.respirationIndex].oxygenLoss;
             Debug.Log("plus d'action point");
@@ -198,6 +201,7 @@ public class CombatManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             player.booster = !player.booster;
+            Debug.Log("booster = " + player.booster);
             actionPointLost = 0;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && !hasAttacked && !hasMoved)
@@ -307,7 +311,6 @@ public class CombatManager : MonoBehaviour
         }
         #endregion
         playerEntity.actionPoint -= actionPointLost;
-        Debug.Log("points d'action restants : " + playerEntity.actionPoint);
     }
 
     public void FlipPlayerRight(EntityInstance entity)
@@ -440,8 +443,10 @@ public class CombatManager : MonoBehaviour
             case EntityInstance.dir.up:
                 if (grid[entity.positionY + 1, entity.positionX] is SpikeInstance)
                 {
-                    Damage(entity,grid[entity.positionY + 1, entity.positionX].hp);
-                    Destroy(grid[entity.positionY + 1, entity.positionX].prefab);
+                    SpikeInstance spike = grid[entity.positionY + 1, entity.positionX] as SpikeInstance;
+                    Damage(entity,spike.hp);
+                    spike.entity.spikeList.Remove(spike);
+                    Destroy(spike.prefab);
                 }
                 grid[entity.positionY + 1, entity.positionX] = player;
                 entity.height = entity.width;
@@ -451,8 +456,10 @@ public class CombatManager : MonoBehaviour
             case EntityInstance.dir.down:
                 if (grid[entity.positionY - 1, entity.positionX] is SpikeInstance)
                 {
-                    Damage(entity,grid[entity.positionY - 1, entity.positionX].hp);
-                    Destroy(grid[entity.positionY - 1, entity.positionX].prefab);
+                    SpikeInstance spike = grid[entity.positionY - 1, entity.positionX] as SpikeInstance;
+                    Damage(entity,spike.hp);
+                    spike.entity.spikeList.Remove(spike);
+                    Destroy(spike.prefab);
                 }
                 grid[entity.positionY - 1, entity.positionX] = player;
                 entity.height = entity.width;
@@ -462,8 +469,10 @@ public class CombatManager : MonoBehaviour
             case EntityInstance.dir.left:
                 if (grid[entity.positionY, entity.positionX - 1] is SpikeInstance)
                 {
-                    Damage(entity,grid[entity.positionY, entity.positionX - 1].hp);
-                    Destroy(grid[entity.positionY, entity.positionX - 1].prefab);
+                    SpikeInstance spike = grid[entity.positionY, entity.positionX - 1] as SpikeInstance;
+                    Damage(entity,spike.hp);
+                    spike.entity.spikeList.Remove(spike);
+                    Destroy(spike.prefab);
                 }
                 grid[entity.positionY, entity.positionX - 1] = player;
                 entity.height = entity.width;
@@ -473,8 +482,10 @@ public class CombatManager : MonoBehaviour
             case EntityInstance.dir.right:
                 if (grid[entity.positionY, entity.positionX + 1] is SpikeInstance)
                 {
-                    Damage(entity,grid[entity.positionY, entity.positionX + 1].hp);
-                    Destroy(grid[entity.positionY, entity.positionX + 1].prefab);
+                    SpikeInstance spike = grid[entity.positionY, entity.positionX + 1] as SpikeInstance;
+                    Damage(entity,spike.hp);
+                    spike.entity.spikeList.Remove(spike);
+                    Destroy(spike.prefab);
                 }
                 grid[entity.positionY, entity.positionX + 1] = player;
                 entity.height = entity.width;
@@ -574,7 +585,6 @@ public class CombatManager : MonoBehaviour
                 new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
-        Debug.Log(player.entityChild);
         turnOrder.Add(player);
         foreach (var fish in _fishDatas)
         {
@@ -603,11 +613,34 @@ public class CombatManager : MonoBehaviour
                     grid[fish.fishData.positionY + i,fish.fishData.positionX + j] = fish.fishDataInstance;
                     fish.fishDataInstance.entityChild = fish.fishDataInstance.prefab.transform.GetChild(0);
                     fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
+                    Debug.Log(fish.fishDataInstance.name);
+                    Debug.Log(fish.fishDataInstance.direction);
                 }
             }
             fish.fishDataInstance.prefab = Instantiate(fish.fishData.prefab,
                 new Vector3(fish.fishData.positionX,
                     fish.fishData.positionY, 0),quaternion.identity);
+            /*if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
+            {
+                SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
+                switch (fish.fishDataInstance.startingDirection)
+                {
+                    case Entity.dir.up:
+                        break;
+                    case Entity.dir.down:
+                        IAref.TurnRight(fish.fishDataInstance, true);
+                        IAref.TurnRight(fish.fishDataInstance);
+                        break;
+                    case Entity.dir.left:
+                        IAref.TurnLeft(fish.fishDataInstance);
+                        break;
+                    case Entity.dir.right:
+                        IAref.TurnRight(fish.fishDataInstance);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }*/
         }
     }
 
@@ -621,7 +654,6 @@ public class CombatManager : MonoBehaviour
         { 
             return;
         }
-        Debug.Log("updating grid");
         UpdateGrid(entity, posX, posY);
         entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
         entity.positionX = posX;
@@ -662,8 +694,10 @@ public class CombatManager : MonoBehaviour
                 {
                     if (grid[posY + i, posX + j] is SpikeInstance)
                     {
-                        Damage(entity,grid[posY + i, posX + j].hp);
-                        Destroy(grid[posY + i, posX + j].prefab);
+                        SpikeInstance spike = grid[posY + i, posX + j] as SpikeInstance;
+                        Damage(entity,spike.hp);
+                        spike.entity.spikeList.Remove(spike);
+                        Destroy(spike.prefab);
                     }
                     grid[posY + i,posX + j] = entity;
                 }
@@ -671,8 +705,10 @@ public class CombatManager : MonoBehaviour
                 {
                     if (grid[posY + i, posX + j] is SpikeInstance)
                     {
-                        Damage(entity,grid[posY + i, posX + j].hp);
-                        Destroy(grid[posY + i, posX + j].prefab);
+                        SpikeInstance spike = grid[posY + i, posX + j] as SpikeInstance;
+                        Damage(entity,spike.hp);
+                        spike.entity.spikeList.Remove(spike);
+                        Destroy(spike.prefab);
                     }
                     grid[posY + i,posX + j] = entity;
                 }
@@ -680,8 +716,10 @@ public class CombatManager : MonoBehaviour
                 {
                     if (grid[posY - i, posX - j] is SpikeInstance)
                     {
-                        Damage(entity,grid[posY - i, posX - j].hp);
-                        Destroy(grid[posY - i, posX - j].prefab);
+                        SpikeInstance spike = grid[posY - i, posX - j] as SpikeInstance;
+                        Damage(entity,spike.hp);
+                        spike.entity.spikeList.Remove(spike);
+                        Destroy(spike.prefab);
                     }
                     grid[posY - i,posX - j] = entity;
                 }
@@ -689,8 +727,10 @@ public class CombatManager : MonoBehaviour
                 {
                     if (grid[posY - i, posX - j] is SpikeInstance)
                     {
-                        Damage(entity,grid[posY - i, posX - j].hp);
-                        Destroy(grid[posY - i, posX - j].prefab);
+                        SpikeInstance spike = grid[posY - i, posX - j] as SpikeInstance;
+                        Damage(entity,spike.hp);
+                        spike.entity.spikeList.Remove(spike);
+                        Destroy(spike.prefab);
                     }
                     grid[posY - i,posX - j] = entity;
                 }
@@ -782,7 +822,6 @@ public class CombatManager : MonoBehaviour
             EntityInstance tile = GetAttackTile(entity, dirY, dirX, i, attack);
             if (tile != null && tile != entity && tile != lastEnnemyTouched && tile is not SpikeInstance)
             {
-                Debug.Log(tile);
                 Debug.Log("touché");
                 int dmg = attack.Damage;
                 float r = Random.Range(0, 100);
@@ -818,6 +857,7 @@ public class CombatManager : MonoBehaviour
     {
         foreach (var weakPoint in attackedEntity.weakPointList)
         {
+            Debug.Log(weakPoint);
             if (x == attackedEntity.positionX + weakPoint.posX && y == attackedEntity.positionY + weakPoint.posY)
             {
                 if (weakPoint.direction == WeakPointData.dir.any)
@@ -870,8 +910,6 @@ public class CombatManager : MonoBehaviour
         {
             return null;
         }
-        Debug.Log(attackCordsX);
-        Debug.Log(attackCordsY);
         return grid[attackCordsY,attackCordsX];
     }
     

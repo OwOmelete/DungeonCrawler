@@ -17,6 +17,6 @@ MonoBehaviour:
   Yoffset: 1
   Xoffset: 0
   actionCost: 1
-  critChance: 0.2
+  critChance: 0
   critMultiplier: 2
   precision: 1

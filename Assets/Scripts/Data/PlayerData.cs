@@ -10,6 +10,7 @@ public class PlayerData : Entity
     public float oxygenLostMove2Tiles;
     public float oxygenLostRotate;
     public float oxygenLostAttack;
+    public float lightLostPerTurn;
     public List<RespirationData> RespirationDatas = new List<RespirationData>();
     public override EntityInstance Instance()
     {
@@ -29,6 +30,7 @@ public class PlayerDataInstance : EntityInstance
     public float oxygenLostMove2Tiles;
     public float oxygenLostRotate;
     public float oxygenLostAttack;
+    public float lightLostPerTurn;
     public PlayerDataInstance(PlayerData data) : base(data)
     {
         light = data.ligth;
@@ -39,5 +41,6 @@ public class PlayerDataInstance : EntityInstance
         oxygenLostMove = data.oxygenLostMove;
         oxygenLostMove2Tiles = data.oxygenLostMove2Tiles;
         oxygenLostRotate = data.oxygenLostRotate;
+        lightLostPerTurn = data.lightLostPerTurn;
     }
 }

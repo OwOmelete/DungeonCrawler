@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageMultiplier: 1
   oxygenLoss: 5
-  actionPoints: 999
+  actionPoints: 1

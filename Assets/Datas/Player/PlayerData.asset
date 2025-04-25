@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50dee76d9f295d14fbd43ffd6a0cafef, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  name: 
   width: 1
   height: 2
   positionX: 0
   positionY: 0
   hp: 10
   armor: 0
-  actionPoint: 999
+  actionPoint: 1
   prefab: {fileID: 8827070973172318893, guid: 7025b064c33fc554f9273625bbd41d0d, type: 3}
   attackList:
   - {fileID: 11400000, guid: 2a095878a8aa8c046834562cff23d986, type: 2}
@@ -26,6 +27,10 @@ MonoBehaviour:
   weakPointList: []
   ligth: 0
   oxygen: 0
+  oxygenLostMove: 0
+  oxygenLostMove2Tiles: 0
+  oxygenLostRotate: 0
+  oxygenLostAttack: 0
   RespirationDatas:
   - {fileID: 11400000, guid: 1e05344a589534e48b2fb1935b6c071f, type: 2}
   - {fileID: 11400000, guid: a222e3ee6961bc44ea7d7444d330e76c, type: 2}

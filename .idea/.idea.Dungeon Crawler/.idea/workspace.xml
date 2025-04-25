@@ -131,6 +131,7 @@
       <workItem from="1745396025884" duration="4355000" />
       <workItem from="1745413191097" duration="10062000" />
       <workItem from="1745483052979" duration="8794000" />
+      <workItem from="1745596953008" duration="3993000" />
     </task>
     <servers />
   </component>
@@ -146,24 +147,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Combat/GrandGouzBehaviour.cs</url>
-          <line>8</line>
-          <properties documentPath="C:\Users\n.levy\Desktop\Unity Projects\Dungeon Crawler\Assets\Scripts\Combat\GrandGouzBehaviour.cs" containingFunctionPresentation="Method 'ManageTurn'">
-            <startOffsets>
-              <option value="182" />
-            </startOffsets>
-            <endOffsets>
-              <option value="183" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
