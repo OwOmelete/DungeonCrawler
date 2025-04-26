@@ -642,6 +642,17 @@ public class CombatManager : MonoBehaviour
                         throw new ArgumentOutOfRangeException();
                 }
             }
+
+            if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
+            {
+                fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
+                GrandGouzBehaviour IAref = fish.fishDataInstance.behaviour as GrandGouzBehaviour;
+                Debug.Log(fish.fishData.startingDirection);
+                if (fish.fishData.startingDirection == Entity.dir.left)
+                {
+                    IAref.Flipping(fish.fishDataInstance);
+                }
+            }
         }
     }
 

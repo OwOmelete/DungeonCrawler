@@ -9,9 +9,7 @@ public class GrandGouzBehaviour : AbstractIA
     {
         if (entity.FirstCycle)
         {
-            entity.sr = entity.prefab.GetComponentInChildren<SpriteRenderer>();
             entity.PreparingAttack = false;
-            entity.Flipped = false;
             entity.FirstCycle = false;
         }
         entity.HasAttacked = false;
@@ -160,44 +158,9 @@ public class GrandGouzBehaviour : AbstractIA
             }
         }
 
-        void UpdateWeakPoints(FishDataInstance entity)
-        {
-            entity.weakPointList.Clear();
-            if (!entity.Flipped)
-            {
-                if (entity.PreparingAttack)
-                {
-                    entity.weakPointList.Add(entity.WeakPointsRight[0]);
-                }
-                else
-                {
-                    entity.weakPointList.Add(entity.WeakPointsRight[1]);
-                    entity.weakPointList.Add(entity.WeakPointsRight[2]);
-                }
-            }
-            else
-            {
-                Debug.Log("weakpoint flip");
-                if (entity.PreparingAttack)
-                {
-                    Debug.Log("weakpoint flip mouth");
-                    entity.weakPointList.Add(entity.WeakPointsLeft[0]);
-                }
-                else
-                {
-                    entity.weakPointList.Add(entity.WeakPointsLeft[1]);
-                    entity.weakPointList.Add(entity.WeakPointsLeft[2]);
-                }
-            }
-        }
+        
 
-        void Flipping(FishDataInstance entity)
-        {
-            entity.sr.flipX = !entity.sr.flipX;
-            entity.Flipped = !entity.Flipped;
-            Debug.Log("flip" + entity.Flipped);
-            UpdateWeakPoints(entity);
-        }
+        
 
         void Attack(FishDataInstance entity)
         {
@@ -252,6 +215,43 @@ public class GrandGouzBehaviour : AbstractIA
                     return CombatManager.Instance.player.positionY;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
+    public void Flipping(FishDataInstance entity)
+    {
+        entity.sr.flipX = !entity.sr.flipX;
+        entity.Flipped = !entity.Flipped;
+        Debug.Log("flip" + entity.Flipped);
+        UpdateWeakPoints(entity);
+    }
+    void UpdateWeakPoints(FishDataInstance entity)
+    {
+        entity.weakPointList.Clear();
+        if (!entity.Flipped)
+        {
+            if (entity.PreparingAttack)
+            {
+                entity.weakPointList.Add(entity.WeakPointsRight[0]);
+            }
+            else
+            {
+                entity.weakPointList.Add(entity.WeakPointsRight[1]);
+                entity.weakPointList.Add(entity.WeakPointsRight[2]);
+            }
+        }
+        else
+        {
+            Debug.Log("weakpoint flip");
+            if (entity.PreparingAttack)
+            {
+                Debug.Log("weakpoint flip mouth");
+                entity.weakPointList.Add(entity.WeakPointsLeft[0]);
+            }
+            else
+            {
+                entity.weakPointList.Add(entity.WeakPointsLeft[1]);
+                entity.weakPointList.Add(entity.WeakPointsLeft[2]);
             }
         }
     }
