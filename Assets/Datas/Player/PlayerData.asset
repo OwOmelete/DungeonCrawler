@@ -17,7 +17,7 @@ MonoBehaviour:
   height: 2
   positionX: 0
   positionY: 0
-  hp: 10
+  hp: 4
   armor: 0
   actionPoint: 1
   prefab: {fileID: 8827070973172318893, guid: 7025b064c33fc554f9273625bbd41d0d, type: 3}
