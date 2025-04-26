@@ -5540,7 +5540,11 @@ MonoBehaviour:
   player: {fileID: 1015723164}
   combatScene: {fileID: 1457128048}
   combatManagerReference: {fileID: 2098524350}
-  UiExplo: {fileID: 584220611}
+  uiExplo: {fileID: 0}
+  animDuration: 2
+  dangerImage: {fileID: 0}
+  blackFade: {fileID: 0}
+  fadeDelay: 0.5
 --- !u!4 &1791731743
 Transform:
   m_ObjectHideFlags: 0

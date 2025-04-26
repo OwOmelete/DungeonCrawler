@@ -27,6 +27,8 @@ public class GamepadCombatControl : MonoBehaviour
     private int[] actualPlacement = new int[2];
     private int horizontalSpeed;
     private int verticalSpeed;
+    public bool hasAttacked;
+    public bool hasMoved;
     
     
     private void Awake()
@@ -64,23 +66,31 @@ public class GamepadCombatControl : MonoBehaviour
             if (waitForRotation)
             {
                 combatManagerReference.FlipPlayerLeft(combatManagerReference.player);
+                hasMoved = true;
                 waitForRotation = false;
             }
             else if (waitForMove)
             {
-                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - horizontalSpeed, combatManagerReference.player.positionY);
-                waitForMove = false;
+                hasMoved = true;
+                if (combatManagerReference.player.direction == EntityInstance.dir.up)
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - horizontalSpeed, combatManagerReference.player.positionY);
+                    waitForMove = false;
+                }
+                else
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX - 1, combatManagerReference.player.positionY);
+                    waitForMove = false;
+                }
             }
-            else if (waitForAttack && combatManagerReference.grid[actualPlacement[0], actualPlacement[1] - 1] != combatManagerReference.player)
+            else if (waitForAttack)
             {
-                Attack(actualPlacement[0], actualPlacement[1] - 1);
+                hasAttacked = true;
+                Attack(combatManagerReference.player.positionX - 1,combatManagerReference.player.positionY);
                 waitForAttack = false;
+                ClearInformations();
             }
-            else if (waitForAttack&& combatManagerReference.grid[actualPlacement[0], actualPlacement[1] - 1] == combatManagerReference.player)
-            {
-                Attack(actualPlacement[0], actualPlacement[1] - 2);
-                waitForAttack = false;
-            }
+            
             else if (actualPlacement[1] != 0)
             {
                 selectionTab[actualPlacement[0], actualPlacement[1]].SetActive(false);
@@ -94,23 +104,30 @@ public class GamepadCombatControl : MonoBehaviour
         {
             if (waitForRotation)
             {
+                hasMoved = true;
                 combatManagerReference.FlipPlayerRight(combatManagerReference.player);
                 waitForRotation = false;
             }
             else if (waitForMove)
             {
-                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + horizontalSpeed, combatManagerReference.player.positionY);
-                waitForMove = false;
+                hasMoved = true;
+                if (combatManagerReference.player.direction == EntityInstance.dir.up)
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + horizontalSpeed, combatManagerReference.player.positionY);
+                    waitForMove = false;
+                }
+                else
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX + 1, combatManagerReference.player.positionY);
+                    waitForMove = false;
+                }
             }
-            else if (waitForAttack && combatManagerReference.grid[actualPlacement[0], actualPlacement[1] + 1] != combatManagerReference.player)
+            else if (waitForAttack)
             {
-                Attack(actualPlacement[0], actualPlacement[1] + 1);
+                hasAttacked = true;
+                Attack(combatManagerReference.player.positionX + 1,combatManagerReference.player.positionY);
                 waitForAttack = false;
-            }
-            else if (waitForAttack&& combatManagerReference.grid[actualPlacement[0], actualPlacement[1] + 1] == combatManagerReference.player)
-            {
-                Attack(actualPlacement[0], actualPlacement[1] + 2);
-                waitForAttack = false;
+                ClearInformations();
             }
             else if (actualPlacement[1] != tabWidth - 1)
             {
@@ -121,22 +138,28 @@ public class GamepadCombatControl : MonoBehaviour
             StartCoroutine(WaitBeforeNextSelection());
         }
         // bas
-        if (dpadY < -0.5f && canChangeSelection && !waitForRotation)
+        else if (dpadY < -0.5f && canChangeSelection && !waitForRotation)
         {
             if (waitForMove)
             {
-                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - verticalSpeed);
-                waitForMove = false;
+                hasMoved = true;
+                if (combatManagerReference.player.direction == EntityInstance.dir.up)
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - verticalSpeed);
+                    waitForMove = false;
+                }
+                else
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY - 1);
+                    waitForMove = false;
+                }
             }
-            else if (waitForAttack && combatManagerReference.grid[actualPlacement[0] - 1, actualPlacement[1]] != combatManagerReference.player)
+            else if (waitForAttack)
             {
-                Attack(actualPlacement[0] - 1, actualPlacement[1]);
+                hasAttacked = true;
+                Attack(combatManagerReference.player.positionX,combatManagerReference.player.positionY - 1);
                 waitForAttack = false;
-            }
-            else if (waitForAttack&& combatManagerReference.grid[actualPlacement[0] - 1, actualPlacement[1]] == combatManagerReference.player)
-            {
-                Attack(actualPlacement[0] - 2, actualPlacement[1]);
-                waitForAttack = false;
+                ClearInformations();
             }
             else if (actualPlacement[0] != 0 )
             {
@@ -151,18 +174,24 @@ public class GamepadCombatControl : MonoBehaviour
         {
             if (waitForMove)
             {
-                combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + verticalSpeed);
-                waitForMove = false;
+                hasMoved = true;
+                if (combatManagerReference.player.direction == EntityInstance.dir.up)
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + verticalSpeed);
+                    waitForMove = false;
+                }
+                else
+                {
+                    combatManagerReference.Move(combatManagerReference.player, combatManagerReference.player.positionX, combatManagerReference.player.positionY + 1);
+                    waitForMove = false;
+                }
             }
-            else if (waitForAttack && combatManagerReference.grid[actualPlacement[0] + 1, actualPlacement[1]] != combatManagerReference.player)
+            else if (waitForAttack)
             {
-                Attack(actualPlacement[0] + 1, actualPlacement[1]);
+                hasAttacked = true;
+                Attack(combatManagerReference.player.positionX,combatManagerReference.player.positionY + 1);
                 waitForAttack = false;
-            }
-            else if (waitForAttack&& combatManagerReference.grid[actualPlacement[0] + 1, actualPlacement[1]] == combatManagerReference.player)
-            {
-                Attack(actualPlacement[0] + 2, actualPlacement[1]);
-                waitForAttack = false;
+                ClearInformations();
             }
             else if (actualPlacement[0] != tabHeight - 1)
             {  
@@ -263,11 +292,18 @@ public class GamepadCombatControl : MonoBehaviour
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(menuActionsPlayer.transform.GetChild(0).gameObject);
     }
 
-    void UpdateInformations(EntityInstance entity)  // nathan ici si tu peux mettre genre quand on attaque ça update l'ui sur le poisson qu'on vient de toucher
+    void UpdateInformations(EntityInstance entity)  
     {
         fishName.text = entity.name;
         fishHp.text = ("Hp : " + entity.hp);
         fishArmor.text = ("Armor : " + entity.armor);
+    }
+
+    void ClearInformations()
+    {
+        fishName.text = ("");
+        fishHp.text = ("");
+        fishArmor.text = ("");
     }
 
     public void PlayerButtonUnactive()
@@ -278,13 +314,13 @@ public class GamepadCombatControl : MonoBehaviour
 
     public void Rotation()
     {
-        
         waitForRotation = true;
         PlayerButtonUnactive();
     }
 
     public void Move()
     {
+        hasMoved = true;
         waitForMove = true;
         PlayerButtonUnactive();
     }
