@@ -872,6 +872,12 @@ public class CombatManager : MonoBehaviour
                 {
                     if (attackedEntity.positionY < attackerEntity.positionY+yoffset)
                     {
+                        if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
+                        {
+                            Damage(attackerEntity, weakPoint.damageToAttacker);
+                            return 0;
+                        }
+                        Damage(attackerEntity, weakPoint.damageToAttacker);
                         Debug.Log("up");
                         return (dmg * weakPoint.damageMulti);
                     }
@@ -880,6 +886,12 @@ public class CombatManager : MonoBehaviour
                 {
                     if (attackedEntity.positionY > attackerEntity.positionY+yoffset)
                     {
+                        if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
+                        {
+                            Damage(attackerEntity, weakPoint.damageToAttacker);
+                            return 0;
+                        }
+                        Damage(attackerEntity, weakPoint.damageToAttacker);
                         Debug.Log("down");
                         return (dmg * weakPoint.damageMulti);
                     }
@@ -888,6 +900,14 @@ public class CombatManager : MonoBehaviour
                 {
                     if (attackedEntity.positionX > attackerEntity.positionX+xoffset)
                     {
+                        if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
+                        {
+                            Debug.Log("ui");
+                            Damage(attackerEntity, weakPoint.damageToAttacker);
+                            return 0;
+                        }
+                        Debug.Log("non");
+                        Damage(attackerEntity, weakPoint.damageToAttacker);
                         Debug.Log("left");
                         return (dmg * weakPoint.damageMulti);
                     }
@@ -896,6 +916,13 @@ public class CombatManager : MonoBehaviour
                 {
                     if (attackedEntity.positionX < attackerEntity.positionX+xoffset)
                     {
+                        if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
+                        {
+                            Damage(attackerEntity, weakPoint.damageToAttacker);
+                            return 0;
+                        }
+                        Damage(attackerEntity, weakPoint.damageToAttacker);
+                        
                         Debug.Log("right");
                         return (dmg * weakPoint.damageMulti);
                     }
@@ -903,6 +930,11 @@ public class CombatManager : MonoBehaviour
                 if (weakPoint.direction == WeakPointData.dir.any)
                 {
                     Debug.Log("any");
+                    if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
+                    {
+                        Damage(attackerEntity, weakPoint.damageToAttacker);
+                        return 0;
+                    }
                     Damage(attackerEntity, weakPoint.damageToAttacker);
                     return (dmg * weakPoint.damageMulti);
                 }

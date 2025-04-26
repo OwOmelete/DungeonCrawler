@@ -177,15 +177,16 @@ public class GrandGouzBehaviour : AbstractIA
             }
             else
             {
+                Debug.Log("weakpoint flip");
                 if (entity.PreparingAttack)
                 {
+                    Debug.Log("weakpoint flip mouth");
                     entity.weakPointList.Add(entity.WeakPointsLeft[0]);
                 }
                 else
                 {
                     entity.weakPointList.Add(entity.WeakPointsLeft[1]);
                     entity.weakPointList.Add(entity.WeakPointsLeft[2]);
-
                 }
             }
         }
@@ -194,6 +195,7 @@ public class GrandGouzBehaviour : AbstractIA
         {
             entity.sr.flipX = !entity.sr.flipX;
             entity.Flipped = !entity.Flipped;
+            Debug.Log("flip" + entity.Flipped);
             UpdateWeakPoints(entity);
         }
 
