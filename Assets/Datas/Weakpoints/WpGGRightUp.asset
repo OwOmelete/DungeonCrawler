@@ -15,4 +15,4 @@ MonoBehaviour:
   posX: 1
   posY: 0
   direction: 1
-  damageMulti: 2
+  damageMulti: 5
