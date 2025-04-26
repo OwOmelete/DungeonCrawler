@@ -242,10 +242,8 @@ public class GrandGouzBehaviour : AbstractIA
         }
         else
         {
-            Debug.Log("weakpoint flip");
             if (entity.PreparingAttack)
             {
-                Debug.Log("weakpoint flip mouth");
                 entity.weakPointList.Add(entity.WeakPointsLeft[0]);
             }
             else

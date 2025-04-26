@@ -20,6 +20,7 @@ MonoBehaviour:
   hp: 5
   armor: 0
   actionPoint: 3
+  startingDirection: 2
   prefab: {fileID: 8033837717210413781, guid: 511fd546f5ee8a74d9910b864dca0ad8, type: 3}
   attackList: []
   weakPointList:

@@ -1027,7 +1027,13 @@ public class CombatManager : MonoBehaviour
         {
             if (entity == player)
             {
-                // gérer mort player
+                foreach (var entityInstance in turnOrder)
+                {
+                    if (entityInstance is FishDataInstance)
+                    {
+                        Die(entityInstance);
+                    }
+                }
             }
             else
             {

@@ -1,0 +1,78 @@
+using System;
+using System.Collections;
+using DG.Tweening;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HealObject : MonoBehaviour
+{
+    #region Variables
+    
+    [Header("Reference")]
+    [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche 
+    
+    [Header("Values")]
+    [SerializeField] private int regen = 5;   // Quantitée de lumière que va regenerer l'objet
+    [SerializeField] private float interactTextFadeDuration = 0.2f; // Temps que va prendre le texte a apparaitre et a disparaitre
+    [SerializeField] private float timeToDespawn = 0.3f;
+    
+    private bool canTake = false;   // Savoir si on peut prendre l'objet
+    
+    [HideInInspector] public PlayerDataInstance player;
+    
+    #endregion
+
+    #region Triggers
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            interactDisplay.GetComponent<SpriteRenderer>().DOFade(1f, interactTextFadeDuration);
+            canTake = true;
+            StartCoroutine(TakeLight());
+        }
+        
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            interactDisplay.GetComponent<SpriteRenderer>().DOFade(0f, interactTextFadeDuration);
+            canTake = false;
+        }
+    }
+    #endregion
+    
+    IEnumerator TakeLight()
+    {
+        while (canTake)
+        {
+            if (Input.GetButtonDown("Interact"))
+            {
+                Heal();
+            }
+            yield return null;
+        }
+    }
+    
+    void Heal()
+    {
+        Destroy(GetComponent<Collider2D>());
+        gameObject.GetComponent<Transform>().DOScale(Vector3.zero, timeToDespawn).SetEase(Ease.OutCubic);
+        if (player.hp + regen >= 10)
+        {
+            player.hp = 10;
+        }
+        else
+        {
+            player.hp += regen;
+        }
+        StartCoroutine(DespawnCoroutine());
+    }
+    IEnumerator DespawnCoroutine()
+    {
+        yield return new WaitForSeconds(timeToDespawn);
+        Destroy(gameObject);
+    }
+}

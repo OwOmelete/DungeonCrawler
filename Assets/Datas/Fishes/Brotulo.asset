@@ -24,10 +24,12 @@ MonoBehaviour:
   prefab: {fileID: 8033837717210413781, guid: ca94fe1c97cd95e4da7ac61891651122, type: 3}
   attackList: []
   weakPointList:
-  - {fileID: 11400000, guid: adbceff06543b2e42b322ea9bd9f5061, type: 2}
+  - {fileID: 11400000, guid: 98db0bcbb6796714dbe0ce5303c8e97d, type: 2}
+  - {fileID: 11400000, guid: edcb86dafe05c734c9781066506889b9, type: 2}
   attacks: []
   WeakPointsRight:
   - {fileID: 11400000, guid: af05bb8831927b541b01e39b71f5c7a3, type: 2}
+  - {fileID: 11400000, guid: edcb86dafe05c734c9781066506889b9, type: 2}
   WeakPointsLeft:
   - {fileID: 11400000, guid: 98db0bcbb6796714dbe0ce5303c8e97d, type: 2}
   WeakPointsUp:
