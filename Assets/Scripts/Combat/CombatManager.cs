@@ -858,17 +858,19 @@ public class CombatManager : MonoBehaviour
     {
         foreach (var weakPoint in attackedEntity.weakPointList)
         {
-            Debug.Log(weakPoint);
+            Debug.Log(weakPoint.direction);
+            int yoffset = attack.Yoffset;
+            int xoffset = attack.Xoffset;
+            if (!attackerEntity.isStanding)
+            {
+                yoffset = attack.Xoffset;
+                xoffset = attack.Yoffset;
+            }
             if (x == attackedEntity.positionX + weakPoint.posX && y == attackedEntity.positionY + weakPoint.posY)
             {
-                if (weakPoint.direction == WeakPointData.dir.any)
-                {
-                    Debug.Log("any");
-                    return (dmg * weakPoint.damageMulti);
-                }
                 if (weakPoint.direction == WeakPointData.dir.up)
                 {
-                    if (attackedEntity.positionY < attackerEntity.positionY+attack.Yoffset)
+                    if (attackedEntity.positionY < attackerEntity.positionY+yoffset)
                     {
                         Debug.Log("up");
                         return (dmg * weakPoint.damageMulti);
@@ -876,7 +878,7 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.down)
                 {
-                    if (attackedEntity.positionY > attackerEntity.positionY+attack.Yoffset)
+                    if (attackedEntity.positionY > attackerEntity.positionY+yoffset)
                     {
                         Debug.Log("down");
                         return (dmg * weakPoint.damageMulti);
@@ -884,7 +886,7 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.left)
                 {
-                    if (attackedEntity.positionX > attackerEntity.positionX+attack.Xoffset)
+                    if (attackedEntity.positionX > attackerEntity.positionX+xoffset)
                     {
                         Debug.Log("left");
                         return (dmg * weakPoint.damageMulti);
@@ -892,11 +894,17 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.right)
                 {
-                    if (attackedEntity.positionX < attackerEntity.positionX+attack.Xoffset)
+                    if (attackedEntity.positionX < attackerEntity.positionX+xoffset)
                     {
                         Debug.Log("right");
                         return (dmg * weakPoint.damageMulti);
                     }
+                }
+                if (weakPoint.direction == WeakPointData.dir.any)
+                {
+                    Debug.Log("any");
+                    Damage(attackerEntity, weakPoint.damageToAttacker);
+                    return (dmg * weakPoint.damageMulti);
                 }
             }
         }
@@ -971,7 +979,7 @@ public class CombatManager : MonoBehaviour
     public void Damage(EntityInstance entity, int dmg)
     {
         entity.TakeDamage(dmg);
-        Debug.Log(entity.hp);
+        Debug.Log("pv restant : " + entity.name + entity.hp);
         if (entity.hp <= 0)
         {
             if (entity == player)

@@ -5,6 +5,8 @@ public class WeakPointData : ScriptableObject
 {
     [Header("Pour nos merveilleux gds")]
     public int damageMulti;
+
+    public int damageToAttacker;
     
     
     [Header("Pas touche >:(")]

@@ -7,6 +7,7 @@ using UnityEngine;
 public class SpikeBallBehaviour : AbstractIA
 {
     [SerializeField] SpikeData _spikeData;
+    [SerializeField] WeakPointData DamageToAttacker;
     
     public override void ManageTurn(FishDataInstance entity)
     {
@@ -373,6 +374,7 @@ public class SpikeBallBehaviour : AbstractIA
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        entity.weakPointList.Add(DamageToAttacker);
 
         entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z - 90), 0.5f)
             .SetEase(Ease.InOutCubic);
@@ -405,6 +407,7 @@ public class SpikeBallBehaviour : AbstractIA
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        entity.weakPointList.Add(DamageToAttacker);
         entity.entityChild.transform.rotation = Quaternion.Euler(0, 0, entity.entityChild.localEulerAngles.z - 90);
     }
     
@@ -437,6 +440,7 @@ public class SpikeBallBehaviour : AbstractIA
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        entity.weakPointList.Add(DamageToAttacker);
 
         entity.entityChild.DOLocalRotate(new Vector3(0, 0, entity.entityChild.localEulerAngles.z + 90), 0.5f)
             .SetEase(Ease.InOutCubic);
@@ -470,6 +474,7 @@ public class SpikeBallBehaviour : AbstractIA
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        entity.weakPointList.Add(DamageToAttacker);
 
         entity.entityChild.transform.rotation = Quaternion.Euler(0, 0, entity.entityChild.localEulerAngles.z + 90);
     }

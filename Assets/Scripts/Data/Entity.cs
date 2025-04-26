@@ -89,6 +89,10 @@ public class EntityInstance
     
     public void TakeDamage(int dmg)
     {
-        hp -= dmg-armor;
+        int losthp = dmg-armor;
+        if (losthp >= 0)
+        {
+            hp -= losthp;
+        }
     }
 }

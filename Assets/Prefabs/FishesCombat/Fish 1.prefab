@@ -133,3 +133,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spikeData: {fileID: 11400000, guid: b480258a916855b4abad6d17d83bf3b1, type: 2}
+  DamageToAttacker: {fileID: 11400000, guid: edcb86dafe05c734c9781066506889b9, type: 2}
