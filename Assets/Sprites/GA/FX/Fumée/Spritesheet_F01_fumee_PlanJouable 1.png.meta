@@ -1,0 +1,671 @@
+fileFormatVersion: 2
+guid: 12a41594dce7c6e438a337c61e676586
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3730339341488241069
+    second: Spritesheet_F01_fumee_PlanJouable 1_0
+  - first:
+      213: -7537111953141819128
+    second: Spritesheet_F01_fumee_PlanJouable 1_1
+  - first:
+      213: 4074259812932139769
+    second: Spritesheet_F01_fumee_PlanJouable 1_2
+  - first:
+      213: 8518570721119338658
+    second: Spritesheet_F01_fumee_PlanJouable 1_3
+  - first:
+      213: -1275808062192733447
+    second: Spritesheet_F01_fumee_PlanJouable 1_4
+  - first:
+      213: 2185371485355135673
+    second: Spritesheet_F01_fumee_PlanJouable 1_5
+  - first:
+      213: -792828415346933371
+    second: Spritesheet_F01_fumee_PlanJouable 1_6
+  - first:
+      213: -16182122008104292
+    second: Spritesheet_F01_fumee_PlanJouable 1_7
+  - first:
+      213: -2248440471615932879
+    second: Spritesheet_F01_fumee_PlanJouable 1_8
+  - first:
+      213: 7977147929853791766
+    second: Spritesheet_F01_fumee_PlanJouable 1_9
+  - first:
+      213: -7157385628781883739
+    second: Spritesheet_F01_fumee_PlanJouable 1_10
+  - first:
+      213: -85671663029199806
+    second: Spritesheet_F01_fumee_PlanJouable 1_11
+  - first:
+      213: -3874935979099940801
+    second: Spritesheet_F01_fumee_PlanJouable 1_12
+  - first:
+      213: -6179863742206540107
+    second: Spritesheet_F01_fumee_PlanJouable 1_13
+  - first:
+      213: 9189295465790692801
+    second: Spritesheet_F01_fumee_PlanJouable 1_14
+  - first:
+      213: 99267018938551777
+    second: Spritesheet_F01_fumee_PlanJouable 1_15
+  - first:
+      213: -4207927109880159150
+    second: Spritesheet_F01_fumee_PlanJouable 1_16
+  - first:
+      213: -2358167797407152478
+    second: Spritesheet_F01_fumee_PlanJouable 1_17
+  - first:
+      213: -8991009862067034354
+    second: Spritesheet_F01_fumee_PlanJouable 1_18
+  - first:
+      213: -4965690026781232288
+    second: Spritesheet_F01_fumee_PlanJouable 1_19
+  - first:
+      213: -9024795866624292524
+    second: Spritesheet_F01_fumee_PlanJouable 1_20
+  - first:
+      213: -462037275571564791
+    second: Spritesheet_F01_fumee_PlanJouable 1_21
+  - first:
+      213: -2555682241691625750
+    second: Spritesheet_F01_fumee_PlanJouable 1_22
+  - first:
+      213: -2554683975972144843
+    second: Spritesheet_F01_fumee_PlanJouable 1_23
+  - first:
+      213: 4280068374330621795
+    second: Spritesheet_F01_fumee_PlanJouable 1_24
+  - first:
+      213: -7312278943957365539
+    second: Spritesheet_F01_fumee_PlanJouable 1_25
+  - first:
+      213: 7058325991238686611
+    second: Spritesheet_F01_fumee_PlanJouable 1_26
+  - first:
+      213: 8417844231424358078
+    second: Spritesheet_F01_fumee_PlanJouable 1_27
+  - first:
+      213: 3283257613173450388
+    second: Spritesheet_F01_fumee_PlanJouable 1_28
+  - first:
+      213: 6131371524965308028
+    second: Spritesheet_F01_fumee_PlanJouable 1_29
+  - first:
+      213: 7571438148529693076
+    second: Spritesheet_F01_fumee_PlanJouable 1_30
+  - first:
+      213: 2732274429579573729
+    second: Spritesheet_F01_fumee_PlanJouable 1_31
+  - first:
+      213: -8572163652137944556
+    second: Spritesheet_F01_fumee_PlanJouable 1_32
+  - first:
+      213: 6435220982006231862
+    second: Spritesheet_F01_fumee_PlanJouable 1_33
+  - first:
+      213: 5571918855610301703
+    second: Spritesheet_F01_fumee_PlanJouable 1_34
+  - first:
+      213: -8158278350199981842
+    second: Spritesheet_F01_fumee_PlanJouable 1_35
+  - first:
+      213: 6994596782187162927
+    second: Spritesheet_F01_fumee_PlanJouable 1_36
+  - first:
+      213: -6241023062586386455
+    second: Spritesheet_F01_fumee_PlanJouable 1_37
+  - first:
+      213: -3676525576211490641
+    second: Spritesheet_F01_fumee_PlanJouable 1_38
+  - first:
+      213: 558244319247120634
+    second: Spritesheet_F01_fumee_PlanJouable 1_39
+  - first:
+      213: 8901953408642487164
+    second: Spritesheet_F01_fumee_PlanJouable 1_40
+  - first:
+      213: -732267164900133291
+    second: Spritesheet_F01_fumee_PlanJouable 1_41
+  - first:
+      213: -6231536259730714206
+    second: Spritesheet_F01_fumee_PlanJouable 1_42
+  - first:
+      213: -1256481271156911860
+    second: Spritesheet_F01_fumee_PlanJouable 1_43
+  - first:
+      213: -8550537492061912190
+    second: Spritesheet_F01_fumee_PlanJouable 1_44
+  - first:
+      213: -2949088675790321844
+    second: Spritesheet_F01_fumee_PlanJouable 1_45
+  - first:
+      213: -8852320510248337915
+    second: Spritesheet_F01_fumee_PlanJouable 1_46
+  - first:
+      213: -7819802586639634923
+    second: Spritesheet_F01_fumee_PlanJouable 1_47
+  - first:
+      213: 4326872336006736472
+    second: Spritesheet_F01_fumee_PlanJouable 1_48
+  - first:
+      213: 1788703693389410552
+    second: Spritesheet_F01_fumee_PlanJouable 1_49
+  - first:
+      213: 1999601773187260016
+    second: Spritesheet_F01_fumee_PlanJouable 1_50
+  - first:
+      213: -1506679679584642095
+    second: Spritesheet_F01_fumee_PlanJouable 1_51
+  - first:
+      213: 1016126111733719655
+    second: Spritesheet_F01_fumee_PlanJouable 1_52
+  - first:
+      213: -8040601561223855624
+    second: Spritesheet_F01_fumee_PlanJouable 1_53
+  - first:
+      213: 80571946664465552
+    second: Spritesheet_F01_fumee_PlanJouable 1_54
+  - first:
+      213: -1883875536686120330
+    second: Spritesheet_F01_fumee_PlanJouable 1_55
+  - first:
+      213: -1319210897532247533
+    second: Spritesheet_F01_fumee_PlanJouable 1_56
+  - first:
+      213: 7811687020375392793
+    second: Spritesheet_F01_fumee_PlanJouable 1_57
+  - first:
+      213: -7372122060674402205
+    second: Spritesheet_F01_fumee_PlanJouable 1_58
+  - first:
+      213: 5778300506714002996
+    second: Spritesheet_F01_fumee_PlanJouable 1_59
+  - first:
+      213: 5933433092569990280
+    second: Spritesheet_F01_fumee_PlanJouable 1_60
+  - first:
+      213: -2233448525129318813
+    second: Spritesheet_F01_fumee_PlanJouable 1_61
+  - first:
+      213: 1987364156230008819
+    second: Spritesheet_F01_fumee_PlanJouable 1_62
+  - first:
+      213: -530675166141209702
+    second: Spritesheet_F01_fumee_PlanJouable 1_63
+  - first:
+      213: 730982032683178436
+    second: Spritesheet_F01_fumee_PlanJouable 1_64
+  - first:
+      213: -7705375947852343009
+    second: Spritesheet_F01_fumee_PlanJouable 1_65
+  - first:
+      213: 6792978455125060081
+    second: Spritesheet_F01_fumee_PlanJouable 1_66
+  - first:
+      213: 3764110979828265537
+    second: Spritesheet_F01_fumee_PlanJouable 1_67
+  - first:
+      213: 1927502895675264526
+    second: Spritesheet_F01_fumee_PlanJouable 1_68
+  - first:
+      213: 1062536442750037083
+    second: Spritesheet_F01_fumee_PlanJouable 1_69
+  - first:
+      213: 8287097987979060249
+    second: Spritesheet_F01_fumee_PlanJouable 1_70
+  - first:
+      213: 2574059836597040857
+    second: Spritesheet_F01_fumee_PlanJouable 1_71
+  - first:
+      213: -8896728736046601893
+    second: Spritesheet_F01_fumee_PlanJouable 1_72
+  - first:
+      213: -8710421995554589815
+    second: Spritesheet_F01_fumee_PlanJouable 1_73
+  - first:
+      213: 3908633843188996811
+    second: Spritesheet_F01_fumee_PlanJouable 1_74
+  - first:
+      213: 7139163234439310289
+    second: Spritesheet_F01_fumee_PlanJouable 1_75
+  - first:
+      213: -4156277439772905407
+    second: Spritesheet_F01_fumee_PlanJouable 1_76
+  - first:
+      213: -1244686935975579023
+    second: Spritesheet_F01_fumee_PlanJouable 1_77
+  - first:
+      213: -1127413319627335026
+    second: Spritesheet_F01_fumee_PlanJouable 1_78
+  - first:
+      213: -1093777810614688416
+    second: Spritesheet_F01_fumee_PlanJouable 1_79
+  - first:
+      213: -6206029096180239369
+    second: Spritesheet_F01_fumee_PlanJouable 1_80
+  - first:
+      213: 6843910606597826519
+    second: Spritesheet_F01_fumee_PlanJouable 1_81
+  - first:
+      213: -2069825279895813368
+    second: Spritesheet_F01_fumee_PlanJouable 1_82
+  - first:
+      213: 7074786813483299086
+    second: Spritesheet_F01_fumee_PlanJouable 1_83
+  - first:
+      213: 770850894403372979
+    second: Spritesheet_F01_fumee_PlanJouable 1_84
+  - first:
+      213: -1406728388257489659
+    second: Spritesheet_F01_fumee_PlanJouable 1_85
+  - first:
+      213: 8349057969900843782
+    second: Spritesheet_F01_fumee_PlanJouable 1_86
+  - first:
+      213: -1703777113084032058
+    second: Spritesheet_F01_fumee_PlanJouable 1_87
+  - first:
+      213: -371094729493628929
+    second: Spritesheet_F01_fumee_PlanJouable 1_88
+  - first:
+      213: -8194762892420313312
+    second: Spritesheet_F01_fumee_PlanJouable 1_89
+  - first:
+      213: 6380417570529714665
+    second: Spritesheet_F01_fumee_PlanJouable 1_90
+  - first:
+      213: 3881029032135808666
+    second: Spritesheet_F01_fumee_PlanJouable 1_91
+  - first:
+      213: -4998715719815154920
+    second: Spritesheet_F01_fumee_PlanJouable 1_92
+  - first:
+      213: -707678085837482937
+    second: Spritesheet_F01_fumee_PlanJouable 1_93
+  - first:
+      213: -5512240551246018054
+    second: Spritesheet_F01_fumee_PlanJouable 1_94
+  - first:
+      213: -903353081810916872
+    second: Spritesheet_F01_fumee_PlanJouable 1_95
+  - first:
+      213: 598713775489288952
+    second: Spritesheet_F01_fumee_PlanJouable 1_96
+  - first:
+      213: -7289359077035869883
+    second: Spritesheet_F01_fumee_PlanJouable 1_97
+  - first:
+      213: 8727470594239950706
+    second: Spritesheet_F01_fumee_PlanJouable 1_98
+  - first:
+      213: 3098045942060871009
+    second: Spritesheet_F01_fumee_PlanJouable 1_99
+  - first:
+      213: -192892257809886220
+    second: Spritesheet_F01_fumee_PlanJouable 1_100
+  - first:
+      213: -1406043728902271936
+    second: Spritesheet_F01_fumee_PlanJouable 1_101
+  - first:
+      213: 3581081057896226553
+    second: Spritesheet_F01_fumee_PlanJouable 1_102
+  - first:
+      213: -1866829962013291128
+    second: Spritesheet_F01_fumee_PlanJouable 1_103
+  - first:
+      213: -5485268210710900428
+    second: Spritesheet_F01_fumee_PlanJouable 1_104
+  - first:
+      213: -276483468600945374
+    second: Spritesheet_F01_fumee_PlanJouable 1_105
+  - first:
+      213: 85662670016091473
+    second: Spritesheet_F01_fumee_PlanJouable 1_106
+  - first:
+      213: -3465026402411600337
+    second: Spritesheet_F01_fumee_PlanJouable 1_107
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da9321dedd3d4c330800000000000000
+      internalID: 3730339341488241069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80991a8ac9cc66790800000000000000
+      internalID: -7537111953141819128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_2
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fa3878a6bdaa8830800000000000000
+      internalID: 4074259812932139769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a08c5200fa083670800000000000000
+      internalID: 8518570721119338658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_4
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f23c63b35b6b4ee0800000000000000
+      internalID: -1275808062192733447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_5
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b25cde89cff35e10800000000000000
+      internalID: 2185371485355135673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_6
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 581096fb1ce4ff4f0800000000000000
+      internalID: -792828415346933371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_7
+      rect:
+        serializedVersion: 2
+        x: 2688
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c92befd127286cff0800000000000000
+      internalID: -16182122008104292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_8
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13678b6cd4febc0e0800000000000000
+      internalID: -2248440471615932879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_F01_fumee_PlanJouable 1_9
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61e8da707c584be60800000000000000
+      internalID: 7977147929853791766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c3c8e98eb42ac7042b8217c6fb01eaff
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Spritesheet_F01_fumee_PlanJouable 1_0: 3730339341488241069
+      Spritesheet_F01_fumee_PlanJouable 1_1: -7537111953141819128
+      Spritesheet_F01_fumee_PlanJouable 1_2: 4074259812932139769
+      Spritesheet_F01_fumee_PlanJouable 1_3: 8518570721119338658
+      Spritesheet_F01_fumee_PlanJouable 1_4: -1275808062192733447
+      Spritesheet_F01_fumee_PlanJouable 1_5: 2185371485355135673
+      Spritesheet_F01_fumee_PlanJouable 1_6: -792828415346933371
+      Spritesheet_F01_fumee_PlanJouable 1_7: -16182122008104292
+      Spritesheet_F01_fumee_PlanJouable 1_8: -2248440471615932879
+      Spritesheet_F01_fumee_PlanJouable 1_9: 7977147929853791766
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

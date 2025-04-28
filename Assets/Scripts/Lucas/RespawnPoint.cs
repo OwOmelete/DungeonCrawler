@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 
@@ -10,11 +11,15 @@ public class RespawnPoint : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche 
     [SerializeField] private DeathManager deathManagerRef;
+    [SerializeField] private Animator animator;
+    [SerializeField] private TMP_Text textZoneRef;
     
     [Header("Values")]
     [SerializeField] private float interactTextFadeDuration = 0.2f; // Temps que va prendre le texte a apparaitre et a disparaitre
     [SerializeField] private float timeToDespawn = 0.3f;
-    
+    [SerializeField] private string text;
+
+    private bool check = false;
     private bool canTake = false;   // Savoir si on peut prendre l'objet
     
     #endregion
@@ -24,7 +29,7 @@ public class RespawnPoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interactDisplay.GetComponent<SpriteRenderer>().DOFade(1f, interactTextFadeDuration);
+            animator.SetBool("isHere", true);
             canTake = true;
             StartCoroutine(TakeLight());
         }
@@ -34,7 +39,7 @@ public class RespawnPoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interactDisplay.GetComponent<SpriteRenderer>().DOFade(0f, interactTextFadeDuration);
+            animator.SetBool("isHere", false);
             canTake = false;
         }
     }
@@ -42,11 +47,18 @@ public class RespawnPoint : MonoBehaviour
     
     IEnumerator TakeLight()
     {
-        while (canTake)
+        while (canTake || check)
         {
             if (Input.GetButtonDown("Interact"))
             {
-                ChangePoint();
+                if (!check)
+                {
+                    ChangePoint();
+                }
+                else
+                {
+                    EndText();
+                }
             }
             yield return null;
         }
@@ -54,11 +66,16 @@ public class RespawnPoint : MonoBehaviour
     
     void ChangePoint()
     {
+        textZoneRef.DOFade(1, 0.2f); 
+        textZoneRef.text = text;
         deathManagerRef.respawnPosition = transform.position;
+        check = true;
     }
-    IEnumerator DespawnCoroutine()
+
+    void EndText()
     {
-        yield return new WaitForSeconds(timeToDespawn);
-        Destroy(gameObject);
+        textZoneRef.DOFade(0, 0.2f);
+        check = false;
     }
+    
 }

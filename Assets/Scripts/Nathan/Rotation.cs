@@ -12,9 +12,11 @@ public class Rotation : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [HideInInspector] public bool canMove = true;
     [HideInInspector] public float angleDiff;
+    private float xScale;
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        xScale = transform.localScale.x;
     }
     void Update()
     {
@@ -28,11 +30,11 @@ public class Rotation : MonoBehaviour
         float currentAngle = NormalizeAngle(transform.eulerAngles.z);
         if (currentAngle > 0)
         {
-            spriteRenderer.flipX = true;
+            transform.localScale = new Vector2(xScale, transform.localScale.y);
         }
         else
         {
-            spriteRenderer.flipX = false;
+            transform.localScale = new Vector2(-xScale, transform.localScale.y);
         }
         angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
         if (Mathf.Abs(angleDiff) > angleBeforeRestartMovement) 
