@@ -1,0 +1,599 @@
+fileFormatVersion: 2
+guid: a207dda92eeb9c14fb70aed9e9b2d094
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6050366542898714067
+    second: Tilesheet_F01_fumee_BG_0
+  - first:
+      213: -6927546088819737943
+    second: Tilesheet_F01_fumee_BG_1
+  - first:
+      213: 7696810696165489610
+    second: Tilesheet_F01_fumee_BG_2
+  - first:
+      213: 3844349136339099071
+    second: Tilesheet_F01_fumee_BG_3
+  - first:
+      213: 5494734659328941418
+    second: Tilesheet_F01_fumee_BG_4
+  - first:
+      213: -5050670754395947421
+    second: Tilesheet_F01_fumee_BG_5
+  - first:
+      213: 5927946377693962043
+    second: Tilesheet_F01_fumee_BG_6
+  - first:
+      213: 310978546071096743
+    second: Tilesheet_F01_fumee_BG_7
+  - first:
+      213: 6786538207793102711
+    second: Tilesheet_F01_fumee_BG_8
+  - first:
+      213: 8084627544920445228
+    second: Tilesheet_F01_fumee_BG_9
+  - first:
+      213: 7545499000737517535
+    second: Tilesheet_F01_fumee_BG_10
+  - first:
+      213: -3602208511611355192
+    second: Tilesheet_F01_fumee_BG_11
+  - first:
+      213: 6663389017862877790
+    second: Tilesheet_F01_fumee_BG_12
+  - first:
+      213: 4412208392825925995
+    second: Tilesheet_F01_fumee_BG_13
+  - first:
+      213: 6628870107945050076
+    second: Tilesheet_F01_fumee_BG_14
+  - first:
+      213: 252701918942531209
+    second: Tilesheet_F01_fumee_BG_15
+  - first:
+      213: -3379921147208277615
+    second: Tilesheet_F01_fumee_BG_16
+  - first:
+      213: 2011651765383304272
+    second: Tilesheet_F01_fumee_BG_17
+  - first:
+      213: -933201453345925400
+    second: Tilesheet_F01_fumee_BG_18
+  - first:
+      213: 2294978736479454118
+    second: Tilesheet_F01_fumee_BG_19
+  - first:
+      213: -1406792192181233604
+    second: Tilesheet_F01_fumee_BG_20
+  - first:
+      213: -388892041114895021
+    second: Tilesheet_F01_fumee_BG_21
+  - first:
+      213: 5347202248591268680
+    second: Tilesheet_F01_fumee_BG_22
+  - first:
+      213: -1848849984004631504
+    second: Tilesheet_F01_fumee_BG_23
+  - first:
+      213: 106884062454205132
+    second: Tilesheet_F01_fumee_BG_24
+  - first:
+      213: -7696547334269999620
+    second: Tilesheet_F01_fumee_BG_25
+  - first:
+      213: 3848781150346682701
+    second: Tilesheet_F01_fumee_BG_26
+  - first:
+      213: 610997835266160965
+    second: Tilesheet_F01_fumee_BG_27
+  - first:
+      213: -4428972890534492902
+    second: Tilesheet_F01_fumee_BG_28
+  - first:
+      213: -8369632200251741985
+    second: Tilesheet_F01_fumee_BG_29
+  - first:
+      213: 4053474480362873224
+    second: Tilesheet_F01_fumee_BG_30
+  - first:
+      213: 4432805502648801562
+    second: Tilesheet_F01_fumee_BG_31
+  - first:
+      213: 2206880313385501045
+    second: Tilesheet_F01_fumee_BG_32
+  - first:
+      213: -2566477431013635406
+    second: Tilesheet_F01_fumee_BG_33
+  - first:
+      213: 1654686402775488511
+    second: Tilesheet_F01_fumee_BG_34
+  - first:
+      213: 4407496893788845482
+    second: Tilesheet_F01_fumee_BG_35
+  - first:
+      213: -1106453596816474547
+    second: Tilesheet_F01_fumee_BG_36
+  - first:
+      213: 7659827972640059707
+    second: Tilesheet_F01_fumee_BG_37
+  - first:
+      213: -4867476208266387271
+    second: Tilesheet_F01_fumee_BG_38
+  - first:
+      213: -8508596671532050339
+    second: Tilesheet_F01_fumee_BG_39
+  - first:
+      213: 62729575389316578
+    second: Tilesheet_F01_fumee_BG_40
+  - first:
+      213: 7794935702238271177
+    second: Tilesheet_F01_fumee_BG_41
+  - first:
+      213: -7057710981775683262
+    second: Tilesheet_F01_fumee_BG_42
+  - first:
+      213: 8587930380171988677
+    second: Tilesheet_F01_fumee_BG_43
+  - first:
+      213: -4850773840930512059
+    second: Tilesheet_F01_fumee_BG_44
+  - first:
+      213: -8507595580937025731
+    second: Tilesheet_F01_fumee_BG_45
+  - first:
+      213: 1376479166808510528
+    second: Tilesheet_F01_fumee_BG_46
+  - first:
+      213: -5286337003010091056
+    second: Tilesheet_F01_fumee_BG_47
+  - first:
+      213: -2561867706357621804
+    second: Tilesheet_F01_fumee_BG_48
+  - first:
+      213: 4670908179627851741
+    second: Tilesheet_F01_fumee_BG_49
+  - first:
+      213: -6487902089364180483
+    second: Tilesheet_F01_fumee_BG_50
+  - first:
+      213: -4715364191941850257
+    second: Tilesheet_F01_fumee_BG_51
+  - first:
+      213: -3478667224115433602
+    second: Tilesheet_F01_fumee_BG_52
+  - first:
+      213: -7370011757670069134
+    second: Tilesheet_F01_fumee_BG_53
+  - first:
+      213: 8230124951377062163
+    second: Tilesheet_F01_fumee_BG_54
+  - first:
+      213: -3233544791140049506
+    second: Tilesheet_F01_fumee_BG_55
+  - first:
+      213: 8380337091201047469
+    second: Tilesheet_F01_fumee_BG_56
+  - first:
+      213: 271178564778257644
+    second: Tilesheet_F01_fumee_BG_57
+  - first:
+      213: -3744176005942119930
+    second: Tilesheet_F01_fumee_BG_58
+  - first:
+      213: 7707354548028935043
+    second: Tilesheet_F01_fumee_BG_59
+  - first:
+      213: 1751399694395728386
+    second: Tilesheet_F01_fumee_BG_60
+  - first:
+      213: 5282292698254045433
+    second: Tilesheet_F01_fumee_BG_61
+  - first:
+      213: -9011511012815237945
+    second: Tilesheet_F01_fumee_BG_62
+  - first:
+      213: 6467350253741943991
+    second: Tilesheet_F01_fumee_BG_63
+  - first:
+      213: 6664353242629912650
+    second: Tilesheet_F01_fumee_BG_64
+  - first:
+      213: -5988904763308699669
+    second: Tilesheet_F01_fumee_BG_65
+  - first:
+      213: -7585403458881351351
+    second: Tilesheet_F01_fumee_BG_66
+  - first:
+      213: 7822565373333132986
+    second: Tilesheet_F01_fumee_BG_67
+  - first:
+      213: -35675788416851556
+    second: Tilesheet_F01_fumee_BG_68
+  - first:
+      213: 5496466084239638179
+    second: Tilesheet_F01_fumee_BG_69
+  - first:
+      213: -5947950183754504024
+    second: Tilesheet_F01_fumee_BG_70
+  - first:
+      213: 3625639738514660225
+    second: Tilesheet_F01_fumee_BG_71
+  - first:
+      213: 1462808165603980970
+    second: Tilesheet_F01_fumee_BG_72
+  - first:
+      213: -8762085071865107631
+    second: Tilesheet_F01_fumee_BG_73
+  - first:
+      213: -5577757239809474896
+    second: Tilesheet_F01_fumee_BG_74
+  - first:
+      213: 9162768424384531236
+    second: Tilesheet_F01_fumee_BG_75
+  - first:
+      213: -2218147830154701295
+    second: Tilesheet_F01_fumee_BG_76
+  - first:
+      213: -6608161252630530011
+    second: Tilesheet_F01_fumee_BG_77
+  - first:
+      213: 8920370343228095158
+    second: Tilesheet_F01_fumee_BG_78
+  - first:
+      213: -125346683495206630
+    second: Tilesheet_F01_fumee_BG_79
+  - first:
+      213: -3810780621191024267
+    second: Tilesheet_F01_fumee_BG_80
+  - first:
+      213: -8366015365916609301
+    second: Tilesheet_F01_fumee_BG_81
+  - first:
+      213: 333523799743192166
+    second: Tilesheet_F01_fumee_BG_82
+  - first:
+      213: -1434293282918004803
+    second: Tilesheet_F01_fumee_BG_83
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f431be28b18e44aa6f8b6b866344da
+      internalID: 1038267799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3966da2cfaa0ef4f9f9ada57e922196
+      internalID: -1128259905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_2
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab6e49b22aedbe45a2320a767a43fa6
+      internalID: -2064329713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2406366ebb0a84d9f36fe7f453ed1d
+      internalID: -1282875234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_4
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75e6241aae929f24ba37c4c6a41d6b94
+      internalID: -1120282972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_5
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08a223597808f254bbfa5b73aa155211
+      internalID: -684868534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_6
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a9bf0a4e95cff499b4743b044c784e
+      internalID: -743712919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_7
+      rect:
+        serializedVersion: 2
+        x: 2688
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a40e2e8703acf44b46a69ee0234c1f
+      internalID: 1927134771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_8
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70622535ad0dbd94ab366628b74f2c7f
+      internalID: -1634909392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_BG_9
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b838141968946f4b807ecbdae1a362a
+      internalID: 921519511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c02db466aa4cc334580340417cea464f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Tilesheet_F01_fumee_BG_0: 1038267799
+      Tilesheet_F01_fumee_BG_1: -1128259905
+      Tilesheet_F01_fumee_BG_2: -2064329713
+      Tilesheet_F01_fumee_BG_3: -1282875234
+      Tilesheet_F01_fumee_BG_4: -1120282972
+      Tilesheet_F01_fumee_BG_5: -684868534
+      Tilesheet_F01_fumee_BG_6: -743712919
+      Tilesheet_F01_fumee_BG_7: 1927134771
+      Tilesheet_F01_fumee_BG_8: -1634909392
+      Tilesheet_F01_fumee_BG_9: 921519511
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
