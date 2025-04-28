@@ -26,6 +26,7 @@ MonoBehaviour:
   weakPointList:
   - {fileID: 11400000, guid: 6862fd29c954bc243bcad312e76529fb, type: 2}
   - {fileID: 11400000, guid: 80b59c300a2ba264e97ab5f01fd5fd49, type: 2}
+  PrevisualisationAttack: {fileID: 5054665362752135790, guid: 36ad7806538d8664e949f4576b4b88ab, type: 3}
   attacks:
   - {fileID: 11400000, guid: 4d7b885259b5b134ca6fe7f7a2ce86ae, type: 2}
   - {fileID: 11400000, guid: 5f1043fe548f05c42812cfc3d1224f0e, type: 2}
