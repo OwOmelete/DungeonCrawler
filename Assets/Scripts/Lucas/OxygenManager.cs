@@ -45,12 +45,19 @@ public class OxygenManager : MonoBehaviour
     {
         if (player.oxygen <= 0)
         {
+            canLooseOxygen = true;
+            player.oxygen += value;
+            player.oxygen = Mathf.Clamp(player.oxygen, 0, maxOxygen);
+            UpdateUi();
             StartCoroutine(OxygenLossRoutine());
         }
-        player.oxygen += value;
-        player.oxygen = Mathf.Clamp(player.oxygen, 0, maxOxygen);
-        UpdateUi();
-        
+        else
+        {
+            canLooseOxygen = true;
+            player.oxygen += value;
+            player.oxygen = Mathf.Clamp(player.oxygen, 0, maxOxygen);
+            UpdateUi();
+        }
     }
 
     public void UpdateUi()
