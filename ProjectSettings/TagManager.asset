@@ -57,6 +57,9 @@ TagManager:
   - name: plantes devant
     uniqueID: 2251123185
     locked: 0
+  - name: FX devant
+    uniqueID: 2454368379
+    locked: 0
   - name: Foreground
     uniqueID: 4255958399
     locked: 0
