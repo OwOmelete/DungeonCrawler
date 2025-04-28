@@ -1,0 +1,796 @@
+fileFormatVersion: 2
+guid: 76cec2385b15f264bb403f958eabb9d7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1730318983898797779
+    second: Spritesheet_bulle_perso_01_0
+  - first:
+      213: 8719160960139670830
+    second: Spritesheet_bulle_perso_01_1
+  - first:
+      213: -4313313863208241657
+    second: Spritesheet_bulle_perso_01_2
+  - first:
+      213: -6874744421584142314
+    second: Spritesheet_bulle_perso_01_3
+  - first:
+      213: 6604123783412146422
+    second: Spritesheet_bulle_perso_01_4
+  - first:
+      213: -1933901909782601777
+    second: Spritesheet_bulle_perso_01_5
+  - first:
+      213: -1241193048269305328
+    second: Spritesheet_bulle_perso_01_6
+  - first:
+      213: -1406146182157130610
+    second: Spritesheet_bulle_perso_01_7
+  - first:
+      213: -8029053451321006321
+    second: Spritesheet_bulle_perso_01_8
+  - first:
+      213: -5082942653830335287
+    second: Spritesheet_bulle_perso_01_9
+  - first:
+      213: -4631636403220911505
+    second: Spritesheet_bulle_perso_01_10
+  - first:
+      213: -2553421187045738234
+    second: Spritesheet_bulle_perso_01_11
+  - first:
+      213: -3416347921608895701
+    second: Spritesheet_bulle_perso_01_12
+  - first:
+      213: -6795814357294562226
+    second: Spritesheet_bulle_perso_01_13
+  - first:
+      213: -4894183715596039962
+    second: Spritesheet_bulle_perso_01_14
+  - first:
+      213: -3270696700894062213
+    second: Spritesheet_bulle_perso_01_15
+  - first:
+      213: 1575765425339171832
+    second: Spritesheet_bulle_perso_01_16
+  - first:
+      213: -8089881830705912529
+    second: Spritesheet_bulle_perso_01_17
+  - first:
+      213: -5427328995676683559
+    second: Spritesheet_bulle_perso_01_18
+  - first:
+      213: 4689785790969471262
+    second: Spritesheet_bulle_perso_01_19
+  - first:
+      213: -7495372247019999600
+    second: Spritesheet_bulle_perso_01_20
+  - first:
+      213: -1264386608529942650
+    second: Spritesheet_bulle_perso_01_21
+  - first:
+      213: -960913574785317779
+    second: Spritesheet_bulle_perso_01_22
+  - first:
+      213: -3201469626803650140
+    second: Spritesheet_bulle_perso_01_23
+  - first:
+      213: 3491209186676431974
+    second: Spritesheet_bulle_perso_01_24
+  - first:
+      213: 2741377608641172602
+    second: Spritesheet_bulle_perso_01_25
+  - first:
+      213: 6267765803103842845
+    second: Spritesheet_bulle_perso_01_26
+  - first:
+      213: 2146844681850425504
+    second: Spritesheet_bulle_perso_01_27
+  - first:
+      213: -2192969864807720631
+    second: Spritesheet_bulle_perso_01_28
+  - first:
+      213: -4083025920159469163
+    second: Spritesheet_bulle_perso_01_29
+  - first:
+      213: -1001465125970257473
+    second: Spritesheet_bulle_perso_01_30
+  - first:
+      213: 3250949080535017416
+    second: Spritesheet_bulle_perso_01_31
+  - first:
+      213: 6993963941420578599
+    second: Spritesheet_bulle_perso_01_32
+  - first:
+      213: 659586516928224790
+    second: Spritesheet_bulle_perso_01_33
+  - first:
+      213: -3297888345514954190
+    second: Spritesheet_bulle_perso_01_34
+  - first:
+      213: 6202367761322754236
+    second: Spritesheet_bulle_perso_01_35
+  - first:
+      213: -4148107451936398466
+    second: Spritesheet_bulle_perso_01_36
+  - first:
+      213: -1233992616591412567
+    second: Spritesheet_bulle_perso_01_37
+  - first:
+      213: 8682267814536588864
+    second: Spritesheet_bulle_perso_01_38
+  - first:
+      213: -5470185792505450725
+    second: Spritesheet_bulle_perso_01_39
+  - first:
+      213: -1170197534919977761
+    second: Spritesheet_bulle_perso_01_40
+  - first:
+      213: 630510195498380615
+    second: Spritesheet_bulle_perso_01_41
+  - first:
+      213: -1130441883907379267
+    second: Spritesheet_bulle_perso_01_42
+  - first:
+      213: 5901842709460612312
+    second: Spritesheet_bulle_perso_01_43
+  - first:
+      213: -4238270427057751792
+    second: Spritesheet_bulle_perso_01_44
+  - first:
+      213: -7819619569476307796
+    second: Spritesheet_bulle_perso_01_45
+  - first:
+      213: 5699350910348776733
+    second: Spritesheet_bulle_perso_01_46
+  - first:
+      213: -7585248125466933177
+    second: Spritesheet_bulle_perso_01_47
+  - first:
+      213: 2092117324024986455
+    second: Spritesheet_bulle_perso_01_48
+  - first:
+      213: 2052700457378299619
+    second: Spritesheet_bulle_perso_01_49
+  - first:
+      213: 1114603004632990096
+    second: Spritesheet_bulle_perso_01_50
+  - first:
+      213: -8000914167024882359
+    second: Spritesheet_bulle_perso_01_51
+  - first:
+      213: 5077377966592837600
+    second: Spritesheet_bulle_perso_01_52
+  - first:
+      213: -695981575026941825
+    second: Spritesheet_bulle_perso_01_53
+  - first:
+      213: -8356052246513846207
+    second: Spritesheet_bulle_perso_01_54
+  - first:
+      213: 4397093691143939927
+    second: Spritesheet_bulle_perso_01_55
+  - first:
+      213: 7908420468328769792
+    second: Spritesheet_bulle_perso_01_56
+  - first:
+      213: -2941114423806912316
+    second: Spritesheet_bulle_perso_01_57
+  - first:
+      213: 6976504223718095245
+    second: Spritesheet_bulle_perso_01_58
+  - first:
+      213: 5178894198117630491
+    second: Spritesheet_bulle_perso_01_59
+  - first:
+      213: -164161903772740145
+    second: Spritesheet_bulle_perso_01_60
+  - first:
+      213: 2484938038516204607
+    second: Spritesheet_bulle_perso_01_61
+  - first:
+      213: 1225541654352047693
+    second: Spritesheet_bulle_perso_01_62
+  - first:
+      213: -660867276874609564
+    second: Spritesheet_bulle_perso_01_63
+  - first:
+      213: -5461102112799644481
+    second: Spritesheet_bulle_perso_01_64
+  - first:
+      213: 4161065206791488562
+    second: Spritesheet_bulle_perso_01_65
+  - first:
+      213: 6464691531273393105
+    second: Spritesheet_bulle_perso_01_66
+  - first:
+      213: 2856951633082869632
+    second: Spritesheet_bulle_perso_01_67
+  - first:
+      213: -5700768711145818789
+    second: Spritesheet_bulle_perso_01_68
+  - first:
+      213: -5971757149537015388
+    second: Spritesheet_bulle_perso_01_69
+  - first:
+      213: 623265467865714589
+    second: Spritesheet_bulle_perso_01_70
+  - first:
+      213: -5654019608314624485
+    second: Spritesheet_bulle_perso_01_71
+  - first:
+      213: 7220233174292306330
+    second: Spritesheet_bulle_perso_01_72
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ea1f452c7c65a4fb959036f9e7d758
+      internalID: -1006042461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8ecb38c6a925ad4285c7277f83e9ee2
+      internalID: 2016883650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060f19895fc0fdb4c90aa7b7ad86f8c7
+      internalID: 1275770099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877fe6f8ed75f3549b32461fef0b3a9f
+      internalID: 1362587957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561bc5a3fee9cf54cadcbd6b2abab676
+      internalID: 484293168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d1360aac1399c341a04ba4afb137a4d
+      internalID: -133517268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ea4ba121968e74984c64d32c91c30f
+      internalID: 1225047586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b05088011b8438b4982502fb7fa13dc1
+      internalID: -746196972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9861ca76efb60c14ca9f03bf66bb69dc
+      internalID: 1866591265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 279246f71842d98428b532b3426561a2
+      internalID: 1367341517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c19e520b1262347979b954286a0c0b
+      internalID: 1577925488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb22c8d33f0dd8f4eb0755d4b6b1ff31
+      internalID: 49099021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9842d28d58a335b458a14568aaca5e9c
+      internalID: -539779045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9b392043e8dd046b6bdb368ea737e9
+      internalID: 369326280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd99864a42ab314479f1f09cbcda945c
+      internalID: 880576989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_15
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88591fdff5c51b54c8e34a1682798562
+      internalID: -1351841485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a81538dda7941247a42232faa0dc00c
+      internalID: -899612132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_17
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4e660f420e70a429191377a51c3d92
+      internalID: 893264864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3be53c0cfa375114a8eda24c7ede6265
+      internalID: 151294669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_bulle_perso_01_19
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e43a10fc1c2b3940a3daf0a4c885f0d
+      internalID: -925965360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a4df1df3c2409604ebf19003e695d2ca
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Spritesheet_bulle_perso_01_0: -1006042461
+      Spritesheet_bulle_perso_01_1: 2016883650
+      Spritesheet_bulle_perso_01_10: 1577925488
+      Spritesheet_bulle_perso_01_11: 49099021
+      Spritesheet_bulle_perso_01_12: -539779045
+      Spritesheet_bulle_perso_01_13: 369326280
+      Spritesheet_bulle_perso_01_14: 880576989
+      Spritesheet_bulle_perso_01_15: -1351841485
+      Spritesheet_bulle_perso_01_16: -899612132
+      Spritesheet_bulle_perso_01_17: 893264864
+      Spritesheet_bulle_perso_01_18: 151294669
+      Spritesheet_bulle_perso_01_19: -925965360
+      Spritesheet_bulle_perso_01_2: 1275770099
+      Spritesheet_bulle_perso_01_3: 1362587957
+      Spritesheet_bulle_perso_01_4: 484293168
+      Spritesheet_bulle_perso_01_5: -133517268
+      Spritesheet_bulle_perso_01_6: 1225047586
+      Spritesheet_bulle_perso_01_7: -746196972
+      Spritesheet_bulle_perso_01_8: 1866591265
+      Spritesheet_bulle_perso_01_9: 1367341517
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
