@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.2702219, y: 0.2702219, z: 0.2702219}
+  m_LocalScale: {x: 0.40157673, y: 0.40157673, z: 0.40157673}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4588263931772368584}
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8966945178157639174, guid: f8372e6dd7f076c45b18ac19191a14c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83abf35496fa5f546858661a66018339, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 7.18, y: 3.74}
@@ -132,15 +132,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e63e0f181ee9b5458101a1419ea239d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacks:
-  - {fileID: 11400000, guid: 4d7b885259b5b134ca6fe7f7a2ce86ae, type: 2}
-  - {fileID: 11400000, guid: 5f1043fe548f05c42812cfc3d1224f0e, type: 2}
-  - {fileID: 11400000, guid: ee3f5528e74ea4a45ab31aed27061a5d, type: 2}
-  WeakPointsRight:
-  - {fileID: 11400000, guid: 6fc09f2d0e2491b4287f2af43558f98f, type: 2}
-  - {fileID: 11400000, guid: 039b468d6c614d044a98d76c8001c3e0, type: 2}
-  - {fileID: 11400000, guid: 2ced636968f0c4040bc41c830dd291bf, type: 2}
-  WeakPointsLeft:
-  - {fileID: 11400000, guid: 61d4f78c29eec504a8acf32db8c37f5a, type: 2}
-  - {fileID: 11400000, guid: 6862fd29c954bc243bcad312e76529fb, type: 2}
-  - {fileID: 11400000, guid: 80b59c300a2ba264e97ab5f01fd5fd49, type: 2}

@@ -19,12 +19,18 @@ public class HealObject : MonoBehaviour
     [SerializeField] private float timeToDespawn = 0.3f;
     
     private bool canTake = false;   // Savoir si on peut prendre l'objet
-    
+    [SerializeField] private Player playerRef;
     [HideInInspector] public PlayerDataInstance player;
     
     #endregion
 
     #region Triggers
+
+    private void Start()
+    {
+        player = playerRef.player;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
