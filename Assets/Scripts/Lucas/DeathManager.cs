@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using System.Net.Mime;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeathManager : MonoBehaviour
 {
@@ -8,7 +11,7 @@ public class DeathManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] private GameObject playerGO;
     public Vector3 respawnPosition;
-    [SerializeField] private GameObject canvasDeath;
+    [SerializeField] private Image imageDeath;
     [SerializeField] private float maxOxygen = 100;
     [SerializeField] private float maxLight = 10;
     [SerializeField] private int maxHp = 10;
@@ -39,7 +42,8 @@ public class DeathManager : MonoBehaviour
     }
     public void Death()
     {
-        canvasDeath.SetActive(true);
+        imageDeath.DOFade(1, 0.01f);
+        imageDeath.gameObject.SetActive(true);
         playerGO.GetComponent<Player>().rotationReference.canMove = false;
         StartCoroutine(Respawn());
     }
@@ -48,18 +52,20 @@ public class DeathManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         RespawnPlayer();
+        imageDeath.DOFade(0, 0.3f);
+        yield return new WaitForSeconds(0.3f);
+        imageDeath.gameObject.SetActive(false);
     }
 
     private void RespawnPlayer()
     {
         playerGO.transform.position = respawnPosition;
         playerGO.GetComponent<Player>().rotationReference.canMove = true;
-        canvasDeath.SetActive(false);
         player.player.hp = maxHp;
         oxygenRef.AddOxygen(maxOxygen);
         lightRef.AddLight(maxLight);
-        canvasDeath.SetActive(false);
         isAlive = true;
         StartCoroutine(CheckLife());
     }
+    
 }
