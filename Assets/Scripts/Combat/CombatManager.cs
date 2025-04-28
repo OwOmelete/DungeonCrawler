@@ -1013,12 +1013,20 @@ public class CombatManager : MonoBehaviour
         {
             if (entity == player)
             {
-                foreach (var entityInstance in turnOrder)
+                List<int> indexToSuppr = new List<int>();
+                for (int i = 0; i < turnOrder.Count; i++)
                 {
-                    if (entityInstance is FishDataInstance)
+                    if (turnOrder[i] is FishDataInstance)
                     {
-                        Die(entityInstance);
+                        indexToSuppr.Add(i);
                     }
+                }
+
+                for (int i = turnOrder.Count-1; i >= 0; i--)
+                {
+                    Debug.Log(i);
+                    Debug.Log(turnOrder[i]);
+                    Die(turnOrder[i]);
                 }
                 EndFight();
                 deathManagerReference.Death();
@@ -1044,6 +1052,7 @@ public class CombatManager : MonoBehaviour
                 grid[entity.positionY + i,entity.positionX + j] = null ;
             }
         }
+        Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
         Destroy(entity.prefab);
     }
