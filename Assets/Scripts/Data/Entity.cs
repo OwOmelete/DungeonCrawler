@@ -29,6 +29,7 @@ public abstract class Entity : ScriptableObject
     public Sprite idleSprite;
     public List<AttackData> attackList;
     public List<WeakPointData> weakPointList;
+    public List<Sprite> lifeBarList;
     public GameObject PrevisualisationAttack;
     // movement list
     // attack list
@@ -69,6 +70,7 @@ public class EntityInstance
     public Sprite preparingAttackSprite;
     public Sprite attackingSprite;
     public Sprite idleSprite;
+    public List<Sprite> lifeBarList;
     public enum dir
     {
         up,
@@ -97,6 +99,7 @@ public class EntityInstance
         preparingAttackSprite = data.preparingAttackSprite;
         attackingSprite = data.attackingSprite;
         idleSprite = data.idleSprite;
+        lifeBarList = data.lifeBarList;
     }
     
     public void TakeDamage(int dmg)
