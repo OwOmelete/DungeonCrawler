@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      barre_vie_vide_combat_0: -3470877511304279650
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
