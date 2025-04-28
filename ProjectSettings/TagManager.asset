@@ -45,8 +45,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: plantes derriere
+    uniqueID: 4106545001
+    locked: 0
+  - name: fx derriere
+    uniqueID: 2306730989
+    locked: 0
   - name: Wall
     uniqueID: 1674480907
+    locked: 0
+  - name: plantes devant
+    uniqueID: 2251123185
     locked: 0
   - name: Foreground
     uniqueID: 4255958399
