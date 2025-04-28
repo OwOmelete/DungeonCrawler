@@ -5,16 +5,23 @@ using UnityEngine;
 public class DeathManager : MonoBehaviour
 {
     private bool isAlive = true;
-    [SerializeField] private PlayerData _playerData;
-    public PlayerDataInstance player;
+    [SerializeField] Player player;
     [SerializeField] private GameObject playerGO;
-    [SerializeField] private Vector3 respawnPosition;
+    public Vector3 respawnPosition;
     [SerializeField] private GameObject canvasDeath;
-    [SerializeField] private float maxOxygen;
-    [SerializeField] private float maxLight;
+    [SerializeField] private float maxOxygen = 100;
+    [SerializeField] private float maxLight = 10;
+    [SerializeField] private int maxHp = 10;
+    [SerializeField] private OxygenManager oxygenRef;
+    [SerializeField] private LightManager lightRef;
     private void Start()
     {
-        player = (PlayerDataInstance)_playerData.Instance();
+        StartCoroutine(WaitFrame());
+    }
+
+    IEnumerator WaitFrame()
+    {
+        yield return new WaitForEndOfFrame();
         StartCoroutine(CheckLife());
     }
 
@@ -22,7 +29,7 @@ public class DeathManager : MonoBehaviour
     {
         while (isAlive)
         {
-            if (player.hp <= 0)
+            if (player.player.hp <= 0 || player.player.oxygen <= 0)
             {
                 isAlive = false;
                 Death();
@@ -30,19 +37,28 @@ public class DeathManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
     }
-    private void Death()
+    public void Death()
     {
         canvasDeath.SetActive(true);
         playerGO.GetComponent<Player>().rotationReference.canMove = false;
+        StartCoroutine(Respawn());
     }
 
-    public void RespawnPlayer()
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(2f);
+        RespawnPlayer();
+    }
+
+    private void RespawnPlayer()
     {
         playerGO.transform.position = respawnPosition;
         playerGO.GetComponent<Player>().rotationReference.canMove = true;
         canvasDeath.SetActive(false);
-        player.oxygen = maxOxygen;
-        player.light = maxLight;
+        player.player.hp = maxHp;
+        oxygenRef.AddOxygen(maxOxygen);
+        lightRef.AddLight(maxLight);
+        canvasDeath.SetActive(false);
         isAlive = true;
         StartCoroutine(CheckLife());
     }
