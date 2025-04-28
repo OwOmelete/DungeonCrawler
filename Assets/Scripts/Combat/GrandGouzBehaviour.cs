@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -132,6 +135,9 @@ public class GrandGouzBehaviour : AbstractIA
                         {
                             entity.PreparingAttack = true;
                             UpdateWeakPoints(entity);
+                            entity.LastPrevisualisation = Instantiate(entity.PrevisualisationAttack,
+                                new Vector3(entity.positionX + 2, entity.positionY, 0), quaternion.identity);
+                            entity.sr.sprite = entity.preparingAttackSprite;
 
                             Debug.Log("detection");
 
@@ -150,6 +156,9 @@ public class GrandGouzBehaviour : AbstractIA
                         {
                             entity.PreparingAttack = true;
                             UpdateWeakPoints(entity);
+                            entity.LastPrevisualisation = Instantiate(entity.PrevisualisationAttack,
+                                new Vector3(entity.positionX - 1, entity.positionY, 0), quaternion.identity);
+                            entity.sr.sprite = entity.preparingAttackSprite;
 
                             Debug.Log("detection");
                         }
@@ -178,6 +187,10 @@ public class GrandGouzBehaviour : AbstractIA
                     CombatManager.Instance.Attack(attack, entity, entity.positionX + 1, entity.positionY);
                 }
             }
+
+            StartCoroutine(attacking(entity));
+
+            Destroy(entity.LastPrevisualisation);
 
             entity.PreparingAttack = false;
             entity.HasAttacked = true;
@@ -252,5 +265,13 @@ public class GrandGouzBehaviour : AbstractIA
                 entity.weakPointList.Add(entity.WeakPointsLeft[2]);
             }
         }
+    }
+
+    IEnumerator attacking(FishDataInstance entity)
+    {
+        entity.sr.sprite = entity.attackingSprite;
+        yield return new WaitForSeconds(0.2f);
+        entity.sr.sprite = entity.idleSprite;
+
     }
 }
