@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Respawn : MonoBehaviour
+public partial class Respawn : MonoBehaviour
 {
     public GameObject respawnPoint;
 

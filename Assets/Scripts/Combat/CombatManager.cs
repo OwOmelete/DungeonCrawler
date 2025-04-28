@@ -22,6 +22,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] GameObject UiExplo;
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
+    [SerializeField] private DeathManager deathManagerReference;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -78,22 +79,7 @@ public class CombatManager : MonoBehaviour
     {
         if (combatFinished)
         {
-            Debug.Log("vous avez gagné !!");
-            player.positionX = _playerData.positionX;
-            player.positionY = _playerData.positionY;
-            player.actionPoint = player.RespirationDatas[player.respirationIndex].actionPoints;
-            Destroy(player.prefab);
-            turnOrder.Clear();
-            fishes.Clear();
-            currentTurnIndex = 0;
-            player.prefab.SetActive(false);
-            lightManager.canLooseLight = true;
-            lightManager.RestartCoroutine();
-            oxygenManager.canLooseOxygen = true;
-            oxygenManager.RestartCoroutine();
-            playerExploration.SetActive(true);
-            UiExplo.SetActive(true);
-            combatScene.SetActive(false);
+            EndFight();
             return;
         }
         EntityInstance currentEntity = turnOrder[currentTurnIndex];
@@ -1034,6 +1020,8 @@ public class CombatManager : MonoBehaviour
                         Die(entityInstance);
                     }
                 }
+                EndFight();
+                deathManagerReference.Death();
             }
             else
             {
@@ -1114,5 +1102,26 @@ public class CombatManager : MonoBehaviour
         }
 
         return 0;
+    }
+
+    void EndFight()
+    {
+        Debug.Log("Combat Fini");
+        player.positionX = _playerData.positionX;
+        player.positionY = _playerData.positionY;
+        player.actionPoint = player.RespirationDatas[player.respirationIndex].actionPoints;
+        Destroy(player.prefab);
+        turnOrder.Clear();
+        fishes.Clear();
+        currentTurnIndex = 0;
+        player.prefab.SetActive(false);
+        lightManager.canLooseLight = true;
+        lightManager.RestartCoroutine();
+        oxygenManager.canLooseOxygen = true;
+        oxygenManager.RestartCoroutine();
+        playerExploration.SetActive(true);
+        UiExplo.SetActive(true);
+        combatScene.SetActive(false);
+        
     }
 }

@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private float moveVertical = 0f;
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float accelerationSpeed = 3f;
-    [SerializeField] private Rotation rotationReference ;
+    public Rotation rotationReference ;
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public LightManager lightManager;
     public OxygenManager oxygenManager;
     public PlayerDataInstance player;
+    private bool playerAlive = true;
 
     private void Awake()
     {
@@ -31,11 +32,12 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
+    
     void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
-
         if (rotationReference.canMove)
         {
             if (moveHorizontal != 0 || moveVertical != 0)
