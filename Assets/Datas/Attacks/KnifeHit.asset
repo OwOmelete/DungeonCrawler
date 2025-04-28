@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4579fa09605c9b4cb24ca336bda7b69, type: 3}
   m_Name: KnifeHit
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 1
   range: 1
   Yoffset: 1
   Xoffset: 0

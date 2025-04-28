@@ -1,0 +1,671 @@
+fileFormatVersion: 2
+guid: 80bc0f4d5e0f1a04b9d02fda0908c65b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1415416339373245118
+    second: Tilesheet_F01_fumee_PlanJouable_0
+  - first:
+      213: -1730088033917328930
+    second: Tilesheet_F01_fumee_PlanJouable_1
+  - first:
+      213: 4272112736593959951
+    second: Tilesheet_F01_fumee_PlanJouable_2
+  - first:
+      213: -4706556822573987383
+    second: Tilesheet_F01_fumee_PlanJouable_3
+  - first:
+      213: -4514595288966804902
+    second: Tilesheet_F01_fumee_PlanJouable_4
+  - first:
+      213: 5038754691430376826
+    second: Tilesheet_F01_fumee_PlanJouable_5
+  - first:
+      213: 8716872811936066453
+    second: Tilesheet_F01_fumee_PlanJouable_6
+  - first:
+      213: -7510798569530073278
+    second: Tilesheet_F01_fumee_PlanJouable_7
+  - first:
+      213: 5304246365651157686
+    second: Tilesheet_F01_fumee_PlanJouable_8
+  - first:
+      213: 6302610464787498490
+    second: Tilesheet_F01_fumee_PlanJouable_9
+  - first:
+      213: -9117433388213494514
+    second: Tilesheet_F01_fumee_PlanJouable_10
+  - first:
+      213: 8011384702367967857
+    second: Tilesheet_F01_fumee_PlanJouable_11
+  - first:
+      213: -3148085268060206497
+    second: Tilesheet_F01_fumee_PlanJouable_12
+  - first:
+      213: 7677720559976101772
+    second: Tilesheet_F01_fumee_PlanJouable_13
+  - first:
+      213: -4191411166021197235
+    second: Tilesheet_F01_fumee_PlanJouable_14
+  - first:
+      213: -2117156681152202754
+    second: Tilesheet_F01_fumee_PlanJouable_15
+  - first:
+      213: -1837942457770367609
+    second: Tilesheet_F01_fumee_PlanJouable_16
+  - first:
+      213: 2247004441643435961
+    second: Tilesheet_F01_fumee_PlanJouable_17
+  - first:
+      213: 6208408759189902789
+    second: Tilesheet_F01_fumee_PlanJouable_18
+  - first:
+      213: -9054712517975182914
+    second: Tilesheet_F01_fumee_PlanJouable_19
+  - first:
+      213: -2105528659961505912
+    second: Tilesheet_F01_fumee_PlanJouable_20
+  - first:
+      213: -6407609808392493362
+    second: Tilesheet_F01_fumee_PlanJouable_21
+  - first:
+      213: -5458231227954330518
+    second: Tilesheet_F01_fumee_PlanJouable_22
+  - first:
+      213: 3781843020393212741
+    second: Tilesheet_F01_fumee_PlanJouable_23
+  - first:
+      213: 6732080461860680357
+    second: Tilesheet_F01_fumee_PlanJouable_24
+  - first:
+      213: -9161176705740481449
+    second: Tilesheet_F01_fumee_PlanJouable_25
+  - first:
+      213: -632806116348531416
+    second: Tilesheet_F01_fumee_PlanJouable_26
+  - first:
+      213: 1922735251323474502
+    second: Tilesheet_F01_fumee_PlanJouable_27
+  - first:
+      213: 1987936083161798195
+    second: Tilesheet_F01_fumee_PlanJouable_28
+  - first:
+      213: -2318920807841596230
+    second: Tilesheet_F01_fumee_PlanJouable_29
+  - first:
+      213: 7484116623854340004
+    second: Tilesheet_F01_fumee_PlanJouable_30
+  - first:
+      213: 8324946952807230783
+    second: Tilesheet_F01_fumee_PlanJouable_31
+  - first:
+      213: 9140102998758417094
+    second: Tilesheet_F01_fumee_PlanJouable_32
+  - first:
+      213: 4347875558555030593
+    second: Tilesheet_F01_fumee_PlanJouable_33
+  - first:
+      213: -7339678533667172222
+    second: Tilesheet_F01_fumee_PlanJouable_34
+  - first:
+      213: 4041019290597001223
+    second: Tilesheet_F01_fumee_PlanJouable_35
+  - first:
+      213: 3037440242178908300
+    second: Tilesheet_F01_fumee_PlanJouable_36
+  - first:
+      213: 5066284867891000179
+    second: Tilesheet_F01_fumee_PlanJouable_37
+  - first:
+      213: -440150349198039276
+    second: Tilesheet_F01_fumee_PlanJouable_38
+  - first:
+      213: -2039290768077394307
+    second: Tilesheet_F01_fumee_PlanJouable_39
+  - first:
+      213: -5213137425746787095
+    second: Tilesheet_F01_fumee_PlanJouable_40
+  - first:
+      213: 772153130770399918
+    second: Tilesheet_F01_fumee_PlanJouable_41
+  - first:
+      213: -6431052995468276814
+    second: Tilesheet_F01_fumee_PlanJouable_42
+  - first:
+      213: 6242649650231986628
+    second: Tilesheet_F01_fumee_PlanJouable_43
+  - first:
+      213: 4897139932521397139
+    second: Tilesheet_F01_fumee_PlanJouable_44
+  - first:
+      213: 352106900049009733
+    second: Tilesheet_F01_fumee_PlanJouable_45
+  - first:
+      213: 1326746428601539570
+    second: Tilesheet_F01_fumee_PlanJouable_46
+  - first:
+      213: 8690249172693047360
+    second: Tilesheet_F01_fumee_PlanJouable_47
+  - first:
+      213: 4153004664296189844
+    second: Tilesheet_F01_fumee_PlanJouable_48
+  - first:
+      213: -7450779697748332924
+    second: Tilesheet_F01_fumee_PlanJouable_49
+  - first:
+      213: -1551407471754568533
+    second: Tilesheet_F01_fumee_PlanJouable_50
+  - first:
+      213: -3042195997268101975
+    second: Tilesheet_F01_fumee_PlanJouable_51
+  - first:
+      213: -5988882191239129019
+    second: Tilesheet_F01_fumee_PlanJouable_52
+  - first:
+      213: -8875459139903477579
+    second: Tilesheet_F01_fumee_PlanJouable_53
+  - first:
+      213: 3799736693066731615
+    second: Tilesheet_F01_fumee_PlanJouable_54
+  - first:
+      213: 4155770774054314519
+    second: Tilesheet_F01_fumee_PlanJouable_55
+  - first:
+      213: 7780239774824633229
+    second: Tilesheet_F01_fumee_PlanJouable_56
+  - first:
+      213: 1717391474948587620
+    second: Tilesheet_F01_fumee_PlanJouable_57
+  - first:
+      213: 3596506364947814134
+    second: Tilesheet_F01_fumee_PlanJouable_58
+  - first:
+      213: -1557193827636528603
+    second: Tilesheet_F01_fumee_PlanJouable_59
+  - first:
+      213: 8936930449658255128
+    second: Tilesheet_F01_fumee_PlanJouable_60
+  - first:
+      213: -137670844965530470
+    second: Tilesheet_F01_fumee_PlanJouable_61
+  - first:
+      213: 6938046978145187854
+    second: Tilesheet_F01_fumee_PlanJouable_62
+  - first:
+      213: -903295906218300887
+    second: Tilesheet_F01_fumee_PlanJouable_63
+  - first:
+      213: 4190988187216886525
+    second: Tilesheet_F01_fumee_PlanJouable_64
+  - first:
+      213: 4513819346809286123
+    second: Tilesheet_F01_fumee_PlanJouable_65
+  - first:
+      213: -52117816722914322
+    second: Tilesheet_F01_fumee_PlanJouable_66
+  - first:
+      213: 3842658268575212881
+    second: Tilesheet_F01_fumee_PlanJouable_67
+  - first:
+      213: -754393578246537121
+    second: Tilesheet_F01_fumee_PlanJouable_68
+  - first:
+      213: 8705996643808686610
+    second: Tilesheet_F01_fumee_PlanJouable_69
+  - first:
+      213: 3883815221851521505
+    second: Tilesheet_F01_fumee_PlanJouable_70
+  - first:
+      213: 2313641787676064211
+    second: Tilesheet_F01_fumee_PlanJouable_71
+  - first:
+      213: 1608370602112054121
+    second: Tilesheet_F01_fumee_PlanJouable_72
+  - first:
+      213: 7590975283135912573
+    second: Tilesheet_F01_fumee_PlanJouable_73
+  - first:
+      213: -6470178564160010030
+    second: Tilesheet_F01_fumee_PlanJouable_74
+  - first:
+      213: -3324136950563134414
+    second: Tilesheet_F01_fumee_PlanJouable_75
+  - first:
+      213: -9022691911169541401
+    second: Tilesheet_F01_fumee_PlanJouable_76
+  - first:
+      213: -1653027552123853237
+    second: Tilesheet_F01_fumee_PlanJouable_77
+  - first:
+      213: 4843744914591573955
+    second: Tilesheet_F01_fumee_PlanJouable_78
+  - first:
+      213: 3392345271101193003
+    second: Tilesheet_F01_fumee_PlanJouable_79
+  - first:
+      213: -4021954046235323546
+    second: Tilesheet_F01_fumee_PlanJouable_80
+  - first:
+      213: 1020816621691198178
+    second: Tilesheet_F01_fumee_PlanJouable_81
+  - first:
+      213: 5811074861736199482
+    second: Tilesheet_F01_fumee_PlanJouable_82
+  - first:
+      213: -2673583567901108078
+    second: Tilesheet_F01_fumee_PlanJouable_83
+  - first:
+      213: 4667231589868639520
+    second: Tilesheet_F01_fumee_PlanJouable_84
+  - first:
+      213: -6137383426827158158
+    second: Tilesheet_F01_fumee_PlanJouable_85
+  - first:
+      213: -228543486859675469
+    second: Tilesheet_F01_fumee_PlanJouable_86
+  - first:
+      213: 4068870799362721581
+    second: Tilesheet_F01_fumee_PlanJouable_87
+  - first:
+      213: 9051106332584627760
+    second: Tilesheet_F01_fumee_PlanJouable_88
+  - first:
+      213: 2410215532622050316
+    second: Tilesheet_F01_fumee_PlanJouable_89
+  - first:
+      213: -1433869897640783329
+    second: Tilesheet_F01_fumee_PlanJouable_90
+  - first:
+      213: -802976989824533640
+    second: Tilesheet_F01_fumee_PlanJouable_91
+  - first:
+      213: 130840872464356762
+    second: Tilesheet_F01_fumee_PlanJouable_92
+  - first:
+      213: -5678039432337019727
+    second: Tilesheet_F01_fumee_PlanJouable_93
+  - first:
+      213: -4323559127597935985
+    second: Tilesheet_F01_fumee_PlanJouable_94
+  - first:
+      213: 1918843277731839460
+    second: Tilesheet_F01_fumee_PlanJouable_95
+  - first:
+      213: 2271181642844296437
+    second: Tilesheet_F01_fumee_PlanJouable_96
+  - first:
+      213: -5933489275188321203
+    second: Tilesheet_F01_fumee_PlanJouable_97
+  - first:
+      213: -3945554927889582818
+    second: Tilesheet_F01_fumee_PlanJouable_98
+  - first:
+      213: 788026193766745612
+    second: Tilesheet_F01_fumee_PlanJouable_99
+  - first:
+      213: -812857863739085748
+    second: Tilesheet_F01_fumee_PlanJouable_100
+  - first:
+      213: 2861285249386551939
+    second: Tilesheet_F01_fumee_PlanJouable_101
+  - first:
+      213: 198054736824474063
+    second: Tilesheet_F01_fumee_PlanJouable_102
+  - first:
+      213: -4510686610367201585
+    second: Tilesheet_F01_fumee_PlanJouable_103
+  - first:
+      213: -5468096532347672025
+    second: Tilesheet_F01_fumee_PlanJouable_104
+  - first:
+      213: -1302474414086812503
+    second: Tilesheet_F01_fumee_PlanJouable_105
+  - first:
+      213: -2978871204167589246
+    second: Tilesheet_F01_fumee_PlanJouable_106
+  - first:
+      213: 2432946642846456342
+    second: Tilesheet_F01_fumee_PlanJouable_107
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296eef10782a78f4d94d5e7e6981c0a8
+      internalID: -1329270638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 353428e2256b8944593d4106cabd907e
+      internalID: -31386232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_2
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 606946823e961334dbb4f606d1e76f96
+      internalID: -1993256583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41180b4077d7ce147b86ecd67c630803
+      internalID: -2124816217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_4
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6cd34bfcec707e47bf84fe92a93f787
+      internalID: -536316263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_5
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c74d39ec0d5b31458d7150c82823b8c
+      internalID: -736101957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_6
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e46b77e88efb24c801956833cdc099
+      internalID: -997831022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_7
+      rect:
+        serializedVersion: 2
+        x: 2688
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a8b35ca2a8bc024b9f86e57437d3fc0
+      internalID: 460986389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_8
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f33e4a6e84bdfb4086feb11112a0a47
+      internalID: -1782792193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_F01_fumee_PlanJouable_9
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 0
+        width: 384
+        height: 656
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c059dc963cc80424fab8b34a21b0aa10
+      internalID: 561861854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e3f56c5d42843ae4fa66d9df08041517
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Tilesheet_F01_fumee_PlanJouable_0: -1329270638
+      Tilesheet_F01_fumee_PlanJouable_1: -31386232
+      Tilesheet_F01_fumee_PlanJouable_2: -1993256583
+      Tilesheet_F01_fumee_PlanJouable_3: -2124816217
+      Tilesheet_F01_fumee_PlanJouable_4: -536316263
+      Tilesheet_F01_fumee_PlanJouable_5: -736101957
+      Tilesheet_F01_fumee_PlanJouable_6: -997831022
+      Tilesheet_F01_fumee_PlanJouable_7: 460986389
+      Tilesheet_F01_fumee_PlanJouable_8: -1782792193
+      Tilesheet_F01_fumee_PlanJouable_9: 561861854
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
