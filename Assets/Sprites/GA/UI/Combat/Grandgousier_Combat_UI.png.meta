@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grandgousier_Combat_UI_0: -7309879751514964795
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

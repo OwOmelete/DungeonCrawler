@@ -108,7 +108,7 @@ public class CombatManager : MonoBehaviour
         currentTurnIndex = (currentTurnIndex + 1) % turnOrder.Count;
         if (currentTurnIndex % turnOrder.Count == 0)
         {
-            player.light -= lightLostPerTurn;
+            player.light -= player.lightLostPerTurn;
             player.light = Mathf.Clamp(player.light, 1, 10);
             UpdateLight();
         }
@@ -126,7 +126,6 @@ public class CombatManager : MonoBehaviour
         {
             hasAttacked = false;
             hasMoved = false;
-            player.light -= lightLostPerTurn;
             Debug.Log("player oxygen : " +player.oxygen);
             Debug.Log("player light : " + player.light);
             EndTurn();
@@ -282,13 +281,13 @@ public class CombatManager : MonoBehaviour
             Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
             actionPointLost = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && canRotate && !hasMoved)
+        else if (Input.GetKeyDown(KeyCode.E) && canRotate && !hasMoved)
         {
             FlipPlayerRight(player);
             hasMoved = true;
             player.oxygen -= player.oxygenLostRotate;
         }
-        else if (Input.GetKeyDown(KeyCode.E) && canRotate && !hasMoved)
+        else if (Input.GetKeyDown(KeyCode.Q) && canRotate && !hasMoved)
         {
             FlipPlayerLeft(player);
             hasMoved = true;
@@ -1161,7 +1160,6 @@ public class CombatManager : MonoBehaviour
         turnOrder.Clear();
         fishes.Clear();
         currentTurnIndex = 0;
-        player.prefab.SetActive(false);
         lightManager.canLooseLight = true;
         lightManager.RestartCoroutine();
         oxygenManager.canLooseOxygen = true;

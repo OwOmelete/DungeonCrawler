@@ -38,11 +38,11 @@ MonoBehaviour:
   PrevisualisationAttack: {fileID: 0}
   ligth: 0
   oxygen: 0
-  oxygenLostMove: 0
-  oxygenLostMove2Tiles: 0
-  oxygenLostRotate: 0
-  oxygenLostAttack: 0
-  lightLostPerTurn: 0
+  oxygenLostMove: 3
+  oxygenLostMove2Tiles: 5
+  oxygenLostRotate: 4
+  oxygenLostAttack: 3
+  lightLostPerTurn: 0.3
   RespirationDatas:
   - {fileID: 11400000, guid: 1e05344a589534e48b2fb1935b6c071f, type: 2}
   - {fileID: 11400000, guid: a222e3ee6961bc44ea7d7444d330e76c, type: 2}
