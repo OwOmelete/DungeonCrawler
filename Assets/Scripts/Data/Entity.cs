@@ -24,8 +24,12 @@ public abstract class Entity : ScriptableObject
 
     public GameObject prefab;
 
+    public Sprite preparingAttackSprite;
+    public Sprite attackingSprite;
+    public Sprite idleSprite;
     public List<AttackData> attackList;
     public List<WeakPointData> weakPointList;
+    public GameObject PrevisualisationAttack;
     // movement list
     // attack list
 
@@ -48,7 +52,6 @@ public class EntityInstance
     [Header("UNIQUEMENT POUR BROTULO")]
     public dir direction;
     
-    [Header("Pas touche")]
     public int width;
     public int height;
     public GameObject prefab;
@@ -61,6 +64,11 @@ public class EntityInstance
     public AbstractIA behaviour;
     public List<SpikeInstance> spikeList = new List<SpikeInstance>();
     public List<int> spikeIndexSupr = new List<int>();
+    public GameObject PrevisualisationAttack;
+    public GameObject LastPrevisualisation;
+    public Sprite preparingAttackSprite;
+    public Sprite attackingSprite;
+    public Sprite idleSprite;
     public enum dir
     {
         up,
@@ -85,6 +93,10 @@ public class EntityInstance
         weakPointList = data.weakPointList;
         actionPoint = data.actionPoint;
         initialActionPoint = data.actionPoint;
+        PrevisualisationAttack = data.PrevisualisationAttack;
+        preparingAttackSprite = data.preparingAttackSprite;
+        attackingSprite = data.attackingSprite;
+        idleSprite = data.idleSprite;
     }
     
     public void TakeDamage(int dmg)
