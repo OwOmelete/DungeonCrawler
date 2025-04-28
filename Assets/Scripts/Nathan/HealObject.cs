@@ -10,7 +10,8 @@ public class HealObject : MonoBehaviour
     #region Variables
     
     [Header("Reference")]
-    [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche 
+    [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche
+    [SerializeField] private Animator animator;
     
     [Header("Values")]
     [SerializeField] private int regen = 5;   // Quantitée de lumière que va regenerer l'objet
@@ -28,9 +29,9 @@ public class HealObject : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interactDisplay.GetComponent<SpriteRenderer>().DOFade(1f, interactTextFadeDuration);
+            animator.SetBool("isHere", true);
             canTake = true;
-            StartCoroutine(TakeLight());
+            StartCoroutine(TakeHeal());
         }
         
     }
@@ -38,13 +39,13 @@ public class HealObject : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interactDisplay.GetComponent<SpriteRenderer>().DOFade(0f, interactTextFadeDuration);
+            animator.SetBool("isHere", false);
             canTake = false;
         }
     }
     #endregion
     
-    IEnumerator TakeLight()
+    IEnumerator TakeHeal()
     {
         while (canTake)
         {

@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class LightReload : MonoBehaviour
 {
@@ -12,6 +10,7 @@ public class LightReload : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private LightManager lightManagerReference;    // Reference au light manager
     [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche 
+    [SerializeField] private Animator animator;
     
     [Header("Values")]
     [SerializeField] private float regen = 5;   // Quantitée de lumière que va regenerer l'objet
@@ -27,7 +26,7 @@ public class LightReload : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interactDisplay.GetComponent<SpriteRenderer>().DOFade(1f, interactTextFadeDuration);
+            animator.SetBool("isHere", true);
             canTake = true;
             StartCoroutine(TakeLight());
         }
@@ -37,7 +36,7 @@ public class LightReload : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            interactDisplay.GetComponent<SpriteRenderer>().DOFade(0f, interactTextFadeDuration);
+            animator.SetBool("isHere", false);
             canTake = false;
         }
     }
@@ -51,6 +50,7 @@ public class LightReload : MonoBehaviour
             {
                 AddLight();
             }
+            
             yield return null;
         }
     }
