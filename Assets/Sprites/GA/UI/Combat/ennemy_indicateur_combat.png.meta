@@ -64,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -275,7 +275,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ennemy_indicateur_combat_0: 8490875555732617098
+      ennemy_indicateur_combat_1: 721385882677275108
+      ennemy_indicateur_combat_2: 5309871159196756465
+      ennemy_indicateur_combat_3: -31259907150510194
+      ennemy_indicateur_combat_4: -7657401504734120427
+      ennemy_indicateur_combat_5: 7968723910003730682
+      ennemy_indicateur_combat_6: 8718658106747343975
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

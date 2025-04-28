@@ -29,6 +29,13 @@ MonoBehaviour:
   weakPointList:
   - {fileID: 11400000, guid: 6862fd29c954bc243bcad312e76529fb, type: 2}
   - {fileID: 11400000, guid: 80b59c300a2ba264e97ab5f01fd5fd49, type: 2}
+  lifeBarList:
+  - {fileID: -6050188073113612675, guid: 1a9a2a050d37f83429d8f6780962e975, type: 3}
+  - {fileID: -1082354412804894711, guid: 242d05c988524b745b2db74c671b8dd2, type: 3}
+  - {fileID: 4651064772626692156, guid: 4cac819851e0fdd4cb46127f666921b1, type: 3}
+  - {fileID: -4742801460030268959, guid: 876f7f9097d57b946818d91f0a6af7d3, type: 3}
+  - {fileID: 3206861497952142031, guid: d9dacaf0526cfb6468a5f320a37361db, type: 3}
+  - {fileID: 3206861497952142031, guid: d9dacaf0526cfb6468a5f320a37361db, type: 3}
   PrevisualisationAttack: {fileID: 5054665362752135790, guid: 36ad7806538d8664e949f4576b4b88ab, type: 3}
   attacks:
   - {fileID: 11400000, guid: 4d7b885259b5b134ca6fe7f7a2ce86ae, type: 2}

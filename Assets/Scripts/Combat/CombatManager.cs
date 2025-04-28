@@ -580,7 +580,7 @@ public class CombatManager : MonoBehaviour
                 new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
-        turnOrder.Add(player);
+        turnOrder.Add(player); 
         playerBar.sprite = player.lifeBarList[^1];
         foreach (var fish in _fishDatas)
         {

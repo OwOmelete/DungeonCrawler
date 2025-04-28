@@ -17,20 +17,32 @@ MonoBehaviour:
   height: 2
   positionX: 0
   positionY: 0
-  hp: 10
+  hp: 4
   armor: 0
   actionPoint: 1
+  startingDirection: 0
   prefab: {fileID: 8827070973172318893, guid: 7025b064c33fc554f9273625bbd41d0d, type: 3}
+  preparingAttackSprite: {fileID: 0}
+  attackingSprite: {fileID: 0}
+  idleSprite: {fileID: 0}
   attackList:
   - {fileID: 11400000, guid: 2a095878a8aa8c046834562cff23d986, type: 2}
   - {fileID: 11400000, guid: 518cfccddfeff6e44b1267c63c4c71b4, type: 2}
   weakPointList: []
+  lifeBarList:
+  - {fileID: -6050188073113612675, guid: 1a9a2a050d37f83429d8f6780962e975, type: 3}
+  - {fileID: -1082354412804894711, guid: 242d05c988524b745b2db74c671b8dd2, type: 3}
+  - {fileID: 4651064772626692156, guid: 4cac819851e0fdd4cb46127f666921b1, type: 3}
+  - {fileID: -4742801460030268959, guid: 876f7f9097d57b946818d91f0a6af7d3, type: 3}
+  - {fileID: 3206861497952142031, guid: d9dacaf0526cfb6468a5f320a37361db, type: 3}
+  PrevisualisationAttack: {fileID: 0}
   ligth: 0
   oxygen: 0
   oxygenLostMove: 0
   oxygenLostMove2Tiles: 0
   oxygenLostRotate: 0
   oxygenLostAttack: 0
+  lightLostPerTurn: 0
   RespirationDatas:
   - {fileID: 11400000, guid: 1e05344a589534e48b2fb1935b6c071f, type: 2}
   - {fileID: 11400000, guid: a222e3ee6961bc44ea7d7444d330e76c, type: 2}

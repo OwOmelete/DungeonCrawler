@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fond_grille_combat_0: 3497462406131931352
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
