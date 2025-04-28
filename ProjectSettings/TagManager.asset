@@ -48,5 +48,8 @@ TagManager:
   - name: Wall
     uniqueID: 1674480907
     locked: 0
+  - name: Foreground
+    uniqueID: 4255958399
+    locked: 0
   m_RenderingLayers:
   - Default
