@@ -908,7 +908,7 @@ SpriteShapeRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1674480907
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 20
   m_Color: {r: 0.50980395, g: 0.5019608, b: 0.49019608, a: 1}
   m_MaskInteraction: 0
@@ -5262,7 +5262,7 @@ SpriteShapeRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1674480907
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 20
   m_Color: {r: 0.50980395, g: 0.5019608, b: 0.49019608, a: 1}
   m_MaskInteraction: 0
@@ -5833,7 +5833,7 @@ SpriteShapeRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1674480907
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 20
   m_Color: {r: 0.509434, g: 0.49852857, b: 0.48780707, a: 1}
   m_MaskInteraction: 0
@@ -6783,42 +6783,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_Color.b
-      value: 0.91373473
-      objectReference: {fileID: 0}
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4669811
-      objectReference: {fileID: 0}
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_Intensity
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_PointLightInnerRadius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_PointLightOuterRadius
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_LocalBounds.m_Center.y
-      value: -0.00000011920929
-      objectReference: {fileID: 0}
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_LocalBounds.m_Extent.x
-      value: 0.9985302
-      objectReference: {fileID: 0}
-    - target: {fileID: -5888055928743960137, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
-      propertyPath: m_LocalBounds.m_Extent.y
-      value: 0.99853027
-      objectReference: {fileID: 0}
     - target: {fileID: 498312653680518376, guid: 894ebc1f510cddf419f5872593c26e12, type: 3}
       propertyPath: animator
       value: 
