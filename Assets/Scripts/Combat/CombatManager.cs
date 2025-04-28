@@ -36,6 +36,11 @@ public class CombatManager : MonoBehaviour
     private bool canRotate = true;
     private bool hasAttacked = false;
     private bool hasMoved = false;
+    public SpriteRenderer playerBar;
+    public SpriteRenderer GGBar;
+    public SpriteRenderer brotuloBar;
+    private EntityInstance GG;
+    private EntityInstance Brotulo;
 
     public static CombatManager Instance;
     
@@ -96,6 +101,10 @@ public class CombatManager : MonoBehaviour
 
     private void EndTurn()
     {
+        if (turnOrder.Count == 0)
+        {
+            return;
+        }
         currentTurnIndex = (currentTurnIndex + 1) % turnOrder.Count;
         if (currentTurnIndex % turnOrder.Count == 0)
         {
@@ -572,6 +581,7 @@ public class CombatManager : MonoBehaviour
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
         turnOrder.Add(player);
+        playerBar.sprite = player.lifeBarList[^1];
         foreach (var fish in _fishDatas)
         {
             Fish newFish = new Fish
@@ -608,6 +618,8 @@ public class CombatManager : MonoBehaviour
             fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
             if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
+                Brotulo = fish.fishDataInstance;
+                brotuloBar.sprite = fish.fishDataInstance.lifeBarList[^1];
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
                 switch (fish.fishData.startingDirection)
@@ -631,6 +643,8 @@ public class CombatManager : MonoBehaviour
 
             if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
             {
+                GG = fish.fishDataInstance;
+                GGBar.sprite = fish.fishDataInstance.lifeBarList[^1];
                 fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
                 GrandGouzBehaviour IAref = fish.fishDataInstance.behaviour as GrandGouzBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
@@ -1009,8 +1023,20 @@ public class CombatManager : MonoBehaviour
     {
         entity.TakeDamage(dmg);
         Debug.Log("pv restant : " + entity.name + entity.hp);
+        if (entity == GG)
+        {
+            GGBar.sprite = GG.lifeBarList[Mathf.Clamp(entity.hp, 0, 1000)];
+        }
+        else if (entity == player)
+        {
+            playerBar.sprite = player.lifeBarList[Mathf.Clamp(entity.hp, 0, 1000)];
+        }
         if (entity.hp <= 0)
         {
+            if (entity == Brotulo)
+            {
+                brotuloBar.sprite = entity.lifeBarList[0];
+            }
             if (entity == player)
             {
                 List<int> indexToSuppr = new List<int>();
@@ -1051,6 +1077,12 @@ public class CombatManager : MonoBehaviour
             {
                 grid[entity.positionY + i,entity.positionX + j] = null ;
             }
+        }
+        
+        for (int i = entity.spikeList.Count-1; i >= 0; i--)
+        {
+            Destroy(entity.spikeList[i].prefab);
+            grid[entity.spikeList[i].positionY,entity.spikeList[i].positionX] = null;
         }
         Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
