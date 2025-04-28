@@ -1052,7 +1052,10 @@ public class CombatManager : MonoBehaviour
                 {
                     Debug.Log(i);
                     Debug.Log(turnOrder[i]);
-                    Die(turnOrder[i]);
+                    if (turnOrder[i] != player)
+                    {
+                        Die(turnOrder[i]); 
+                    }
                 }
                 EndFight();
                 deathManagerReference.Death();
@@ -1071,10 +1074,13 @@ public class CombatManager : MonoBehaviour
 
     void Die(EntityInstance entity)
     {
-        for (int i = 0; i < entity.height; i++)
+        for (int i = 0; i <= entity.height-1; i++)
         {
-            for (int j = 0; j < entity.width; j++)
+            for (int j = 0; j <= entity.width-1; j++)
             {
+                Debug.Log(entity.name);
+                Debug.Log(i);
+                Debug.Log(j);
                 grid[entity.positionY + i,entity.positionX + j] = null ;
             }
         }
