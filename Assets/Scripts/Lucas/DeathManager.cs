@@ -4,6 +4,7 @@ using System.Net.Mime;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class DeathManager : MonoBehaviour
 {
@@ -17,8 +18,16 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private int maxHp = 10;
     [SerializeField] private OxygenManager oxygenRef;
     [SerializeField] private LightManager lightRef;
+    [SerializeField] private Transform enemyParent;
+    [SerializeField] private GameObject combatScene;
+    private GameObject[] enemyTab;
     private void Start()
     {
+        enemyTab = new GameObject[enemyParent.childCount];
+        for (int i = 0; i < enemyParent.childCount; i++)
+        {
+            enemyTab[i] = enemyParent.GetChild(i).gameObject;
+        }
         StartCoroutine(WaitFrame());
     }
 
@@ -35,6 +44,10 @@ public class DeathManager : MonoBehaviour
             if (player.player.hp <= 0 || player.player.oxygen <= 0)
             {
                 isAlive = false;
+                if (combatScene.activeSelf)
+                {
+                    CombatManager.Instance.EndFight();
+                }
                 Death();
             }
             yield return new WaitForSeconds(0.2f);
@@ -45,6 +58,7 @@ public class DeathManager : MonoBehaviour
         imageDeath.DOFade(1, 0.01f);
         imageDeath.gameObject.SetActive(true);
         playerGO.GetComponent<Player>().rotationReference.canMove = false;
+        playerGO.SetActive(false);
         StartCoroutine(Respawn());
     }
 
@@ -59,12 +73,21 @@ public class DeathManager : MonoBehaviour
 
     private void RespawnPlayer()
     {
+        for (int i = 0; i < enemyTab.Length; i++)
+        {
+            enemyTab[i].SetActive(true);
+        }
+        playerGO.SetActive(true);
         playerGO.transform.position = respawnPosition;
         playerGO.GetComponent<Player>().rotationReference.canMove = true;
         player.player.hp = maxHp;
         oxygenRef.AddOxygen(maxOxygen);
         lightRef.AddLight(maxLight);
         isAlive = true;
+        for (int i = 0; i < enemyTab.Length; i++)
+        {
+            enemyTab[i].SetActive(true);
+        }
         StartCoroutine(CheckLife());
     }
     

@@ -8,11 +8,11 @@ public class EnemyChase : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] float dashSpeed = 10f;
     [SerializeField] private float enemyAttackDelay = 1f;
-    private GameObject playerReference;
+    [SerializeField] private GameObject playerReference;
     private bool playerOnTrigger;
     private void Awake()
     {
-        playerReference = GameObject.FindGameObjectWithTag("Player");
+        
         rb = GetComponent<Rigidbody2D>();
     }
     

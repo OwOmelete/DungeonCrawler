@@ -13,7 +13,7 @@ public class FishHitPlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             startCombatReference.SwitchToCombat(fishDatas);
-            Destroy(fish);
+            fish.SetActive(false);
         }
     }
 }

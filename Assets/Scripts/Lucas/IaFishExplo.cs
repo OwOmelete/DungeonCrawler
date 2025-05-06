@@ -13,6 +13,7 @@ public class IaFishExplo : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     void Start()
     {
+        ChangeTarget();
         StartCoroutine(Move());
     }
 
@@ -36,7 +37,7 @@ public class IaFishExplo : MonoBehaviour
         actualTarget.y = Random.Range(topLeftCorner.position.y, bottomRightCorner.position.y);
     }
     
-    bool ApproximatelyEqual(Vector3 a, Vector3 b, float error = 0.01f)
+    bool ApproximatelyEqual(Vector3 a, Vector3 b, float error = 0.1f)
     {
         return Vector3.Distance(a, b) < error;
     }
