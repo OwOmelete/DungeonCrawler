@@ -1209,12 +1209,17 @@ public class CombatManager : MonoBehaviour
         player.width = 1;
         player.actionPoint = player.RespirationDatas[player.respirationIndex].actionPoints;
         Destroy(player.prefab);
-        foreach (EntityInstance fish in turnOrder)
+        List<int> fishToSupr = new List<int>();
+        for (int i = 0; i < turnOrder.Count; i ++)
         {
-            if (fish is FishDataInstance)
+            if (turnOrder[i] is FishDataInstance)
             {
-                Die(fish);
+                fishToSupr.Add(i);
             }
+        }
+        for (int i = fishToSupr.Count; i > 0; i--)
+        {
+            Die(turnOrder[i]);
         }
         turnOrder.Clear();
         fishes.Clear();
