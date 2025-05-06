@@ -38,7 +38,9 @@ public class CombatManager : MonoBehaviour
     private bool hasMoved = false;
     public SpriteRenderer playerBar;
     public SpriteRenderer GGBar;
+    public GameObject GGBarGO;
     public SpriteRenderer brotuloBar;
+    public GameObject brotuloBarGO;
     private EntityInstance GG;
     private EntityInstance Brotulo;
 
@@ -59,6 +61,7 @@ public class CombatManager : MonoBehaviour
 
     public void InitCombat()
     {
+        
         combatFinished = false;
         grid = CreateGrid(gridHeight, gridWidth);
         SpawnEntitys();
@@ -66,12 +69,7 @@ public class CombatManager : MonoBehaviour
         UpdateLight();
 
         ///////// TESTS //////////
-        for (int i = 0; i < grid.GetLength(0); i++)
-        {
-            for (int j = 0; j < grid.GetLength(1); j++)
-            {
-            }
-        }
+        
     }
     
 
@@ -82,6 +80,16 @@ public class CombatManager : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            for (int i = 0; i < grid.GetLength(0); i++)
+            {
+                for (int j = 0; j < grid.GetLength(1); j++)
+                {
+                    Debug.Log(grid[i,j]);
+                }
+            }
+        }
         if (combatFinished)
         {
             EndFight();
@@ -202,8 +210,12 @@ public class CombatManager : MonoBehaviour
         {
             if (player.direction == EntityInstance.dir.up)
             {
-                Move(playerEntity, playerEntity.positionX, playerEntity.positionY + verticalSpeed);
-                player.oxygen -= player.oxygenLostMove2Tiles;
+                if (Move(playerEntity, playerEntity.positionX, playerEntity.positionY + verticalSpeed)) player.oxygen -= player.oxygenLostMove2Tiles;
+                else
+                {
+                    Move(playerEntity, playerEntity.positionX, playerEntity.positionY + 1);
+                    player.oxygen -= player.oxygenLostMove;
+                }
             }
             else
             {
@@ -215,8 +227,12 @@ public class CombatManager : MonoBehaviour
         {
             if (player.direction == EntityInstance.dir.down)
             {
-                Move(playerEntity, playerEntity.positionX, playerEntity.positionY - verticalSpeed);
-                player.oxygen -= player.oxygenLostMove2Tiles;
+                if(Move(playerEntity, playerEntity.positionX, playerEntity.positionY - verticalSpeed)) player.oxygen -= player.oxygenLostMove2Tiles;
+                else
+                {
+                    Move(playerEntity, playerEntity.positionX, playerEntity.positionY - 1);
+                    player.oxygen -= player.oxygenLostMove;
+                }
             }
             else
             {
@@ -228,8 +244,12 @@ public class CombatManager : MonoBehaviour
         {
             if (player.direction == EntityInstance.dir.right)
             {
-                Move(playerEntity, playerEntity.positionX + horizontalSpeed, playerEntity.positionY);
-                player.oxygen -= player.oxygenLostMove2Tiles;
+                if(Move(playerEntity, playerEntity.positionX + horizontalSpeed, playerEntity.positionY)) player.oxygen -= player.oxygenLostMove2Tiles;
+                else
+                {
+                    Move(playerEntity, playerEntity.positionX + 1, playerEntity.positionY);
+                    player.oxygen -= player.oxygenLostMove;
+                }
             }
             else
             {
@@ -241,8 +261,12 @@ public class CombatManager : MonoBehaviour
         {
             if (player.direction == EntityInstance.dir.left)
             {
-                Move(playerEntity, playerEntity.positionX - horizontalSpeed, playerEntity.positionY);
-                player.oxygen -= player.oxygenLostMove2Tiles;
+                if(Move(playerEntity, playerEntity.positionX - horizontalSpeed, playerEntity.positionY)) player.oxygen -= player.oxygenLostMove2Tiles;
+                else
+                {
+                    Move(playerEntity, playerEntity.positionX - 1, playerEntity.positionY);
+                    player.oxygen -= player.oxygenLostMove;
+                }
             }
             else
             {
@@ -263,35 +287,41 @@ public class CombatManager : MonoBehaviour
         */
         else if (Input.GetKeyDown(KeyCode.I)&& !hasAttacked)
         {
-            Attack(player.currentAttack, player, player.positionX, player.positionY + 1);
-            actionPointLost = 1;
+            if (Attack(player.currentAttack, player, player.positionX, player.positionY + 1)) actionPointLost = 1;
+            else hasAttacked = false;
         }
         else if (Input.GetKeyDown(KeyCode.K)&& !hasAttacked)
         {
-            Attack(player.currentAttack, player, player.positionX, player.positionY - 1);
-            actionPointLost = 1;
+            if(Attack(player.currentAttack, player, player.positionX, player.positionY - 1)) actionPointLost = 1;
+            else hasAttacked = false;
         }
         else if (Input.GetKeyDown(KeyCode.L)&& !hasAttacked)
         {
-            Attack(player.currentAttack, player, player.positionX + 1, player.positionY);
-            actionPointLost = 1;
+            if (Attack(player.currentAttack, player, player.positionX + 1, player.positionY)) actionPointLost = 1;
+            else hasAttacked = false;
         }
         else if (Input.GetKeyDown(KeyCode.J)&& !hasAttacked)
         {
-            Attack(player.currentAttack, player, player.positionX - 1, player.positionY);
-            actionPointLost = 1;
+            if (Attack(player.currentAttack, player, player.positionX - 1, player.positionY)) actionPointLost = 1;
+            else hasAttacked = false;
         }
         else if (Input.GetKeyDown(KeyCode.E) && canRotate && !hasMoved)
         {
-            FlipPlayerRight(player);
-            hasMoved = true;
-            player.oxygen -= player.oxygenLostRotate;
+            if (canTurnRight(player))
+            {
+                FlipPlayerRight(player);
+                hasMoved = true;
+                player.oxygen -= player.oxygenLostRotate;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Q) && canRotate && !hasMoved)
         {
-            FlipPlayerLeft(player);
-            hasMoved = true;
-            player.oxygen -= player.oxygenLostRotate;
+            if (canTurnLeft(player))
+            {
+                FlipPlayerLeft(player);
+                hasMoved = true;
+                player.oxygen -= player.oxygenLostRotate;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -575,6 +605,8 @@ public class CombatManager : MonoBehaviour
 
     void SpawnEntitys()
     {
+        GGBarGO.SetActive(false);
+        brotuloBarGO.SetActive(false);
         player.prefab = Instantiate(_playerData.prefab,
                 new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
@@ -617,32 +649,48 @@ public class CombatManager : MonoBehaviour
             fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
             if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
-                Brotulo = fish.fishDataInstance;
+                FishDataInstance brotulo = fish.fishDataInstance;
+                brotuloBarGO.SetActive(true);
                 brotuloBar.sprite = fish.fishDataInstance.lifeBarList[^1];
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
                 switch (fish.fishData.startingDirection)
                 {
                     case Entity.dir.up:
+                        brotulo.weakPointList.Clear();
+                        brotulo.direction = EntityInstance.dir.up;
+                        brotulo.weakPointList.Add(brotulo.WeakPointsUp[0]);
+                        brotulo.entityChild.transform.rotation = Quaternion.Euler(0, 0,0);
                         break;
                     case Entity.dir.down:
-                        IAref.TurnRight(fish.fishDataInstance, true);
-                        IAref.TurnRight(fish.fishDataInstance, true);
+                        brotulo.weakPointList.Clear();
+                        brotulo.direction = EntityInstance.dir.down;
+                        brotulo.weakPointList.Add(brotulo.WeakPointsDown[0]);
+                        brotulo.entityChild.transform.rotation = Quaternion.Euler(0, 0,180);
                         break;
                     case Entity.dir.left:
-                        IAref.TurnLeft(fish.fishDataInstance, true);
+                        brotulo.weakPointList.Clear();
+                        brotulo.direction = EntityInstance.dir.left;
+                        brotulo.weakPointList.Add(brotulo.WeakPointsLeft[0]);
+                        brotulo.entityChild.transform.rotation = Quaternion.Euler(0, 0,90);
                         break;
                     case Entity.dir.right:
-                        IAref.TurnRight(fish.fishDataInstance, true);
+                        brotulo.weakPointList.Clear();
+                        brotulo.direction = EntityInstance.dir.right;
+                        brotulo.weakPointList.Add(brotulo.WeakPointsRight[0]);
+                        brotulo.entityChild.transform.rotation = Quaternion.Euler(0, 0,-90);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+                brotulo.weakPointList.Add(IAref.DamageToAttacker);
+                
             }
 
             if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
             {
                 GG = fish.fishDataInstance;
+                GGBarGO.SetActive(true);
                 GGBar.sprite = fish.fishDataInstance.lifeBarList[^1];
                 fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
                 GrandGouzBehaviour IAref = fish.fishDataInstance.behaviour as GrandGouzBehaviour;
@@ -655,20 +703,21 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    public void Move(EntityInstance entity, int posX, int posY)
+    public bool Move(EntityInstance entity, int posX, int posY)
     {
+        if(!CanMove(entity, posX, posY))
+        { 
+            return false;
+        }
         if (entity == player)
         {
             hasMoved = true;
-        }
-        if(!CanMove(entity, posX, posY))
-        { 
-            return;
         }
         UpdateGrid(entity, posX, posY);
         entity.prefab.transform.DOMove(new Vector3(posX, posY, 0), moveDuration).SetEase(Ease.InOutCubic);
         entity.positionX = posX;
         entity.positionY = posY;
+        return true;
     }
 
     void UpdateGrid(EntityInstance entity, int posX, int posY)
@@ -809,8 +858,9 @@ public class CombatManager : MonoBehaviour
         return true;
     }
     
-    public void Attack(AttackData attack,EntityInstance entity, int x, int y)
+    public bool Attack(AttackData attack,EntityInstance entity, int x, int y)
     {
+        bool endReturn = false;
         if (entity == player)
         {
             hasAttacked = true;
@@ -833,6 +883,7 @@ public class CombatManager : MonoBehaviour
             EntityInstance tile = GetAttackTile(entity, dirY, dirX, i, attack);
             if (tile != null && tile != entity && tile != lastEnnemyTouched && tile is not SpikeInstance)
             {
+                endReturn = true;
                 Debug.Log("touché");
                 int dmg = attack.Damage;
                 float r = Random.Range(0, 100);
@@ -857,11 +908,9 @@ public class CombatManager : MonoBehaviour
                 Damage(tile, dmg);
                 lastEnnemyTouched = tile;
             }
-            else
-            {
-                Debug.Log("cantAttack");
-            }
         }
+
+        return endReturn;
     }
 
     int WeakPointDetection(EntityInstance attackedEntity,EntityInstance attackerEntity,AttackData attack, int x, int y, int dmg)
@@ -1150,11 +1199,14 @@ public class CombatManager : MonoBehaviour
         return 0;
     }
 
-    void EndFight()
+    public void EndFight()
     {
         Debug.Log("Combat Fini");
         player.positionX = _playerData.positionX;
         player.positionY = _playerData.positionY;
+        player.direction = EntityInstance.dir.up;
+        player.height = 2;
+        player.width = 1;
         player.actionPoint = player.RespirationDatas[player.respirationIndex].actionPoints;
         Destroy(player.prefab);
         turnOrder.Clear();

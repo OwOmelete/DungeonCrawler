@@ -36,7 +36,7 @@ public class FishDataInstance : EntityInstance
     {
         attacks = data.attacks;
         WeakPointsLeft = data.WeakPointsLeft;
-        WeakPointsRight = data.WeakPointsLeft;
+        WeakPointsRight = data.WeakPointsRight;
         WeakPointsDown = data.WeakPointsDown;
         WeakPointsUp = data.WeakPointsUp;
     }
