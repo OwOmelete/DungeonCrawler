@@ -31,7 +31,7 @@ public class StartCombat : MonoBehaviour
         player.SetActive(false);
         combatScene.SetActive(true);
         //uiExplo.SetActive(false);
-        combatManagerReference._fishDatas.Clear();
+        //combatManagerReference._fishDatas.Clear();
         combatManagerReference._fishDatas = fishDatas;
         Player playerScript = player.GetComponent<Player>();
         combatManagerReference.player = playerScript.player;
