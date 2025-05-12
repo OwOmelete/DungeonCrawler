@@ -11,7 +11,7 @@ public class IaFishExplo : MonoBehaviour
     private Vector3 actualTarget;
     private bool hitWall;
     [SerializeField] private Rigidbody2D rb;
-    void Start()
+    void Awake()
     {
         ChangeTarget();
         StartCoroutine(Move());
