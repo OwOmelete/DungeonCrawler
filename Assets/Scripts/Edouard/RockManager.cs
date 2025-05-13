@@ -15,7 +15,7 @@ public class RockManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            testPlayer.health -= damage;
+            //testPlayer.health -= damage;
             Debug.Log(gameObject.name + " collision with " + other.gameObject.name);
         }
     }

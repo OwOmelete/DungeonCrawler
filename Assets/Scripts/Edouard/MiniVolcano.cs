@@ -14,7 +14,7 @@ public class MiniVolcano : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            testPlayer.health -= damage;
+            //testPlayer.health -= damage;
             Debug.Log(gameObject.name + " collision with " + collision.name);
         }
     }
