@@ -17,7 +17,7 @@ MonoBehaviour:
   height: 1
   positionX: 3
   positionY: 3
-  hp: 3
+  hp: 1
   armor: 5
   actionPoint: 4
   startingDirection: 2
