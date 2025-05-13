@@ -1,28 +1,60 @@
 using UnityEngine;
-using System.Collections;
-
+[RequireComponent(typeof(Rigidbody2D))]
 public class TestPlayer : MonoBehaviour
 {
-    public int health;
-    private int maxHealth = 100;
-    private int maxOxygen = 100;
-    public int oxygenLoss = 1;
-    public int oxygen = 1;
-    
-    private void Death()
+
+    private float moveHorizontal = 0f;    
+    private float moveVertical = 0f;
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float accelerationSpeed = 3f;
+    [SerializeField] private Rotation rotationReference ;
+    private Rigidbody2D rb;
+
+    [SerializeField] private PlayerData _playerData;
+    public LightManager lightManager;
+    public HealthManager healthManager;
+    public OxygenManager oxygenManager;
+    public PlayerDataInstance player;
+
+    private void Awake()
     {
-        oxygen = maxOxygen;
-        if (health <= 0)
-        {
-            Destroy(gameObject); 
-        }
+        player = (PlayerDataInstance)_playerData.Instance();
+        lightManager.player = player;
+        oxygenManager.player = player;
+        healthManager.player = player;
     }
 
-    public void TakeDamage(int damageAmount)
+    private void Start()
     {
-        health -= damageAmount;
-        health = Mathf.Clamp(health, 0, maxHealth); 
-        Debug.Log("Player took " + damageAmount + " damage. Health: " + health);
-        Death(); 
+        rb = GetComponent<Rigidbody2D>();
+    }
+    void Update()
+    {
+        moveHorizontal = Input.GetAxisRaw("Horizontal");
+        moveVertical = Input.GetAxisRaw("Vertical");
+
+        if (rotationReference.canMove)
+        {
+            if (moveHorizontal != 0 || moveVertical != 0)
+            {
+                rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized * accelerationSpeed);
+            }
+        }
+        else
+        {
+            if (moveHorizontal != 0 || moveVertical != 0)
+            {
+                rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized *
+                            (accelerationSpeed * ((180 - Mathf.Abs(rotationReference.angleDiff)) / 180)));
+                
+            }
+        }
+    }
+    void FixedUpdate()
+    {
+        if (rb.linearVelocity.magnitude > moveSpeed)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * moveSpeed;
+        }
     }
 }

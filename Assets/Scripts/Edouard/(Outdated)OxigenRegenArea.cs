@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 public class OxygenRegenArea : MonoBehaviour
 {
-    private TestPlayer player; 
+    /*private TestPlayer player; 
     private bool isInZone = false;
     private Coroutine regenCoroutine;
     
@@ -54,5 +54,5 @@ public class OxygenRegenArea : MonoBehaviour
             yield return new WaitForSeconds(regenInterval);
         }
         regenCoroutine = null; 
-    }
+    }*/
 }

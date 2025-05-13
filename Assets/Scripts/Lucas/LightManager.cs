@@ -15,10 +15,13 @@ public class LightManager : MonoBehaviour
     [Header("Values")]
     public float maxLight = 10;  // capacité maximale de lumière
     [SerializeField] private float minLight = 1;  // capacité minimale de lumière
-    [SerializeField] private float looseLightValue = 0.1f; // ce que va perdre la jauge de lumiere toutes les secondes
-    [SerializeField] private float lerpDuration = 1f; // ce que va perdre la jauge de lumiere toutes les secondes
+    [SerializeField] private float looseLightValue = 0.1f; // ce que va perdre la jauge de lumiere
+                                                           // toutes les secondes
+    [SerializeField] private float lerpDuration = 1f; // ce que va perdre la jauge de lumiere
+                                                      // toutes les secondes
     
-    [HideInInspector] public bool canLooseLight = true; // ici pour stopper la perte de lumière dans certains cas
+    [HideInInspector] public bool canLooseLight = true; // ici pour stopper la perte de lumière
+                                                        // dans certains cas
     private bool haveLight = true; // verifie si il reste de la lumière
 
     [HideInInspector] public PlayerDataInstance player;

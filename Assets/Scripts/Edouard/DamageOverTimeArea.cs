@@ -34,7 +34,7 @@ public class DamageOverTimeArea : MonoBehaviour
     {
         while (true)
         {
-            targetPlayer.TakeDamage(damage);
+            //targetPlayer.TakeDamage(damage);
             yield return new WaitForSeconds(damageInterval);
         }
     }
