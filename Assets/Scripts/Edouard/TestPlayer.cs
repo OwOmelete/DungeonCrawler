@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class TestPlayer : MonoBehaviour
@@ -15,6 +12,7 @@ public class TestPlayer : MonoBehaviour
 
     [SerializeField] private PlayerData _playerData;
     public LightManager lightManager;
+    public HealthManager healthManager;
     public OxygenManager oxygenManager;
     public PlayerDataInstance player;
 
@@ -23,6 +21,7 @@ public class TestPlayer : MonoBehaviour
         player = (PlayerDataInstance)_playerData.Instance();
         lightManager.player = player;
         oxygenManager.player = player;
+        healthManager.player = player;
     }
 
     private void Start()
