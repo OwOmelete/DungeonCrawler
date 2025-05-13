@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4579fa09605c9b4cb24ca336bda7b69, type: 3}
   m_Name: GrandGouzAttack
   m_EditorClassIdentifier: 
-  Damage: 3
+  critChance: 0
+  critMultiplier: 0
+  Damage: 4
   range: 1
   Yoffset: 0
   Xoffset: 0
   actionCost: 0
-  critChance: 0
-  critMultiplier: 0
   precision: 1

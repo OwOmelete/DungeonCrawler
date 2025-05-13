@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c258416dc2bc9454eb06deacaf803bf5, type: 3}
   m_Name: WpGGRightUp
   m_EditorClassIdentifier: 
+  damageMulti: 1000
+  damageToAttacker: 0
   posX: 1
   posY: 0
   direction: 1
-  damageMulti: 2
