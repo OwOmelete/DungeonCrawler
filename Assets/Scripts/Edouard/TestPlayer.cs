@@ -1,38 +1,61 @@
+using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody2D))]
 public class TestPlayer : MonoBehaviour
 {
-    public int health;
-    private int maxHealth = 100;
-    public bool debugPauseEditorOnDeath;
 
-    void Start()
+    private float moveHorizontal = 0f;    
+    private float moveVertical = 0f;
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float accelerationSpeed = 3f;
+    [SerializeField] private Rotation rotationReference ;
+    private Rigidbody2D rb;
+
+    [SerializeField] private PlayerData _playerData;
+    public LightManager lightManager;
+    public OxygenManager oxygenManager;
+    public PlayerDataInstance player;
+
+    private void Awake()
     {
-        health = maxHealth;
+        player = (PlayerDataInstance)_playerData.Instance();
+        lightManager.player = player;
+        oxygenManager.player = player;
     }
 
-    private void Update()
+    private void Start()
     {
-        if (health <= 0)
+        rb = GetComponent<Rigidbody2D>();
+    }
+    void Update()
+    {
+        moveHorizontal = Input.GetAxisRaw("Horizontal");
+        moveVertical = Input.GetAxisRaw("Vertical");
+
+        if (rotationReference.canMove)
         {
-            Death();
+            if (moveHorizontal != 0 || moveVertical != 0)
+            {
+                rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized * accelerationSpeed);
+            }
+        }
+        else
+        {
+            if (moveHorizontal != 0 || moveVertical != 0)
+            {
+                rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized *
+                            (accelerationSpeed * ((180 - Mathf.Abs(rotationReference.angleDiff)) / 180)));
+                
+            }
         }
     }
-
-    void Death()
+    void FixedUpdate()
     {
-        Debug.Log(gameObject.name + " is death");
-        if (debugPauseEditorOnDeath)
+        if (rb.linearVelocity.magnitude > moveSpeed)
         {
-            Debug.Break();
+            rb.linearVelocity = rb.linearVelocity.normalized * moveSpeed;
         }
-    }
-
-    public void TakeDamage(int damageAmount)
-    {
-        health -= damageAmount;
-        health = Mathf.Clamp(health, 0, maxHealth); 
-        Debug.Log("Player took " + damageAmount + " damage. Health: " + health);
-        Death(); 
     }
 }

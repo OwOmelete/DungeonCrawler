@@ -27,9 +27,7 @@ public class Heal : MonoBehaviour
 
    public void HealPlayer()
    {
-      //Debug.Log(isInArea);
-      player.health += healAmount;
-      //Destroy(gameObject);
+      //player.health += healAmount;
       
    }
 }
