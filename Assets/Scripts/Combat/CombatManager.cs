@@ -26,7 +26,7 @@ public class CombatManager : MonoBehaviour
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
-    private bool combatFinished;
+    public bool combatFinished;
     private int currentTurnIndex = 0;
     private bool isPlaying;
     private int attackCordsX;
@@ -1087,6 +1087,7 @@ public class CombatManager : MonoBehaviour
             }
             if (entity == player)
             {
+                combatFinished = true;
                 List<int> indexToSuppr = new List<int>();
                 for (int i = 0; i < turnOrder.Count; i++)
                 {
@@ -1132,12 +1133,16 @@ public class CombatManager : MonoBehaviour
                 grid[entity.positionY + i,entity.positionX + j] = null ;
             }
         }
-        
+        Debug.Log("spike count avant" + entity.spikeList.Count);
         for (int i = entity.spikeList.Count-1; i >= 0; i--)
         {
+            Debug.Log("spike index" + i);
+            entity.spikeList[i].prefab.transform.localScale = new Vector3(10, 1, 1);
             Destroy(entity.spikeList[i].prefab);
             grid[entity.spikeList[i].positionY,entity.spikeList[i].positionX] = null;
         }
+        Debug.Log("spike count après" + entity.spikeList.Count);
+        entity.spikeList.Clear();
         Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
         Destroy(entity.prefab);

@@ -80,7 +80,7 @@ public class DeathManager : MonoBehaviour
         playerGO.SetActive(true);
         playerGO.transform.position = respawnPosition;
         playerGO.GetComponent<Player>().rotationReference.canMove = true;
-        player.player.hp = maxHp;
+        player.player.hp = CombatManager.Instance._playerData.hp;
         oxygenRef.AddOxygen(maxOxygen);
         lightRef.AddLight(maxLight);
         isAlive = true;

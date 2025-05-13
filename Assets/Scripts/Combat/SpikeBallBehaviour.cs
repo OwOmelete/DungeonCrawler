@@ -51,13 +51,20 @@ public class SpikeBallBehaviour : AbstractIA
         }
         for (int i = entity.spikeIndexSupr.Count; i > 0; i--)
         {
-            Destroy(entity.spikeList[entity.spikeIndexSupr[i-1]].prefab);
-            CombatManager.Instance.grid[entity.spikeList[entity.spikeIndexSupr[i - 1]].positionY,
-                entity.spikeList[entity.spikeIndexSupr[i - 1]].positionX] = null;
-            entity.spikeList.Remove(entity.spikeList[entity.spikeIndexSupr[i-1]]);
-          //  Debug.Log("objet supprimé: "+i+" / "+spikeIndexSupr.Count);
+            if (entity.spikeList.Count >= i)
+            {
+                Destroy(entity.spikeList[entity.spikeIndexSupr[i-1]].prefab);
+                CombatManager.Instance.grid[entity.spikeList[entity.spikeIndexSupr[i - 1]].positionY,
+                    entity.spikeList[entity.spikeIndexSupr[i - 1]].positionX] = null;
+                entity.spikeList.Remove(entity.spikeList[entity.spikeIndexSupr[i-1]]);
+            }
         }
         entity.spikeIndexSupr.Clear();
+
+        if (CombatManager.Instance.combatFinished)
+        {
+            return;
+        }
 
         if (entity.PreparingAttack)
         {
