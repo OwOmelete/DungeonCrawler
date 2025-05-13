@@ -23,7 +23,8 @@ MonoBehaviour:
   attackList:
   - {fileID: 11400000, guid: 2a095878a8aa8c046834562cff23d986, type: 2}
   - {fileID: 11400000, guid: 518cfccddfeff6e44b1267c63c4c71b4, type: 2}
-  ligth: 0
+  weakPointList: []
+  light: 0
   oxygen: 0
   RespirationDatas:
   - {fileID: 11400000, guid: 1e05344a589534e48b2fb1935b6c071f, type: 2}

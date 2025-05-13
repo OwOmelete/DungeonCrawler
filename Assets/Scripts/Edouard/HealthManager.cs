@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -7,8 +6,7 @@ public class HealthManager : MonoBehaviour
 
     [Header("Values")]
     public int maxHealth = 10;
-
-    [HideInInspector] public PlayerDataInstance player;
+    public PlayerData player;
 
     #endregion
     
