@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Rotation rotationReference ;
     private Rigidbody2D rb;
     private Animator animator;
+    [SerializeField] private RadarScript radarRef;
 
     [SerializeField] private PlayerData _playerData;
     public LightManager lightManager;
@@ -62,6 +63,11 @@ public class Player : MonoBehaviour
             {
                 animator.SetBool("isMoving", false);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            radarRef.ChangeRadarState();
         }
         
     }
