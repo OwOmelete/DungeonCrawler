@@ -17,7 +17,7 @@ MonoBehaviour:
   height: 1
   positionX: 3
   positionY: 2
-  hp: 3
+  hp: 1
   armor: 5
   actionPoint: 4
   startingDirection: 3
@@ -27,7 +27,7 @@ MonoBehaviour:
   idleSprite: {fileID: 0}
   attackList: []
   weakPointList:
-  - {fileID: 11400000, guid: eb93b602ad48eb6469d75af91f13f2a4, type: 2}
+  - {fileID: 11400000, guid: af05bb8831927b541b01e39b71f5c7a3, type: 2}
   - {fileID: 11400000, guid: edcb86dafe05c734c9781066506889b9, type: 2}
   lifeBarList:
   - {fileID: 21300000, guid: 3744b2d5ca4b23c46801e3716354c323, type: 3}
