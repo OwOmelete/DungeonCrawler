@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class Heal : MonoBehaviour
 {

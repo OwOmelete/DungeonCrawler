@@ -21,7 +21,7 @@ public class TestPlayer : MonoBehaviour
         player = (PlayerDataInstance)_playerData.Instance();
         lightManager.player = player;
         oxygenManager.player = player;
-        healthManager.player = player;
+        healthManager.player = _playerData;
     }
 
     private void Start()

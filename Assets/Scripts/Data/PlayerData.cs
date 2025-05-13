@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Scriptable Objects/Entity/PlayerData")]
 public class PlayerData : Entity
 {
-    public float ligth;
+    public float light;
     public float oxygen;
     public List<RespirationData> RespirationDatas = new List<RespirationData>();
     public override EntityInstance Instance()
@@ -23,7 +24,7 @@ public class PlayerDataInstance : EntityInstance
     public bool booster = true;
     public PlayerDataInstance(PlayerData data) : base(data)
     {
-        light = data.ligth;
+        light = data.light;
         oxygen = data.oxygen;
         RespirationDatas = data.RespirationDatas;
         currentAttack = data.attackList[0];
