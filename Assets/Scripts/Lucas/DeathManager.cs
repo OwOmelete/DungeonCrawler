@@ -10,6 +10,7 @@ public class DeathManager : MonoBehaviour
 {
     private bool isAlive = true;
     [SerializeField] Player player;
+    [SerializeField] private PlayerData _playerData;
     [SerializeField] private GameObject playerGO;
     public Vector3 respawnPosition;
     [SerializeField] private Image imageDeath;
@@ -80,7 +81,7 @@ public class DeathManager : MonoBehaviour
         playerGO.SetActive(true);
         playerGO.transform.position = respawnPosition;
         playerGO.GetComponent<Player>().rotationReference.canMove = true;
-        player.player.hp = CombatManager.Instance._playerData.hp;
+        player.player.hp = _playerData.hp;
         oxygenRef.AddOxygen(maxOxygen);
         lightRef.AddLight(maxLight);
         isAlive = true;
