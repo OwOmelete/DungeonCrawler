@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4345403126129299455}
   - component: {fileID: 5378391063881958890}
+  - component: {fileID: 8354970777534837164}
   m_Layer: 0
   m_Name: volcansEnviro_002
   m_TagString: Untagged
@@ -87,3 +88,128 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &8354970777534837164
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965359960532504508}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.52, y: 4.05}
+    newSize: {x: 4.52, y: 4.05}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.7, y: -1.655}
+      - {x: 1.16, y: -1.5849999}
+      - {x: 1.31, y: -1.5649999}
+      - {x: 1.4499999, y: -1.535}
+      - {x: 1.62, y: -1.515}
+      - {x: 2.05, y: -1.4549999}
+      - {x: 2.1, y: -1.435}
+      - {x: 2.1599998, y: -1.3149999}
+      - {x: 2.2, y: -1.165}
+      - {x: 2.24, y: -1.055}
+      - {x: 2.25, y: -1.025}
+      - {x: 2.25, y: -0.965}
+      - {x: 2.19, y: -0.92499995}
+      - {x: 2, y: -0.865}
+      - {x: 1.8499999, y: -0.815}
+      - {x: 1.75, y: -0.72499996}
+      - {x: 1.61, y: -0.59499997}
+      - {x: 1.4599999, y: -0.45499998}
+      - {x: 1.4, y: -0.45499998}
+      - {x: 1.37, y: -0.415}
+      - {x: 1.41, y: -0.305}
+      - {x: 1.41, y: -0.175}
+      - {x: 1.4, y: -0.16499999}
+      - {x: 1.41, y: 0.24499999}
+      - {x: 1.4, y: 0.445}
+      - {x: 1.39, y: 0.575}
+      - {x: 1.36, y: 0.675}
+      - {x: 1.22, y: 0.875}
+      - {x: 1.23, y: 0.995}
+      - {x: 1.24, y: 1.145}
+      - {x: 1.25, y: 1.535}
+      - {x: 1.16, y: 1.625}
+      - {x: 1.0799999, y: 1.675}
+      - {x: 0.97999996, y: 1.735}
+      - {x: 0.48999998, y: 1.9749999}
+      - {x: 0.44, y: 1.9749999}
+      - {x: 0.32999998, y: 1.925}
+      - {x: 0.21, y: 1.9649999}
+      - {x: 0.12, y: 2.0049999}
+      - {x: 0.07, y: 2.0249999}
+      - {x: 0.02, y: 2.0249999}
+      - {x: -0.5, y: 1.8149999}
+      - {x: -0.59999996, y: 1.775}
+      - {x: -0.65, y: 1.7249999}
+      - {x: -0.77, y: 1.5849999}
+      - {x: -0.90999997, y: 1.425}
+      - {x: -1, y: 1.385}
+      - {x: -1.29, y: 1.305}
+      - {x: -1.3299999, y: 1.275}
+      - {x: -1.43, y: 1.135}
+      - {x: -1.67, y: 0.815}
+      - {x: -1.8199999, y: 0.635}
+      - {x: -1.91, y: 0.49499997}
+      - {x: -1.9799999, y: 0.405}
+      - {x: -2.19, y: 0.095}
+      - {x: -2.24, y: 0.005}
+      - {x: -2.25, y: -0.044999998}
+      - {x: -2.26, y: -0.145}
+      - {x: -2.26, y: -0.21499999}
+      - {x: -2.1, y: -0.565}
+      - {x: -1.9799999, y: -0.805}
+      - {x: -1.89, y: -0.935}
+      - {x: -1.81, y: -1.025}
+      - {x: -1.64, y: -1.015}
+      - {x: -1.64, y: -1.3249999}
+      - {x: -1.62, y: -1.3349999}
+      - {x: -1.4399999, y: -1.435}
+      - {x: -1.4499999, y: -1.485}
+      - {x: -1.4399999, y: -1.735}
+      - {x: -1.4, y: -1.755}
+      - {x: -1.24, y: -1.8149999}
+      - {x: -0.82, y: -1.985}
+      - {x: -0.74, y: -2.0149999}
+      - {x: -0.7, y: -2.0249999}
+      - {x: -0.29999998, y: -2.0249999}
+      - {x: 0, y: -2.0149999}
+      - {x: 0.32999998, y: -1.895}
+      - {x: 0.64, y: -1.655}
+  m_UseDelaunayMesh: 0

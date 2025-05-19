@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4988287843270594327}
   - component: {fileID: 2330979529212928090}
-  - component: {fileID: 3127796347064056825}
   - component: {fileID: 6835151333478386973}
   - component: {fileID: 2048842759793650036}
+  - component: {fileID: 464028951026680109}
   m_Layer: 0
   m_Name: OxygenAddZone
   m_TagString: Untagged
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 6acc56977321d1f4996109e3149873e6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,77 +87,9 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3127796347064056825
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616420380322371721}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.23288155, y: 1.4148941}
-      - {x: -0.5183029, y: 1.2544746}
-      - {x: -1.2078629, y: 1.0344524}
-      - {x: -1.4503145, y: 0.658926}
-      - {x: -1.5705299, y: 0.33532524}
-      - {x: -1.5479708, y: 0.26615143}
-      - {x: -1.2711096, y: -0.26878548}
-      - {x: -1.0677195, y: -0.62565804}
-      - {x: -0.7587328, y: -0.801569}
-      - {x: -0.695199, y: -0.8866806}
-      - {x: -0.41849422, y: -1.0215931}
-      - {x: -0.19961357, y: -1.1154728}
-      - {x: -0.014001846, y: -1.1879368}
-      - {x: 0.12662506, y: -1.2839699}
-      - {x: 0.23600006, y: -1.2411327}
-      - {x: 0.5724621, y: -1.1836796}
-      - {x: 0.86595917, y: -1.1145077}
-      - {x: 1.1213989, y: -0.62947655}
-      - {x: 1.3837757, y: -0.039718628}
-      - {x: 0.9916172, y: 0.70176315}
-      - {x: 0.15234375, y: 1.4873581}
-  m_UseDelaunayMesh: 0
 --- !u!114 &6835151333478386973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenManagerReference: {fileID: 0}
-  oxygenRegen: 5
+  oxygenRegen: 15
   regenInterval: 1
 --- !u!114 &2048842759793650036
 MonoBehaviour:
@@ -225,3 +157,39 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!58 &464028951026680109
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616420380322371721}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 2.942722
