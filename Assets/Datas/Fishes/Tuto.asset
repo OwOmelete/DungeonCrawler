@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd732d4cfff561f4e851c174cf812ff9, type: 3}
   m_Name: Tuto
   m_EditorClassIdentifier: 
-  name: 
-  width: 0
-  height: 0
-  positionX: 0
-  positionY: 0
-  hp: 0
+  name: LeTuto
+  width: 2
+  height: 2
+  positionX: 3
+  positionY: 3
+  hp: 10
   armor: 0
   actionPoint: 0
   startingDirection: 0
-  prefab: {fileID: 0}
+  prefab: {fileID: 2493626016923978672, guid: 88467bd55d5479745b12176374fad3ad, type: 3}
   preparingAttackSprite: {fileID: 0}
   attackingSprite: {fileID: 0}
   idleSprite: {fileID: 0}
