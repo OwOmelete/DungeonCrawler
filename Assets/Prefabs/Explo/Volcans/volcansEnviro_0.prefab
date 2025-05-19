@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4618057657542615042}
   - component: {fileID: 5810689935276059707}
+  - component: {fileID: 586882795142026668}
   m_Layer: 0
   m_Name: volcansEnviro_0
   m_TagString: Untagged
@@ -87,3 +88,97 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &586882795142026668
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960380708696633181}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.78, y: 3.73}
+    newSize: {x: 2.78, y: 3.73}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.05, y: -1.7149999}
+      - {x: 1.0699999, y: -1.235}
+      - {x: 1.1, y: -0.775}
+      - {x: 1.13, y: -0.60499996}
+      - {x: 1.36, y: -0.475}
+      - {x: 1.38, y: -0.445}
+      - {x: 1.38, y: -0.36499998}
+      - {x: 1.3299999, y: -0.235}
+      - {x: 1.23, y: 0.005}
+      - {x: 1.1899999, y: 0.035}
+      - {x: 0.94, y: 0.195}
+      - {x: 0.83, y: 0.315}
+      - {x: 0.90999997, y: 1.295}
+      - {x: 0.90999997, y: 1.525}
+      - {x: 0.81, y: 1.605}
+      - {x: 0.66999996, y: 1.5749999}
+      - {x: 0.63, y: 1.525}
+      - {x: 0.57, y: 1.4649999}
+      - {x: 0.48, y: 1.4649999}
+      - {x: 0.38, y: 1.535}
+      - {x: 0.42999998, y: 1.785}
+      - {x: 0.35, y: 1.8549999}
+      - {x: 0.29, y: 1.865}
+      - {x: 0.24, y: 1.865}
+      - {x: 0.16, y: 1.8249999}
+      - {x: 0.089999996, y: 1.7249999}
+      - {x: -0.17, y: 1.145}
+      - {x: -0.32, y: 0.815}
+      - {x: -0.39, y: 0.72499996}
+      - {x: -0.45999998, y: 0.695}
+      - {x: -0.51, y: 0.655}
+      - {x: -0.9, y: -0.125}
+      - {x: -1.02, y: -0.145}
+      - {x: -1.22, y: -0.205}
+      - {x: -1.31, y: -0.285}
+      - {x: -1.37, y: -0.59499997}
+      - {x: -1.37, y: -0.675}
+      - {x: -1.2099999, y: -0.79499996}
+      - {x: -0.96999997, y: -0.935}
+      - {x: -0.94, y: -1.135}
+      - {x: -0.87, y: -1.2049999}
+      - {x: -0.84999996, y: -1.8349999}
+      - {x: -0.83, y: -1.8549999}
+      - {x: -0.64, y: -1.8549999}
+      - {x: -0.39999998, y: -1.8249999}
+      - {x: 0.74, y: -1.755}
+      - {x: 1.03, y: -1.735}
+  m_UseDelaunayMesh: 0
