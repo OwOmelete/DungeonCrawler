@@ -39,10 +39,7 @@ public class CombatManager : MonoBehaviour
     private bool canRotate = true;
     private bool hasAttacked = false;
     private bool hasMoved = false;
-    public SpriteRenderer playerBar;
-    public SpriteRenderer GGBar;
     public GameObject GGBarGO;
-    public SpriteRenderer brotuloBar;
     public GameObject brotuloBarGO;
     private EntityInstance Ennemy1;
     private EntityInstance Ennemy2;
@@ -616,7 +613,6 @@ public class CombatManager : MonoBehaviour
         player.entityChild = player.prefab.transform.GetChild(0);
         turnOrder.Add(player);
         UpdateLifeBar(player);
-        playerBar.sprite = player.lifeBarList[^1];
         for (int i = 0; i < _fishDatas.Count; i++)    
         {
             Fish newFish = new Fish
