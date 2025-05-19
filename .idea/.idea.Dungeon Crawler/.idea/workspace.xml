@@ -59,7 +59,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Builds/DC\Dungeon Crawler.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Builds/hadalTestScreenSize\Dungeon Crawler.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\n.levy\Desktop\Builds\DC" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -142,7 +142,8 @@
       <workItem from="1745596953008" duration="5795000" />
       <workItem from="1745828241434" duration="12940000" />
       <workItem from="1746522358142" duration="8616000" />
-      <workItem from="1747321580084" duration="327000" />
+      <workItem from="1747321580084" duration="3294000" />
+      <workItem from="1747644344021" duration="9673000" />
     </task>
     <servers />
   </component>

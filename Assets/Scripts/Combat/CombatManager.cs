@@ -23,6 +23,9 @@ public class CombatManager : MonoBehaviour
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
     [SerializeField] private DeathManager deathManagerReference;
+    [SerializeField] private GameObject[] LifeBarPlayer;
+    [SerializeField] private GameObject[] LifeBarEnnemy1;
+    [SerializeField] private GameObject[] LifeBarEnnemy2;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -41,8 +44,8 @@ public class CombatManager : MonoBehaviour
     public GameObject GGBarGO;
     public SpriteRenderer brotuloBar;
     public GameObject brotuloBarGO;
-    private EntityInstance GG;
-    private EntityInstance Brotulo;
+    private EntityInstance Ennemy1;
+    private EntityInstance Ennemy2;
 
     public static CombatManager Instance;
     
@@ -611,17 +614,28 @@ public class CombatManager : MonoBehaviour
                 new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
-        turnOrder.Add(player); 
+        turnOrder.Add(player);
+        UpdateLifeBar(player);
         playerBar.sprite = player.lifeBarList[^1];
-        foreach (var fish in _fishDatas)
+        for (int i = 0; i < _fishDatas.Count; i++)    
         {
             Fish newFish = new Fish
             {
-                fishData = fish,
-                fishDataInstance = (FishDataInstance)fish.Instance()
+                fishData = _fishDatas[i],
+                fishDataInstance = (FishDataInstance)_fishDatas[i].Instance()
             };
             fishes.Add(newFish);
             turnOrder.Add(newFish.fishDataInstance);
+            if (i == 0)
+            {
+                Ennemy1 = newFish.fishDataInstance;
+                UpdateLifeBar(Ennemy1);
+            }
+            else if (i == 1)
+            {
+                Ennemy2 = newFish.fishDataInstance;
+                UpdateLifeBar(Ennemy2);
+            }
         }
         for (int i = 0; i < player.height; i++)
         {
@@ -651,7 +665,6 @@ public class CombatManager : MonoBehaviour
             {
                 FishDataInstance brotulo = fish.fishDataInstance;
                 brotuloBarGO.SetActive(true);
-                brotuloBar.sprite = fish.fishDataInstance.lifeBarList[^1];
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
                 switch (fish.fishData.startingDirection)
@@ -689,9 +702,7 @@ public class CombatManager : MonoBehaviour
 
             if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
             {
-                GG = fish.fishDataInstance;
                 GGBarGO.SetActive(true);
-                GGBar.sprite = fish.fishDataInstance.lifeBarList[^1];
                 fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
                 GrandGouzBehaviour IAref = fish.fishDataInstance.behaviour as GrandGouzBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
@@ -929,7 +940,7 @@ public class CombatManager : MonoBehaviour
             {
                 if (weakPoint.direction == WeakPointData.dir.up)
                 {
-                    if (attackedEntity.positionY < attackerEntity.positionY+yoffset)
+                    if (attackedEntity.positionY < SecondaryPlayerCoordsY())
                     {
                         if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
                         {
@@ -943,7 +954,7 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.down)
                 {
-                    if (attackedEntity.positionY > attackerEntity.positionY+yoffset)
+                    if (attackedEntity.positionY > SecondaryPlayerCoordsY())
                     {
                         if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
                         {
@@ -957,7 +968,7 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.left)
                 {
-                    if (attackedEntity.positionX > attackerEntity.positionX+xoffset)
+                    if (attackedEntity.positionX > SecondaryPlayerCoordsX())
                     {
                         if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
                         {
@@ -973,7 +984,7 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.right)
                 {
-                    if (attackedEntity.positionX < attackerEntity.positionX+xoffset)
+                    if (attackedEntity.positionX < SecondaryPlayerCoordsX())
                     {
                         if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
                         {
@@ -1071,20 +1082,20 @@ public class CombatManager : MonoBehaviour
     {
         entity.TakeDamage(dmg);
         Debug.Log("pv restant : " + entity.name + entity.hp);
-        if (entity == GG)
+        if (entity == Ennemy1)
         {
-            GGBar.sprite = GG.lifeBarList[Mathf.Clamp(entity.hp, 0, 1000)];
+            UpdateLifeBar(Ennemy1);
+        }
+        else if (entity == Ennemy2)
+        {
+            UpdateLifeBar(Ennemy2);
         }
         else if (entity == player)
         {
-            playerBar.sprite = player.lifeBarList[Mathf.Clamp(entity.hp, 0, 1000)];
+            UpdateLifeBar(player);
         }
         if (entity.hp <= 0)
         {
-            if (entity == Brotulo)
-            {
-                brotuloBar.sprite = entity.lifeBarList[0];
-            }
             if (entity == player)
             {
                 combatFinished = true;
@@ -1237,5 +1248,85 @@ public class CombatManager : MonoBehaviour
         UiExplo.SetActive(true);
         combatScene.SetActive(false);
         
+    }
+    
+    int SecondaryPlayerCoordsX()
+    {
+        switch (CombatManager.Instance.player.direction)
+        {
+            case EntityInstance.dir.up:
+                return player.positionX;
+            case EntityInstance.dir.down:
+                return player.positionX;
+            case EntityInstance.dir.left:
+                return player.positionX - 1;
+            case EntityInstance.dir.right:
+                return player.positionX + 1;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    int SecondaryPlayerCoordsY()
+    {
+        switch (CombatManager.Instance.player.direction)
+        {
+            case EntityInstance.dir.up:
+                return player.positionY + 1;
+            case EntityInstance.dir.down:
+                return player.positionY - 1;
+            case EntityInstance.dir.left:
+                return player.positionY;
+            case EntityInstance.dir.right:
+                return player.positionY;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    void UpdateLifeBar(EntityInstance entity)
+    {
+        if (entity == player)
+        {
+            for (int i = 0; i < LifeBarPlayer.Length; i++)
+            {
+                if (i+1 > player.hp)
+                {
+                    LifeBarPlayer[i].SetActive(false);
+                }
+                else
+                {
+                    LifeBarPlayer[i].SetActive(true);
+                }
+            }
+        }
+        else if (entity == Ennemy1)
+        {
+            for (int i = 0; i < LifeBarEnnemy1.Length; i++)
+            {
+                if (i+1 > Ennemy1.hp)
+                {
+                    LifeBarEnnemy1[i].SetActive(false);
+                }
+                else
+                {
+                    LifeBarEnnemy1[i].SetActive(true);
+                }
+            }
+        }
+        else if (entity == Ennemy2)
+        {
+            for (int i = 0; i < LifeBarEnnemy2.Length; i++)
+            {
+                if (i+1 > Ennemy1.hp)
+                {
+                    LifeBarEnnemy2[i].SetActive(false);
+                }
+                else
+                {
+                    LifeBarEnnemy2[i].SetActive(true);
+                }
+            }
+        }
     }
 }
