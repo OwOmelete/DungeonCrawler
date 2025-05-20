@@ -11,14 +11,16 @@ public class RadarScript : MonoBehaviour
     [SerializeField] private Transform healParent;
     [SerializeField] private Transform lightParent;
     [SerializeField] private Transform oxygenParent;
+    [SerializeField] private float maxRadarTime = 5f;
+    [SerializeField] private float cooldown = 20f;
     private bool isActive;
+    private bool alreadyInCooldown;
     
 
     void CheckNearestObject(Transform parent, Transform indicatorTransform)
     {
         Transform nearestObject = null;
         float minSqrDistance = float.MaxValue;
-
         for (int i = 0; i < parent.childCount; i++)
         {
             Transform currentObject = parent.GetChild(i);
@@ -30,7 +32,6 @@ public class RadarScript : MonoBehaviour
                 nearestObject = currentObject;
             }
         }
-
         if (nearestObject != null)
         {
             Vector3 direction = nearestObject.position - indicatorTransform.position;
@@ -42,14 +43,17 @@ public class RadarScript : MonoBehaviour
 
     public void ChangeRadarState()
     {
-        isActive = !isActive;
-        if (isActive)
+        if (!alreadyInCooldown)
         {
+            isActive = true;
             StartCoroutine(UpdateRadar());
+            StartCoroutine(MaxTime());
             indicatorHealTransform.gameObject.SetActive(true);
             indicatorLightTransform.gameObject.SetActive(true);
             indicatorOxygenTransform.gameObject.SetActive(true);
+            
         }
+        
     }
 
     IEnumerator UpdateRadar()
@@ -64,5 +68,19 @@ public class RadarScript : MonoBehaviour
         indicatorHealTransform.gameObject.SetActive(false);
         indicatorLightTransform.gameObject.SetActive(false);
         indicatorOxygenTransform.gameObject.SetActive(false);
+    }
+
+    private IEnumerator MaxTime()
+    {
+        alreadyInCooldown = true;
+        yield return new WaitForSeconds(maxRadarTime);
+        isActive = false;
+        StartCoroutine(Cooldown());
+    }
+
+    private IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(cooldown);
+        alreadyInCooldown = false;
     }
 }

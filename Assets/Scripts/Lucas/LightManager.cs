@@ -15,9 +15,9 @@ public class LightManager : MonoBehaviour
     [Header("Values")]
     public float maxLight = 10;  // capacité maximale de lumière
     [SerializeField] private float minLight = 1;  // capacité minimale de lumière
-    [SerializeField] private float looseLightValue = 0.1f; // ce que va perdre la jauge de lumiere toutes les secondes
+    [SerializeField] float looseLightValue = 0.1f; // ce que va perdre la jauge de lumiere toutes les secondes
     [SerializeField] private float lerpDuration = 1f; // ce que va perdre la jauge de lumiere toutes les secondes
-    
+    public float looseLightDelay = 1f;
     [HideInInspector] public bool canLooseLight = true; // ici pour stopper la perte de lumière dans certains cas
     private bool haveLight = true; // verifie si il reste de la lumière
 
@@ -41,7 +41,7 @@ public class LightManager : MonoBehaviour
             DOTween.To(() => playerLight.pointLightOuterRadius, x => playerLight.pointLightOuterRadius = x, player.light, lerpDuration);
             DOTween.To(() => playerLight.pointLightInnerRadius, x => playerLight.pointLightInnerRadius = x, player.light / 2, lerpDuration);
             UpdateUi();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(looseLightDelay);
         }
     }
 

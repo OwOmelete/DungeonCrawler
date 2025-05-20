@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_Sonar_Cercle_0: -9197467201931527763
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

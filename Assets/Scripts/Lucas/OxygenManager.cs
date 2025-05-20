@@ -10,7 +10,7 @@ public class OxygenManager : MonoBehaviour
     [SerializeField] private UiBar OxygenBar;
     [SerializeField] private int maxOxygen = 100;
     [SerializeField] private int oxygenLoss = 1; 
-    [SerializeField] private float oxygenLossInterval = 2f;
+    public float oxygenLossInterval = 1f;
     [SerializeField] private Volume globalVolume;
     [HideInInspector] public bool canLooseOxygen = true; 
     [HideInInspector] public PlayerDataInstance player;
