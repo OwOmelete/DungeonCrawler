@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      projet_poissons_0: 2577002243061229995
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
