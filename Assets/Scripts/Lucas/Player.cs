@@ -4,8 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
-{
-
+{ 
+    [HideInInspector] public bool canMove = true;
     private float moveHorizontal = 0f;    
     private float moveVertical = 0f;
     [SerializeField] private float moveSpeed = 4f;
@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     [SerializeField] private RadarScript radarRef;
-
     [SerializeField] private PlayerData _playerData;
     public LightManager lightManager;
     public OxygenManager oxygenManager;
@@ -39,8 +38,9 @@ public class Player : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
-        if (rotationReference.canMove)
+        if (rotationReference.canMove && canMove)
         {
+            
             if (moveHorizontal != 0 || moveVertical != 0)
             {
                 rb.AddForce(new Vector2(moveHorizontal, moveVertical).normalized * accelerationSpeed);
@@ -50,9 +50,8 @@ public class Player : MonoBehaviour
             {
                 animator.SetBool("isMoving", false);
             }
-            
         }
-        else
+        else if(canMove)
         {
             if (moveHorizontal != 0 || moveVertical != 0)
             {

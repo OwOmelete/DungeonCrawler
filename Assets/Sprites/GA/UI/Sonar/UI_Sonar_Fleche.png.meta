@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_Sonar_Fleche_0: -6778879331901928529
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
