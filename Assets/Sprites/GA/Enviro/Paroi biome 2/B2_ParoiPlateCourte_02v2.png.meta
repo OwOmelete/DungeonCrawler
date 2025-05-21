@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      B2_ParoiPlateCourte_02v2_0: -1792359017492795721
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

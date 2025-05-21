@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      B3Paroi_coinConvexe_0: -1835296174113323545
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
