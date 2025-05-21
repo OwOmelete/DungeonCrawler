@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 559460297144381242}
+  - component: {fileID: 5564624766419215085}
   m_Layer: 0
   m_Name: PoissonTuto
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   - {fileID: 1159817050047140400}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5564624766419215085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2493626016923978672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44f1117af90489c92eda18aae9b79b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7981566186390392523
 GameObject:
   m_ObjectHideFlags: 0
