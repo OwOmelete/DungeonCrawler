@@ -119,6 +119,7 @@ public class CombatManager : MonoBehaviour
             player.light -= player.lightLostPerTurn;
             player.light = Mathf.Clamp(player.light, 1, 10);
             UpdateLight();
+            hasMoved = false;
         }
     }
 
@@ -696,7 +697,7 @@ public class CombatManager : MonoBehaviour
                 
             }
 
-            if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
+            else if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
             {
                 GGBarGO.SetActive(true);
                 fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
@@ -805,7 +806,7 @@ public class CombatManager : MonoBehaviour
         }
     }
     
-    bool CanMove(EntityInstance entity, int newX, int newY)
+    public bool CanMove(EntityInstance entity, int newX, int newY)
     {
         for (int i = 0; i < entity.height; i++)
         {

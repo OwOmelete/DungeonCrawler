@@ -15,8 +15,8 @@ MonoBehaviour:
   name: LeTuto
   width: 2
   height: 2
-  positionX: 3
-  positionY: 3
+  positionX: 2
+  positionY: 2
   hp: 10
   armor: 0
   actionPoint: 0
@@ -26,7 +26,11 @@ MonoBehaviour:
   attackingSprite: {fileID: 0}
   idleSprite: {fileID: 0}
   attackList: []
-  weakPointList: []
+  weakPointList:
+  - {fileID: 11400000, guid: 559457e84ed3dbb4faa80e117160f407, type: 2}
+  - {fileID: 11400000, guid: aa82fb77319acf74b9391df454e50295, type: 2}
+  - {fileID: 11400000, guid: 2b860cbc10370c4459e29daaaaf9ab1b, type: 2}
+  - {fileID: 11400000, guid: 23fc3a4ac94726749b13e89db4e0e90e, type: 2}
   lifeBarList: []
   PrevisualisationAttack: {fileID: 0}
   attacks: []

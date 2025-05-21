@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: WpGGRightMouth
   m_EditorClassIdentifier: 
   damageMulti: 1000
-  damageToAttacker: 1
+  damageToAttacker: 0
   posX: 1
   posY: 0
   direction: 4
-  damageMulti: 5
