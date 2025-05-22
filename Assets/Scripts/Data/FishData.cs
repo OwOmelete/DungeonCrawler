@@ -26,6 +26,7 @@ public class FishDataInstance : EntityInstance
     public bool PreparingAttack = false;
     public bool HasAttacked = false;
     public bool FirstCycle = true;
+    public int TurnCount = 0;
     public SpriteRenderer sr;
     public AttackData[] attacks;
     public WeakPointData[] WeakPointsRight;
