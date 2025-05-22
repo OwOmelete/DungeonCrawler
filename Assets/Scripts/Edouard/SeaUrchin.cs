@@ -1,0 +1,57 @@
+using System.Collections;
+using UnityEngine;
+
+public class SeaUrchin : MonoBehaviour
+{
+    [Tooltip("C'est un Oursin")]
+    [Header("Reference")]
+    [SerializeField] private HealthManager healthManagerReference;
+
+    [Header("Values")]
+    [SerializeField] private float strength = 5000f;
+    [SerializeField] private float knockDuration = 0.2f;
+    [SerializeField] private int damage = 1;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player")) return;
+
+        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (rb == null) return;
+
+        Vector2 direction = (collision.transform.position - transform.position).normalized;
+        direction.y = Mathf.Abs(direction.y) + 0.5f; 
+        direction = direction.normalized;
+
+        Vector2 force = direction * strength;
+
+        StartCoroutine(BruteForceKnockback(rb, direction, force, knockDuration));
+
+        DamagePlayer();
+    }
+
+    private IEnumerator BruteForceKnockback(Rigidbody2D rb, Vector2 direction, Vector2 force, float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            rb.linearVelocity = force; 
+            rb.MovePosition(rb.position + direction * 0.2f); 
+            elapsed += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    void DamagePlayer()
+    {
+        if (healthManagerReference != null)
+        {
+            healthManagerReference.TakeDamage(damage);
+        }
+        else
+        {
+            Debug.LogWarning("No HealthManager assigned to SeaUrchin.");
+        }
+    }
+}

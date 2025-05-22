@@ -20,4 +20,10 @@ public class HealthManager : MonoBehaviour
         player.hp += healAmount;
         player.hp = Mathf.Clamp(player.hp, 0, maxHealth);
     }
+
+    public void TakeDamage(int damageAmount)
+    {
+        player.hp -= damageAmount;
+        player.hp = Mathf.Clamp(player.hp, 0, maxHealth);
+    }
 }
