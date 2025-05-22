@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Player player;
+
+    private void Update()
     {
-        
+        if (player.oxygenManager.player.oxygen <= 0)
+        {
+            Respawn();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Respawn()
     {
-        
+        player.transform.position = transform.position;
     }
 }
