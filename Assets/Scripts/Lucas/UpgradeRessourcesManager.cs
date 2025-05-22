@@ -8,7 +8,7 @@ public class UpgradeRessourcesManager : MonoBehaviour
     [SerializeField] private GameObject firstButton;
     [SerializeField] private LightManager lightManagerReference;
     [SerializeField] private OxygenManager oxygenManagerReference;
-    [SerializeField] private float timeMultiplier = 1.5f;
+    [SerializeField] private float ressourcesMultiplier = 1.05f;
     [SerializeField] private Player playerRef;
 
     private bool canUpLight = true;
@@ -26,7 +26,8 @@ public class UpgradeRessourcesManager : MonoBehaviour
     {
         if (canUpLight)
         {
-            lightManagerReference.looseLightDelay *= timeMultiplier;
+            lightManagerReference.maxLight *= ressourcesMultiplier;
+            lightManagerReference.AddLight(ressourcesMultiplier - 1 * 10);
             canUpLight = false;
             upgradeMenu.SetActive(false);
             playerRef.canMove = true;
@@ -39,7 +40,8 @@ public class UpgradeRessourcesManager : MonoBehaviour
 
         if (canUpOxygen)
         {
-            oxygenManagerReference.oxygenLossInterval *= timeMultiplier;
+            oxygenManagerReference.maxOxygen *= ressourcesMultiplier;
+            oxygenManagerReference.AddOxygen(ressourcesMultiplier - 1 * 100);
             canUpOxygen = false;
             upgradeMenu.SetActive(false);
             playerRef.canMove = true;

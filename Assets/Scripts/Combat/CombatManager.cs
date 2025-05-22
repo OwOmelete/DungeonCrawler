@@ -130,7 +130,7 @@ public class CombatManager : MonoBehaviour
         playerEntityRenderer.flipY = playerEntity.direction == EntityInstance.dir.rightUp ||
                                      playerEntity.direction == EntityInstance.dir.leftDown;*/
         
-        if (playerEntity.actionPoint == 0)
+        if (playerEntity.actionPoint <= 0)
         {
             hasAttacked = false;
             hasMoved = false;
@@ -160,7 +160,8 @@ public class CombatManager : MonoBehaviour
         Debug.Log("tour fini");
     }
 
-    void Action(PlayerDataInstance playerEntity)
+    /*
+    void ActionKeyboard(PlayerDataInstance playerEntity)
     {
         int verticalSpeed = 1;
         int horizontalSpeed = 1;
@@ -176,29 +177,7 @@ public class CombatManager : MonoBehaviour
             horizontalSpeed = 2;
         }
         #region Actions
-
-        /*if (playerEntity.actionPoint == playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                playerEntity.respirationIndex = 0;
-                Debug.Log(playerEntity.RespirationDatas[playerEntity.respirationIndex]);
-                playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
-            }
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                playerEntity.respirationIndex = 1;
-                Debug.Log(playerEntity.RespirationDatas[playerEntity.respirationIndex]);
-                playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
-            }
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                playerEntity.respirationIndex = 2;
-                Debug.Log(playerEntity.RespirationDatas[playerEntity.respirationIndex]);
-                playerEntity.actionPoint = playerEntity.RespirationDatas[playerEntity.respirationIndex].actionPoints;
-            }
-        }
-        */
+        
 
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -274,17 +253,7 @@ public class CombatManager : MonoBehaviour
                 player.oxygen -= player.oxygenLostMove;
             }
         }
-        /*else if (Input.GetKeyDown(KeyCode.A))
-        {
-            player.currentAttack = player.attackList[0];
-            actionPointLost = 0;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            player.currentAttack = player.attackList[1];
-            actionPointLost = 0;
-        }
-        */
+        
         else if (Input.GetKeyDown(KeyCode.I)&& !hasAttacked)
         {
             if (Attack(player.currentAttack, player, player.positionX, player.positionY + 1)) actionPointLost = 1;
@@ -336,7 +305,300 @@ public class CombatManager : MonoBehaviour
         #endregion
         playerEntity.actionPoint -= actionPointLost;
     }
+    */
+    
+    bool ApproximatelyEqual(float a, float b, float e = 0.1f)
+    {
+        return Mathf.Abs(a - b) < e;
+    }
 
+    private bool wantToAttack;
+    private bool wantToRotate;
+    private bool wantToMove = true;
+    private bool waitForConfirm;
+    private float joysticXSave = 0f; 
+    private float joysticYSave = 0f; 
+    void Action(PlayerDataInstance playerEntity)
+    {
+        float joysticX = Input.GetAxis("Horizontal");
+        float joysticY = Input.GetAxis("Vertical");
+        int verticalSpeed = 1;
+        int horizontalSpeed = 1;
+        int actionPointLost = 0;
+        if (playerEntity.isStanding && player.booster)
+        {
+            verticalSpeed = 2;
+            horizontalSpeed = 1;
+        }
+        else if (player.booster)
+        {
+            verticalSpeed = 1;
+            horizontalSpeed = 2;
+        }
+        #region Actions
+        
+        // BOOSTER
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            player.booster = !player.booster;
+            Debug.Log("booster = " + player.booster);
+            actionPointLost = 0;
+        }
+
+        if (Input.GetKeyDown("joystick button 2"))
+        {
+            if (!wantToMove && !wantToRotate)
+            {
+                wantToMove = true;
+                wantToRotate = false;
+            }
+            else
+            {
+                wantToRotate = !wantToRotate;
+                wantToMove = !wantToMove;
+            }
+            wantToAttack = false;
+            waitForConfirm = false;
+            
+            if (wantToRotate)
+            {
+                Debug.Log("Want to rotate");
+            }
+            else
+            {
+                Debug.Log("Want to move");
+            }
+            
+            
+        }
+        else if (Input.GetKeyDown("joystick button 1"))
+        {
+            wantToRotate = false;
+            wantToMove = false;
+            wantToAttack = true;
+            waitForConfirm = false;
+            Debug.Log("Want to attack");
+        }
+        else if (Input.GetKeyDown("joystick button 3"))
+        {
+            Debug.Log("passer son tour");
+            playerEntity.actionPoint = 0;
+            return;
+        }
+        
+        if (!waitForConfirm)
+        {
+            CheckJoystic(joysticY, joysticX);
+        }
+        else if (Input.GetKeyDown("joystick button 0")&& (joysticXSave != 0 || joysticYSave != 0))
+        {
+            #region Move
+        
+            // MOVE
+            if (wantToMove)
+            {
+                if (joysticYSave == 1 && !hasAttacked && !hasMoved )
+                {
+                    if (player.direction == EntityInstance.dir.up)
+                    {
+                        if (Move(playerEntity, playerEntity.positionX, playerEntity.positionY + verticalSpeed))
+                            player.oxygen -= player.oxygenLostMove2Tiles;
+                        else
+                        {
+                            Move(playerEntity, playerEntity.positionX, playerEntity.positionY + 1);
+                            player.oxygen -= player.oxygenLostMove;
+                        }
+                    }
+                    else
+                    {
+                        Move(playerEntity, playerEntity.positionX, playerEntity.positionY + 1);
+                        player.oxygen -= player.oxygenLostMove;
+                    }
+                    waitForConfirm = false;
+                }
+                else if (joysticYSave == -1 && !hasAttacked && !hasMoved)
+                {
+                    if (player.direction == EntityInstance.dir.down)
+                    {
+                        if (Move(playerEntity, playerEntity.positionX, playerEntity.positionY - verticalSpeed))
+                            player.oxygen -= player.oxygenLostMove2Tiles;
+                        else
+                        {
+                            Move(playerEntity, playerEntity.positionX, playerEntity.positionY - 1);
+                            player.oxygen -= player.oxygenLostMove;
+                        }
+                    }
+                    else
+                    {
+                        Move(playerEntity, playerEntity.positionX, playerEntity.positionY - 1);
+                        player.oxygen -= player.oxygenLostMove;
+                    }
+                    waitForConfirm = false;
+                }
+                else if (joysticXSave == 1 && !hasAttacked && !hasMoved)
+                {
+                    if (player.direction == EntityInstance.dir.right)
+                    {
+                        if (Move(playerEntity, playerEntity.positionX + horizontalSpeed, playerEntity.positionY))
+                            player.oxygen -= player.oxygenLostMove2Tiles;
+                        else
+                        {
+                            Move(playerEntity, playerEntity.positionX + 1, playerEntity.positionY);
+                            player.oxygen -= player.oxygenLostMove;
+                        }
+                    }
+                    else
+                    {
+                        Move(playerEntity, playerEntity.positionX + 1, playerEntity.positionY);
+                        player.oxygen -= player.oxygenLostMove;
+                    }
+                    waitForConfirm = false;
+                }
+                else if (joysticXSave == - 1 && !hasAttacked && !hasMoved)
+                {
+                    if (player.direction == EntityInstance.dir.left)
+                    {
+                        if (Move(playerEntity, playerEntity.positionX - horizontalSpeed, playerEntity.positionY))
+                            player.oxygen -= player.oxygenLostMove2Tiles;
+                        else
+                        {
+                            Move(playerEntity, playerEntity.positionX - 1, playerEntity.positionY);
+                            player.oxygen -= player.oxygenLostMove;
+                        }
+                    }
+                    else
+                    {
+                        Move(playerEntity, playerEntity.positionX - 1, playerEntity.positionY);
+                        player.oxygen -= player.oxygenLostMove;
+                    }
+                    waitForConfirm = false;
+                }
+                else
+                {
+                    return;
+                }
+                
+            }  
+            #endregion
+            
+            #region Attack
+            // ATTACK
+            
+            else if (wantToAttack && !hasAttacked)
+            {
+                if (joysticYSave == 1 && !hasAttacked)
+                {
+                    if (Attack(player.currentAttack, player, player.positionX, player.positionY + 1))
+                    {
+                        actionPointLost = 1; 
+                        waitForConfirm = false;
+                    }
+                        
+                    else hasAttacked = false;
+                }
+                else if (joysticYSave == - 1 && !hasAttacked)
+                {
+                    if (Attack(player.currentAttack, player, player.positionX, player.positionY - 1))
+                    {
+                        actionPointLost = 1;
+                        waitForConfirm = false;
+                    }
+                    else hasAttacked = false;
+                    
+                }
+                else if (joysticXSave == 1 && !hasAttacked)
+                {
+                    if (Attack(player.currentAttack, player, player.positionX + 1, player.positionY))
+                    {
+                        actionPointLost = 1;
+                        waitForConfirm = false;
+                    }
+                    else hasAttacked = false;
+                }
+                else if (joysticXSave == - 1&& !hasAttacked)
+                {
+                    if (Attack(player.currentAttack, player, player.positionX - 1, player.positionY))
+                    {
+                        actionPointLost = 1;
+                        waitForConfirm = false;
+                    }
+                    else hasAttacked = false;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            #endregion
+            
+            #region Rotate
+            // ROTATE
+           else if (wantToRotate)
+            {
+                if (joysticXSave == 1 && canRotate && !hasMoved)
+                {
+                    if (canTurnRight(player))
+                    {
+                        FlipPlayerRight(player);
+                        hasMoved = true;
+                        player.oxygen -= player.oxygenLostRotate;
+                        waitForConfirm = false;
+                    }
+                }
+                else if (joysticXSave == - 1 && canRotate && !hasMoved)
+                {
+                    if (canTurnLeft(player))
+                    {
+                        FlipPlayerLeft(player);
+                        hasMoved = true;
+                        player.oxygen -= player.oxygenLostRotate;
+                        waitForConfirm = false;
+                    }
+                }
+                else
+                {
+                    return;
+                }
+                
+            }
+            #endregion
+        }
+        else if (joysticXSave == 0 && joysticYSave == 0)
+        {
+            waitForConfirm = false;
+        }
+        #endregion
+        
+        Debug.Log(playerEntity.actionPoint);
+        playerEntity.actionPoint -= actionPointLost;
+    }
+
+    void CheckJoystic(float joysticY, float joysticX)
+    {
+        if (ApproximatelyEqual(joysticY, 1) && !hasAttacked)
+        {
+            joysticYSave = 1;
+            waitForConfirm = true;
+        }
+        else if (ApproximatelyEqual(joysticY, - 1)&& !hasAttacked)
+        {
+            joysticYSave = - 1;
+            waitForConfirm = true;
+        }
+        else if (ApproximatelyEqual(joysticX, 1) && !hasAttacked)
+        {
+            joysticXSave = 1;
+            waitForConfirm = true;
+        }
+        else if (ApproximatelyEqual(joysticX, - 1)&& !hasAttacked)
+        {
+            joysticXSave = - 1;
+            waitForConfirm = true;
+        }
+        
+    }
+    
+    
     public void FlipPlayerRight(EntityInstance entity)
     {
         if (canTurnRight(entity))
@@ -861,11 +1123,7 @@ public class CombatManager : MonoBehaviour
     public bool Attack(AttackData attack,EntityInstance entity, int x, int y)
     {
         bool endReturn = false;
-        if (entity == player)
-        {
-            hasAttacked = true;
-            player.oxygen -= player.oxygenLostAttack;
-        }
+        
         int dirX = x - entity.positionX;
         int dirY = y - entity.positionY;
         EntityInstance lastEnnemyTouched = null;
@@ -883,6 +1141,11 @@ public class CombatManager : MonoBehaviour
             EntityInstance tile = GetAttackTile(entity, dirY, dirX, i, attack);
             if (tile != null && tile != entity && tile != lastEnnemyTouched && tile is not SpikeInstance)
             {
+                if (entity == player)
+                {
+                    hasAttacked = true;
+                    player.oxygen -= player.oxygenLostAttack;
+                }
                 endReturn = true;
                 Debug.Log("touché");
                 int dmg = attack.Damage;
