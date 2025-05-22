@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Perso_Combat_UI_0: -5380437420523662701
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

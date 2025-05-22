@@ -1948,6 +1948,7 @@ MonoBehaviour:
   minLight: 1
   looseLightValue: 0.1
   lerpDuration: 1
+  looseLightDelay: 1
   canLooseLight: 1
 --- !u!4 &477168123
 Transform:
@@ -4104,6 +4105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712a4d2dbfd51e546a265cfdca813fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
   moveSpeed: 3
   accelerationSpeed: 3
   rotationReference: {fileID: 961400409}
@@ -6938,7 +6940,7 @@ PrefabInstance:
     - target: {fileID: 3527871802065585932, guid: f48cb9bd2c052944496768ac23a48073, type: 3}
       propertyPath: 'fishDatas.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: a5e97d093528e8b4e931f41ef48ef22a, type: 2}
+      objectReference: {fileID: 11400000, guid: 4a2da4576d6b2bb4dbe37e0b1da732ba, type: 2}
     - target: {fileID: 3527871802065585932, guid: f48cb9bd2c052944496768ac23a48073, type: 3}
       propertyPath: 'fishDatas.Array.data[1]'
       value: 
