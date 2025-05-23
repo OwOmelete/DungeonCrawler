@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      plante_heal_2_vide_0: -573065275655618625
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
