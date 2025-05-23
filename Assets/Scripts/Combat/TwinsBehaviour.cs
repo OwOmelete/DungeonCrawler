@@ -115,7 +115,7 @@ public class TwinsBehaviour : AbstractIA
         if (CombatManager.Instance.grid[entity.positionY + 1, entity.positionX + dirX] != null)
         {
             CombatManager.Instance.Damage(
-                CombatManager.Instance.grid[entity.positionY, entity.positionX + dirX], _spikeData.hp);
+                CombatManager.Instance.grid[entity.positionY+1, entity.positionX + dirX], _spikeData.hp);
         }
         else
         {
