@@ -8,8 +8,8 @@ public class OxygenManager : MonoBehaviour
 {
     [SerializeField] private float maxBlur = 26f;
     [SerializeField] private UiBar OxygenBar;
-    [SerializeField] private int maxOxygen = 100;
-    [SerializeField] private int oxygenLoss = 1; 
+    public float maxOxygen = 100;
+    [SerializeField] private float oxygenLoss = 1; 
     public float oxygenLossInterval = 1f;
     [SerializeField] private Volume globalVolume;
     [HideInInspector] public bool canLooseOxygen = true; 
