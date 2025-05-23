@@ -27,7 +27,7 @@ public class UpgradeRessourcesManager : MonoBehaviour
         if (canUpLight)
         {
             lightManagerReference.maxLight *= ressourcesMultiplier;
-            lightManagerReference.AddLight(ressourcesMultiplier - 1 * 10);
+            lightManagerReference.AddLight(lightManagerReference.maxLight);
             canUpLight = false;
             upgradeMenu.SetActive(false);
             playerRef.canMove = true;
@@ -41,7 +41,7 @@ public class UpgradeRessourcesManager : MonoBehaviour
         if (canUpOxygen)
         {
             oxygenManagerReference.maxOxygen *= ressourcesMultiplier;
-            oxygenManagerReference.AddOxygen(ressourcesMultiplier - 1 * 100);
+            oxygenManagerReference.AddOxygen(oxygenManagerReference.maxOxygen);
             canUpOxygen = false;
             upgradeMenu.SetActive(false);
             playerRef.canMove = true;

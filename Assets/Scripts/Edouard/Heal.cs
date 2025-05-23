@@ -7,15 +7,15 @@ public class Heal : MonoBehaviour
     #region Variables
     
     [Header("Reference")]
-    [SerializeField] private HealthManager HealthManagerReference;    // Reference au light manager
-    [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche 
+    [SerializeField] private HealthManager HealthManagerReference;    
+    [SerializeField] private GameObject interactDisplay;    
     
     [Header("Values")]
-    [SerializeField] private int regen = 5;   // Quantitée de lumière que va regenerer l'objet
-    [SerializeField] private float interactTextFadeDuration = 0.2f; // Temps que va prendre le texte a apparaitre et a disparaitre
+    [SerializeField] private int regen = 5;   
+    [SerializeField] private float interactTextFadeDuration = 0.2f; 
     [SerializeField] private float timeToDespawn = 0.3f;
     
-    private bool canTake = false;   // Savoir si on peut prendre l'objet
+    private bool canTake = false;   
     
     #endregion
 
@@ -49,9 +49,9 @@ public class Heal : MonoBehaviour
     {
         Destroy(GetComponent<Collider2D>());
         gameObject.GetComponent<Transform>().DOScale(Vector3.zero, timeToDespawn).SetEase(Ease.OutCubic);
-        if (HealthManagerReference.player.hp + regen >= HealthManagerReference.maxHealth)
+        if (HealthManagerReference.playerData.hp + regen >= HealthManagerReference.maxHealth)
         {
-            regen = HealthManagerReference.maxHealth - HealthManagerReference.player.hp;
+            regen = HealthManagerReference.maxHealth - HealthManagerReference.playerData.hp;
         }
         HealthManagerReference.Heal(regen);
         StartCoroutine(DespawnCoroutine());
