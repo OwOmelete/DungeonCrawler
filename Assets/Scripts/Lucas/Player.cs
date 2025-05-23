@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown("joystick button 1"))
         {
             radarRef.ChangeRadarState();
         }

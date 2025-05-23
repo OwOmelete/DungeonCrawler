@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HealthManager : MonoBehaviour
 {
@@ -6,24 +7,32 @@ public class HealthManager : MonoBehaviour
 
     [Header("Values")]
     public int maxHealth = 10;
-    public PlayerData player;
+    public PlayerData playerData;
+    public Player player;
+    public GameObject currentCheckPoint;
 
     #endregion
     
     private void Start()
     {
-        player.hp = maxHealth;
+        playerData.hp = maxHealth;
     }
 
     public void Heal(int healAmount)
     {
-        player.hp += healAmount;
-        player.hp = Mathf.Clamp(player.hp, 0, maxHealth);
+        playerData.hp += healAmount;
+        playerData.hp = Mathf.Clamp(playerData.hp, 0, maxHealth);
     }
 
     public void TakeDamage(int damageAmount)
     {
-        player.hp -= damageAmount;
-        player.hp = Mathf.Clamp(player.hp, 0, maxHealth);
+        playerData.hp -= damageAmount;
+        playerData.hp = Mathf.Clamp(playerData.hp, 0, maxHealth);
+    }
+
+    public void Respawn()
+    {
+        //TODO: actualiser cette methode pour quelle soit fonctionelle avec la mort dans le niveau.
+        player.transform.position = currentCheckPoint.transform.position;
     }
 }
