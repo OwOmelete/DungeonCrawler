@@ -3,17 +3,21 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     public Player player;
+    public HealthManager healthManager;
+   
 
     private void Update()
     {
         if (player.oxygenManager.player.oxygen <= 0)
         {
-            Respawn();
+            healthManager.Respawn();
         }
     }
 
-    private void Respawn()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        player.transform.position = transform.position;
+        healthManager.currentCheckPoint = gameObject;
     }
+
+    
 }
