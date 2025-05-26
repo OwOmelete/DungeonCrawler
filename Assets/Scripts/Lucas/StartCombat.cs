@@ -15,11 +15,13 @@ public class StartCombat : MonoBehaviour
     [SerializeField] private Image dangerImage;
     [SerializeField] private Image blackFade;
     [SerializeField] private float fadeDelay = 0.5f;
+    [SerializeField] private AudioManager audioManager;
 
     public void SwitchToCombat(List<FishData> fishDatas)
     {
         dangerImage.DOFade(1, 1);
         blackFade.DOFade(1, 1).SetDelay(fadeDelay);
+        audioManager.SwitchToCombat();
         StartCoroutine(WaitForAnim(fishDatas));
     }
 

@@ -59,9 +59,10 @@ public class OxygenManager : MonoBehaviour
             UpdateUi();
         }
     }
-
+    
     public void UpdateUi()
     {
+        /*
         float quarterMaxOxygen = maxOxygen / 4;
         
         if (player.oxygen <= quarterMaxOxygen * 3 && player.oxygen > quarterMaxOxygen * 2 )
@@ -84,6 +85,7 @@ public class OxygenManager : MonoBehaviour
         {
             OxygenBar.ChangeSprite(0);
         }
+        */
         
         if (player.oxygen <= maxOxygen / 5)
         {
@@ -97,8 +99,4 @@ public class OxygenManager : MonoBehaviour
         }
     }
     
-    void LowOxygenEffects() // pour mettre un effet de flou quand on manque d'oxygene ou meme des effets en general
-    {
-        
-    }
 }

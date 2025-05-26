@@ -1,39 +1,76 @@
-
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
+
 
 public class OxygenRegenZone : MonoBehaviour
 {
-    [SerializeField] private OxygenManager oxygenManagerReference; 
-    private bool isInZone = false;
-    [SerializeField] private int oxygenRegen = 5; 
-    [SerializeField] private float regenInterval = 1f;
+    #region Variables
 
+    [Header("Reference")] 
+    [SerializeField] private OxygenManager oxygenManagerReference;
+    [SerializeField] private GameObject interactDisplay;
+    [SerializeField] private Animator animator;
+    
+    [Header("Values")]
+    [SerializeField] private float regen = 100;   
+    [SerializeField] private float interactTextFadeDuration = 0.2f; 
+    [SerializeField] private float timeToDespawn = 0.3f;
+    
+    private bool canTake = false; 
+    
+    #endregion
+
+    #region Triggers
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            isInZone = true;
-            oxygenManagerReference.canLooseOxygen = false; 
-            StartCoroutine(RegenOxygenOverTime());
+            animator.SetBool("isHere", true);
+            canTake = true;
+            StartCoroutine(TakeLight());
         }
+        
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            isInZone = false;
-            oxygenManagerReference.canLooseOxygen = true;
-            oxygenManagerReference.RestartCoroutine();
+            animator.SetBool("isHere", false);
+            canTake = false;
         }
     }
-    private IEnumerator RegenOxygenOverTime()
+    #endregion
+    
+    IEnumerator TakeLight()
     {
-        while (isInZone)
+        while (canTake)
         {
-            oxygenManagerReference.AddOxygen(oxygenRegen);
-            oxygenManagerReference.UpdateUi();
-            yield return new WaitForSeconds(regenInterval);
+            if (Input.GetButtonDown("Interact"))
+            {
+                AddOxygen();
+            }
+            
+            yield return null;
         }
+    }
+    
+    void AddOxygen()
+    {
+        Destroy(GetComponent<Collider2D>());
+        gameObject.GetComponent<Transform>().DOScale(Vector3.zero, timeToDespawn).SetEase(Ease.OutCubic);
+        oxygenManagerReference.canLooseOxygen = false;
+        if (oxygenManagerReference.player.light + regen >= oxygenManagerReference.maxOxygen)
+        {
+            regen = oxygenManagerReference.maxOxygen - oxygenManagerReference.player.light;
+        }
+        oxygenManagerReference.AddOxygen(regen);
+        oxygenManagerReference.UpdateUi();
+        StartCoroutine(DespawnCoroutine());
+    }
+    IEnumerator DespawnCoroutine()
+    {
+        yield return new WaitForSeconds(timeToDespawn);
+        Destroy(gameObject);
     }
 }

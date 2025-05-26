@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class SeaUrchin : MonoBehaviour
 {
-    [Tooltip("C'est un Oursin")]
-    [Header("Reference")]
-    [SerializeField] private HealthManager healthManagerReference;
-
+    [Header("References")] 
+    [SerializeField] private Player player;
     [Header("Values")]
     [SerializeField] private float strength = 5000f;
     [SerializeField] private float knockDuration = 0.2f;
@@ -45,13 +43,6 @@ public class SeaUrchin : MonoBehaviour
 
     void DamagePlayer()
     {
-        if (healthManagerReference != null)
-        {
-            healthManagerReference.TakeDamage(damage);
-        }
-        else
-        {
-            Debug.LogWarning("No HealthManager assigned to SeaUrchin.");
-        }
+        player.player.TakeDamage(damage);
     }
 }

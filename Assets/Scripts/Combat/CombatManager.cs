@@ -37,6 +37,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject Selection;
     [SerializeField] private SpriteRenderer Ennemy1Icon;
     [SerializeField] private SpriteRenderer Ennemy2Icon;
+    [SerializeField] private AudioManager audioManager;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -1878,7 +1879,8 @@ public class CombatManager : MonoBehaviour
         playerExploration.SetActive(true);
         UiExplo.SetActive(true);
         combatScene.SetActive(false);
-        
+        audioManager.SwitchToExplo();
+
     }
     
     int SecondaryPlayerCoordsX()
@@ -1993,7 +1995,6 @@ public class CombatManager : MonoBehaviour
         {
             return false;
         }
-
         return true;
     }
 }
