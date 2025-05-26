@@ -29,6 +29,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject MovePrevisu;
     [SerializeField] private GameObject AtkPrevisu;
     [SerializeField] private GameObject RotatePrevisu;
+    [SerializeField] private GameObject Selection;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -48,7 +49,11 @@ public class CombatManager : MonoBehaviour
     private EntityInstance Ennemy2;
     private Dictionary<Vector2Int, List<Vector2Int>> voisins;
     private List<GameObject> previsuList = new List<GameObject>();
-
+    private List<GameObject> selectionList = new List<GameObject>();
+    private List<Tuple<int, int>> upPrevisuList = new List<Tuple<int, int>>();
+    private List<Tuple<int, int>> downPrevisuList = new List<Tuple<int, int>>();
+    private List<Tuple<int, int>> leftPrevisuList = new List<Tuple<int, int>>();
+    private List<Tuple<int, int>> rightPrevisuList = new List<Tuple<int, int>>();
     public static CombatManager Instance;
     
     private void Awake()
@@ -69,39 +74,6 @@ public class CombatManager : MonoBehaviour
         
         combatFinished = false;
         grid = CreateGrid(gridHeight, gridWidth);
-        /*
-        for (int i = 0; i < grid.GetLength(0); i++)
-        {
-            for (int j = 0; j < grid.GetLength(1); j++)
-            {
-                List<Vector2Int> l = new List<Vector2Int>();
-                if (isTileInGrid(j, i + 1))
-                {
-                    l.Add(new Vector2Int(i+1,j));
-                }
-                if (isTileInGrid(j, i - 1))
-                {
-                    l.Add(new Vector2Int(i-1,j));
-                }
-                if (isTileInGrid(j+1, i))
-                {
-                    l.Add(new Vector2Int(i,j+1));
-                }
-                if (isTileInGrid(j-1, i))
-                {
-                    l.Add(new Vector2Int(i,j-1));
-                }
-
-                Vector2Int v = new Vector2Int(i, j);
-                voisins.Add(v, l);
-            }
-        }
-
-        for (int i = 0; i < voisins[new Vector2Int(0, 0)].Count; i++)
-        {
-            Debug.Log(voisins[new Vector2Int(0, 0)][i]);
-        }
-        */
         foreach (var i in getNeighbors(2, 2))
         {
             Debug.Log(i);
@@ -355,6 +327,28 @@ public class CombatManager : MonoBehaviour
         return Mathf.Abs(a - b) < e;
     }
 
+    void ShowPrevisu(GameObject obj, int x, int y)
+    {
+        GameObject p = Instantiate(obj, new Vector3(x, y, 0), Quaternion.identity);
+        previsuList.Add(p);
+        if (x > player.positionX && x > SecondaryPlayerCoordsX())
+        {
+            rightPrevisuList.Add(new Tuple<int, int>(x,y));
+        }
+        if (x < player.positionX && x < SecondaryPlayerCoordsX())
+        {
+            leftPrevisuList.Add(new Tuple<int, int>(x,y));
+        }
+        if (y < player.positionY && y < SecondaryPlayerCoordsY())
+        {
+            downPrevisuList.Add(new Tuple<int, int>(x,y));
+        }
+        if (y > player.positionY && y > SecondaryPlayerCoordsY())
+        {
+            upPrevisuList.Add(new Tuple<int, int>(x,y));
+        }
+    }
+
     void ShowMovements()
     {
         ResetPrevisuList();
@@ -362,16 +356,14 @@ public class CombatManager : MonoBehaviour
         {
             if (grid[i.Item2, i.Item1] == null)
             {
-                GameObject p = Instantiate(MovePrevisu, new Vector3(i.Item1, i.Item2, 0), Quaternion.identity);
-                previsuList.Add(p);
+                ShowPrevisu(MovePrevisu, i.Item1, i.Item2);
             }
         }
         foreach (var i in getNeighbors(SecondaryPlayerCoordsX(), SecondaryPlayerCoordsY()))
         {
             if (grid[i.Item2, i.Item1] == null)
             {
-                GameObject p = Instantiate(MovePrevisu, new Vector3(i.Item1, i.Item2, 0), Quaternion.identity);
-                previsuList.Add(p);
+                ShowPrevisu(MovePrevisu, i.Item1, i.Item2);
             }
         }
 
@@ -382,8 +374,7 @@ public class CombatManager : MonoBehaviour
                 {
                     if (grid[player.positionY + 3, player.positionX] == null && grid[player.positionY + 2, player.positionX] == null)
                     {
-                        GameObject p = Instantiate(MovePrevisu, new Vector3(player.positionX, player.positionY+3), Quaternion.identity);
-                        previsuList.Add(p);
+                        ShowPrevisu(MovePrevisu, player.positionX,player.positionY+3);
                     }
                 }
                 break;
@@ -392,8 +383,7 @@ public class CombatManager : MonoBehaviour
                 {
                     if (grid[player.positionY - 3, player.positionX] == null && grid[player.positionY - 2, player.positionX] == null)
                     {
-                        GameObject p = Instantiate(MovePrevisu, new Vector3(player.positionX, player.positionY-3), Quaternion.identity);
-                        previsuList.Add(p);
+                        ShowPrevisu(MovePrevisu, player.positionX,player.positionY-3);
                     }
                 }
                 break;
@@ -402,8 +392,7 @@ public class CombatManager : MonoBehaviour
                 {
                     if (grid[player.positionY, player.positionX - 3] == null && grid[player.positionY, player.positionX - 2] == null)
                     {
-                        GameObject p = Instantiate(MovePrevisu, new Vector3(player.positionX - 3, player.positionY), Quaternion.identity);
-                        previsuList.Add(p);
+                        ShowPrevisu(MovePrevisu, player.positionX-3,player.positionY);
                     }
                 }
                 break;
@@ -412,8 +401,7 @@ public class CombatManager : MonoBehaviour
                 {
                     if (grid[player.positionY, player.positionX + 3] == null && grid[player.positionY, player.positionX + 2] == null)
                     {
-                        GameObject p = Instantiate(MovePrevisu, new Vector3(player.positionX + 3, player.positionY), Quaternion.identity);
-                        previsuList.Add(p);
+                        ShowPrevisu(MovePrevisu, player.positionX+3,player.positionY);
                     }
                 }
                 break;
@@ -431,18 +419,14 @@ public class CombatManager : MonoBehaviour
             {
                 if (grid[player.positionY, player.positionX + 1] == null || grid[player.positionY, player.positionX + 1] is not SpikeInstance)
                 {
-                    GameObject p = Instantiate(RotatePrevisu, new Vector3(player.positionX + 1, player.positionY, 0),
-                        quaternion.identity);
-                    previsuList.Add(p);
+                    ShowPrevisu(RotatePrevisu, player.positionX+1,player.positionY);
                 }
             }
             if (isTileInGrid(player.positionX - 1, player.positionY))
             {
                 if (grid[player.positionY, player.positionX - 1] == null || grid[player.positionY, player.positionX - 1] is not SpikeInstance)
                 {
-                    GameObject p = Instantiate(RotatePrevisu, new Vector3(player.positionX - 1, player.positionY, 0),
-                        quaternion.identity);
-                    previsuList.Add(p);
+                    ShowPrevisu(RotatePrevisu, player.positionX-1,player.positionY);
                 }
             }
         }
@@ -452,18 +436,14 @@ public class CombatManager : MonoBehaviour
             {
                 if (grid[player.positionY + 1, player.positionX] == null || grid[player.positionY + 1, player.positionX] is not SpikeInstance)
                 {
-                    GameObject p = Instantiate(RotatePrevisu, new Vector3(player.positionX, player.positionY + 1, 0),
-                        quaternion.identity);
-                    previsuList.Add(p);
+                    ShowPrevisu(RotatePrevisu, player.positionX,player.positionY+1);
                 }
             }
             if (isTileInGrid(player.positionX, player.positionY - 1))
             {
                 if (grid[player.positionY - 1, player.positionX] == null || grid[player.positionY - 1, player.positionX] is not SpikeInstance)
                 {
-                    GameObject p = Instantiate(RotatePrevisu, new Vector3(player.positionX, player.positionY - 1, 0),
-                        quaternion.identity);
-                    previsuList.Add(p);
+                    ShowPrevisu(RotatePrevisu, player.positionX,player.positionY-1);
                 }
             }
         }
@@ -476,14 +456,36 @@ public class CombatManager : MonoBehaviour
         {
             if (grid[i.Item2, i.Item1] != player)
             {
-                GameObject p = Instantiate(AtkPrevisu, new Vector3(i.Item1, i.Item2, 0), Quaternion.identity);
-                previsuList.Add(p);
+                ShowPrevisu(AtkPrevisu, i.Item1, i.Item2);
             }
         }
     }
 
+    void ShowSelection(List<Tuple<int, int>> list)
+    {
+        ResetSelectionList();
+        foreach (var coords in list)
+        {
+            GameObject s = Instantiate(Selection, new Vector3(coords.Item1, coords.Item2, 0), Quaternion.identity);
+            selectionList.Add(s);
+        }
+    }
+    
+    void ResetSelectionList()
+    {
+        for (int i = selectionList.Count - 1; i >= 0; i--)
+        {
+            Destroy(selectionList[i]);
+        }
+        selectionList.Clear();
+    }
+
     void ResetPrevisuList()
     {
+        rightPrevisuList.Clear();
+        leftPrevisuList.Clear();
+        downPrevisuList.Clear();
+        upPrevisuList.Clear();
         for (int i = previsuList.Count - 1; i >= 0; i--)
         {
             Destroy(previsuList[i]);
@@ -495,6 +497,7 @@ public class CombatManager : MonoBehaviour
     private bool wantToRotate;
     private bool wantToMove = true;
     private bool waitForConfirm;
+    private bool previsuShown = false;
     private float joysticXSave = 0f; 
     private float joysticYSave = 0f; 
     void Action(PlayerDataInstance playerEntity)
@@ -516,18 +519,21 @@ public class CombatManager : MonoBehaviour
         }
         #region Actions
 
-        if (wantToMove && !hasMoved)
+        if (wantToMove && !hasMoved && !previsuShown)
         {
+            previsuShown = true;
             ShowMovements();
         }
 
-        if (wantToAttack && !hasAttacked)
+        if (wantToAttack && !hasAttacked&& !previsuShown)
         {
+            previsuShown = true;
             ShowAttacks();
         }
 
-        if (wantToRotate  && !hasMoved)
+        if (wantToRotate  && !hasMoved&& !previsuShown)
         {
+            previsuShown = true;
             ShowRotations();
         }
         
@@ -549,6 +555,9 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Want to move");
             
             ShowMovements();
+            ResetSelectionList();
+            joysticXSave = 0;
+            joysticYSave = 0;
             
         }
         else if (Input.GetKeyDown("joystick button 3")  && !hasMoved)
@@ -560,6 +569,9 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Want to rotate");
             
             ShowRotations();
+            ResetSelectionList();
+            joysticXSave = 0;
+            joysticYSave = 0;
         }
         else if (Input.GetKeyDown("joystick button 1"))
         {
@@ -570,12 +582,19 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Want to attack");
             
             ShowAttacks();
+            ResetSelectionList();
+            joysticXSave = 0;
+            joysticYSave = 0;
         }
         else if (Input.GetKeyDown("joystick button 7"))
         {
             Debug.Log("passer son tour");
             playerEntity.actionPoint = 0;
             ResetPrevisuList();
+            ResetSelectionList();
+            joysticXSave = 0;
+            joysticYSave = 0;
+            previsuShown = false;
             return;
         }
         
@@ -607,7 +626,7 @@ public class CombatManager : MonoBehaviour
                         player.oxygen -= player.oxygenLostMove;
                     }
                     waitForConfirm = false;
-                    ResetPrevisuList();
+                    endAction();
                 }
                 else if (joysticYSave == -1 && !hasAttacked && !hasMoved)
                 {
@@ -627,7 +646,7 @@ public class CombatManager : MonoBehaviour
                         player.oxygen -= player.oxygenLostMove;
                     }
                     waitForConfirm = false;
-                    ResetPrevisuList();
+                    endAction();
                 }
                 else if (joysticXSave == 1 && !hasAttacked && !hasMoved)
                 {
@@ -647,7 +666,7 @@ public class CombatManager : MonoBehaviour
                         player.oxygen -= player.oxygenLostMove;
                     }
                     waitForConfirm = false;
-                    ResetPrevisuList();
+                    endAction();
                 }
                 else if (joysticXSave == - 1 && !hasAttacked && !hasMoved)
                 {
@@ -667,7 +686,7 @@ public class CombatManager : MonoBehaviour
                         player.oxygen -= player.oxygenLostMove;
                     }
                     waitForConfirm = false;
-                    ResetPrevisuList();
+                    endAction();
                 }
                 else
                 {
@@ -688,7 +707,7 @@ public class CombatManager : MonoBehaviour
                     {
                         actionPointLost = 1; 
                         waitForConfirm = false;
-                        ResetPrevisuList();
+                        endAction();
                     }
                         
                     else hasAttacked = false;
@@ -699,7 +718,7 @@ public class CombatManager : MonoBehaviour
                     {
                         actionPointLost = 1;
                         waitForConfirm = false;
-                        ResetPrevisuList();
+                        endAction();
                     }
                     else hasAttacked = false;
                     
@@ -710,7 +729,7 @@ public class CombatManager : MonoBehaviour
                     {
                         actionPointLost = 1;
                         waitForConfirm = false;
-                        ResetPrevisuList();
+                        endAction();
                     }
                     else hasAttacked = false;
                 }
@@ -720,7 +739,7 @@ public class CombatManager : MonoBehaviour
                     {
                         actionPointLost = 1;
                         waitForConfirm = false;
-                        ResetPrevisuList();
+                        endAction();
                     }
                     else hasAttacked = false;
                 }
@@ -746,7 +765,7 @@ public class CombatManager : MonoBehaviour
                                 hasMoved = true;
                                 player.oxygen -= player.oxygenLostRotate;
                                 waitForConfirm = false;
-                                ResetPrevisuList();
+                                endAction();
                             }
                         }
                         else if (joysticXSave == - 1 && canRotate && !hasMoved)
@@ -757,7 +776,7 @@ public class CombatManager : MonoBehaviour
                                 hasMoved = true;
                                 player.oxygen -= player.oxygenLostRotate;
                                 waitForConfirm = false;
-                                ResetPrevisuList();
+                                endAction();
                             }
                         }
                         else
@@ -774,7 +793,7 @@ public class CombatManager : MonoBehaviour
                                 hasMoved = true;
                                 player.oxygen -= player.oxygenLostRotate;
                                 waitForConfirm = false;
-                                ResetPrevisuList();
+                                endAction();
                             }
                         }
                         else if (joysticXSave == 1 && canRotate && !hasMoved)
@@ -785,7 +804,7 @@ public class CombatManager : MonoBehaviour
                                 hasMoved = true;
                                 player.oxygen -= player.oxygenLostRotate;
                                 waitForConfirm = false;
-                                ResetPrevisuList();
+                                endAction();
                             }
                         }
                         else
@@ -802,7 +821,7 @@ public class CombatManager : MonoBehaviour
                                 hasMoved = true;
                                 player.oxygen -= player.oxygenLostRotate;
                                 waitForConfirm = false;
-                                ResetPrevisuList();
+                                endAction();
                             }
                         }
                         else if (joysticYSave == -1 && canRotate && !hasMoved)
@@ -813,7 +832,7 @@ public class CombatManager : MonoBehaviour
                                 hasMoved = true;
                                 player.oxygen -= player.oxygenLostRotate;
                                 waitForConfirm = false;
-                                ResetPrevisuList();
+                                endAction();
                             }
                         }
                         else
@@ -830,7 +849,7 @@ public class CombatManager : MonoBehaviour
                                 hasMoved = true;
                                 player.oxygen -= player.oxygenLostRotate;
                                 waitForConfirm = false;
-                                ResetPrevisuList();
+                                endAction();
                             }
                         }
                         else if (joysticYSave == 1 && canRotate && !hasMoved)
@@ -841,7 +860,7 @@ public class CombatManager : MonoBehaviour
                                 hasMoved = true;
                                 player.oxygen -= player.oxygenLostRotate;
                                 waitForConfirm = false;
-                                ResetPrevisuList();
+                                endAction();
                             }
                         }
                         else
@@ -864,6 +883,14 @@ public class CombatManager : MonoBehaviour
         playerEntity.actionPoint -= actionPointLost;
     }
 
+    void endAction()
+    {
+        ResetPrevisuList();
+        ResetSelectionList();
+        joysticXSave = 0;
+        joysticYSave = 0;
+    }
+
     void CheckJoystic(float joysticY, float joysticX)
     {
         if (ApproximatelyEqual(joysticY, 1) && !hasAttacked)
@@ -872,6 +899,7 @@ public class CombatManager : MonoBehaviour
             joysticXSave = 0;
             joysticYSave = 1;
             waitForConfirm = true;
+            ShowSelection(upPrevisuList);
         }
         else if (ApproximatelyEqual(joysticY, - 1)&& !hasAttacked)
         {
@@ -879,6 +907,7 @@ public class CombatManager : MonoBehaviour
             joysticXSave = 0;
             joysticYSave = - 1;
             waitForConfirm = true;
+            ShowSelection(downPrevisuList);
         }
         else if (ApproximatelyEqual(joysticX, 1) && !hasAttacked)
         {
@@ -886,6 +915,7 @@ public class CombatManager : MonoBehaviour
             joysticXSave = 0;
             joysticXSave = 1;
             waitForConfirm = true;
+            ShowSelection(rightPrevisuList);
         }
         else if (ApproximatelyEqual(joysticX, - 1)&& !hasAttacked)
         {
@@ -893,6 +923,7 @@ public class CombatManager : MonoBehaviour
             joysticXSave = 0;
             joysticXSave = - 1;
             waitForConfirm = true;
+            ShowSelection(leftPrevisuList);
         }
     }
     
