@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class CombatManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
     [SerializeField] private DeathManager deathManagerReference;
+    [SerializeField] private GameObject Booster;
     [SerializeField] private GameObject[] LifeBarPlayer;
     [SerializeField] private GameObject[] LifeBarPlayerEmpty;
     [SerializeField] private GameObject[] LifeBarEnnemy1;
@@ -86,6 +88,7 @@ public class CombatManager : MonoBehaviour
         SpawnEntitys();
         playerLight = player.prefab.transform.GetChild(0).GetComponent<Light2D>();
         UpdateLight();
+        Booster.SetActive(player.booster);
 
         ///////// TESTS //////////
         
@@ -372,51 +375,56 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        switch (player.direction)
+        if (player.booster)
         {
-            case EntityInstance.dir.up:
-                if (isTileInGrid(player.positionX, player.positionY + 3))
-                {
-                    if ((grid[player.positionY + 3, player.positionX] == null || grid[player.positionY + 3, player.positionX]is SpikeInstance)
-                        && (grid[player.positionY + 2, player.positionX] == null ||grid[player.positionY + 2, player.positionX] is SpikeInstance ))
+                switch (player.direction)
+            {
+                case EntityInstance.dir.up:
+                    if (isTileInGrid(player.positionX, player.positionY + 3))
                     {
-                        ShowPrevisu(MovePrevisu, player.positionX,player.positionY+3);
+                        if ((grid[player.positionY + 3, player.positionX] == null || grid[player.positionY + 3, player.positionX]is SpikeInstance)
+                            && (grid[player.positionY + 2, player.positionX] == null ||grid[player.positionY + 2, player.positionX] is SpikeInstance ))
+                        {
+                            ShowPrevisu(MovePrevisu, player.positionX,player.positionY+3);
+                        }
                     }
-                }
-                break;
-            case EntityInstance.dir.down:
-                if (isTileInGrid(player.positionX, player.positionY - 3))
-                {
-                    if ((grid[player.positionY - 3, player.positionX] == null || grid[player.positionY - 3, player.positionX] is SpikeInstance)
-                        && (grid[player.positionY - 2, player.positionX] == null || grid[player.positionY - 2, player.positionX] is SpikeInstance))
+                    break;
+                case EntityInstance.dir.down:
+                    if (isTileInGrid(player.positionX, player.positionY - 3))
                     {
-                        ShowPrevisu(MovePrevisu, player.positionX,player.positionY-3);
+                        if ((grid[player.positionY - 3, player.positionX] == null || grid[player.positionY - 3, player.positionX] is SpikeInstance)
+                            && (grid[player.positionY - 2, player.positionX] == null || grid[player.positionY - 2, player.positionX] is SpikeInstance))
+                        {
+                            ShowPrevisu(MovePrevisu, player.positionX,player.positionY-3);
+                        }
                     }
-                }
-                break;
-            case EntityInstance.dir.left:
-                if (isTileInGrid(player.positionX - 3, player.positionY))
-                {
-                    if ((grid[player.positionY, player.positionX - 3] == null || grid[player.positionY, player.positionX - 3] is SpikeInstance)
-                        && (grid[player.positionY, player.positionX - 2] == null || grid[player.positionY, player.positionX - 2] is SpikeInstance))
+                    break;
+                case EntityInstance.dir.left:
+                    if (isTileInGrid(player.positionX - 3, player.positionY))
                     {
-                        ShowPrevisu(MovePrevisu, player.positionX-3,player.positionY);
+                        if ((grid[player.positionY, player.positionX - 3] == null || grid[player.positionY, player.positionX - 3] is SpikeInstance)
+                            && (grid[player.positionY, player.positionX - 2] == null || grid[player.positionY, player.positionX - 2] is SpikeInstance))
+                        {
+                            ShowPrevisu(MovePrevisu, player.positionX-3,player.positionY);
+                        }
                     }
-                }
-                break;
-            case EntityInstance.dir.right:
-                if (isTileInGrid(player.positionX + 3, player.positionY))
-                {
-                    if ((grid[player.positionY, player.positionX + 3] == null || grid[player.positionY, player.positionX + 3] is SpikeInstance)
-                        && (grid[player.positionY, player.positionX + 2] == null || grid[player.positionY, player.positionX + 2]is SpikeInstance))
+                    break;
+                case EntityInstance.dir.right:
+                    if (isTileInGrid(player.positionX + 3, player.positionY))
                     {
-                        ShowPrevisu(MovePrevisu, player.positionX+3,player.positionY);
+                        if ((grid[player.positionY, player.positionX + 3] == null || grid[player.positionY, player.positionX + 3] is SpikeInstance)
+                            && (grid[player.positionY, player.positionX + 2] == null || grid[player.positionY, player.positionX + 2]is SpikeInstance))
+                        {
+                            ShowPrevisu(MovePrevisu, player.positionX+3,player.positionY);
+                        }
                     }
-                }
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
+
+        
     }
 
     void ShowRotations()
@@ -546,12 +554,16 @@ public class CombatManager : MonoBehaviour
             ShowRotations();
         }
         
+        Booster.SetActive(player.booster);
+        
         // BOOSTER
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown("joystick button 5"))
         {
             player.booster = !player.booster;
             Debug.Log("booster = " + player.booster);
             actionPointLost = 0;
+            Booster.SetActive(player.booster);
+            ShowMovements();
         }
 
         if (Input.GetKeyDown("joystick button 2") && !hasMoved)
