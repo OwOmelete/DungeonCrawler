@@ -7558,6 +7558,9 @@ MonoBehaviour:
   - {fileID: 1471925389}
   - {fileID: 1471925388}
   - {fileID: 1471925387}
+  MovePrevisu: {fileID: 8579950992887270059, guid: 162078fdd700d544d9f4a85452551cbc, type: 3}
+  AtkPrevisu: {fileID: 8579950992887270059, guid: ef716938a84d8b0409deda48e8dd8231, type: 3}
+  RotatePrevisu: {fileID: 8579950992887270059, guid: 9267c7c075225054c991b4ff351cb23f, type: 3}
   combatFinished: 0
   GGBarGO: {fileID: 279785393}
   brotuloBarGO: {fileID: 410544006}
