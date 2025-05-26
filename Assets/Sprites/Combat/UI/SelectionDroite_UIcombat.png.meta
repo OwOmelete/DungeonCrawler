@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 309522469c3fe3b4a8099d9cf3eb71a1
+guid: 8e390d65dfc9c824abc0f7118c5d76bf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7309879751514964795
-    second: Grandgousier_Combat_UI_0
+      213: 7935871337842993008
+    second: SelectionDroite_UIcombat_0
+  - first:
+      213: 795347082037639109
+    second: SelectionDroite_UIcombat_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Grandgousier_Combat_UI_0
+      name: SelectionDroite_UIcombat_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 405
-        height: 223
+        x: 111
+        y: 173
+        width: 33
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cc312c68171e8a90800000000000000
-      internalID: -7309879751514964795
+      spriteID: 077e55b8fe0e12e60800000000000000
+      internalID: 7935871337842993008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SelectionDroite_UIcombat_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 51
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c73ff905f3a90b00800000000000000
+      internalID: 795347082037639109
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Grandgousier_Combat_UI_0: -7309879751514964795
+      SelectionDroite_UIcombat_0: 7935871337842993008
+      SelectionDroite_UIcombat_1: 795347082037639109
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

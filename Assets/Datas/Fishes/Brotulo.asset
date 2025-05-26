@@ -33,6 +33,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3744b2d5ca4b23c46801e3716354c323, type: 3}
   - {fileID: 21300000, guid: 612f62f1851c6a44883549480256b145, type: 3}
   PrevisualisationAttack: {fileID: 0}
+  uiSprite: {fileID: -8310253064115059343, guid: f79d233e273ac8c4e89cfd12edd04d04, type: 3}
   attacks: []
   WeakPointsRight:
   - {fileID: 11400000, guid: af05bb8831927b541b01e39b71f5c7a3, type: 2}

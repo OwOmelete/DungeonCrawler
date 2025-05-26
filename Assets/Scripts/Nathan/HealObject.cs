@@ -67,9 +67,9 @@ public class HealObject : MonoBehaviour
     {
         Destroy(GetComponent<Collider2D>());
         gameObject.GetComponent<Transform>().DOScale(Vector3.zero, timeToDespawn).SetEase(Ease.OutCubic);
-        if (player.hp + regen >= 10)
+        if (player.hp + regen >= playerRef._playerData.hp)
         {
-            player.hp = 10;
+            player.hp = playerRef._playerData.hp;
         }
         else
         {

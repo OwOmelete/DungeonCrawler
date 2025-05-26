@@ -4,6 +4,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "FishData", menuName = "Scriptable Objects/Entity/FishData")]
 public class FishData : Entity
 {
+    public Sprite uiSprite;
     public AttackData[] attacks;
     public WeakPointData[] WeakPointsRight;
     public WeakPointData[] WeakPointsLeft;

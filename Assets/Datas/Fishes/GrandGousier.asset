@@ -37,6 +37,7 @@ MonoBehaviour:
   - {fileID: 2574076360730479720, guid: 6eb71e8fe75dbed41b22b623d5e3eb87, type: 3}
   - {fileID: -6966700237950822235, guid: fcef8fbf021769742a4bd989b51da80c, type: 3}
   PrevisualisationAttack: {fileID: 5054665362752135790, guid: 36ad7806538d8664e949f4576b4b88ab, type: 3}
+  uiSprite: {fileID: -7309879751514964795, guid: 309522469c3fe3b4a8099d9cf3eb71a1, type: 3}
   attacks:
   - {fileID: 11400000, guid: 4d7b885259b5b134ca6fe7f7a2ce86ae, type: 2}
   - {fileID: 11400000, guid: 5f1043fe548f05c42812cfc3d1224f0e, type: 2}
