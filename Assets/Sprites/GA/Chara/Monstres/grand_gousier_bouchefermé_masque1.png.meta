@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "grand_gousier_boucheferm\xE9_masque1_0": 2332965059819581891
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

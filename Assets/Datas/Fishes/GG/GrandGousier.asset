@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Grand Gousier
   width: 2
   height: 1
-  positionX: 2
-  positionY: 1
+  positionX: 3
+  positionY: 4
   hp: 5
   armor: 0
   actionPoint: 3
@@ -27,8 +27,7 @@ MonoBehaviour:
   idleSprite: {fileID: 21300000, guid: 83abf35496fa5f546858661a66018339, type: 3}
   attackList: []
   weakPointList:
-  - {fileID: 11400000, guid: 6862fd29c954bc243bcad312e76529fb, type: 2}
-  - {fileID: 11400000, guid: 80b59c300a2ba264e97ab5f01fd5fd49, type: 2}
+  - {fileID: 11400000, guid: 61d4f78c29eec504a8acf32db8c37f5a, type: 2}
   lifeBarList:
   - {fileID: -3088557682233922889, guid: 7434d22cb665b9944953c2a16bcf752e, type: 3}
   - {fileID: 51618535303443264, guid: e121e6e4a78a08249ae9f4a416be359e, type: 3}

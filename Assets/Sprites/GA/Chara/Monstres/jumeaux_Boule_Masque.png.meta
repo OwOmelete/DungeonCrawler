@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jumeaux_Boule_Masque_0: 5301495253235733339
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

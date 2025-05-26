@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd732d4cfff561f4e851c174cf812ff9, type: 3}
+  m_Name: Twins 1
+  m_EditorClassIdentifier: 
+  name: Twins
+  width: 1
+  height: 1
+  positionX: 5
+  positionY: 0
+  hp: 1
+  armor: 5
+  actionPoint: 0
+  startingDirection: 0
+  prefab: {fileID: 8686241241495899542, guid: 9e544fa16294fde4a8502670c623430e, type: 3}
+  preparingAttackSprite: {fileID: 0}
+  attackingSprite: {fileID: 0}
+  idleSprite: {fileID: 0}
+  attackList: []
+  weakPointList: []
+  lifeBarList: []
+  PrevisualisationAttack: {fileID: 8579950992887270059, guid: 92f27eb5f94ad37469809827fe45c7e9, type: 3}
+  uiSprite: {fileID: 21300000, guid: 66c58f9aeb0e6bd43b4c858d8f629922, type: 3}
+  attacks: []
+  WeakPointsRight:
+  - {fileID: 11400000, guid: 739119be5aaeb934780c012e5ca8770a, type: 2}
+  WeakPointsLeft: []
+  WeakPointsUp: []
+  WeakPointsDown: []

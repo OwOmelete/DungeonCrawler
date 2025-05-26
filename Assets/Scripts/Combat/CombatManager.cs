@@ -1289,7 +1289,6 @@ public class CombatManager : MonoBehaviour
             if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
                 FishDataInstance brotulo = fish.fishDataInstance;
-                brotuloBarGO.SetActive(true);
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
                 switch (fish.fishData.startingDirection)
@@ -1328,6 +1327,7 @@ public class CombatManager : MonoBehaviour
             else if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
             {
                 fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
+                Debug.Log(fish.fishDataInstance.sr);
                 GrandGouzBehaviour IAref = fish.fishDataInstance.behaviour as GrandGouzBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
                 if (fish.fishData.startingDirection == Entity.dir.left)

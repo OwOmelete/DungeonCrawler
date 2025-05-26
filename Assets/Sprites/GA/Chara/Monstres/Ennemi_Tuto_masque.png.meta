@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ennemi_Tuto_masque_0: -8829169106025448742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
