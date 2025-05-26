@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      plante_oxygene_grande_2_0: -4470905784150745358
+      plante_oxygene_grande_2_1: 332644434050667569
+      plante_oxygene_grande_2_2: -8310714173808485405
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
