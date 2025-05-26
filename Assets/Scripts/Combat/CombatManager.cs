@@ -24,12 +24,17 @@ public class CombatManager : MonoBehaviour
     [SerializeField] OxygenManager oxygenManager;
     [SerializeField] private DeathManager deathManagerReference;
     [SerializeField] private GameObject[] LifeBarPlayer;
+    [SerializeField] private GameObject[] LifeBarPlayerEmpty;
     [SerializeField] private GameObject[] LifeBarEnnemy1;
+    [SerializeField] private GameObject[] LifeBarEnnemy1Empty;
     [SerializeField] private GameObject[] LifeBarEnnemy2;
+    [SerializeField] private GameObject[] LifeBarEnnemy2Empty;
     [SerializeField] private GameObject MovePrevisu;
     [SerializeField] private GameObject AtkPrevisu;
     [SerializeField] private GameObject RotatePrevisu;
     [SerializeField] private GameObject Selection;
+    [SerializeField] private SpriteRenderer Ennemy1Icon;
+    [SerializeField] private SpriteRenderer Ennemy2Icon;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -354,14 +359,14 @@ public class CombatManager : MonoBehaviour
         ResetPrevisuList();
         foreach (var i in getNeighbors(player.positionX, player.positionY))
         {
-            if (grid[i.Item2, i.Item1] == null)
+            if (grid[i.Item2, i.Item1] == null || grid[i.Item2, i.Item1] is SpikeInstance)
             {
                 ShowPrevisu(MovePrevisu, i.Item1, i.Item2);
             }
         }
         foreach (var i in getNeighbors(SecondaryPlayerCoordsX(), SecondaryPlayerCoordsY()))
         {
-            if (grid[i.Item2, i.Item1] == null)
+            if (grid[i.Item2, i.Item1] == null || grid[i.Item2, i.Item1] is SpikeInstance)
             {
                 ShowPrevisu(MovePrevisu, i.Item1, i.Item2);
             }
@@ -372,7 +377,8 @@ public class CombatManager : MonoBehaviour
             case EntityInstance.dir.up:
                 if (isTileInGrid(player.positionX, player.positionY + 3))
                 {
-                    if (grid[player.positionY + 3, player.positionX] == null && grid[player.positionY + 2, player.positionX] == null)
+                    if ((grid[player.positionY + 3, player.positionX] == null || grid[player.positionY + 3, player.positionX]is SpikeInstance)
+                        && (grid[player.positionY + 2, player.positionX] == null ||grid[player.positionY + 2, player.positionX] is SpikeInstance ))
                     {
                         ShowPrevisu(MovePrevisu, player.positionX,player.positionY+3);
                     }
@@ -381,7 +387,8 @@ public class CombatManager : MonoBehaviour
             case EntityInstance.dir.down:
                 if (isTileInGrid(player.positionX, player.positionY - 3))
                 {
-                    if (grid[player.positionY - 3, player.positionX] == null && grid[player.positionY - 2, player.positionX] == null)
+                    if ((grid[player.positionY - 3, player.positionX] == null || grid[player.positionY - 3, player.positionX] is SpikeInstance)
+                        && (grid[player.positionY - 2, player.positionX] == null || grid[player.positionY - 2, player.positionX] is SpikeInstance))
                     {
                         ShowPrevisu(MovePrevisu, player.positionX,player.positionY-3);
                     }
@@ -390,7 +397,8 @@ public class CombatManager : MonoBehaviour
             case EntityInstance.dir.left:
                 if (isTileInGrid(player.positionX - 3, player.positionY))
                 {
-                    if (grid[player.positionY, player.positionX - 3] == null && grid[player.positionY, player.positionX - 2] == null)
+                    if ((grid[player.positionY, player.positionX - 3] == null || grid[player.positionY, player.positionX - 3] is SpikeInstance)
+                        && (grid[player.positionY, player.positionX - 2] == null || grid[player.positionY, player.positionX - 2] is SpikeInstance))
                     {
                         ShowPrevisu(MovePrevisu, player.positionX-3,player.positionY);
                     }
@@ -399,7 +407,8 @@ public class CombatManager : MonoBehaviour
             case EntityInstance.dir.right:
                 if (isTileInGrid(player.positionX + 3, player.positionY))
                 {
-                    if (grid[player.positionY, player.positionX + 3] == null && grid[player.positionY, player.positionX + 2] == null)
+                    if ((grid[player.positionY, player.positionX + 3] == null || grid[player.positionY, player.positionX + 3] is SpikeInstance)
+                        && (grid[player.positionY, player.positionX + 2] == null || grid[player.positionY, player.positionX + 2]is SpikeInstance))
                     {
                         ShowPrevisu(MovePrevisu, player.positionX+3,player.positionY);
                     }
@@ -417,14 +426,14 @@ public class CombatManager : MonoBehaviour
         {
             if (isTileInGrid(player.positionX + 1, player.positionY))
             {
-                if (grid[player.positionY, player.positionX + 1] == null || grid[player.positionY, player.positionX + 1] is not SpikeInstance)
+                if (grid[player.positionY, player.positionX + 1] == null || grid[player.positionY, player.positionX + 1] is  SpikeInstance)
                 {
                     ShowPrevisu(RotatePrevisu, player.positionX+1,player.positionY);
                 }
             }
             if (isTileInGrid(player.positionX - 1, player.positionY))
             {
-                if (grid[player.positionY, player.positionX - 1] == null || grid[player.positionY, player.positionX - 1] is not SpikeInstance)
+                if (grid[player.positionY, player.positionX - 1] == null || grid[player.positionY, player.positionX - 1] is  SpikeInstance)
                 {
                     ShowPrevisu(RotatePrevisu, player.positionX-1,player.positionY);
                 }
@@ -434,14 +443,14 @@ public class CombatManager : MonoBehaviour
         {
             if (isTileInGrid(player.positionX, player.positionY + 1))
             {
-                if (grid[player.positionY + 1, player.positionX] == null || grid[player.positionY + 1, player.positionX] is not SpikeInstance)
+                if (grid[player.positionY + 1, player.positionX] == null || grid[player.positionY + 1, player.positionX] is  SpikeInstance)
                 {
                     ShowPrevisu(RotatePrevisu, player.positionX,player.positionY+1);
                 }
             }
             if (isTileInGrid(player.positionX, player.positionY - 1))
             {
-                if (grid[player.positionY - 1, player.positionX] == null || grid[player.positionY - 1, player.positionX] is not SpikeInstance)
+                if (grid[player.positionY - 1, player.positionX] == null || grid[player.positionY - 1, player.positionX] is  SpikeInstance)
                 {
                     ShowPrevisu(RotatePrevisu, player.positionX,player.positionY-1);
                 }
@@ -1197,13 +1206,17 @@ public class CombatManager : MonoBehaviour
 
     void SpawnEntitys()
     {
-        GGBarGO.SetActive(false);
-        brotuloBarGO.SetActive(false);
+        Ennemy1Icon.enabled = false;
+        Ennemy2Icon.enabled = false;
         player.prefab = Instantiate(_playerData.prefab,
                 new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
         turnOrder.Add(player);
+        for (int i = 0; i < _playerData.hp; i++)
+        {
+            LifeBarPlayerEmpty[i].SetActive(true);
+        }
         UpdateLifeBar(player);
         for (int i = 0; i < _fishDatas.Count; i++)    
         {
@@ -1217,11 +1230,23 @@ public class CombatManager : MonoBehaviour
             if (i == 0)
             {
                 Ennemy1 = newFish.fishDataInstance;
+                for (int j = 0; j < newFish.fishData.hp; j++)
+                {
+                    LifeBarEnnemy1Empty[j].SetActive(true);
+                }
+                Ennemy1Icon.enabled = true;
+                Ennemy1Icon.sprite = newFish.fishData.uiSprite;
                 UpdateLifeBar(Ennemy1);
             }
             else if (i == 1)
             {
                 Ennemy2 = newFish.fishDataInstance;
+                for (int j = 0; j < newFish.fishData.hp; j++)
+                {
+                    LifeBarEnnemy2Empty[j].SetActive(true);
+                }
+                Ennemy2Icon.enabled = true;
+                Ennemy2Icon.sprite = newFish.fishData.uiSprite;
                 UpdateLifeBar(Ennemy2);
             }
         }
@@ -1290,7 +1315,6 @@ public class CombatManager : MonoBehaviour
 
             else if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
             {
-                GGBarGO.SetActive(true);
                 fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
                 GrandGouzBehaviour IAref = fish.fishDataInstance.behaviour as GrandGouzBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
@@ -1814,6 +1838,12 @@ public class CombatManager : MonoBehaviour
         player.width = 1;
         player.actionPoint = player.RespirationDatas[player.respirationIndex].actionPoints;
         Destroy(player.prefab);
+        for (int i = 0; i < LifeBarPlayerEmpty.Length; i++)
+        {
+            LifeBarEnnemy1Empty[i].SetActive(false);
+            LifeBarEnnemy2Empty[i].SetActive(false);
+            LifeBarPlayerEmpty[i].SetActive(false);
+        }
         List<int> fishToSupr = new List<int>();
         for (int i = 0; i < turnOrder.Count; i ++)
         {
