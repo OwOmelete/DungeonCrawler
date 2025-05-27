@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - LightMask
+  - Glow
   layers:
   - Default
   - TransparentFX
@@ -68,6 +69,9 @@ TagManager:
     locked: 0
   - name: Feurtnite
     uniqueID: 2379900681
+    locked: 0
+  - name: Glow
+    uniqueID: 209404675
     locked: 0
   m_RenderingLayers:
   - Default
