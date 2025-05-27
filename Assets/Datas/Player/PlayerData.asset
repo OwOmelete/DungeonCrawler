@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50dee76d9f295d14fbd43ffd6a0cafef, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  name: 
+  name: player
   width: 1
   height: 2
   positionX: 0

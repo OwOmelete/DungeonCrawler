@@ -65,7 +65,7 @@ public class LightReload : MonoBehaviour
             regen = lightManagerReference.maxLight - lightManagerReference.player.light;
         }
         lightManagerReference.AddLight(regen);
-        lightManagerReference.UpdateUi();
+        //lightManagerReference.UpdateUi();
         StartCoroutine(DespawnCoroutine());
     }
     IEnumerator DespawnCoroutine()

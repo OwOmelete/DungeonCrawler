@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class CombatManager : MonoBehaviour
 {
@@ -23,9 +24,20 @@ public class CombatManager : MonoBehaviour
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
     [SerializeField] private DeathManager deathManagerReference;
+    [SerializeField] private GameObject Booster;
     [SerializeField] private GameObject[] LifeBarPlayer;
+    [SerializeField] private GameObject[] LifeBarPlayerEmpty;
     [SerializeField] private GameObject[] LifeBarEnnemy1;
+    [SerializeField] private GameObject[] LifeBarEnnemy1Empty;
     [SerializeField] private GameObject[] LifeBarEnnemy2;
+    [SerializeField] private GameObject[] LifeBarEnnemy2Empty;
+    [SerializeField] private GameObject MovePrevisu;
+    [SerializeField] private GameObject AtkPrevisu;
+    [SerializeField] private GameObject RotatePrevisu;
+    [SerializeField] private GameObject Selection;
+    [SerializeField] private SpriteRenderer Ennemy1Icon;
+    [SerializeField] private SpriteRenderer Ennemy2Icon;
+    [SerializeField] private AudioManager audioManager;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -43,7 +55,13 @@ public class CombatManager : MonoBehaviour
     public GameObject brotuloBarGO;
     private EntityInstance Ennemy1;
     private EntityInstance Ennemy2;
-
+    private Dictionary<Vector2Int, List<Vector2Int>> voisins;
+    private List<GameObject> previsuList = new List<GameObject>();
+    private List<GameObject> selectionList = new List<GameObject>();
+    private List<Tuple<int, int>> upPrevisuList = new List<Tuple<int, int>>();
+    private List<Tuple<int, int>> downPrevisuList = new List<Tuple<int, int>>();
+    private List<Tuple<int, int>> leftPrevisuList = new List<Tuple<int, int>>();
+    private List<Tuple<int, int>> rightPrevisuList = new List<Tuple<int, int>>();
     public static CombatManager Instance;
     
     private void Awake()
@@ -64,9 +82,14 @@ public class CombatManager : MonoBehaviour
         
         combatFinished = false;
         grid = CreateGrid(gridHeight, gridWidth);
+        foreach (var i in getNeighbors(2, 2))
+        {
+            Debug.Log(i);
+        }
         SpawnEntitys();
         playerLight = player.prefab.transform.GetChild(0).GetComponent<Light2D>();
         UpdateLight();
+        Booster.SetActive(player.booster);
 
         ///////// TESTS //////////
         
@@ -313,10 +336,186 @@ public class CombatManager : MonoBehaviour
         return Mathf.Abs(a - b) < e;
     }
 
+    void ShowPrevisu(GameObject obj, int x, int y)
+    {
+        GameObject p = Instantiate(obj, new Vector3(x, y, 0), Quaternion.identity);
+        previsuList.Add(p);
+        if (x > player.positionX && x > SecondaryPlayerCoordsX())
+        {
+            rightPrevisuList.Add(new Tuple<int, int>(x,y));
+        }
+        if (x < player.positionX && x < SecondaryPlayerCoordsX())
+        {
+            leftPrevisuList.Add(new Tuple<int, int>(x,y));
+        }
+        if (y < player.positionY && y < SecondaryPlayerCoordsY())
+        {
+            downPrevisuList.Add(new Tuple<int, int>(x,y));
+        }
+        if (y > player.positionY && y > SecondaryPlayerCoordsY())
+        {
+            upPrevisuList.Add(new Tuple<int, int>(x,y));
+        }
+    }
+
+    void ShowMovements()
+    {
+        ResetPrevisuList();
+        foreach (var i in getNeighbors(player.positionX, player.positionY))
+        {
+            if (grid[i.Item2, i.Item1] == null || grid[i.Item2, i.Item1] is SpikeInstance)
+            {
+                ShowPrevisu(MovePrevisu, i.Item1, i.Item2);
+            }
+        }
+        foreach (var i in getNeighbors(SecondaryPlayerCoordsX(), SecondaryPlayerCoordsY()))
+        {
+            if (grid[i.Item2, i.Item1] == null || grid[i.Item2, i.Item1] is SpikeInstance)
+            {
+                ShowPrevisu(MovePrevisu, i.Item1, i.Item2);
+            }
+        }
+
+        if (player.booster)
+        {
+                switch (player.direction)
+            {
+                case EntityInstance.dir.up:
+                    if (isTileInGrid(player.positionX, player.positionY + 3))
+                    {
+                        if ((grid[player.positionY + 3, player.positionX] == null || grid[player.positionY + 3, player.positionX]is SpikeInstance)
+                            && (grid[player.positionY + 2, player.positionX] == null ||grid[player.positionY + 2, player.positionX] is SpikeInstance ))
+                        {
+                            ShowPrevisu(MovePrevisu, player.positionX,player.positionY+3);
+                        }
+                    }
+                    break;
+                case EntityInstance.dir.down:
+                    if (isTileInGrid(player.positionX, player.positionY - 3))
+                    {
+                        if ((grid[player.positionY - 3, player.positionX] == null || grid[player.positionY - 3, player.positionX] is SpikeInstance)
+                            && (grid[player.positionY - 2, player.positionX] == null || grid[player.positionY - 2, player.positionX] is SpikeInstance))
+                        {
+                            ShowPrevisu(MovePrevisu, player.positionX,player.positionY-3);
+                        }
+                    }
+                    break;
+                case EntityInstance.dir.left:
+                    if (isTileInGrid(player.positionX - 3, player.positionY))
+                    {
+                        if ((grid[player.positionY, player.positionX - 3] == null || grid[player.positionY, player.positionX - 3] is SpikeInstance)
+                            && (grid[player.positionY, player.positionX - 2] == null || grid[player.positionY, player.positionX - 2] is SpikeInstance))
+                        {
+                            ShowPrevisu(MovePrevisu, player.positionX-3,player.positionY);
+                        }
+                    }
+                    break;
+                case EntityInstance.dir.right:
+                    if (isTileInGrid(player.positionX + 3, player.positionY))
+                    {
+                        if ((grid[player.positionY, player.positionX + 3] == null || grid[player.positionY, player.positionX + 3] is SpikeInstance)
+                            && (grid[player.positionY, player.positionX + 2] == null || grid[player.positionY, player.positionX + 2]is SpikeInstance))
+                        {
+                            ShowPrevisu(MovePrevisu, player.positionX+3,player.positionY);
+                        }
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        
+    }
+
+    void ShowRotations()
+    {
+        ResetPrevisuList();
+        if (player.direction == EntityInstance.dir.down || player.direction == EntityInstance.dir.up)
+        {
+            if (isTileInGrid(player.positionX + 1, player.positionY))
+            {
+                if (grid[player.positionY, player.positionX + 1] == null || grid[player.positionY, player.positionX + 1] is  SpikeInstance)
+                {
+                    ShowPrevisu(RotatePrevisu, player.positionX+1,player.positionY);
+                }
+            }
+            if (isTileInGrid(player.positionX - 1, player.positionY))
+            {
+                if (grid[player.positionY, player.positionX - 1] == null || grid[player.positionY, player.positionX - 1] is  SpikeInstance)
+                {
+                    ShowPrevisu(RotatePrevisu, player.positionX-1,player.positionY);
+                }
+            }
+        }
+        if (player.direction == EntityInstance.dir.left || player.direction == EntityInstance.dir.right)
+        {
+            if (isTileInGrid(player.positionX, player.positionY + 1))
+            {
+                if (grid[player.positionY + 1, player.positionX] == null || grid[player.positionY + 1, player.positionX] is  SpikeInstance)
+                {
+                    ShowPrevisu(RotatePrevisu, player.positionX,player.positionY+1);
+                }
+            }
+            if (isTileInGrid(player.positionX, player.positionY - 1))
+            {
+                if (grid[player.positionY - 1, player.positionX] == null || grid[player.positionY - 1, player.positionX] is  SpikeInstance)
+                {
+                    ShowPrevisu(RotatePrevisu, player.positionX,player.positionY-1);
+                }
+            }
+        }
+    }
+
+    void ShowAttacks()
+    {
+        ResetPrevisuList();
+        foreach (var i in getNeighbors(SecondaryPlayerCoordsX(), SecondaryPlayerCoordsY()))
+        {
+            if (grid[i.Item2, i.Item1] != player)
+            {
+                ShowPrevisu(AtkPrevisu, i.Item1, i.Item2);
+            }
+        }
+    }
+
+    void ShowSelection(List<Tuple<int, int>> list)
+    {
+        ResetSelectionList();
+        foreach (var coords in list)
+        {
+            GameObject s = Instantiate(Selection, new Vector3(coords.Item1, coords.Item2, 0), Quaternion.identity);
+            selectionList.Add(s);
+        }
+    }
+    
+    void ResetSelectionList()
+    {
+        for (int i = selectionList.Count - 1; i >= 0; i--)
+        {
+            Destroy(selectionList[i]);
+        }
+        selectionList.Clear();
+    }
+
+    void ResetPrevisuList()
+    {
+        rightPrevisuList.Clear();
+        leftPrevisuList.Clear();
+        downPrevisuList.Clear();
+        upPrevisuList.Clear();
+        for (int i = previsuList.Count - 1; i >= 0; i--)
+        {
+            Destroy(previsuList[i]);
+        }
+        previsuList.Clear();
+    }
+
     private bool wantToAttack;
     private bool wantToRotate;
     private bool wantToMove = true;
     private bool waitForConfirm;
+    private bool previsuShown = false;
     private float joysticXSave = 0f; 
     private float joysticYSave = 0f; 
     void Action(PlayerDataInstance playerEntity)
@@ -337,40 +536,64 @@ public class CombatManager : MonoBehaviour
             horizontalSpeed = 2;
         }
         #region Actions
+
+        if (wantToMove && !hasMoved && !previsuShown)
+        {
+            previsuShown = true;
+            ShowMovements();
+        }
+
+        if (wantToAttack && !hasAttacked&& !previsuShown)
+        {
+            previsuShown = true;
+            ShowAttacks();
+        }
+
+        if (wantToRotate  && !hasMoved&& !previsuShown)
+        {
+            previsuShown = true;
+            ShowRotations();
+        }
+        
+        Booster.SetActive(player.booster);
         
         // BOOSTER
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown("joystick button 5"))
         {
             player.booster = !player.booster;
             Debug.Log("booster = " + player.booster);
             actionPointLost = 0;
+            Booster.SetActive(player.booster);
+            ShowMovements();
         }
 
-        if (Input.GetKeyDown("joystick button 2"))
+        if (Input.GetKeyDown("joystick button 2") && !hasMoved)
         {
-            if (!wantToMove && !wantToRotate)
-            {
-                wantToMove = true;
-                wantToRotate = false;
-            }
-            else
-            {
-                wantToRotate = !wantToRotate;
-                wantToMove = !wantToMove;
-            }
+            wantToRotate = false;
+            wantToMove = true;
             wantToAttack = false;
             waitForConfirm = false;
             
-            if (wantToRotate)
-            {
-                Debug.Log("Want to rotate");
-            }
-            else
-            {
-                Debug.Log("Want to move");
-            }
+            Debug.Log("Want to move");
             
+            ShowMovements();
+            ResetSelectionList();
+            joysticXSave = 0;
+            joysticYSave = 0;
             
+        }
+        else if (Input.GetKeyDown("joystick button 3")  && !hasMoved)
+        {
+            wantToRotate = true;
+            wantToMove = false;
+            wantToAttack = false;
+            waitForConfirm = false;
+            Debug.Log("Want to rotate");
+            
+            ShowRotations();
+            ResetSelectionList();
+            joysticXSave = 0;
+            joysticYSave = 0;
         }
         else if (Input.GetKeyDown("joystick button 1"))
         {
@@ -379,19 +602,28 @@ public class CombatManager : MonoBehaviour
             wantToAttack = true;
             waitForConfirm = false;
             Debug.Log("Want to attack");
+            
+            ShowAttacks();
+            ResetSelectionList();
+            joysticXSave = 0;
+            joysticYSave = 0;
         }
-        else if (Input.GetKeyDown("joystick button 3"))
+        else if (Input.GetKeyDown("joystick button 4"))
         {
             Debug.Log("passer son tour");
             playerEntity.actionPoint = 0;
+            ResetPrevisuList();
+            ResetSelectionList();
+            joysticXSave = 0;
+            joysticYSave = 0;
+            previsuShown = false;
             return;
         }
         
-        if (!waitForConfirm)
-        {
-            CheckJoystic(joysticY, joysticX);
-        }
-        else if (Input.GetKeyDown("joystick button 0")&& (joysticXSave != 0 || joysticYSave != 0))
+        
+        CheckJoystic(joysticY, joysticX);
+        
+        if (Input.GetKeyDown("joystick button 0")&& (joysticXSave != 0 || joysticYSave != 0))
         {
             #region Move
         
@@ -416,6 +648,7 @@ public class CombatManager : MonoBehaviour
                         player.oxygen -= player.oxygenLostMove;
                     }
                     waitForConfirm = false;
+                    endAction();
                 }
                 else if (joysticYSave == -1 && !hasAttacked && !hasMoved)
                 {
@@ -435,6 +668,7 @@ public class CombatManager : MonoBehaviour
                         player.oxygen -= player.oxygenLostMove;
                     }
                     waitForConfirm = false;
+                    endAction();
                 }
                 else if (joysticXSave == 1 && !hasAttacked && !hasMoved)
                 {
@@ -454,6 +688,7 @@ public class CombatManager : MonoBehaviour
                         player.oxygen -= player.oxygenLostMove;
                     }
                     waitForConfirm = false;
+                    endAction();
                 }
                 else if (joysticXSave == - 1 && !hasAttacked && !hasMoved)
                 {
@@ -473,6 +708,7 @@ public class CombatManager : MonoBehaviour
                         player.oxygen -= player.oxygenLostMove;
                     }
                     waitForConfirm = false;
+                    endAction();
                 }
                 else
                 {
@@ -493,6 +729,7 @@ public class CombatManager : MonoBehaviour
                     {
                         actionPointLost = 1; 
                         waitForConfirm = false;
+                        endAction();
                     }
                         
                     else hasAttacked = false;
@@ -503,6 +740,7 @@ public class CombatManager : MonoBehaviour
                     {
                         actionPointLost = 1;
                         waitForConfirm = false;
+                        endAction();
                     }
                     else hasAttacked = false;
                     
@@ -513,6 +751,7 @@ public class CombatManager : MonoBehaviour
                     {
                         actionPointLost = 1;
                         waitForConfirm = false;
+                        endAction();
                     }
                     else hasAttacked = false;
                 }
@@ -522,6 +761,7 @@ public class CombatManager : MonoBehaviour
                     {
                         actionPointLost = 1;
                         waitForConfirm = false;
+                        endAction();
                     }
                     else hasAttacked = false;
                 }
@@ -536,31 +776,123 @@ public class CombatManager : MonoBehaviour
             // ROTATE
            else if (wantToRotate)
             {
-                if (joysticXSave == 1 && canRotate && !hasMoved)
+                switch (player.direction)
                 {
-                    if (canTurnRight(player))
-                    {
-                        FlipPlayerRight(player);
-                        hasMoved = true;
-                        player.oxygen -= player.oxygenLostRotate;
-                        waitForConfirm = false;
-                    }
+                    case EntityInstance.dir.up:
+                        if (joysticXSave == 1 && canRotate && !hasMoved)
+                        {
+                            if (canTurnRight(player))
+                            {
+                                FlipPlayerRight(player);
+                                hasMoved = true;
+                                player.oxygen -= player.oxygenLostRotate;
+                                waitForConfirm = false;
+                                endAction();
+                            }
+                        }
+                        else if (joysticXSave == - 1 && canRotate && !hasMoved)
+                        {
+                            if (canTurnLeft(player))
+                            {
+                                FlipPlayerLeft(player);
+                                hasMoved = true;
+                                player.oxygen -= player.oxygenLostRotate;
+                                waitForConfirm = false;
+                                endAction();
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        break;
+                    case EntityInstance.dir.down:
+                        if (joysticXSave == -1 && canRotate && !hasMoved)
+                        {
+                            if (canTurnRight(player))
+                            {
+                                FlipPlayerRight(player);
+                                hasMoved = true;
+                                player.oxygen -= player.oxygenLostRotate;
+                                waitForConfirm = false;
+                                endAction();
+                            }
+                        }
+                        else if (joysticXSave == 1 && canRotate && !hasMoved)
+                        {
+                            if (canTurnLeft(player))
+                            {
+                                FlipPlayerLeft(player);
+                                hasMoved = true;
+                                player.oxygen -= player.oxygenLostRotate;
+                                waitForConfirm = false;
+                                endAction();
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        break;
+                    case EntityInstance.dir.left:
+                        if (joysticYSave == 1 && canRotate && !hasMoved)
+                        {
+                            if (canTurnRight(player))
+                            {
+                                FlipPlayerRight(player);
+                                hasMoved = true;
+                                player.oxygen -= player.oxygenLostRotate;
+                                waitForConfirm = false;
+                                endAction();
+                            }
+                        }
+                        else if (joysticYSave == -1 && canRotate && !hasMoved)
+                        {
+                            if (canTurnLeft(player))
+                            {
+                                FlipPlayerLeft(player);
+                                hasMoved = true;
+                                player.oxygen -= player.oxygenLostRotate;
+                                waitForConfirm = false;
+                                endAction();
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        break;
+                    case EntityInstance.dir.right:
+                        if (joysticYSave == -1 && canRotate && !hasMoved)
+                        {
+                            if (canTurnRight(player))
+                            {
+                                FlipPlayerRight(player);
+                                hasMoved = true;
+                                player.oxygen -= player.oxygenLostRotate;
+                                waitForConfirm = false;
+                                endAction();
+                            }
+                        }
+                        else if (joysticYSave == 1 && canRotate && !hasMoved)
+                        {
+                            if (canTurnLeft(player))
+                            {
+                                FlipPlayerLeft(player);
+                                hasMoved = true;
+                                player.oxygen -= player.oxygenLostRotate;
+                                waitForConfirm = false;
+                                endAction();
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
-                else if (joysticXSave == - 1 && canRotate && !hasMoved)
-                {
-                    if (canTurnLeft(player))
-                    {
-                        FlipPlayerLeft(player);
-                        hasMoved = true;
-                        player.oxygen -= player.oxygenLostRotate;
-                        waitForConfirm = false;
-                    }
-                }
-                else
-                {
-                    return;
-                }
-                
             }
             #endregion
         }
@@ -570,33 +902,51 @@ public class CombatManager : MonoBehaviour
         }
         #endregion
         
-        Debug.Log(playerEntity.actionPoint);
         playerEntity.actionPoint -= actionPointLost;
+    }
+
+    void endAction()
+    {
+        ResetPrevisuList();
+        ResetSelectionList();
+        joysticXSave = 0;
+        joysticYSave = 0;
     }
 
     void CheckJoystic(float joysticY, float joysticX)
     {
         if (ApproximatelyEqual(joysticY, 1) && !hasAttacked)
         {
+            joysticYSave = 0;
+            joysticXSave = 0;
             joysticYSave = 1;
             waitForConfirm = true;
+            ShowSelection(upPrevisuList);
         }
         else if (ApproximatelyEqual(joysticY, - 1)&& !hasAttacked)
         {
+            joysticYSave = 0;
+            joysticXSave = 0;
             joysticYSave = - 1;
             waitForConfirm = true;
+            ShowSelection(downPrevisuList);
         }
         else if (ApproximatelyEqual(joysticX, 1) && !hasAttacked)
         {
+            joysticYSave = 0;
+            joysticXSave = 0;
             joysticXSave = 1;
             waitForConfirm = true;
+            ShowSelection(rightPrevisuList);
         }
         else if (ApproximatelyEqual(joysticX, - 1)&& !hasAttacked)
         {
+            joysticYSave = 0;
+            joysticXSave = 0;
             joysticXSave = - 1;
             waitForConfirm = true;
+            ShowSelection(leftPrevisuList);
         }
-        
     }
     
     
@@ -863,18 +1213,23 @@ public class CombatManager : MonoBehaviour
 
     EntityInstance[,] CreateGrid(int y, int x)
     {
+        
         return new EntityInstance[y,x];
     }
 
     void SpawnEntitys()
     {
-        GGBarGO.SetActive(false);
-        brotuloBarGO.SetActive(false);
+        Ennemy1Icon.enabled = false;
+        Ennemy2Icon.enabled = false;
         player.prefab = Instantiate(_playerData.prefab,
                 new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
         turnOrder.Add(player);
+        for (int i = 0; i < _playerData.hp; i++)
+        {
+            LifeBarPlayerEmpty[i].SetActive(true);
+        }
         UpdateLifeBar(player);
         for (int i = 0; i < _fishDatas.Count; i++)    
         {
@@ -888,11 +1243,23 @@ public class CombatManager : MonoBehaviour
             if (i == 0)
             {
                 Ennemy1 = newFish.fishDataInstance;
+                for (int j = 0; j < newFish.fishData.hp; j++)
+                {
+                    LifeBarEnnemy1Empty[j].SetActive(true);
+                }
+                Ennemy1Icon.enabled = true;
+                Ennemy1Icon.sprite = newFish.fishData.uiSprite;
                 UpdateLifeBar(Ennemy1);
             }
             else if (i == 1)
             {
                 Ennemy2 = newFish.fishDataInstance;
+                for (int j = 0; j < newFish.fishData.hp; j++)
+                {
+                    LifeBarEnnemy2Empty[j].SetActive(true);
+                }
+                Ennemy2Icon.enabled = true;
+                Ennemy2Icon.sprite = newFish.fishData.uiSprite;
                 UpdateLifeBar(Ennemy2);
             }
         }
@@ -923,7 +1290,6 @@ public class CombatManager : MonoBehaviour
             if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
                 FishDataInstance brotulo = fish.fishDataInstance;
-                brotuloBarGO.SetActive(true);
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
                 switch (fish.fishData.startingDirection)
@@ -961,8 +1327,8 @@ public class CombatManager : MonoBehaviour
 
             else if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
             {
-                GGBarGO.SetActive(true);
                 fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
+                Debug.Log(fish.fishDataInstance.sr);
                 GrandGouzBehaviour IAref = fish.fishDataInstance.behaviour as GrandGouzBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
                 if (fish.fishData.startingDirection == Entity.dir.left)
@@ -1485,6 +1851,12 @@ public class CombatManager : MonoBehaviour
         player.width = 1;
         player.actionPoint = player.RespirationDatas[player.respirationIndex].actionPoints;
         Destroy(player.prefab);
+        for (int i = 0; i < LifeBarPlayerEmpty.Length; i++)
+        {
+            LifeBarEnnemy1Empty[i].SetActive(false);
+            LifeBarEnnemy2Empty[i].SetActive(false);
+            LifeBarPlayerEmpty[i].SetActive(false);
+        }
         List<int> fishToSupr = new List<int>();
         for (int i = 0; i < turnOrder.Count; i ++)
         {
@@ -1507,7 +1879,8 @@ public class CombatManager : MonoBehaviour
         playerExploration.SetActive(true);
         UiExplo.SetActive(true);
         combatScene.SetActive(false);
-        
+        audioManager.SwitchToExplo();
+
     }
     
     int SecondaryPlayerCoordsX()
@@ -1588,5 +1961,40 @@ public class CombatManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    List<Tuple<int, int>> getNeighbors(int x, int y)
+    {
+        List<Tuple<int, int>> l = new List<Tuple<int, int>>();
+        if (isTileInGrid(x + 1, y))
+        {
+            l.Add(new Tuple<int, int>(x+1, y));
+        }
+
+        if (isTileInGrid(x - 1, y))
+        {
+            l.Add(new Tuple<int, int>(x-1, y));
+        }
+
+        if (isTileInGrid(x, y + 1))
+        {
+            l.Add(new Tuple<int, int>(x, y+1));
+        }
+
+        if (isTileInGrid(x, y - 1))
+        {
+            l.Add(new Tuple<int, int>(x, y-1));
+        }
+
+        return l;
+    }
+
+    bool isTileInGrid(int x, int y)
+    {
+        if (y < 0 || y > grid.GetLength(0) - 1 || x < 0 || x > grid.GetLength(1) - 1)
+        {
+            return false;
+        }
+        return true;
     }
 }

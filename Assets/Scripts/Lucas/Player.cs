@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     [SerializeField] private RadarScript radarRef;
-    [SerializeField] private PlayerData _playerData;
+    public PlayerData _playerData;
     public LightManager lightManager;
     public OxygenManager oxygenManager;
     public PlayerDataInstance player;

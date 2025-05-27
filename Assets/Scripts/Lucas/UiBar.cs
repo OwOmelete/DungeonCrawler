@@ -1,14 +1,37 @@
+using System;
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiBar : MonoBehaviour
 {
-    [SerializeField] private GameObject[] arrayBar = new GameObject[5];
-    private int actualSprite = 0;
-    
-    public void ChangeSprite(int value)
+    [SerializeField] private float updateFrequency = 1f;
+    [SerializeField] private Player player;
+    [SerializeField] private LightManager lightManager;
+    [SerializeField] private OxygenManager oxygenManager;
+    [SerializeField] private Image imageOxygen;
+    [SerializeField] private Image imageLight;
+    [SerializeField] private Image imageHeal;
+    [SerializeField] private float lerpDuration = 1f;
+
+    private void Start()
     {
-        arrayBar[actualSprite].SetActive(false);
-        arrayBar[value].SetActive(true);
-        actualSprite = value;
+        StartCoroutine(UpdateUi());
     }
+
+    IEnumerator UpdateUi()
+    {
+        while (true)
+        {
+            DOTween.To(() => imageOxygen.fillAmount, x => 
+                imageOxygen.fillAmount = x, player.player.oxygen / oxygenManager.maxOxygen, lerpDuration);
+            DOTween.To(() => imageLight.fillAmount, x => 
+                imageLight.fillAmount = x, player.player.light / lightManager.maxLight, lerpDuration);
+            DOTween.To(() => imageHeal.fillAmount, x => 
+                imageHeal.fillAmount = x, (float)player.player.hp / 4, lerpDuration);
+            yield return new WaitForSeconds(updateFrequency);
+        }
+    }
+    
 }

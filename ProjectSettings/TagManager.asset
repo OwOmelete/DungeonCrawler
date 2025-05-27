@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Wall
-  - 
+  - Glow Effect
   - 
   - 
   - 
@@ -62,6 +62,12 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 4255958399
+    locked: 0
+  - name: New Layer 8
+    uniqueID: 1702898833
+    locked: 0
+  - name: Feurtnite
+    uniqueID: 2379900681
     locked: 0
   m_RenderingLayers:
   - Default

@@ -137,6 +137,7 @@ public class GrandGouzBehaviour : AbstractIA
                             UpdateWeakPoints(entity);
                             entity.LastPrevisualisation = Instantiate(entity.PrevisualisationAttack,
                                 new Vector3(entity.positionX + 2, entity.positionY, 0), quaternion.identity);
+                            
                             entity.sr.sprite = entity.preparingAttackSprite;
 
                             Debug.Log("detection");
@@ -187,6 +188,8 @@ public class GrandGouzBehaviour : AbstractIA
                     CombatManager.Instance.Attack(attack, entity, entity.positionX + 1, entity.positionY);
                 }
             }
+            
+            Debug.Log("prout");
 
             StartCoroutine(attacking(entity));
 
@@ -269,9 +272,9 @@ public class GrandGouzBehaviour : AbstractIA
 
     IEnumerator attacking(FishDataInstance entity)
     {
+        Debug.Log("je vais tout casser");
         entity.sr.sprite = entity.attackingSprite;
         yield return new WaitForSeconds(0.2f);
         entity.sr.sprite = entity.idleSprite;
-
     }
 }
