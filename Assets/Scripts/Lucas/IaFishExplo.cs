@@ -11,10 +11,10 @@ public class IaFishExplo : MonoBehaviour
     private Vector3 actualTarget;
     private bool hitWall;
     [SerializeField] private Rigidbody2D rb;
-    void Awake()
+    private bool enabled;
+    void Start()
     {
-        ChangeTarget();
-        StartCoroutine(Move());
+        RestartCoroutine();
     }
 
     IEnumerator Move()
@@ -50,5 +50,24 @@ public class IaFishExplo : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other)
     {
         hitWall = false;
+    }
+
+    public void RestartCoroutine()
+    {
+        if (enabled)
+        {
+            ChangeTarget();
+            StartCoroutine(Move());
+        }
+    }
+
+    private void OnDisable()
+    {
+        enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        enabled = true;
     }
 }
