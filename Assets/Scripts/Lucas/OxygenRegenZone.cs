@@ -71,6 +71,6 @@ public class OxygenRegenZone : MonoBehaviour
     IEnumerator DespawnCoroutine()
     {
         yield return new WaitForSeconds(timeToDespawn);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

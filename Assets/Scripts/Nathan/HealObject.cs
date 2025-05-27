@@ -80,6 +80,6 @@ public class HealObject : MonoBehaviour
     IEnumerator DespawnCoroutine()
     {
         yield return new WaitForSeconds(timeToDespawn);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

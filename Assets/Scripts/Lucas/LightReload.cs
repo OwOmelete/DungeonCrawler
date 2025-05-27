@@ -71,6 +71,6 @@ public class LightReload : MonoBehaviour
     IEnumerator DespawnCoroutine()
     {
         yield return new WaitForSeconds(timeToDespawn);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

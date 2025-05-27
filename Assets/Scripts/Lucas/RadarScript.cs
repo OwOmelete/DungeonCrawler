@@ -25,13 +25,16 @@ public class RadarScript : MonoBehaviour
         float minSqrDistance = float.MaxValue;
         for (int i = 0; i < parent.childCount; i++)
         {
-            Transform currentObject = parent.GetChild(i);
-            float sqrDistance = (currentObject.position - indicatorTransform.position).sqrMagnitude;
-
-            if (sqrDistance < minSqrDistance)
+            if (parent.GetChild(i).gameObject.activeSelf)
             {
-                minSqrDistance = sqrDistance;
-                nearestObject = currentObject;
+                Transform currentObject = parent.GetChild(i);
+                float sqrDistance = (currentObject.position - indicatorTransform.position).sqrMagnitude;
+
+                if (sqrDistance < minSqrDistance)
+                {
+                    minSqrDistance = sqrDistance;
+                    nearestObject = currentObject;
+                }
             }
         }
         if (nearestObject != null)
