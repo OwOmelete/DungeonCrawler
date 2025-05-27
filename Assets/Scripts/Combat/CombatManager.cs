@@ -608,7 +608,7 @@ public class CombatManager : MonoBehaviour
             joysticXSave = 0;
             joysticYSave = 0;
         }
-        else if (Input.GetKeyDown("joystick button 7"))
+        else if (Input.GetKeyDown("joystick button 4"))
         {
             Debug.Log("passer son tour");
             playerEntity.actionPoint = 0;
