@@ -37,13 +37,6 @@ public class Cheats : MonoBehaviour
 
     #endregion
     
-
-
-    public void EndFight()
-    {
-        CombatManager.Instance.EndFight();
-    }
-
     public void FullRessources()
     {
            oxygenManagerRef.AddOxygen(oxygenManagerRef.maxOxygen);

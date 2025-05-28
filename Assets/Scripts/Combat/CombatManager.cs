@@ -127,6 +127,11 @@ public class CombatManager : MonoBehaviour
         {
             IATurn(currentEntity);
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            EndFight();
+        }
     }
 
 
