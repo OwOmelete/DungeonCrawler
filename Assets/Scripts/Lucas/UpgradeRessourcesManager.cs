@@ -15,9 +15,6 @@ public class UpgradeRessourcesManager : MonoBehaviour
     [SerializeField] private Image menuBackground;
     [SerializeField] private Image button1;
     [SerializeField] private Image button2;
-
-    private bool canUpLight = true;
-    private bool canUpOxygen = true;
     
     public void AddRessources()
     {
@@ -32,27 +29,18 @@ public class UpgradeRessourcesManager : MonoBehaviour
 
     public void UpgradeLight()
     {
-        if (canUpLight)
-        {
-            lightManagerReference.maxLight *= ressourcesMultiplier;
-            lightManagerReference.AddLight(lightManagerReference.maxLight);
-            canUpLight = false;
-            playerRef.canMove = true;
-            StartCoroutine(CloseMenu());
-        }
-        
+        lightManagerReference.maxLight *= ressourcesMultiplier;
+        lightManagerReference.AddLight(lightManagerReference.maxLight);
+        playerRef.canMove = true;
+        StartCoroutine(CloseMenu());
     }
 
     public void UpgradeOxygen()
     {
-        if (canUpOxygen)
-        {
-            oxygenManagerReference.maxOxygen *= ressourcesMultiplier;
-            oxygenManagerReference.AddOxygen(oxygenManagerReference.maxOxygen);
-            canUpOxygen = false;
-            playerRef.canMove = true;
-            StartCoroutine(CloseMenu());
-        }
+        oxygenManagerReference.maxOxygen *= ressourcesMultiplier;
+        oxygenManagerReference.AddOxygen(oxygenManagerReference.maxOxygen);
+        playerRef.canMove = true;
+        StartCoroutine(CloseMenu());
     }
 
     IEnumerator CloseMenu()

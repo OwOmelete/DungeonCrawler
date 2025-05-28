@@ -16,4 +16,4 @@ MonoBehaviour:
   damageToAttacker: 0
   posX: 0
   posY: 0
-  direction: 4
+  direction: 3

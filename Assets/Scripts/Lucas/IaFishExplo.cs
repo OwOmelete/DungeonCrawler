@@ -11,10 +11,11 @@ public class IaFishExplo : MonoBehaviour
     private Vector3 actualTarget;
     private bool hitWall;
     [SerializeField] private Rigidbody2D rb;
-    void Awake()
+    private Coroutine moveCoroutine = null;
+    
+    void Start()
     {
-        ChangeTarget();
-        StartCoroutine(Move());
+        RestartCoroutine();
     }
 
     IEnumerator Move()
@@ -50,5 +51,23 @@ public class IaFishExplo : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other)
     {
         hitWall = false;
+    }
+
+    public void RestartCoroutine()
+    {
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+            moveCoroutine = null;
+        }
+        ChangeTarget();
+        moveCoroutine = StartCoroutine(Move());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(moveCoroutine);
+        moveCoroutine = null;
+        Debug.Log(moveCoroutine);
     }
 }

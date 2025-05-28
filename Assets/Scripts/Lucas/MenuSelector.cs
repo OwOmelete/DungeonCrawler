@@ -5,7 +5,7 @@ public class MenuSelector : MonoBehaviour
 {
     [SerializeField] private GameObject firstButton;
 
-    void Awake()
+    void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstButton);

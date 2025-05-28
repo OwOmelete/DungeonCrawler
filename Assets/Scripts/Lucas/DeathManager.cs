@@ -21,7 +21,16 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private LightManager lightRef;
     [SerializeField] private Transform enemyParent;
     [SerializeField] private GameObject combatScene;
+    
+    [SerializeField] private Transform lightParent;
+    [SerializeField] private Transform oxygenParent;
+    [SerializeField] private Transform healParent;
+    
     private GameObject[] enemyTab;
+    private IaFishExplo[] iaTab;
+    private GameObject[] lightTab;
+    private GameObject[] oxygenTab;
+    private GameObject[] healTab;
     private void Start()
     {
         enemyTab = new GameObject[enemyParent.childCount];
@@ -29,6 +38,27 @@ public class DeathManager : MonoBehaviour
         {
             enemyTab[i] = enemyParent.GetChild(i).gameObject;
         }
+        iaTab = new IaFishExplo[enemyParent.childCount];
+        for (int i = 0; i < enemyParent.childCount; i++)
+        {
+            iaTab[i] = enemyParent.GetChild(i).GetChild(0).GetComponent<IaFishExplo>();
+        }
+        lightTab = new GameObject[lightParent.childCount];
+        for (int i = 0; i < lightParent.childCount; i++)
+        {
+            lightTab[i] = lightParent.GetChild(i).gameObject;
+        }
+        oxygenTab = new GameObject[oxygenParent.childCount];
+        for (int i = 0; i < oxygenParent.childCount; i++)
+        {
+            oxygenTab[i] = oxygenParent.GetChild(i).gameObject;
+        }
+        healTab = new GameObject[healParent.childCount];
+        for (int i = 0; i < healParent.childCount; i++)
+        {
+            healTab[i] = healParent.GetChild(i).gameObject;
+        }
+        
         StartCoroutine(WaitFrame());
     }
 
@@ -74,9 +104,26 @@ public class DeathManager : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        for (int i = 0; i < enemyTab.Length; i++)
+        for (int i = 1; i < enemyTab.Length; i++)
         {
             enemyTab[i].SetActive(true);
+        }
+
+        for (int i = 1; i < iaTab.Length; i++)
+        {
+            iaTab[i].RestartCoroutine();
+        }
+        for (int i = 0; i < lightTab.Length; i++)
+        {
+            lightTab[i].SetActive(true);         
+        }
+        for (int i = 0; i < healTab.Length; i++)
+        {
+            healTab[i].SetActive(true);         
+        }
+        for (int i = 0; i < oxygenTab.Length; i++)
+        {
+            oxygenTab[i].SetActive(true);         
         }
         playerGO.SetActive(true);
         playerGO.transform.position = respawnPosition;
