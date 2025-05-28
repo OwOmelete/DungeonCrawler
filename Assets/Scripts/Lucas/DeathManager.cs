@@ -27,6 +27,7 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private Transform healParent;
     
     private GameObject[] enemyTab;
+    private IaFishExplo[] iaTab;
     private GameObject[] lightTab;
     private GameObject[] oxygenTab;
     private GameObject[] healTab;
@@ -36,6 +37,11 @@ public class DeathManager : MonoBehaviour
         for (int i = 0; i < enemyParent.childCount; i++)
         {
             enemyTab[i] = enemyParent.GetChild(i).gameObject;
+        }
+        iaTab = new IaFishExplo[enemyParent.childCount];
+        for (int i = 0; i < enemyParent.childCount; i++)
+        {
+            iaTab[i] = enemyParent.GetChild(i).GetChild(0).GetComponent<IaFishExplo>();
         }
         lightTab = new GameObject[lightParent.childCount];
         for (int i = 0; i < lightParent.childCount; i++)
@@ -101,9 +107,12 @@ public class DeathManager : MonoBehaviour
         for (int i = 1; i < enemyTab.Length; i++)
         {
             enemyTab[i].SetActive(true);
-            enemyTab[i].GetComponent<IaFishExplo>().RestartCoroutine();
         }
 
+        for (int i = 1; i < iaTab.Length; i++)
+        {
+            iaTab[i].RestartCoroutine();
+        }
         for (int i = 0; i < lightTab.Length; i++)
         {
             lightTab[i].SetActive(true);         

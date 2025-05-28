@@ -9,9 +9,11 @@ public class RadarScript : MonoBehaviour
     [SerializeField] private Transform indicatorHealTransform;
     [SerializeField] private Transform indicatorLightTransform;
     [SerializeField] private Transform indicatorOxygenTransform;
+    [SerializeField] private Transform indicatorPathTransform;
     [SerializeField] private Transform healParent;
     [SerializeField] private Transform lightParent;
     [SerializeField] private Transform oxygenParent;
+    [SerializeField] private Transform pathParent;
     [SerializeField] private float maxRadarTime = 5f;
     [SerializeField] private float cooldown = 20f;
     [SerializeField] private Slider sliderRef;
@@ -53,15 +55,18 @@ public class RadarScript : MonoBehaviour
             indicatorHealTransform.localScale = Vector3.zero;
             indicatorLightTransform.localScale = Vector3.zero;
             indicatorOxygenTransform.localScale = Vector3.zero;
+            indicatorPathTransform.localScale = Vector3.zero;
             isActive = true;
             indicatorHealTransform.DOScale(Vector3.one, 0.5f);
             indicatorLightTransform.DOScale(Vector3.one, 0.5f);
             indicatorOxygenTransform.DOScale(Vector3.one, 0.5f);
+            indicatorPathTransform.DOScale(Vector3.one, 0.5f);
             StartCoroutine(UpdateRadar());
             StartCoroutine(MaxTime());
             indicatorHealTransform.gameObject.SetActive(true);
             indicatorLightTransform.gameObject.SetActive(true);
             indicatorOxygenTransform.gameObject.SetActive(true);
+            indicatorPathTransform.gameObject.SetActive(true);
             
         }
         
@@ -74,11 +79,13 @@ public class RadarScript : MonoBehaviour
             CheckNearestObject(healParent, indicatorHealTransform);
             CheckNearestObject(lightParent, indicatorLightTransform);
             CheckNearestObject(oxygenParent, indicatorOxygenTransform);
+            CheckNearestObject(pathParent, indicatorPathTransform);
             yield return null;
         }
         indicatorHealTransform.gameObject.SetActive(false);
         indicatorLightTransform.gameObject.SetActive(false);
         indicatorOxygenTransform.gameObject.SetActive(false);
+        indicatorPathTransform.gameObject.SetActive(false);
     }
 
     private IEnumerator MaxTime()
@@ -89,6 +96,7 @@ public class RadarScript : MonoBehaviour
         indicatorHealTransform.DOScale(Vector3.zero, 0.5f);
         indicatorLightTransform.DOScale(Vector3.zero, 0.5f);
         indicatorOxygenTransform.DOScale(Vector3.zero, 0.5f);
+        indicatorPathTransform.DOScale(Vector3.zero, 0.5f);
         yield return new WaitForSeconds(0.5f);
         isActive = false;
         StartCoroutine(Cooldown());

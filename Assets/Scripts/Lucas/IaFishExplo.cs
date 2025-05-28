@@ -11,7 +11,8 @@ public class IaFishExplo : MonoBehaviour
     private Vector3 actualTarget;
     private bool hitWall;
     [SerializeField] private Rigidbody2D rb;
-    private bool enabled;
+    private Coroutine moveCoroutine = null;
+    
     void Start()
     {
         RestartCoroutine();
@@ -54,20 +55,19 @@ public class IaFishExplo : MonoBehaviour
 
     public void RestartCoroutine()
     {
-        if (enabled)
+        if (moveCoroutine != null)
         {
-            ChangeTarget();
-            StartCoroutine(Move());
+            StopCoroutine(moveCoroutine);
+            moveCoroutine = null;
         }
+        ChangeTarget();
+        moveCoroutine = StartCoroutine(Move());
     }
 
     private void OnDisable()
     {
-        enabled = false;
-    }
-
-    private void OnEnable()
-    {
-        enabled = true;
+        StopCoroutine(moveCoroutine);
+        moveCoroutine = null;
+        Debug.Log(moveCoroutine);
     }
 }

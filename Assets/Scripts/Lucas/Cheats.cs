@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Cheats : MonoBehaviour
@@ -5,11 +6,38 @@ public class Cheats : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private OxygenManager oxygenManagerRef;
     [SerializeField] private LightManager lightManagerRef;
+    [SerializeField] private GameObject canvas;
+    private bool isActive;
+    private float x;
+    private float y;
 
-    public void Tp(Vector3 tpPosition)
+    private void Update()
     {
-        playerTransform.position = tpPosition;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isActive = !isActive;
+            canvas.SetActive(isActive);
+        }
     }
+
+    #region Tp
+
+    public void setX(float value)
+    {
+        x = value;
+    }
+    public void setY(float value)
+    {
+        y = value;
+    }
+    public void Tp()
+    {
+        playerTransform.position = new Vector3(x,y,0f);
+    }
+
+    #endregion
+    
+
 
     public void EndFight()
     {
