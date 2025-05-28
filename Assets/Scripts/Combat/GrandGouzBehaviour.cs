@@ -19,7 +19,6 @@ public class GrandGouzBehaviour : AbstractIA
         if (entity.PreparingAttack)
         {
             Attack(entity);
-            Debug.Log("attacking");
         }
         else if (!entity.HasAttacked)
         {
@@ -139,8 +138,7 @@ public class GrandGouzBehaviour : AbstractIA
                                 new Vector3(entity.positionX + 2, entity.positionY, 0), quaternion.identity);
                             
                             entity.sr.sprite = entity.preparingAttackSprite;
-
-                            Debug.Log("detection");
+                            
 
                         }
                     }
@@ -160,8 +158,7 @@ public class GrandGouzBehaviour : AbstractIA
                             entity.LastPrevisualisation = Instantiate(entity.PrevisualisationAttack,
                                 new Vector3(entity.positionX - 1, entity.positionY, 0), quaternion.identity);
                             entity.sr.sprite = entity.preparingAttackSprite;
-
-                            Debug.Log("detection");
+                            
                         }
                     }
                 }
@@ -189,7 +186,6 @@ public class GrandGouzBehaviour : AbstractIA
                 }
             }
             
-            Debug.Log("prout");
 
             StartCoroutine(attacking(entity));
 

@@ -564,7 +564,10 @@ public class CombatManager : MonoBehaviour
             Debug.Log("booster = " + player.booster);
             actionPointLost = 0;
             Booster.SetActive(player.booster);
-            ShowMovements();
+            if (wantToMove && !hasMoved)
+            {
+                ShowMovements();
+            }
         }
 
         if (Input.GetKeyDown("joystick button 2") && !hasMoved)
@@ -1226,6 +1229,7 @@ public class CombatManager : MonoBehaviour
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
         turnOrder.Add(player);
+        player.isStanding = true;
         for (int i = 0; i < _playerData.hp; i++)
         {
             LifeBarPlayerEmpty[i].SetActive(true);
@@ -1513,6 +1517,7 @@ public class CombatManager : MonoBehaviour
             Debug.Log(entity.positionX + (entity.width) * NegativeToZero(GetSign(dirX)) +
                       i * GetSign(dirX)-NegativeToOne(dirX));*/
             EntityInstance tile = GetAttackTile(entity, dirY, dirX, i, attack);
+            Debug.Log(tile);
             if (tile != null && tile != entity && tile != lastEnnemyTouched && tile is not SpikeInstance)
             {
                 if (entity == player)
@@ -1764,21 +1769,15 @@ public class CombatManager : MonoBehaviour
         {
             for (int j = 0; j <= entity.width-1; j++)
             {
-                Debug.Log(entity.name);
-                Debug.Log(i);
-                Debug.Log(j);
                 grid[entity.positionY + i,entity.positionX + j] = null ;
             }
         }
-        Debug.Log("spike count avant" + entity.spikeList.Count);
         for (int i = entity.spikeList.Count-1; i >= 0; i--)
         {
-            Debug.Log("spike index" + i);
             entity.spikeList[i].prefab.transform.localScale = new Vector3(10, 1, 1);
             Destroy(entity.spikeList[i].prefab);
             grid[entity.spikeList[i].positionY,entity.spikeList[i].positionX] = null;
         }
-        Debug.Log("spike count après" + entity.spikeList.Count);
         entity.spikeList.Clear();
         Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
