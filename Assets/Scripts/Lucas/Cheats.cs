@@ -41,5 +41,6 @@ public class Cheats : MonoBehaviour
     {
            oxygenManagerRef.AddOxygen(oxygenManagerRef.maxOxygen);
            lightManagerRef.AddLight(lightManagerRef.maxLight);
+           playerTransform.GetComponent<Player>().player.hp = 4;
     }
 }
