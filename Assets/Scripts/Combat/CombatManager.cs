@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 using DG.Tweening;
+using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
@@ -38,6 +40,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private SpriteRenderer Ennemy1Icon;
     [SerializeField] private SpriteRenderer Ennemy2Icon;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private SpriteRenderer[] buttons;
+    [SerializeField] private TMP_Text[] textButtons;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -127,7 +131,6 @@ public class CombatManager : MonoBehaviour
         {
             IATurn(currentEntity);
         }
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             EndFight();
@@ -907,6 +910,23 @@ public class CombatManager : MonoBehaviour
         else if (joysticXSave == 0 && joysticYSave == 0)
         {
             waitForConfirm = false;
+        }
+
+        if (hasMoved)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                buttons[i].color = new Color(115f / 255f,115f/ 255f,115f/ 255f);
+                textButtons[i].color = new Color(126f / 255f, 92f / 255f, 0);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                buttons[i].color = new Color(255f/ 255f,255f/ 255f,255f/ 255f);
+                textButtons[i].color = new Color(255f/ 255f, 183f/ 255f, 0);
+            }
         }
         #endregion
         
