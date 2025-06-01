@@ -28,8 +28,8 @@ public class StartCombat : MonoBehaviour
     IEnumerator WaitForAnim(List<FishData> fishDatas)
     {
         yield return new WaitForSeconds(animDuration);
-        dangerImage.DOFade(0, 1);
-        blackFade.DOFade(0, 1);
+        dangerImage.DOFade(0, 0.8f);
+        blackFade.DOFade(0, 1f);
         player.SetActive(false);
         combatScene.SetActive(true);
         //uiExplo.SetActive(false);

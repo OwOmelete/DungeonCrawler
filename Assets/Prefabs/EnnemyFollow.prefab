@@ -151,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashSpeed: 10
   enemyAttackDelay: 1
+  playerReference: {fileID: 0}
+  iaFishRef: {fileID: 4302022756017987209}
 --- !u!50 &7361521791468484922
 Rigidbody2D:
   serializedVersion: 5
@@ -281,4 +283,9 @@ MonoBehaviour:
   topLeftCorner: {fileID: 0}
   bottomRightCorner: {fileID: 0}
   speed: 2
+  parentTransform: {fileID: 7909501468531186568}
+  parentSprite: {fileID: 5872709919883854511}
+  rotationTime: 0.5
+  isBrotulo: 0
   rb: {fileID: 7361521791468484922}
+  direction: {x: 0, y: 0}
