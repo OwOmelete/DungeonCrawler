@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Joueur_Vie_Blanc_0: 5633546185915640307
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -33,6 +33,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private SpriteRenderer[] LifeBarEnnemy1Empty;
     [SerializeField] private SpriteRenderer[] LifeBarEnnemy2;
     [SerializeField] private SpriteRenderer[] LifeBarEnnemy2Empty;
+    [SerializeField] private Animator[] LifeBarAnimators;
     [SerializeField] private Sprite pvHit;
     [SerializeField] private float pvHitFlashDelay;
     [SerializeField] private GameObject MovePrevisu;
@@ -1599,7 +1600,7 @@ public class CombatManager : MonoBehaviour
             {
                 if (weakPoint.direction == WeakPointData.dir.up)
                 {
-                    if (attackedEntity.positionY < SecondaryPlayerCoordsY())
+                    if (attackedEntity.positionY+weakPoint.posY < SecondaryPlayerCoordsY())
                     {
                         if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
                         {
@@ -1613,7 +1614,7 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.down)
                 {
-                    if (attackedEntity.positionY > SecondaryPlayerCoordsY())
+                    if (attackedEntity.positionY+weakPoint.posY > SecondaryPlayerCoordsY())
                     {
                         if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
                         {
@@ -1627,7 +1628,7 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.left)
                 {
-                    if (attackedEntity.positionX > SecondaryPlayerCoordsX())
+                    if (attackedEntity.positionX+weakPoint.posX > SecondaryPlayerCoordsX())
                     {
                         if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
                         {
@@ -1643,7 +1644,7 @@ public class CombatManager : MonoBehaviour
                 }
                 if (weakPoint.direction == WeakPointData.dir.right)
                 {
-                    if (attackedEntity.positionX < SecondaryPlayerCoordsX())
+                    if (attackedEntity.positionX+weakPoint.posX < SecondaryPlayerCoordsX())
                     {
                         if (attackerEntity.hp - weakPoint.damageToAttacker <= 0)
                         {
@@ -1744,14 +1745,17 @@ public class CombatManager : MonoBehaviour
         if (entity == Ennemy1 && dmg > 0)
         {
             UpdateLifeBar(Ennemy1,true);
+            LifeBarAnimators[1].SetTrigger("isTakingDamage");
         }
         else if (entity == Ennemy2&& dmg > 0)
         {
             UpdateLifeBar(Ennemy2,true);
+            LifeBarAnimators[2].SetTrigger("isTakingDamage");
         }
         else if (entity == player&& dmg > 0)
         {
             UpdateLifeBar(player,true);
+            LifeBarAnimators[0].SetTrigger("isTakingDamage");
         }
         if (entity.hp <= 0)
         {
@@ -1957,7 +1961,10 @@ public class CombatManager : MonoBehaviour
                 else
                 {
                     LifeBarPlayer[i].enabled = true;
-                    if(b)StartCoroutine(pvHitTakenAnim(LifeBarPlayer[i]));
+                    if (b)
+                    {
+                        StartCoroutine(pvHitTakenAnim(LifeBarPlayer[i]));
+                    }
                 }
             }
         }
@@ -1972,7 +1979,10 @@ public class CombatManager : MonoBehaviour
                 else
                 {
                     LifeBarEnnemy1[i].enabled = true;
-                    if(b)StartCoroutine(pvHitTakenAnim(LifeBarEnnemy1[i]));
+                    if (b)
+                    {
+                        StartCoroutine(pvHitTakenAnim(LifeBarEnnemy1[i]));
+                    }
                 }
             }
         }
@@ -1987,7 +1997,10 @@ public class CombatManager : MonoBehaviour
                 else
                 {
                     LifeBarEnnemy2[i].enabled = true;
-                    if(b)StartCoroutine(pvHitTakenAnim(LifeBarEnnemy2[i]));
+                    if (b)
+                    {
+                        StartCoroutine(pvHitTakenAnim(LifeBarEnnemy2[i]));
+                    }
                 }
             }
         }
