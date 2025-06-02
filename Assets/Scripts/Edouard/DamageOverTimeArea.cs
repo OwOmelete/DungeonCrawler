@@ -11,7 +11,7 @@ public class DamageOverTimeArea : MonoBehaviour
     public int damage = 10;
     public float damageInterval = 1f;
     
-    private void OnTriggerEnter2D(Collider2D other)
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
         TestPlayer player = other.GetComponent<TestPlayer>(); 
         if (player != null && !activeCoroutines.ContainsKey(other.gameObject))
@@ -37,5 +37,5 @@ public class DamageOverTimeArea : MonoBehaviour
             targetPlayer.TakeDamage(damage);
             yield return new WaitForSeconds(damageInterval);
         }
-    }
+    }*/
 }
