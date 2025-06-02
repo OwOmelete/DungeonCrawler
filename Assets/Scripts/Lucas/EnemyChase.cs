@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyChase : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class EnemyChase : MonoBehaviour
     [SerializeField] float dashSpeed = 10f;
     [SerializeField] private float enemyAttackDelay = 1f;
     [SerializeField] private GameObject playerReference;
+    [SerializeField] private IaFishExplo iaFishRef;
     private bool playerOnTrigger;
     private void Awake()
     {
@@ -20,6 +23,17 @@ public class EnemyChase : MonoBehaviour
     {
         yield return new WaitForSeconds(enemyAttackDelay);
         Vector2 direction = (playerReference.transform.position - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        if (iaFishRef.isBrotulo)
+        {
+            transform.DORotate(new Vector3(0, 0, angle + 270), 0.5f);
+        }
+        else
+        {
+            transform.DORotate(new Vector3(0, 0, angle), 0.5f);
+        }
+
+        iaFishRef.canMove = false;
         float duration = 0.2f;
         float elapsed = 0f;
 
