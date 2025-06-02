@@ -27,12 +27,14 @@ public class CombatManager : MonoBehaviour
     [SerializeField] OxygenManager oxygenManager;
     [SerializeField] private DeathManager deathManagerReference;
     [SerializeField] private GameObject Booster;
-    [SerializeField] private GameObject[] LifeBarPlayer;
-    [SerializeField] private GameObject[] LifeBarPlayerEmpty;
-    [SerializeField] private GameObject[] LifeBarEnnemy1;
-    [SerializeField] private GameObject[] LifeBarEnnemy1Empty;
-    [SerializeField] private GameObject[] LifeBarEnnemy2;
-    [SerializeField] private GameObject[] LifeBarEnnemy2Empty;
+    [SerializeField] private SpriteRenderer[] LifeBarPlayer;
+    [SerializeField] private SpriteRenderer[] LifeBarPlayerEmpty;
+    [SerializeField] private SpriteRenderer[] LifeBarEnnemy1;
+    [SerializeField] private SpriteRenderer[] LifeBarEnnemy1Empty;
+    [SerializeField] private SpriteRenderer[] LifeBarEnnemy2;
+    [SerializeField] private SpriteRenderer[] LifeBarEnnemy2Empty;
+    [SerializeField] private Sprite pvHit;
+    [SerializeField] private float pvHitFlashDelay;
     [SerializeField] private GameObject MovePrevisu;
     [SerializeField] private GameObject AtkPrevisu;
     [SerializeField] private GameObject RotatePrevisu;
@@ -1249,7 +1251,8 @@ public class CombatManager : MonoBehaviour
     {
         Ennemy1Icon.enabled = false;
         Ennemy2Icon.enabled = false;
-        player.prefab = Instantiate(player.prefab,
+        Debug.Log(player.prefab);
+        player.prefab = Instantiate(_playerData.prefab,
                 new Vector3(player.positionX, player.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
@@ -1257,9 +1260,9 @@ public class CombatManager : MonoBehaviour
         player.isStanding = true;
         for (int i = 0; i < _playerData.hp; i++)
         {
-            LifeBarPlayerEmpty[i].SetActive(true);
+            LifeBarPlayerEmpty[i].enabled = true;
         }
-        UpdateLifeBar(player);
+        UpdateLifeBar(player,false);  
         for (int i = 0; i < _fishDatas.Count; i++)    
         {
             Fish newFish = new Fish
@@ -1274,22 +1277,22 @@ public class CombatManager : MonoBehaviour
                 Ennemy1 = newFish.fishDataInstance;
                 for (int j = 0; j < newFish.fishData.hp; j++)
                 {
-                    LifeBarEnnemy1Empty[j].SetActive(true);
+                    LifeBarEnnemy1Empty[j].enabled = true;
                 }
                 Ennemy1Icon.enabled = true;
                 Ennemy1Icon.sprite = newFish.fishData.uiSprite;
-                UpdateLifeBar(Ennemy1);
+                UpdateLifeBar(Ennemy1,false);
             }
             else if (i == 1)
             {
                 Ennemy2 = newFish.fishDataInstance;
                 for (int j = 0; j < newFish.fishData.hp; j++)
                 {
-                    LifeBarEnnemy2Empty[j].SetActive(true);
+                    LifeBarEnnemy2Empty[j].enabled = true;
                 }
                 Ennemy2Icon.enabled = true;
                 Ennemy2Icon.sprite = newFish.fishData.uiSprite;
-                UpdateLifeBar(Ennemy2);
+                UpdateLifeBar(Ennemy2,false);
             }
         }
         for (int i = 0; i < player.height; i++)
@@ -1738,17 +1741,17 @@ public class CombatManager : MonoBehaviour
     {
         entity.TakeDamage(dmg);
         Debug.Log("pv restant : " + entity.name + entity.hp);
-        if (entity == Ennemy1)
+        if (entity == Ennemy1 && dmg > 0)
         {
-            UpdateLifeBar(Ennemy1);
+            UpdateLifeBar(Ennemy1,true);
         }
-        else if (entity == Ennemy2)
+        else if (entity == Ennemy2&& dmg > 0)
         {
-            UpdateLifeBar(Ennemy2);
+            UpdateLifeBar(Ennemy2,true);
         }
-        else if (entity == player)
+        else if (entity == player&& dmg > 0)
         {
-            UpdateLifeBar(player);
+            UpdateLifeBar(player,true);
         }
         if (entity.hp <= 0)
         {
@@ -1877,9 +1880,9 @@ public class CombatManager : MonoBehaviour
         Destroy(player.prefab);
         for (int i = 0; i < LifeBarPlayerEmpty.Length; i++)
         {
-            LifeBarEnnemy1Empty[i].SetActive(false);
-            LifeBarEnnemy2Empty[i].SetActive(false);
-            LifeBarPlayerEmpty[i].SetActive(false);
+            LifeBarEnnemy1Empty[i].enabled = false;
+            LifeBarEnnemy2Empty[i].enabled = false;
+            LifeBarPlayerEmpty[i].enabled = false;
         }
         List<int> fishToSupr = new List<int>();
         for (int i = 0; i < turnOrder.Count; i ++)
@@ -1941,7 +1944,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void UpdateLifeBar(EntityInstance entity)
+    void UpdateLifeBar(EntityInstance entity, bool b)
     {
         if (entity == player)
         {
@@ -1949,11 +1952,12 @@ public class CombatManager : MonoBehaviour
             {
                 if (i+1 > player.hp)
                 {
-                    LifeBarPlayer[i].SetActive(false);
+                    LifeBarPlayer[i].enabled = false;
                 }
                 else
                 {
-                    LifeBarPlayer[i].SetActive(true);
+                    LifeBarPlayer[i].enabled = true;
+                    if(b)StartCoroutine(pvHitTakenAnim(LifeBarPlayer[i]));
                 }
             }
         }
@@ -1963,11 +1967,12 @@ public class CombatManager : MonoBehaviour
             {
                 if (i+1 > Ennemy1.hp)
                 {
-                    LifeBarEnnemy1[i].SetActive(false);
+                    LifeBarEnnemy1[i].enabled = false;
                 }
                 else
                 {
-                    LifeBarEnnemy1[i].SetActive(true);
+                    LifeBarEnnemy1[i].enabled = true;
+                    if(b)StartCoroutine(pvHitTakenAnim(LifeBarEnnemy1[i]));
                 }
             }
         }
@@ -1977,11 +1982,12 @@ public class CombatManager : MonoBehaviour
             {
                 if (i+1 > Ennemy1.hp)
                 {
-                    LifeBarEnnemy2[i].SetActive(false);
+                    LifeBarEnnemy2[i].enabled = false;
                 }
                 else
                 {
-                    LifeBarEnnemy2[i].SetActive(true);
+                    LifeBarEnnemy2[i].enabled = true;
+                    if(b)StartCoroutine(pvHitTakenAnim(LifeBarEnnemy2[i]));
                 }
             }
         }
@@ -2020,5 +2026,17 @@ public class CombatManager : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    IEnumerator pvHitTakenAnim(SpriteRenderer sr)
+    {
+        Sprite baseSprite = sr.sprite;
+        sr.sprite = pvHit;
+        yield return new WaitForSeconds(pvHitFlashDelay);
+        sr.sprite = baseSprite;
+        yield return new WaitForSeconds(pvHitFlashDelay);
+        sr.sprite = pvHit;
+        yield return new WaitForSeconds(pvHitFlashDelay);
+        sr.sprite = baseSprite;
     }
 }
