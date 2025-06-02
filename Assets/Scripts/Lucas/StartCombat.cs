@@ -7,6 +7,9 @@ using Image = UnityEngine.UI.Image;
 
 public class StartCombat : MonoBehaviour
 {
+    public int playerPosCombatX = 0; 
+    public int playerPosCombatY = 0;
+    
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject combatScene;
     [SerializeField] private CombatManager combatManagerReference;
@@ -36,6 +39,8 @@ public class StartCombat : MonoBehaviour
         //combatManagerReference._fishDatas.Clear();
         combatManagerReference._fishDatas = fishDatas;
         Player playerScript = player.GetComponent<Player>();
+        playerScript.player.positionX = playerPosCombatX;
+        playerScript.player.positionY = playerPosCombatY;
         combatManagerReference.player = playerScript.player;
         playerScript.lightManager.canLooseLight = false;
         playerScript.oxygenManager.canLooseOxygen = false;

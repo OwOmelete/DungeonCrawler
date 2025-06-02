@@ -1249,8 +1249,8 @@ public class CombatManager : MonoBehaviour
     {
         Ennemy1Icon.enabled = false;
         Ennemy2Icon.enabled = false;
-        player.prefab = Instantiate(_playerData.prefab,
-                new Vector3(_playerData.positionX, _playerData.positionY, 0),quaternion.identity);
+        player.prefab = Instantiate(player.prefab,
+                new Vector3(player.positionX, player.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
         turnOrder.Add(player);
