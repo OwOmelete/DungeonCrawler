@@ -1914,7 +1914,7 @@ public class CombatManager : MonoBehaviour
 
     }
     
-    int SecondaryPlayerCoordsX()
+    public int SecondaryPlayerCoordsX()
     {
         switch (CombatManager.Instance.player.direction)
         {
@@ -1931,7 +1931,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    int SecondaryPlayerCoordsY()
+    public int SecondaryPlayerCoordsY()
     {
         switch (CombatManager.Instance.player.direction)
         {
