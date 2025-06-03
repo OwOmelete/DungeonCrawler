@@ -45,6 +45,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private SpriteRenderer[] buttons;
     [SerializeField] private TMP_Text[] textButtons;
+    [SerializeField] private EndFight _endFight;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -120,11 +121,11 @@ public class CombatManager : MonoBehaviour
                 }
             }
         }
-        if (combatFinished)
+        /*if (combatFinished)
         {
             EndFight();
             return;
-        }
+        }*/
         EntityInstance currentEntity = turnOrder[currentTurnIndex];
         if (currentEntity == player)
         {
@@ -1813,6 +1814,10 @@ public class CombatManager : MonoBehaviour
         entity.spikeList.Clear();
         Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
+        if (turnOrder.Count <= 1)
+        {
+            _endFight.lastEnnemyDead();
+        }
         Destroy(entity.prefab);
     }
 
