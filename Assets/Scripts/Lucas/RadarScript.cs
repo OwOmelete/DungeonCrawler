@@ -15,11 +15,11 @@ public class RadarScript : MonoBehaviour
     [SerializeField] private Transform lightParent;
     [SerializeField] private Transform oxygenParent;
     [SerializeField] private Transform pathParent;
-    [SerializeField] private Image cooldownImage;
-    [SerializeField] private float cooldown = 20f;
+    [SerializeField] private LightManager lightManagerRef;
+    [SerializeField] private float looseLightValue = 1f;
     private float maxRadarTime = 8f;
     private bool isActive;
-    private bool alreadyInCooldown;
+
     
 
     void CheckNearestObject(Transform parent, Transform indicatorTransform)
@@ -51,8 +51,10 @@ public class RadarScript : MonoBehaviour
 
     public void ChangeRadarState()
     {
-        if (!alreadyInCooldown)
+        if (!isActive)
         {
+            lightManagerRef.canLooseLight = false;
+            lightManagerRef.AddLight(-looseLightValue);
             indicatorHealTransform.localScale = Vector3.zero;
             indicatorLightTransform.localScale = Vector3.zero;
             indicatorOxygenTransform.localScale = Vector3.zero;
@@ -71,9 +73,7 @@ public class RadarScript : MonoBehaviour
             indicatorOxygenTransform.gameObject.SetActive(true);
             indicatorPathTransform.gameObject.SetActive(true);
             cooldownPlayerGO.SetActive(true);
-            
         }
-        
     }
 
     IEnumerator UpdateRadar()
@@ -95,8 +95,6 @@ public class RadarScript : MonoBehaviour
 
     private IEnumerator MaxTime()
     {
-        alreadyInCooldown = true;
-        DOTween.To(() => cooldownImage.fillAmount, x => cooldownImage.fillAmount = x, 0f, maxRadarTime).SetEase(Ease.Linear);
         yield return new WaitForSeconds(maxRadarTime);
         indicatorHealTransform.DOScale(Vector3.zero, 0.5f);
         indicatorLightTransform.DOScale(Vector3.zero, 0.5f);
@@ -105,13 +103,7 @@ public class RadarScript : MonoBehaviour
         cooldownPlayerGO.transform.DOScale(Vector3.zero, 0.5f);
         yield return new WaitForSeconds(0.5f);
         isActive = false;
-        StartCoroutine(Cooldown());
     }
 
-    private IEnumerator Cooldown()
-    {
-        DOTween.To(() => cooldownImage.fillAmount, x => cooldownImage.fillAmount = x, 1f, cooldown).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(cooldown);
-        alreadyInCooldown = false;
-    }
+    
 }
