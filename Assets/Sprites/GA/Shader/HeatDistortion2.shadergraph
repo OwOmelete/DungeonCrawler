@@ -766,7 +766,7 @@
     "m_Title": "Movement",
     "m_Position": {
         "x": -2479.0,
-        "y": 255.00010681152345
+        "y": 255.00009155273438
     }
 }
 
@@ -1783,10 +1783,10 @@
     "m_Guid": {
         "m_GuidSerialized": "6fd1bfc5-079c-4a79-a032-aee3837ab749"
     },
-    "m_Name": "Combat",
+    "m_Name": "Active",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Combat",
-    "m_DefaultReferenceName": "_Combat",
+    "m_RefNameGeneratedByDisplayName": "Active",
+    "m_DefaultReferenceName": "_Active",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2412,7 +2412,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "9b594c2ef5b743d390f4c4b506f4842b",
     "m_Id": 0,
-    "m_DisplayName": "Combat",
+    "m_DisplayName": "Active",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
