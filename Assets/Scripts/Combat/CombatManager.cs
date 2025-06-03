@@ -355,6 +355,7 @@ public class CombatManager : MonoBehaviour
         if (x > player.positionX && x > SecondaryPlayerCoordsX())
         {
             rightPrevisuList.Add(new Tuple<int, int>(x,y));
+            Debug.Log("grosse teub");
         }
         if (x < player.positionX && x < SecondaryPlayerCoordsX())
         {
