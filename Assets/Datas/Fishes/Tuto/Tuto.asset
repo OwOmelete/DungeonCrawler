@@ -15,7 +15,7 @@ MonoBehaviour:
   name: LeTuto
   width: 2
   height: 2
-  positionX: 2
+  positionX: 3
   positionY: 1
   hp: 10
   armor: 0

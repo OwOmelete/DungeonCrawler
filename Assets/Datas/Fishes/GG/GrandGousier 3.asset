@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Grand Gousier
   width: 2
   height: 1
-  positionX: 4
-  positionY: 0
+  positionX: 1
+  positionY: 1
   hp: 5
   armor: 0
   actionPoint: 3
