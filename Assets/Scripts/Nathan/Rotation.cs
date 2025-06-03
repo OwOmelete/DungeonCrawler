@@ -18,7 +18,7 @@ public class Rotation : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         xScale = transform.localScale.x;
     }
-    void Update()
+    void FixedUpdate()
     {
         Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
         if (direction == Vector2.zero)
