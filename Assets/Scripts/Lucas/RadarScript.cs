@@ -10,13 +10,14 @@ public class RadarScript : MonoBehaviour
     [SerializeField] private Transform indicatorLightTransform;
     [SerializeField] private Transform indicatorOxygenTransform;
     [SerializeField] private Transform indicatorPathTransform;
+    [SerializeField] private GameObject cooldownPlayerGO;
     [SerializeField] private Transform healParent;
     [SerializeField] private Transform lightParent;
     [SerializeField] private Transform oxygenParent;
     [SerializeField] private Transform pathParent;
-    [SerializeField] private float maxRadarTime = 5f;
+    [SerializeField] private Image cooldownImage;
     [SerializeField] private float cooldown = 20f;
-    [SerializeField] private Slider sliderRef;
+    private float maxRadarTime = 8f;
     private bool isActive;
     private bool alreadyInCooldown;
     
@@ -56,17 +57,20 @@ public class RadarScript : MonoBehaviour
             indicatorLightTransform.localScale = Vector3.zero;
             indicatorOxygenTransform.localScale = Vector3.zero;
             indicatorPathTransform.localScale = Vector3.zero;
+            cooldownPlayerGO.transform.localScale = Vector3.zero;
             isActive = true;
             indicatorHealTransform.DOScale(Vector3.one, 0.5f);
             indicatorLightTransform.DOScale(Vector3.one, 0.5f);
             indicatorOxygenTransform.DOScale(Vector3.one, 0.5f);
             indicatorPathTransform.DOScale(Vector3.one, 0.5f);
+            cooldownPlayerGO.transform.DOScale(Vector3.one, 0.5f);
             StartCoroutine(UpdateRadar());
             StartCoroutine(MaxTime());
             indicatorHealTransform.gameObject.SetActive(true);
             indicatorLightTransform.gameObject.SetActive(true);
             indicatorOxygenTransform.gameObject.SetActive(true);
             indicatorPathTransform.gameObject.SetActive(true);
+            cooldownPlayerGO.SetActive(true);
             
         }
         
@@ -86,17 +90,19 @@ public class RadarScript : MonoBehaviour
         indicatorLightTransform.gameObject.SetActive(false);
         indicatorOxygenTransform.gameObject.SetActive(false);
         indicatorPathTransform.gameObject.SetActive(false);
+        cooldownPlayerGO.SetActive(false);
     }
 
     private IEnumerator MaxTime()
     {
         alreadyInCooldown = true;
-        sliderRef.DOValue(0, maxRadarTime).SetEase(Ease.Linear);
+        DOTween.To(() => cooldownImage.fillAmount, x => cooldownImage.fillAmount = x, 0f, maxRadarTime).SetEase(Ease.Linear);
         yield return new WaitForSeconds(maxRadarTime);
         indicatorHealTransform.DOScale(Vector3.zero, 0.5f);
         indicatorLightTransform.DOScale(Vector3.zero, 0.5f);
         indicatorOxygenTransform.DOScale(Vector3.zero, 0.5f);
         indicatorPathTransform.DOScale(Vector3.zero, 0.5f);
+        cooldownPlayerGO.transform.DOScale(Vector3.zero, 0.5f);
         yield return new WaitForSeconds(0.5f);
         isActive = false;
         StartCoroutine(Cooldown());
@@ -104,7 +110,7 @@ public class RadarScript : MonoBehaviour
 
     private IEnumerator Cooldown()
     {
-        sliderRef.DOValue(1, cooldown).SetEase(Ease.Linear);
+        DOTween.To(() => cooldownImage.fillAmount, x => cooldownImage.fillAmount = x, 1f, cooldown).SetEase(Ease.Linear);
         yield return new WaitForSeconds(cooldown);
         alreadyInCooldown = false;
     }

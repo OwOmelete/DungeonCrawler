@@ -2,6 +2,7 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class RespawnPoint : MonoBehaviour
@@ -9,18 +10,19 @@ public class RespawnPoint : MonoBehaviour
     #region Variables
     
     [Header("Reference")]
-    [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche 
+    [SerializeField] private GameObject interactDisplay;
     [SerializeField] private DeathManager deathManagerRef;
     [SerializeField] private Animator animator;
     [SerializeField] private TMP_Text textZoneRef;
+    [SerializeField] private Image imageButtonRef;
     
     [Header("Values")]
-    [SerializeField] private float interactTextFadeDuration = 0.2f; // Temps que va prendre le texte a apparaitre et a disparaitre
+    [SerializeField] private float interactTextFadeDuration = 0.5f;
     [SerializeField] private float timeToDespawn = 0.3f;
     [SerializeField] private string text;
 
     private bool check = false;
-    private bool canTake = false;   // Savoir si on peut prendre l'objet
+    private bool canTake = false;
     
     #endregion
 
@@ -66,15 +68,17 @@ public class RespawnPoint : MonoBehaviour
     
     void ChangePoint()
     {
-        textZoneRef.DOFade(1, 0.2f); 
         textZoneRef.text = text;
+        imageButtonRef.DOFade(1, interactTextFadeDuration);
+        textZoneRef.DOFade(1, interactTextFadeDuration); 
         deathManagerRef.respawnPosition = transform.position;
         check = true;
     }
 
     void EndText()
     {
-        textZoneRef.DOFade(0, 0.2f);
+        textZoneRef.DOFade(0, timeToDespawn);
+        imageButtonRef.DOFade(0, timeToDespawn);
         check = false;
     }
     
