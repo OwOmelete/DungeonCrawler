@@ -1,22 +1,28 @@
+using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class ActivateHeat : MonoBehaviour
 {
 
     public Material heat;
-    public float active;
+    private float lastTimeChanged;
+    public float delayChange=1f;
+    [SerializeField] private float step;
 
     private void Start()
     {
-        active = heat.GetFloat("_Active"); 
+        heat.SetFloat("_Activate", 0);
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            active += 1;
-            heat.GetFloat("_Active") += 1; 
+            StopCoroutine(TransitionOut());
+            StartCoroutine(TransitionIn());
         } 
 
     }  
@@ -24,8 +30,28 @@ public class ActivateHeat : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            active -= 1; 
+            StopCoroutine(TransitionIn());
+            StartCoroutine(TransitionOut());
         } 
 
     }
+    
+    IEnumerator TransitionOut()
+    {
+        while (heat.GetFloat("_Active") > 0)
+        {
+            heat.SetFloat("_Active", (heat.GetFloat("_Active") - step));
+            yield return new WaitForSeconds(delayChange);
+        }
+    }
+
+    IEnumerator TransitionIn()
+    {
+        while (heat.GetFloat("_Active") < 1)
+        {
+            heat.SetFloat("_Active", (heat.GetFloat("_Active") + step));
+            yield return new WaitForSeconds(delayChange);
+        }
+    }
+    
 }
