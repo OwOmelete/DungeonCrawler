@@ -152,7 +152,6 @@ public class CombatManager : MonoBehaviour
         currentTurnIndex = (currentTurnIndex + 1) % turnOrder.Count;
         if (currentTurnIndex % turnOrder.Count == 0)
         {
-            player.light -= player.lightLostPerTurn;
             player.light = Mathf.Clamp(player.light, 1, 10);
             UpdateLight();
             hasMoved = false;
