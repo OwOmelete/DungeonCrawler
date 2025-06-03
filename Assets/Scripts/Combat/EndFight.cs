@@ -9,7 +9,7 @@ public class EndFight : MonoBehaviour
     [SerializeField] private Image endFightImg;
     [SerializeField] private Image blackFade;
     
-    public void lastEnnemyDead()
+    public void lastEnnemyDead(SpriteRenderer sr)
     {
         StartCoroutine(endOfFight());
     }
@@ -24,5 +24,8 @@ public class EndFight : MonoBehaviour
         CombatManager.Instance.EndFight();
         endFightImg.DOFade(0, 0.8f);
         blackFade.DOFade(0, 1f);
+        //z.SetFloat("_DissolveProgression", 1);
     }
+
+    
 }

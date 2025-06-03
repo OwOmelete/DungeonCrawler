@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -1323,6 +1324,7 @@ public class CombatManager : MonoBehaviour
             fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
             if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
+                fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
                 FishDataInstance brotulo = fish.fishDataInstance;
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
@@ -1369,6 +1371,10 @@ public class CombatManager : MonoBehaviour
                 {
                     IAref.Flipping(fish.fishDataInstance);
                 }
+            }
+            else if (fish.fishDataInstance.behaviour is TutoBehaviour)
+            {
+                fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
             }
         }
     }
@@ -1814,11 +1820,16 @@ public class CombatManager : MonoBehaviour
         entity.spikeList.Clear();
         Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
+        FishDataInstance fish = entity as FishDataInstance;
         if (turnOrder.Count <= 1)
         {
-            _endFight.lastEnnemyDead();
+            _endFight.lastEnnemyDead(fish.sr);
+            StartCoroutine(Dissolve(fish.sr, entity, true));
         }
-        Destroy(entity.prefab);
+        else
+        {
+            StartCoroutine(Dissolve(fish.sr, entity, false));
+        }
     }
 
     int NegativeToZero(int value)
@@ -2056,5 +2067,15 @@ public class CombatManager : MonoBehaviour
         sr.sprite = pvHit;
         yield return new WaitForSeconds(pvHitFlashDelay);
         sr.sprite = baseSprite;
+    }
+    
+    IEnumerator Dissolve(SpriteRenderer sr,EntityInstance entity, bool b)
+    {
+        while (sr.material.GetFloat("_DissolveProgression") < 1)
+        {
+            sr.material.SetFloat("_DissolveProgression",sr.material.GetFloat("_DissolveProgression")+0.02f);
+            yield return new WaitForSeconds(0.02f);
+        }
+        if(b) Destroy(entity.prefab);
     }
 }
