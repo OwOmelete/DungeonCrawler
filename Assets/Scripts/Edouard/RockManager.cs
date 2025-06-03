@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class RockManager : MonoBehaviour
 {
-    [SerializeField] private TestPlayer testPlayer;
+    [SerializeField] private HealthManager healthManagerreference;
     public int delay = 5;
     public int damage;
     private void Start()
     {
-        testPlayer = FindObjectOfType<TestPlayer>();
+        healthManagerreference = FindObjectOfType<HealthManager>();
         Destroy(gameObject, delay);
     }
 
@@ -15,7 +15,7 @@ public class RockManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            testPlayer.health -= damage;
+            healthManagerreference.playerData.hp -= damage;
             Debug.Log(gameObject.name + " collision with " + other.gameObject.name);
         }
     }

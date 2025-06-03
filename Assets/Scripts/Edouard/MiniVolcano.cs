@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MiniVolcano : MonoBehaviour
 {
-    private TestPlayer testPlayer;
+    /*private TestPlayer testPlayer;
     public int damage = 1;
 
     private void Start()
@@ -17,5 +17,5 @@ public class MiniVolcano : MonoBehaviour
             testPlayer.health -= damage;
             Debug.Log(gameObject.name + " collision with " + collision.name);
         }
-    }
+    }*/
 }

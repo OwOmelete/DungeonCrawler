@@ -32,7 +32,7 @@ public class HealthManager : MonoBehaviour
 
     public void Respawn()
     {
-        //TODO: actualiser cette methode pour quelle soit fonctionelle avec la mort dans le niveau.
+        
         player.transform.position = currentCheckPoint.transform.position;
     }
 }
