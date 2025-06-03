@@ -784,7 +784,34 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_V3_ContourExplo (1)_0: -5655849499764238753
+      UI_V3_ContourExplo (1)_1: -441405287546450293
+      UI_V3_ContourExplo (1)_10: -9062158188591133828
+      UI_V3_ContourExplo (1)_11: -6087590482613898025
+      UI_V3_ContourExplo (1)_12: 5728552161973467552
+      UI_V3_ContourExplo (1)_13: -5293782439404961571
+      UI_V3_ContourExplo (1)_14: 7030139168413215545
+      UI_V3_ContourExplo (1)_15: -8197834139866217069
+      UI_V3_ContourExplo (1)_16: -8363479447887496527
+      UI_V3_ContourExplo (1)_17: -9087233858138054153
+      UI_V3_ContourExplo (1)_18: -8868231784057838246
+      UI_V3_ContourExplo (1)_19: -9124965560928004270
+      UI_V3_ContourExplo (1)_2: 5531795390172128573
+      UI_V3_ContourExplo (1)_20: -4005881959830336058
+      UI_V3_ContourExplo (1)_21: 4144677008194405380
+      UI_V3_ContourExplo (1)_22: -4426026170289298521
+      UI_V3_ContourExplo (1)_23: 2761577784196361818
+      UI_V3_ContourExplo (1)_24: 5830958775966176499
+      UI_V3_ContourExplo (1)_25: -2318998261201120469
+      UI_V3_ContourExplo (1)_26: 2245423968571440166
+      UI_V3_ContourExplo (1)_3: -488968005825962857
+      UI_V3_ContourExplo (1)_4: 6167930644885858917
+      UI_V3_ContourExplo (1)_5: -423563444350358390
+      UI_V3_ContourExplo (1)_6: -1129650583896205307
+      UI_V3_ContourExplo (1)_7: -9093441685062614575
+      UI_V3_ContourExplo (1)_8: 2527378835591767574
+      UI_V3_ContourExplo (1)_9: -6911259667878673112
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
