@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/MainMenuTest.unity.meta
 guid: 2b395811dbe51f04cb56d84d28f2045c
+========
+guid: c3555c3d1a9b7ec44a29ec1471a2cf24
+>>>>>>>> 52da0e6d774d41b1aff0ae71cf641335bf064d14:Assets/Scenes/TestsTools/Biome_001test.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
