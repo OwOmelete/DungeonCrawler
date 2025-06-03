@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ennemi_Vie_Pleine_0: 4948733246082383972
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
