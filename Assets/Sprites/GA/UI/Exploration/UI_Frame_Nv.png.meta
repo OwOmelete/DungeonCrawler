@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: ee15c85a9db397e4b8071ea535581ca2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3850349966389994796
+    second: nv_Ui_0
+  - first:
+      213: -4753952706020024863
+    second: nv_Ui_1
+  - first:
+      213: -2833550452416476976
+    second: nv_Ui_2
+  - first:
+      213: 6023457297327235823
+    second: nv_Ui_3
+  - first:
+      213: 1782425162723371026
+    second: nv_Ui_4
+  - first:
+      213: -3171026564273500002
+    second: nv_Ui_5
+  - first:
+      213: -2813103738995592958
+    second: nv_Ui_6
+  - first:
+      213: 719244133663512613
+    second: nv_Ui_7
+  - first:
+      213: 3759039079228721618
+    second: nv_Ui_8
+  - first:
+      213: 8001922804120654494
+    second: nv_Ui_9
+  - first:
+      213: 6540127096640605014
+    second: nv_Ui_10
+  - first:
+      213: 6394649281780561802
+    second: nv_Ui_11
+  - first:
+      213: -356717011756292663
+    second: nv_Ui_12
+  - first:
+      213: 7830669478394309840
+    second: nv_Ui_13
+  - first:
+      213: 4981649288416746269
+    second: nv_Ui_14
+  - first:
+      213: 4101344140133236686
+    second: nv_Ui_15
+  - first:
+      213: 7970139153125696953
+    second: nv_Ui_16
+  - first:
+      213: -7325631870523399159
+    second: nv_Ui_17
+  - first:
+      213: 8699668332928489273
+    second: nv_Ui_18
+  - first:
+      213: 3016904503545480892
+    second: nv_Ui_19
+  - first:
+      213: -2659203197952524898
+    second: nv_Ui_20
+  - first:
+      213: 2862625106843483278
+    second: nv_Ui_21
+  - first:
+      213: -7360901620476727031
+    second: nv_Ui_22
+  - first:
+      213: 1092084728847807749
+    second: nv_Ui_23
+  - first:
+      213: -2386267480716125381
+    second: nv_Ui_24
+  - first:
+      213: 2126889102801995771
+    second: nv_Ui_25
+  - first:
+      213: -837060031568444352
+    second: nv_Ui_26
+  - first:
+      213: -6336763390632095382
+    second: nv_Ui_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: nv_Ui_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 661
+        width: 1904
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c25ec97f4e03f6530800000000000000
+      internalID: 3850349966389994796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_1
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 638
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed5bae8331960eb0800000000000000
+      internalID: -4753952706020024863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_2
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 639
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d8819650e43da8d0800000000000000
+      internalID: -2833550452416476976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_3
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 615
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe2acee8f7e979350800000000000000
+      internalID: 6023457297327235823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_4
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 616
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21828d6ed327cb810800000000000000
+      internalID: 1782425162723371026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_5
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 602
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90962ff3204ef3d0800000000000000
+      internalID: -3171026564273500002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_6
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 591
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20138d8cd09d5f8d0800000000000000
+      internalID: -2813103738995592958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_7
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 602
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5281cc59ab44bf900800000000000000
+      internalID: 719244133663512613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_8
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 591
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d94d36502aca2430800000000000000
+      internalID: 3759039079228721618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_9
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 579
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9295b3f46a8c0f60800000000000000
+      internalID: 8001922804120654494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_10
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 579
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65b8b2d71f233ca50800000000000000
+      internalID: 6540127096640605014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_11
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 567
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a87bcb734ab5eb850800000000000000
+      internalID: 6394649281780561802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_12
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 567
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c56dec84cfac0bf0800000000000000
+      internalID: -356717011756292663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_13
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 557
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dcaf25e6602cac60800000000000000
+      internalID: 7830669478394309840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_14
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 544
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b58a742af522540800000000000000
+      internalID: 4981649288416746269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_15
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 544
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf754ef3c6eae830800000000000000
+      internalID: 4101344140133236686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_16
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 531
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b56d78055f9b9e60800000000000000
+      internalID: 7970139153125696953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_17
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 520
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9042c2a60a0265a90800000000000000
+      internalID: -7325631870523399159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_18
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 531
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 937dae7814e6bb870800000000000000
+      internalID: 8699668332928489273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_19
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 520
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb6ca1769a23ed920800000000000000
+      internalID: 3016904503545480892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_20
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 507
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9df470d7cc981bd0800000000000000
+      internalID: -2659203197952524898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_21
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 507
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8c358a2e561ab720800000000000000
+      internalID: 2862625106843483278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_22
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 495
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90133e4d9f2d8d990800000000000000
+      internalID: -7360901620476727031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_23
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 495
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5053a97564dd72f00800000000000000
+      internalID: 1092084728847807749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_24
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 485
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3b59d88e5642eed0800000000000000
+      internalID: -2386267480716125381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_25
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 541
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf78929ce5a348d10800000000000000
+      internalID: 2126889102801995771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_26
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 193
+        width: 65
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0448fa2165a2264f0800000000000000
+      internalID: -837060031568444352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nv_Ui_27
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 0
+        width: 19
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a619ca3154b4f08a0800000000000000
+      internalID: -6336763390632095382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      nv_Ui_0: 3850349966389994796
+      nv_Ui_1: -4753952706020024863
+      nv_Ui_10: 6540127096640605014
+      nv_Ui_11: 6394649281780561802
+      nv_Ui_12: -356717011756292663
+      nv_Ui_13: 7830669478394309840
+      nv_Ui_14: 4981649288416746269
+      nv_Ui_15: 4101344140133236686
+      nv_Ui_16: 7970139153125696953
+      nv_Ui_17: -7325631870523399159
+      nv_Ui_18: 8699668332928489273
+      nv_Ui_19: 3016904503545480892
+      nv_Ui_2: -2833550452416476976
+      nv_Ui_20: -2659203197952524898
+      nv_Ui_21: 2862625106843483278
+      nv_Ui_22: -7360901620476727031
+      nv_Ui_23: 1092084728847807749
+      nv_Ui_24: -2386267480716125381
+      nv_Ui_25: 2126889102801995771
+      nv_Ui_26: -837060031568444352
+      nv_Ui_27: -6336763390632095382
+      nv_Ui_3: 6023457297327235823
+      nv_Ui_4: 1782425162723371026
+      nv_Ui_5: -3171026564273500002
+      nv_Ui_6: -2813103738995592958
+      nv_Ui_7: 719244133663512613
+      nv_Ui_8: 3759039079228721618
+      nv_Ui_9: 8001922804120654494
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

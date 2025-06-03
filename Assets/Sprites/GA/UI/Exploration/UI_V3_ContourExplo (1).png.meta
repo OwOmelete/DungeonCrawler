@@ -1,0 +1,792 @@
+fileFormatVersion: 2
+guid: 5bc70458adc08e94792522b3da73668d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5655849499764238753
+    second: UI_V3_ContourExplo (1)_0
+  - first:
+      213: -441405287546450293
+    second: UI_V3_ContourExplo (1)_1
+  - first:
+      213: 5531795390172128573
+    second: UI_V3_ContourExplo (1)_2
+  - first:
+      213: -488968005825962857
+    second: UI_V3_ContourExplo (1)_3
+  - first:
+      213: 6167930644885858917
+    second: UI_V3_ContourExplo (1)_4
+  - first:
+      213: -423563444350358390
+    second: UI_V3_ContourExplo (1)_5
+  - first:
+      213: -1129650583896205307
+    second: UI_V3_ContourExplo (1)_6
+  - first:
+      213: -9093441685062614575
+    second: UI_V3_ContourExplo (1)_7
+  - first:
+      213: 2527378835591767574
+    second: UI_V3_ContourExplo (1)_8
+  - first:
+      213: -6911259667878673112
+    second: UI_V3_ContourExplo (1)_9
+  - first:
+      213: -9062158188591133828
+    second: UI_V3_ContourExplo (1)_10
+  - first:
+      213: -6087590482613898025
+    second: UI_V3_ContourExplo (1)_11
+  - first:
+      213: 5728552161973467552
+    second: UI_V3_ContourExplo (1)_12
+  - first:
+      213: -5293782439404961571
+    second: UI_V3_ContourExplo (1)_13
+  - first:
+      213: 7030139168413215545
+    second: UI_V3_ContourExplo (1)_14
+  - first:
+      213: -8197834139866217069
+    second: UI_V3_ContourExplo (1)_15
+  - first:
+      213: -8363479447887496527
+    second: UI_V3_ContourExplo (1)_16
+  - first:
+      213: -9087233858138054153
+    second: UI_V3_ContourExplo (1)_17
+  - first:
+      213: -8868231784057838246
+    second: UI_V3_ContourExplo (1)_18
+  - first:
+      213: -9124965560928004270
+    second: UI_V3_ContourExplo (1)_19
+  - first:
+      213: -4005881959830336058
+    second: UI_V3_ContourExplo (1)_20
+  - first:
+      213: 4144677008194405380
+    second: UI_V3_ContourExplo (1)_21
+  - first:
+      213: -4426026170289298521
+    second: UI_V3_ContourExplo (1)_22
+  - first:
+      213: 2761577784196361818
+    second: UI_V3_ContourExplo (1)_23
+  - first:
+      213: 5830958775966176499
+    second: UI_V3_ContourExplo (1)_24
+  - first:
+      213: -2318998261201120469
+    second: UI_V3_ContourExplo (1)_25
+  - first:
+      213: 2245423968571440166
+    second: UI_V3_ContourExplo (1)_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_0
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 918
+        width: 19
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f565b7f88d26281b0800000000000000
+      internalID: -5655849499764238753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_1
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 614
+        width: 65
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8e80d9ca30dfd9f0800000000000000
+      internalID: -441405287546450293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_2
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 586
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d356a514992e4cc40800000000000000
+      internalID: 5531795390172128573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 574
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79c563a7036d639f0800000000000000
+      internalID: -488968005825962857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_4
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 574
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56aeaaf0e34e89550800000000000000
+      internalID: 6167930644885858917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_5
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 562
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ce7af9a433f1af0800000000000000
+      internalID: -423563444350358390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_6
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 562
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 508dd8277cca250f0800000000000000
+      internalID: -1129650583896205307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_7
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 549
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d10d1077fa9dc180800000000000000
+      internalID: -9093441685062614575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_8
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 538
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 616a94c09ad031320800000000000000
+      internalID: 2527378835591767574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_9
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 549
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8258b9113f54610a0800000000000000
+      internalID: -6911259667878673112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_10
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 538
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7bc0ae042fbc3280800000000000000
+      internalID: -9062158188591133828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_11
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 525
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d4ffb1a5b8848ba0800000000000000
+      internalID: -6087590482613898025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_12
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 525
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a979b317d7ef7f40800000000000000
+      internalID: 5728552161973467552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_13
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 514
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd001154be4b886b0800000000000000
+      internalID: -5293782439404961571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_14
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 502
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b64de8352109160800000000000000
+      internalID: 7030139168413215545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_15
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 502
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39544b5a8417b3e80800000000000000
+      internalID: -8197834139866217069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_16
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 490
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bab266f0c3feeb80800000000000000
+      internalID: -8363479447887496527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_17
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 490
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f167c6c3f8a3e180800000000000000
+      internalID: -9087233858138054153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_18
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 460
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a556765ad26bde480800000000000000
+      internalID: -8868231784057838246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_19
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 478
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25796312b2c9d5180800000000000000
+      internalID: -9124965560928004270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_20
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 478
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cdca24e49f3868c0800000000000000
+      internalID: -4005881959830336058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_21
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 467
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 404082e87c9d48930800000000000000
+      internalID: 4144677008194405380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_22
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 454
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a3e251f5a89392c0800000000000000
+      internalID: -4426026170289298521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_23
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 443
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5e62aefc58135620800000000000000
+      internalID: 2761577784196361818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_24
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 427
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f4196dec1abbe050800000000000000
+      internalID: 5830958775966176499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_25
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 431
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b23db563e5341dfd0800000000000000
+      internalID: -2318998261201120469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_V3_ContourExplo (1)_26
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 1904
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62c39d0e339592f10800000000000000
+      internalID: 2245423968571440166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
