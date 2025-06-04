@@ -47,6 +47,11 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private SpriteRenderer[] buttons;
     [SerializeField] private TMP_Text[] textButtons;
     [SerializeField] private EndFight _endFight;
+    [SerializeField] private GameObject healthBarExplo;
+    [SerializeField] private RectTransform lightBar;
+    [SerializeField] private RectTransform oxygenBar;
+    [SerializeField] private Vector3 lightBarOriginPos;
+    [SerializeField] private Vector3 oxygenBarOriginPos;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -1927,7 +1932,9 @@ public class CombatManager : MonoBehaviour
         UiExplo.SetActive(true);
         combatScene.SetActive(false);
         audioManager.SwitchToExplo();
-
+        healthBarExplo.SetActive(true);
+        lightBar.position = lightBarOriginPos;
+        oxygenBar.position = oxygenBarOriginPos;
     }
     
     public int SecondaryPlayerCoordsX()

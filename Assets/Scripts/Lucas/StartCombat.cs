@@ -13,7 +13,11 @@ public class StartCombat : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject combatScene;
     [SerializeField] private CombatManager combatManagerReference;
-    [SerializeField] private GameObject uiExplo;
+    [SerializeField] private GameObject healthBarExplo;
+    [SerializeField] private RectTransform lightBar;
+    [SerializeField] private RectTransform oxygenBar;
+    [SerializeField] private Vector3 newLightBarPos;
+    [SerializeField] private Vector3 newOxygenBarPos;
     [SerializeField] private float animDuration = 2f;
     [SerializeField] private Image dangerImage;
     [SerializeField] private Image blackFade;
@@ -35,7 +39,10 @@ public class StartCombat : MonoBehaviour
         blackFade.DOFade(0, 1f);
         player.SetActive(false);
         combatScene.SetActive(true);
-        //uiExplo.SetActive(false);
+        healthBarExplo.SetActive(false);
+        lightBar.localPosition = newLightBarPos;
+        Debug.Log(newLightBarPos);
+        oxygenBar.localPosition = newOxygenBarPos;
         //combatManagerReference._fishDatas.Clear();
         combatManagerReference._fishDatas = fishDatas;
         Player playerScript = player.GetComponent<Player>();

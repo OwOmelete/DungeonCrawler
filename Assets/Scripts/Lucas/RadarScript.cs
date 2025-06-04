@@ -19,9 +19,7 @@ public class RadarScript : MonoBehaviour
     [SerializeField] private float looseLightValue = 1f;
     private float maxRadarTime = 8f;
     private bool isActive;
-
     
-
     void CheckNearestObject(Transform parent, Transform indicatorTransform)
     {
         Transform nearestObject = null;
