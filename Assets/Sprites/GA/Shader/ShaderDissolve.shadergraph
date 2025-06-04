@@ -737,7 +737,7 @@
     "m_ObjectId": "25ae09a1cf0e46e59cd881ee6489a12f",
     "m_Title": "Main Dissolve Effect",
     "m_Position": {
-        "x": -1264.9998779296875,
+        "x": -1265.0,
         "y": 550.9999389648438
     }
 }
@@ -2935,7 +2935,7 @@
     "m_ObjectId": "f7dd0fe9aff246a98615a1ed7335c31a",
     "m_Title": "Edge",
     "m_Position": {
-        "x": -1440.9998779296875,
+        "x": -1441.0,
         "y": 1027.0
     }
 }
