@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spritesheetBrunoAttaque_0: 6539570063344776937
+      spritesheetBrunoAttaque_1: 5586488865083450760
+      spritesheetBrunoAttaque_2: -6316034609852734106
+      spritesheetBrunoAttaque_3: -7227014434658114920
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

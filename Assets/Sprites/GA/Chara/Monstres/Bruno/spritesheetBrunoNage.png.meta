@@ -409,7 +409,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spritesheetBrunoNage_0: 2227513163239466203
+      spritesheetBrunoNage_1: -190325542912987195
+      spritesheetBrunoNage_10: 5548070871237758561
+      spritesheetBrunoNage_11: 5543995376556608762
+      spritesheetBrunoNage_2: 3638702793635159573
+      spritesheetBrunoNage_3: -601839352227366269
+      spritesheetBrunoNage_4: 2729902976174828636
+      spritesheetBrunoNage_5: -381418957998478163
+      spritesheetBrunoNage_6: 1783216792970217282
+      spritesheetBrunoNage_7: 6900990964937623905
+      spritesheetBrunoNage_8: -4060705526337859381
+      spritesheetBrunoNage_9: -2252353610032613373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

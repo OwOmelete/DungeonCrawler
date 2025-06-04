@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spritesheetGGNage_0: -4107313401966004859
+      spritesheetGGNage_1: -1128084386635972447
+      spritesheetGGNage_2: 409781865906921320
+      spritesheetGGNage_3: -6858343039832864233
+      spritesheetGGNage_4: -6508130202587595979
+      spritesheetGGNage_5: 7772911749104115282
+      spritesheetGGNage_6: -4271921763376958460
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
