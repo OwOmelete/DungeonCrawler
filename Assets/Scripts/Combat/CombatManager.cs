@@ -1264,6 +1264,7 @@ public class CombatManager : MonoBehaviour
                 new Vector3(player.positionX, player.positionY, 0),quaternion.identity);
         playerEntityRenderer = player.prefab.GetComponentInChildren<SpriteRenderer>();
         player.entityChild = player.prefab.transform.GetChild(0);
+        player.Animator = player.entityChild.GetComponent<Animator>();
         turnOrder.Add(player);
         player.isStanding = true;
         for (int i = 0; i < _playerData.hp; i++)
@@ -1326,6 +1327,7 @@ public class CombatManager : MonoBehaviour
                 new Vector3(fish.fishData.positionX,
                     fish.fishData.positionY, 0),quaternion.identity);
             fish.fishDataInstance.entityChild = fish.fishDataInstance.prefab.transform.GetChild(0);
+            fish.fishDataInstance.Animator = fish.fishDataInstance.entityChild.GetComponent<Animator>();
             fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
             if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
@@ -1546,6 +1548,7 @@ public class CombatManager : MonoBehaviour
         int dirX = x - entity.positionX;
         int dirY = y - entity.positionY;
         EntityInstance lastEnnemyTouched = null;
+        entity.Animator.SetTrigger("isAttacking");
         for (int i = 0; i < attack.range; i++)
         {
             /*if (grid[y+i*(int)Mathf.Sign(dirY), x+i*(int)Mathf.Sign(dirX)] != null)
@@ -1754,21 +1757,29 @@ public class CombatManager : MonoBehaviour
     {
         entity.TakeDamage(dmg);
         Debug.Log("pv restant : " + entity.name + entity.hp);
-        if (entity == Ennemy1 && dmg > 0)
+        if (dmg > 0)
         {
-            UpdateLifeBar(Ennemy1,true);
-            LifeBarAnimators[1].SetTrigger("isTakingDamage");
+            if (entity.Animator)
+            {
+                entity.Animator.SetTrigger("isTakingDamage");
+            }
+            if (entity == Ennemy1)
+            {
+                UpdateLifeBar(Ennemy1,true);
+                LifeBarAnimators[1].SetTrigger("isTakingDamage");
+            }
+            else if (entity == Ennemy2)
+            {
+                UpdateLifeBar(Ennemy2,true);
+                LifeBarAnimators[2].SetTrigger("isTakingDamage");
+            }
+            else if (entity == player)
+            {
+                UpdateLifeBar(player,true);
+                LifeBarAnimators[0].SetTrigger("isTakingDamage");
+            }
         }
-        else if (entity == Ennemy2&& dmg > 0)
-        {
-            UpdateLifeBar(Ennemy2,true);
-            LifeBarAnimators[2].SetTrigger("isTakingDamage");
-        }
-        else if (entity == player&& dmg > 0)
-        {
-            UpdateLifeBar(player,true);
-            LifeBarAnimators[0].SetTrigger("isTakingDamage");
-        }
+        
         if (entity.hp <= 0)
         {
             if (entity == player)
