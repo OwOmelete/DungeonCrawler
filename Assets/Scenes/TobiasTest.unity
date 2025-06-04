@@ -1001,7 +1001,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 47
+  field of view: 22.4
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1500,6 +1500,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1501172743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698847627506933570, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104792463955788271, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: m_Name
+      value: AlgueVerte05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446678928430038733, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 437817ea99f9f1644b3437a628c707fa, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9bb6fec94697c9e42a3813b0c91bd7ec, type: 3}
 --- !u!1001 &1595859674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2675,3 +2736,4 @@ SceneRoots:
   - {fileID: 1595859674}
   - {fileID: 3477223886620617169}
   - {fileID: 477654205}
+  - {fileID: 1501172743}
