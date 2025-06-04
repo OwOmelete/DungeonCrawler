@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_Sonar_Fleche_Bleue_0: -3022768016751325276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

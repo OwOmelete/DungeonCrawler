@@ -43,6 +43,12 @@ TagManager:
   - name: FX Foreground
     uniqueID: 31813701
     locked: 0
+  - name: Background B3
+    uniqueID: 37451043
+    locked: 0
+  - name: Background B3 parrois
+    uniqueID: 636638613
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
