@@ -280,6 +280,7 @@ public class SpikeBallBehaviour : AbstractIA
 
         void ShootSpike(FishDataInstance entity, int dirX, int dirY)
         {
+            entity.Animator.SetTrigger("isAttacking");
             if (CombatManager.Instance.grid[entity.positionY + dirY, entity.positionX + dirX] != null)
             {
                 CombatManager.Instance.Damage(
