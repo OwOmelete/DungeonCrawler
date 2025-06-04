@@ -133,11 +133,12 @@ public class GrandGouzBehaviour : AbstractIA
                              CombatManager.Instance.player.positionY >= entity.positionY - 1))
                         {
                             entity.PreparingAttack = true;
+                            entity.Animator.SetBool("preparingAttack", true);
                             UpdateWeakPoints(entity);
                             entity.LastPrevisualisation = Instantiate(entity.PrevisualisationAttack,
                                 new Vector3(entity.positionX + 2, entity.positionY, 0), quaternion.identity);
                             
-                            entity.sr.sprite = entity.preparingAttackSprite;
+                            //entity.sr.sprite = entity.preparingAttackSprite;
                             
 
                         }
@@ -154,10 +155,11 @@ public class GrandGouzBehaviour : AbstractIA
                              CombatManager.Instance.player.positionY >= entity.positionY - 1))
                         {
                             entity.PreparingAttack = true;
+                            entity.Animator.SetBool("preparingAttack", true);
                             UpdateWeakPoints(entity);
                             entity.LastPrevisualisation = Instantiate(entity.PrevisualisationAttack,
                                 new Vector3(entity.positionX - 1, entity.positionY, 0), quaternion.identity);
-                            entity.sr.sprite = entity.preparingAttackSprite;
+                            //entity.sr.sprite = entity.preparingAttackSprite;
                             
                         }
                     }
@@ -187,12 +189,14 @@ public class GrandGouzBehaviour : AbstractIA
             }
             
 
-            StartCoroutine(attacking(entity));
+            //StartCoroutine(attacking(entity));
 
             Destroy(entity.LastPrevisualisation);
 
             entity.PreparingAttack = false;
             entity.HasAttacked = true;
+            entity.Animator.SetBool("preparingAttack", false);
+            entity.Animator.SetTrigger("isAttacking");
             UpdateWeakPoints(entity);
         }
 
