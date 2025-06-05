@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Twins
   width: 1
   height: 3
-  positionX: 4
-  positionY: 0
+  positionX: 5
+  positionY: 2
   hp: 1
   armor: 5
   actionPoint: 0

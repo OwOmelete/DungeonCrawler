@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 7122b2042e4f8ed4486ab38687b64bee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1825665443124144640
+    second: spritesheetTutoAttaque_0
+  - first:
+      213: -3204179013381185561
+    second: spritesheetTutoAttaque_1
+  - first:
+      213: -4420824102706902455
+    second: spritesheetTutoAttaque_2
+  - first:
+      213: -6914775241480956914
+    second: spritesheetTutoAttaque_3
+  - first:
+      213: -1305956024946200147
+    second: spritesheetTutoAttaque_4
+  - first:
+      213: 7740139396895964089
+    second: spritesheetTutoAttaque_5
+  - first:
+      213: -6792765246292578022
+    second: spritesheetTutoAttaque_6
+  - first:
+      213: -5518226358731094319
+    second: spritesheetTutoAttaque_7
+  - first:
+      213: -5889539501171700023
+    second: spritesheetTutoAttaque_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_0
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 809
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c418c172e1fdb4749816bd9ce39ec0e2
+      internalID: -1588241015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_1
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 809
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 107c9137e6a556b4f9ccce77dc1883d3
+      internalID: -916413323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_2
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 812
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ad9c0c4d5cb17468b77c9ec06f7a54
+      internalID: -1559258899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 417
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac627c10b2d60342a9cf777e01ed820
+      internalID: 1038572562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_4
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 418
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34202414edea9ad459cb1bcc467662d1
+      internalID: 1964550228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_5
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 418
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76fff837b2743624fb58b832637ced55
+      internalID: -696490859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_6
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 25
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9632dbc82f89d3247893b21f168ba603
+      internalID: -1528529235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_7
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 24
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359088c903f8dca40be84ca2d7eee96f
+      internalID: 1429109522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetTutoAttaque_8
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 22
+        width: 456
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4591e623c85b6fd44baa5d4abf9d8025
+      internalID: -1876637161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 78239bfe62f641946bab90a075cdf5a0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spritesheetTutoAttaque_0: -1588241015
+      spritesheetTutoAttaque_1: -916413323
+      spritesheetTutoAttaque_2: -1559258899
+      spritesheetTutoAttaque_3: 1038572562
+      spritesheetTutoAttaque_4: 1964550228
+      spritesheetTutoAttaque_5: -696490859
+      spritesheetTutoAttaque_6: -1528529235
+      spritesheetTutoAttaque_7: 1429109522
+      spritesheetTutoAttaque_8: -1876637161
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

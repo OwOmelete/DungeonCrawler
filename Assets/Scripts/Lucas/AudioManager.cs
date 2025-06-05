@@ -26,4 +26,9 @@ public class AudioManager : MonoBehaviour
         audioSource.Play();
         audioSource.DOFade(1, fadeDuration);
     }
+
+    public void OnSelected()
+    {
+        
+    }
 }

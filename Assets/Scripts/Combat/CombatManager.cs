@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -45,6 +46,12 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private SpriteRenderer[] buttons;
     [SerializeField] private TMP_Text[] textButtons;
+    [SerializeField] private EndFight _endFight;
+    [SerializeField] private GameObject healthBarExplo;
+    [SerializeField] private RectTransform lightBar;
+    [SerializeField] private RectTransform oxygenBar;
+    [SerializeField] private Vector3 lightBarOriginPos;
+    [SerializeField] private Vector3 oxygenBarOriginPos;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -120,11 +127,11 @@ public class CombatManager : MonoBehaviour
                 }
             }
         }
-        if (combatFinished)
+        /*if (combatFinished)
         {
             EndFight();
             return;
-        }
+        }*/
         EntityInstance currentEntity = turnOrder[currentTurnIndex];
         if (currentEntity == player)
         {
@@ -150,7 +157,6 @@ public class CombatManager : MonoBehaviour
         currentTurnIndex = (currentTurnIndex + 1) % turnOrder.Count;
         if (currentTurnIndex % turnOrder.Count == 0)
         {
-            player.light -= player.lightLostPerTurn;
             player.light = Mathf.Clamp(player.light, 1, 10);
             UpdateLight();
             hasMoved = false;
@@ -354,6 +360,7 @@ public class CombatManager : MonoBehaviour
         if (x > player.positionX && x > SecondaryPlayerCoordsX())
         {
             rightPrevisuList.Add(new Tuple<int, int>(x,y));
+            Debug.Log("grosse teub");
         }
         if (x < player.positionX && x < SecondaryPlayerCoordsX())
         {
@@ -1322,6 +1329,7 @@ public class CombatManager : MonoBehaviour
             fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
             if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
+                fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
                 FishDataInstance brotulo = fish.fishDataInstance;
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
@@ -1368,6 +1376,10 @@ public class CombatManager : MonoBehaviour
                 {
                     IAref.Flipping(fish.fishDataInstance);
                 }
+            }
+            else if (fish.fishDataInstance.behaviour is TutoBehaviour)
+            {
+                fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
             }
         }
     }
@@ -1813,7 +1825,16 @@ public class CombatManager : MonoBehaviour
         entity.spikeList.Clear();
         Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
-        Destroy(entity.prefab);
+        FishDataInstance fish = entity as FishDataInstance;
+        if (turnOrder.Count <= 1)
+        {
+            _endFight.lastEnnemyDead(fish.sr);
+            StartCoroutine(Dissolve(fish.sr, entity, true));
+        }
+        else
+        {
+            StartCoroutine(Dissolve(fish.sr, entity, false));
+        }
     }
 
     int NegativeToZero(int value)
@@ -1911,10 +1932,12 @@ public class CombatManager : MonoBehaviour
         UiExplo.SetActive(true);
         combatScene.SetActive(false);
         audioManager.SwitchToExplo();
-
+        healthBarExplo.SetActive(true);
+        lightBar.position = lightBarOriginPos;
+        oxygenBar.position = oxygenBarOriginPos;
     }
     
-    int SecondaryPlayerCoordsX()
+    public int SecondaryPlayerCoordsX()
     {
         switch (CombatManager.Instance.player.direction)
         {
@@ -1931,7 +1954,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    int SecondaryPlayerCoordsY()
+    public int SecondaryPlayerCoordsY()
     {
         switch (CombatManager.Instance.player.direction)
         {
@@ -2051,5 +2074,15 @@ public class CombatManager : MonoBehaviour
         sr.sprite = pvHit;
         yield return new WaitForSeconds(pvHitFlashDelay);
         sr.sprite = baseSprite;
+    }
+    
+    IEnumerator Dissolve(SpriteRenderer sr,EntityInstance entity, bool b)
+    {
+        while (sr.material.GetFloat("_DissolveProgression") < 1)
+        {
+            sr.material.SetFloat("_DissolveProgression",sr.material.GetFloat("_DissolveProgression")+0.02f);
+            yield return new WaitForSeconds(0.02f);
+        }
+        if(b) Destroy(entity.prefab);
     }
 }

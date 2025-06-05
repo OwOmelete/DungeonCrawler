@@ -48,6 +48,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -150,6 +151,7 @@
       <workItem from="1748001376536" duration="12053000" />
       <workItem from="1748247386476" duration="13705000" />
       <workItem from="1748421130462" duration="2817000" />
+      <workItem from="1748938649006" duration="3328000" />
     </task>
     <servers />
   </component>

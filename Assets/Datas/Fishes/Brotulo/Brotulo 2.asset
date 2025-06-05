@@ -15,8 +15,8 @@ MonoBehaviour:
   name: Brotulo
   width: 1
   height: 1
-  positionX: 4
-  positionY: 1
+  positionX: 2
+  positionY: 3
   hp: 1
   armor: 5
   actionPoint: 4

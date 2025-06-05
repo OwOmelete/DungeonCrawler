@@ -31,6 +31,14 @@ public class EnemyChase : MonoBehaviour
         else
         {
             transform.DORotate(new Vector3(0, 0, angle), 0.5f);
+            if (angle > 90f || angle < -90 )
+            {
+                GetComponent<SpriteRenderer>().flipY = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipY = false;
+            }
         }
 
         iaFishRef.canMove = false;
