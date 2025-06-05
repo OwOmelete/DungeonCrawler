@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "432a1f4b25f04ac6931e820483bd75e6"
+        },
+        {
+            "m_Id": "bdad15728fbe4e4fb1241f0ad93d73dd"
         }
     ],
     "m_Keywords": [],
@@ -925,8 +928,8 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteCustomLitSubTarget",
-    "m_ObjectId": "2f405ae137cd4461b02f45f898491403"
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteLitSubTarget",
+    "m_ObjectId": "2f9f9d3685154daf9baebde8faf1fae9"
 }
 
 {
@@ -1180,10 +1183,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -346.00006103515627,
-            "y": -36.99998474121094,
-            "width": 128.0001220703125,
-            "height": 34.00004577636719
+            "x": -518.0000610351563,
+            "y": -37.0,
+            "width": 128.00003051757813,
+            "height": 33.999996185302737
         }
     },
     "m_Slots": [
@@ -2191,8 +2194,8 @@
     "m_ObjectId": "a3d3654bd1c74ac38312ec845e020270",
     "m_Title": "Swaying",
     "m_Position": {
-        "x": -2241.0,
-        "y": -1123.0
+        "x": -2241.000244140625,
+        "y": -1123.0001220703125
     }
 }
 
@@ -2602,6 +2605,36 @@
 }
 
 {
+    "m_SGVersion": 3,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
+    "m_ObjectId": "bdad15728fbe4e4fb1241f0ad93d73dd",
+    "m_Guid": {
+        "m_GuidSerialized": "bc6a3ff1-86ce-42a2-adff-91ccc27252f0"
+    },
+    "m_Name": "Color",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Color",
+    "m_DefaultReferenceName": "_Color",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+    },
+    "isMainColor": false,
+    "m_ColorMode": 0
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.PositionNode",
     "m_ObjectId": "bf375e4b51da4c49a002648289fa2f13",
@@ -2689,10 +2722,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -172.9999542236328,
-            "y": -36.99998474121094,
-            "width": 207.99990844726563,
-            "height": 435.00006103515627
+            "x": -345.00006103515627,
+            "y": -37.0,
+            "width": 183.00001525878907,
+            "height": 251.0
         }
     },
     "m_Slots": [
@@ -2725,7 +2758,7 @@
         "tex2d"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -2802,6 +2835,9 @@
         },
         {
             "m_Id": "432a1f4b25f04ac6931e820483bd75e6"
+        },
+        {
+            "m_Id": "bdad15728fbe4e4fb1241f0ad93d73dd"
         }
     ]
 }
@@ -3121,7 +3157,7 @@
     "m_ObjectId": "ea8bb5ea9d084f35b6b2d5eeeacd8e9f",
     "m_Datas": [],
     "m_ActiveSubTarget": {
-        "m_Id": "2f405ae137cd4461b02f45f898491403"
+        "m_Id": "2f9f9d3685154daf9baebde8faf1fae9"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
