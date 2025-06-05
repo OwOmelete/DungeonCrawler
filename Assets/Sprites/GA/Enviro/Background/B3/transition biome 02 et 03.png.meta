@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      transition biome 02 et 03_0: 3578457143332520851
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

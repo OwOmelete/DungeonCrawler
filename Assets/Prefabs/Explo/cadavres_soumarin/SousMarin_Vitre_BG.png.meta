@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SousMarin_Vitre_BG_0: -3556026823155925665
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

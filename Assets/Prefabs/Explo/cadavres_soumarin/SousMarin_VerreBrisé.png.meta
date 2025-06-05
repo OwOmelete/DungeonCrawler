@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "SousMarin_VerreBris\xE9_0": 8011873141358152645
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
