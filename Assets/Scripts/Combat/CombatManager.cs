@@ -360,7 +360,6 @@ public class CombatManager : MonoBehaviour
         if (x > player.positionX && x > SecondaryPlayerCoordsX())
         {
             rightPrevisuList.Add(new Tuple<int, int>(x,y));
-            Debug.Log("grosse teub");
         }
         if (x < player.positionX && x < SecondaryPlayerCoordsX())
         {
@@ -1338,9 +1337,9 @@ public class CombatManager : MonoBehaviour
             fish.fishDataInstance.entityChild = fish.fishDataInstance.prefab.transform.GetChild(0);
             fish.fishDataInstance.Animator = fish.fishDataInstance.entityChild.GetComponent<Animator>();
             fish.fishDataInstance.behaviour = fish.fishDataInstance.prefab.GetComponent<AbstractIA>();
+            fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
             if (fish.fishDataInstance.behaviour is SpikeBallBehaviour)
             {
-                fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
                 FishDataInstance brotulo = fish.fishDataInstance;
                 SpikeBallBehaviour IAref = fish.fishDataInstance.behaviour as SpikeBallBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
@@ -1379,7 +1378,6 @@ public class CombatManager : MonoBehaviour
 
             else if (fish.fishDataInstance.behaviour is GrandGouzBehaviour)
             {
-                fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
                 Debug.Log(fish.fishDataInstance.sr);
                 GrandGouzBehaviour IAref = fish.fishDataInstance.behaviour as GrandGouzBehaviour;
                 Debug.Log(fish.fishData.startingDirection);
@@ -1387,10 +1385,6 @@ public class CombatManager : MonoBehaviour
                 {
                     IAref.Flipping(fish.fishDataInstance);
                 }
-            }
-            else if (fish.fishDataInstance.behaviour is TutoBehaviour)
-            {
-                fish.fishDataInstance.sr = fish.fishDataInstance.prefab.GetComponentInChildren<SpriteRenderer>();
             }
         }
     }
@@ -1848,8 +1842,9 @@ public class CombatManager : MonoBehaviour
         FishDataInstance fish = entity as FishDataInstance;
         if (turnOrder.Count <= 1)
         {
-            _endFight.lastEnnemyDead(fish.sr);
+            _endFight.lastEnnemyDead();
             StartCoroutine(Dissolve(fish.sr, entity, true));
+            
         }
         else
         {
