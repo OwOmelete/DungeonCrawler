@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
@@ -9,12 +8,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject menuImage;
     public Button firstSelectedButton;
 
-    public Input input; 
-
     private void Start()
     {
-        //input.Enable(); 
-
         Time.timeScale = 0;
         menuCanvas.SetActive(true);
         menuImage.SetActive(true);
@@ -25,7 +20,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (input.Equals(enabled)/*UI.GoBack.triggered*/) 
+        if (Input.GetKeyDown("joystick button 7"))
         {
             GoToMainMenu();
         }
