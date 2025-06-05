@@ -1267,6 +1267,15 @@ public class CombatManager : MonoBehaviour
         player.Animator = player.entityChild.GetComponent<Animator>();
         turnOrder.Add(player);
         player.isStanding = true;
+        for (int i = 0; i < LifeBarPlayer.Length; i++)
+        {
+            LifeBarPlayer[i].enabled = false;
+            LifeBarPlayerEmpty[i].enabled = false;
+            LifeBarEnnemy1[i].enabled = false;
+            LifeBarEnnemy1Empty[i].enabled = false;
+            LifeBarEnnemy2[i].enabled = false;
+            LifeBarEnnemy2Empty[i].enabled = false;
+        }
         for (int i = 0; i < _playerData.hp; i++)
         {
             LifeBarPlayerEmpty[i].enabled = true;
