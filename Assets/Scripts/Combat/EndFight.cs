@@ -9,7 +9,7 @@ public class EndFight : MonoBehaviour
     [SerializeField] private Image endFightImg;
     [SerializeField] private Image blackFade;
     
-    public void lastEnnemyDead(SpriteRenderer sr)
+    public void lastEnnemyDead()
     {
         StartCoroutine(endOfFight());
     }
