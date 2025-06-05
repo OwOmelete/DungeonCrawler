@@ -22,6 +22,7 @@ public class LightManager : MonoBehaviour
     public bool haveLight = true; // verifie si il reste de la lumière
 
     [HideInInspector] public PlayerDataInstance player;
+    private Coroutine looseLightCoroutine;
     #endregion
     
     private void Start()
@@ -30,7 +31,7 @@ public class LightManager : MonoBehaviour
         player.light = maxLight;
         playerLight.pointLightOuterRadius = player.light;
         playerLight.pointLightInnerRadius = player.light / 2;
-        StartCoroutine(LooseLight());
+        looseLightCoroutine = StartCoroutine(LooseLight());
     }
 
     IEnumerator LooseLight()    // coroutine qui fait baisser peu a peu le niveau de lumiere
@@ -40,37 +41,13 @@ public class LightManager : MonoBehaviour
             player.light -= looseLightValue;
             DOTween.To(() => playerLight.pointLightOuterRadius, x => playerLight.pointLightOuterRadius = x, player.light, lerpDuration);
             DOTween.To(() => playerLight.pointLightInnerRadius, x => playerLight.pointLightInnerRadius = x, player.light / 2, lerpDuration);
-            //UpdateUi();
+          
             yield return new WaitForSeconds(looseLightDelay);
         }
+
+        looseLightCoroutine = null;
     }
-    /*
-    public void UpdateUi()
-    {
-        float quarterMaxLight = (maxLight - minLight) / 4;
-        if (player.light <= quarterMaxLight * 3 && player.light > quarterMaxLight * 2 )
-        {
-            LightBar.ChangeSprite(1);
-        }
-        else if (player.light <= quarterMaxLight * 2 && player.light > quarterMaxLight)
-        {
-            LightBar.ChangeSprite(2);
-        }
-        else if (player.light <= quarterMaxLight && player.light > minLight)
-        {
-            LightBar.ChangeSprite(3);
-        }
-        else if (player.light <= minLight)
-        {
-            LightBar.ChangeSprite(4);
-            haveLight = false;
-        }
-        else
-        {
-            LightBar.ChangeSprite(0);
-        }
-    }
-    */
+    
     public void AddLight(float value)   // recharge la lumière
     {
         player.light += value;
@@ -89,6 +66,10 @@ public class LightManager : MonoBehaviour
 
     public void RestartCoroutine()
     {
-        StartCoroutine(LooseLight());
+        if (looseLightCoroutine == null)
+        {
+            looseLightCoroutine = StartCoroutine(LooseLight());
+        }
+        
     }
 }
