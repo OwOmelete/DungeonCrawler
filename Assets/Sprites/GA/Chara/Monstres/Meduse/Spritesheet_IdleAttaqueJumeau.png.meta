@@ -1,0 +1,367 @@
+fileFormatVersion: 2
+guid: 886a260f7503319428c28eddc2ffad23
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1748346317666010065
+    second: Spritesheet_IdleAttaqueJumeau_0
+  - first:
+      213: -1444745136340902515
+    second: Spritesheet_IdleAttaqueJumeau_1
+  - first:
+      213: 4169057528997848979
+    second: Spritesheet_IdleAttaqueJumeau_2
+  - first:
+      213: 6860515637485049703
+    second: Spritesheet_IdleAttaqueJumeau_3
+  - first:
+      213: 7213081528749199008
+    second: Spritesheet_IdleAttaqueJumeau_4
+  - first:
+      213: 1465841692950206348
+    second: Spritesheet_IdleAttaqueJumeau_5
+  - first:
+      213: -283372720442966352
+    second: Spritesheet_IdleAttaqueJumeau_6
+  - first:
+      213: -2067421350990248223
+    second: Spritesheet_IdleAttaqueJumeau_7
+  - first:
+      213: -5069518239151703209
+    second: Spritesheet_IdleAttaqueJumeau_8
+  - first:
+      213: -390502286768438680
+    second: Spritesheet_IdleAttaqueJumeau_9
+  - first:
+      213: 5948296820524682899
+    second: Spritesheet_IdleAttaqueJumeau_10
+  - first:
+      213: 3839295516983491723
+    second: Spritesheet_IdleAttaqueJumeau_11
+  - first:
+      213: -8708934513891298434
+    second: Spritesheet_IdleAttaqueJumeau_12
+  - first:
+      213: -1808211635720322791
+    second: Spritesheet_IdleAttaqueJumeau_13
+  - first:
+      213: 634566371076463743
+    second: Spritesheet_IdleAttaqueJumeau_14
+  - first:
+      213: 456381401658814619
+    second: Spritesheet_IdleAttaqueJumeau_15
+  - first:
+      213: -2377556629553499112
+    second: Spritesheet_IdleAttaqueJumeau_16
+  - first:
+      213: 7606423391094182724
+    second: Spritesheet_IdleAttaqueJumeau_17
+  - first:
+      213: -6411008545434445216
+    second: Spritesheet_IdleAttaqueJumeau_18
+  - first:
+      213: 5505110192940822220
+    second: Spritesheet_IdleAttaqueJumeau_19
+  - first:
+      213: 7090661304614196386
+    second: Spritesheet_IdleAttaqueJumeau_20
+  - first:
+      213: -4023875983335196301
+    second: Spritesheet_IdleAttaqueJumeau_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spritesheet_IdleAttaqueJumeau_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 642
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40d5fdf4a45ba0349831711f99e68be7
+      internalID: -496943558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_IdleAttaqueJumeau_1
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 0
+        width: 642
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed078ba00f301984dbf9bc0f53db201d
+      internalID: 785953810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_IdleAttaqueJumeau_2
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 0
+        width: 642
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384c97810957c1848b07ed3db085dac0
+      internalID: -68279460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_IdleAttaqueJumeau_3
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 0
+        width: 642
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6c536c02ae355846a98a0742a11cf9a
+      internalID: -285802281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_IdleAttaqueJumeau_4
+      rect:
+        serializedVersion: 2
+        x: 2568
+        y: 0
+        width: 642
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786922a2982c78149a5359c1f79b346b
+      internalID: -1052394792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_IdleAttaqueJumeau_5
+      rect:
+        serializedVersion: 2
+        x: 3210
+        y: 0
+        width: 642
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88667f8664e1b9d4cae4e19bb2375b5a
+      internalID: -61602535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_IdleAttaqueJumeau_6
+      rect:
+        serializedVersion: 2
+        x: 3852
+        y: 0
+        width: 642
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb9c23161a78e3489bf50e306bdcde0
+      internalID: 1339498233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_IdleAttaqueJumeau_7
+      rect:
+        serializedVersion: 2
+        x: 4494
+        y: 0
+        width: 642
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fbd69755a63f8b4c818cfb1cb28b365
+      internalID: -726941664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3c36d5a8e7ed48a439a4ce9142972dae
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Spritesheet_IdleAttaqueJumeau_0: -496943558
+      Spritesheet_IdleAttaqueJumeau_1: 785953810
+      Spritesheet_IdleAttaqueJumeau_2: -68279460
+      Spritesheet_IdleAttaqueJumeau_3: -285802281
+      Spritesheet_IdleAttaqueJumeau_4: -1052394792
+      Spritesheet_IdleAttaqueJumeau_5: -61602535
+      Spritesheet_IdleAttaqueJumeau_6: 1339498233
+      Spritesheet_IdleAttaqueJumeau_7: -726941664
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
