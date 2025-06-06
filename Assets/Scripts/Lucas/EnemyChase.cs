@@ -12,6 +12,11 @@ public class EnemyChase : MonoBehaviour
     [SerializeField] private float enemyAttackDelay = 1f;
     [SerializeField] private GameObject playerReference;
     [SerializeField] private IaFishExplo iaFishRef;
+
+    [SerializeField]
+    private SpriteRenderer sr;
+    
+    
     private bool playerOnTrigger;
     private void Awake()
     {
@@ -33,11 +38,11 @@ public class EnemyChase : MonoBehaviour
             transform.DORotate(new Vector3(0, 0, angle), 0.5f);
             if (angle > 90f || angle < -90 )
             {
-                GetComponent<SpriteRenderer>().flipY = true;
+                sr.flipY = true;
             }
             else
             {
-                GetComponent<SpriteRenderer>().flipY = false;
+                sr.flipY = false;
             }
         }
 
