@@ -84,9 +84,10 @@ public class TwinsBehaviour : AbstractIA
         {
             if (!entity.PreparingAttack && !entity.HasAttacked)
             {
-                entity.LastPrevisualisation =
-                    Instantiate(entity.PrevisualisationAttack,
-                        new Vector3(entity.positionX, entity.positionY + 1, 0), Quaternion.identity);
+                entity.Animator.SetBool("startingAttack", true);
+                //entity.LastPrevisualisation =
+                //    Instantiate(entity.PrevisualisationAttack,
+                //        new Vector3(entity.positionX, entity.positionY + 1, 0), Quaternion.identity);
                 entity.weakPointList.Add(entity.WeakPointsRight[0]);
                 entity.PreparingAttack = true;
             }
@@ -106,11 +107,13 @@ public class TwinsBehaviour : AbstractIA
 
     void Shoot(FishDataInstance entity, int dirX)
     {
+        
+        entity.Animator.SetBool("startingAttack", false);
         entity.PreparingAttack = false;
         
         entity.weakPointList.Clear();
         
-        Destroy(entity.LastPrevisualisation);
+        //Destroy(entity.LastPrevisualisation);
         
         if (CombatManager.Instance.grid[entity.positionY + 1, entity.positionX + dirX] != null)
         {
@@ -130,11 +133,11 @@ public class TwinsBehaviour : AbstractIA
             int rotation;
             if (dirX == 1)
             {
-                rotation = -90;
+                rotation = 90;
             }
             else
             {
-                rotation = 90;
+                rotation = -90;
             }
             spike.prefab = Instantiate(spike.prefab, new Vector3(entity.positionX + dirX,
                 entity.positionY + 1, 0), Quaternion.identity);

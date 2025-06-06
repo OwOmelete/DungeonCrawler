@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4588263931772368584}
   - component: {fileID: 3022403811605320853}
   m_Layer: 0
-  m_Name: Fish
+  m_Name: GrandGousier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
