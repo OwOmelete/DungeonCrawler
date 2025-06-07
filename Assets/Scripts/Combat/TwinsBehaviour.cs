@@ -139,8 +139,11 @@ public class TwinsBehaviour : AbstractIA
             {
                 rotation = -90;
             }
-            spike.prefab = Instantiate(spike.prefab, new Vector3(entity.positionX + dirX,
-                entity.positionY + 1, 0), Quaternion.identity);
+            spike.prefab = Instantiate(spike.prefab, new Vector3(entity.positionX,
+                entity.positionY+1, 0), Quaternion.identity);
+            spike.prefab.transform.DOMove(new Vector3(spike.prefab.transform.position.x + dirX,
+                spike.prefab.transform.position.y, 0), 0.5f)
+                .SetEase(Ease.InOutCubic);
             spike.entityChild = spike.prefab.transform.GetChild(0);
             spike.entityChild.transform.rotation = Quaternion.Euler(0,0,rotation);
         }

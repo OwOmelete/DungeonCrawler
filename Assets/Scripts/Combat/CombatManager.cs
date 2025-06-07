@@ -154,7 +154,6 @@ public class CombatManager : MonoBehaviour
                     indexToSuppr.Add(i);
                 }
             }
-
             for (int i = turnOrder.Count-1; i >= 0; i--)
             {
                 Debug.Log(i);
@@ -164,6 +163,7 @@ public class CombatManager : MonoBehaviour
                     Die(turnOrder[i]); 
                 }
             }
+            ResetPrevisuList();
             _endFight.lastEnnemyDead();
         }
     }
@@ -1332,7 +1332,7 @@ public class CombatManager : MonoBehaviour
                     LifeBarEnnemy2Empty[j].enabled = true;
                 }
                 Ennemy2Icon.enabled = true;
-                Ennemy1HeartIcon.SetActive(true);
+                Ennemy2HeartIcon.SetActive(true);
                 Ennemy2Icon.sprite = newFish.fishData.uiSprite;
                 UpdateLifeBar(Ennemy2,false);
             }
@@ -1865,7 +1865,7 @@ public class CombatManager : MonoBehaviour
         Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
         FishDataInstance fish = entity as FishDataInstance;
-        if (turnOrder.Count <= 1)
+        if (turnOrder.Count <= 1 && !combatFinished)
         {
             _endFight.lastEnnemyDead();
             StartCoroutine(Dissolve(fish.sr, entity, true));
