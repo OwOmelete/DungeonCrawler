@@ -70,6 +70,7 @@ namespace Combat
                         CombatManager.Instance.player.positionX - 2
                         , CombatManager.Instance.player.positionY))
                 {
+                    entity.Animator.SetTrigger("isAttacking");
                     CombatManager.Instance.Move(CombatManager.Instance.player,
                         CombatManager.Instance.player.positionX - 2
                         , CombatManager.Instance.player.positionY);
@@ -78,6 +79,7 @@ namespace Combat
                              CombatManager.Instance.player.positionX - 1
                              , CombatManager.Instance.player.positionY))
                 {
+                    entity.Animator.SetTrigger("isAttacking");
                     CombatManager.Instance.Move(CombatManager.Instance.player,
                         CombatManager.Instance.player.positionX - 1
                         , CombatManager.Instance.player.positionY);

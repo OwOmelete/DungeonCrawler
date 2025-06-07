@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: a4d4bd0261168c54b8ddf146c1150e7a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1859920572619657604
+    second: Spritesheet_DebutAttaque_Jumeaux_03_0
+  - first:
+      213: 7531026636951844228
+    second: Spritesheet_DebutAttaque_Jumeaux_03_1
+  - first:
+      213: -5474491622272538882
+    second: Spritesheet_DebutAttaque_Jumeaux_03_2
+  - first:
+      213: 7850025122128114930
+    second: Spritesheet_DebutAttaque_Jumeaux_03_3
+  - first:
+      213: 3947030905706128882
+    second: Spritesheet_DebutAttaque_Jumeaux_03_4
+  - first:
+      213: -6349667793956627544
+    second: Spritesheet_DebutAttaque_Jumeaux_03_5
+  - first:
+      213: 6384059806565889026
+    second: Spritesheet_DebutAttaque_Jumeaux_03_6
+  - first:
+      213: -7639108008736591870
+    second: Spritesheet_DebutAttaque_Jumeaux_03_7
+  - first:
+      213: -8003295860897525756
+    second: Spritesheet_DebutAttaque_Jumeaux_03_8
+  - first:
+      213: 5626743419847418931
+    second: Spritesheet_DebutAttaque_Jumeaux_03_9
+  - first:
+      213: -1756218568499482469
+    second: Spritesheet_DebutAttaque_Jumeaux_03_10
+  - first:
+      213: 8332450534231868485
+    second: Spritesheet_DebutAttaque_Jumeaux_03_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spritesheet_DebutAttaque_Jumeaux_03_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 641
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32adab2d5f3d77e4ba8fbb12d6ac1840
+      internalID: 1231962816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_DebutAttaque_Jumeaux_03_1
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 0
+        width: 641
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04d41ac172c20c84ca37761833267768
+      internalID: -1095344744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_DebutAttaque_Jumeaux_03_2
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 0
+        width: 641
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe3339bc993eb842b87ec1da7ff3207
+      internalID: -155572307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_DebutAttaque_Jumeaux_03_3
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 0
+        width: 641
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e4cb9a6f869714409ed8dbc78e1702f
+      internalID: 1347059363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_DebutAttaque_Jumeaux_03_4
+      rect:
+        serializedVersion: 2
+        x: 2564
+        y: 0
+        width: 641
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409a60f9ad48e6543ade4e4800d6a59a
+      internalID: 1551499441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: eca1e4be081ff0b46b5d0deb1d41692a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Spritesheet_DebutAttaque_Jumeaux_03_0: 1231962816
+      Spritesheet_DebutAttaque_Jumeaux_03_1: -1095344744
+      Spritesheet_DebutAttaque_Jumeaux_03_2: -155572307
+      Spritesheet_DebutAttaque_Jumeaux_03_3: 1347059363
+      Spritesheet_DebutAttaque_Jumeaux_03_4: 1551499441
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

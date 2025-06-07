@@ -71,6 +71,7 @@ public class EntityInstance
     public Sprite attackingSprite;
     public Sprite idleSprite;
     public List<Sprite> lifeBarList;
+    public Animator Animator;
     public enum dir
     {
         up,
