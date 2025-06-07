@@ -41,7 +41,7 @@ public class DeathManager : MonoBehaviour
         iaTab = new IaFishExplo[enemyParent.childCount];
         for (int i = 0; i < enemyParent.childCount; i++)
         {
-            iaTab[i] = enemyParent.GetChild(i).GetChild(0).GetComponent<IaFishExplo>();
+            iaTab[i] = enemyParent.GetChild(i).GetChild(1).GetComponent<IaFishExplo>();
         }
         lightTab = new GameObject[lightParent.childCount];
         for (int i = 0; i < lightParent.childCount; i++)
@@ -111,6 +111,7 @@ public class DeathManager : MonoBehaviour
 
         for (int i = 1; i < iaTab.Length; i++)
         {
+            Debug.Log(iaTab[i]);
             iaTab[i].RestartCoroutine();
         }
         for (int i = 0; i < lightTab.Length; i++)

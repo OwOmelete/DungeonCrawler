@@ -43,6 +43,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject Selection;
     [SerializeField] private SpriteRenderer Ennemy1Icon;
     [SerializeField] private SpriteRenderer Ennemy2Icon;
+    [SerializeField] private GameObject Ennemy1HeartIcon;
+    [SerializeField] private GameObject Ennemy2HeartIcon;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private SpriteRenderer[] buttons;
     [SerializeField] private TMP_Text[] textButtons;
@@ -143,7 +145,26 @@ public class CombatManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            EndFight();
+            combatFinished = true;
+            List<int> indexToSuppr = new List<int>();
+            for (int i = 0; i < turnOrder.Count; i++)
+            {
+                if (turnOrder[i] is FishDataInstance)
+                {
+                    indexToSuppr.Add(i);
+                }
+            }
+
+            for (int i = turnOrder.Count-1; i >= 0; i--)
+            {
+                Debug.Log(i);
+                Debug.Log(turnOrder[i]);
+                if (turnOrder[i] != player)
+                {
+                    Die(turnOrder[i]); 
+                }
+            }
+            _endFight.lastEnnemyDead();
         }
     }
 
@@ -1257,7 +1278,9 @@ public class CombatManager : MonoBehaviour
     void SpawnEntitys()
     {
         Ennemy1Icon.enabled = false;
+        Ennemy1HeartIcon.SetActive(false);
         Ennemy2Icon.enabled = false;
+        Ennemy2HeartIcon.SetActive(false);
         Debug.Log(player.prefab);
         player.prefab = Instantiate(_playerData.prefab,
                 new Vector3(player.positionX, player.positionY, 0),quaternion.identity);
@@ -1297,6 +1320,7 @@ public class CombatManager : MonoBehaviour
                     LifeBarEnnemy1Empty[j].enabled = true;
                 }
                 Ennemy1Icon.enabled = true;
+                Ennemy1HeartIcon.SetActive(true);
                 Ennemy1Icon.sprite = newFish.fishData.uiSprite;
                 UpdateLifeBar(Ennemy1,false);
             }
@@ -1308,6 +1332,7 @@ public class CombatManager : MonoBehaviour
                     LifeBarEnnemy2Empty[j].enabled = true;
                 }
                 Ennemy2Icon.enabled = true;
+                Ennemy1HeartIcon.SetActive(true);
                 Ennemy2Icon.sprite = newFish.fishData.uiSprite;
                 UpdateLifeBar(Ennemy2,false);
             }
@@ -1520,7 +1545,7 @@ public class CombatManager : MonoBehaviour
                         return false;
                     }
 
-                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity && grid[newY+i, newX+j] is not SpikeInstance)
+                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity && grid[newY-i, newX-j] is not SpikeInstance)
                     {
                         return false;
                     }
@@ -1533,7 +1558,7 @@ public class CombatManager : MonoBehaviour
                         return false;
                     }
 
-                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity && grid[newY+i, newX+j] is not SpikeInstance)
+                    if (grid[newY - i, newX - j] != null && grid[newY - i, newX - j] != entity && grid[newY-i, newX-j] is not SpikeInstance)
                     {
                         return false;
                     }
@@ -2028,7 +2053,7 @@ public class CombatManager : MonoBehaviour
         {
             for (int i = 0; i < LifeBarEnnemy2.Length; i++)
             {
-                if (i+1 > Ennemy1.hp)
+                if (i+1 > Ennemy2.hp)
                 {
                     LifeBarEnnemy2[i].enabled = false;
                 }
