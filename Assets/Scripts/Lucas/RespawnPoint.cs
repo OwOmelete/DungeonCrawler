@@ -20,6 +20,7 @@ public class RespawnPoint : MonoBehaviour
     [SerializeField] private float interactTextFadeDuration = 0.5f;
     [SerializeField] private float timeToDespawn = 0.3f;
     [SerializeField] private string text;
+    [SerializeField] private GameObject balise;
 
     private bool check = false;
     private bool canTake = false;
@@ -55,6 +56,7 @@ public class RespawnPoint : MonoBehaviour
             {
                 if (!check)
                 {
+                    Destroy(balise);
                     ChangePoint();
                 }
                 else
