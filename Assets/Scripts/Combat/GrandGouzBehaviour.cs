@@ -98,7 +98,17 @@ public class GrandGouzBehaviour : AbstractIA
                 if (CombatManager.Instance.grid[entity.positionY + 1, entity.positionX] == null &&
                     CombatManager.Instance.grid[entity.positionY + 1, entity.positionX + 1] == null)
                 {
-                    CombatManager.Instance.Move(entity, entity.positionX, entity.positionY + 1);
+                    if (!CombatManager.Instance.Move(entity, entity.positionX, entity.positionY + 1))
+                    {
+                        if (entity.positionX - CombatManager.Instance.player.positionX > 0)
+                        {
+                            CombatManager.Instance.Move(entity, entity.positionX-1, entity.positionY);
+                        }
+                        else if (entity.positionX - CombatManager.Instance.player.positionX < 0)
+                        {
+                            CombatManager.Instance.Move(entity, entity.positionX+1, entity.positionY);
+                        }
+                    }
                 }
             }
             else if (CombatManager.Instance.player.positionY < entity.positionY)
@@ -106,7 +116,17 @@ public class GrandGouzBehaviour : AbstractIA
                 if (CombatManager.Instance.grid[entity.positionY - 1, entity.positionX] == null &&
                     CombatManager.Instance.grid[entity.positionY - 1, entity.positionX + 1] == null)
                 {
-                    CombatManager.Instance.Move(entity, entity.positionX, entity.positionY - 1);
+                    if (!CombatManager.Instance.Move(entity, entity.positionX, entity.positionY - 1))
+                    {
+                        if (entity.positionX - CombatManager.Instance.player.positionX > 0)
+                        {
+                            CombatManager.Instance.Move(entity, entity.positionX-1, entity.positionY);
+                        }
+                        else if (entity.positionX - CombatManager.Instance.player.positionX < 0)
+                        {
+                            CombatManager.Instance.Move(entity, entity.positionX+1, entity.positionY);
+                        }
+                    }
                 }
             }
             else
