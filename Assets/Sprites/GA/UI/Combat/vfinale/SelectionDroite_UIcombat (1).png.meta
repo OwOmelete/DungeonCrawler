@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SelectionDroite_UIcombat (1)_0: 2213039562410469180
+      SelectionDroite_UIcombat (1)_1: 167739905692753813
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

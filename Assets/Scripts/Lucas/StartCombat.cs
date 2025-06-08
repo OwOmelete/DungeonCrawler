@@ -23,6 +23,7 @@ public class StartCombat : MonoBehaviour
     [SerializeField] private Image blackFade;
     [SerializeField] private float fadeDelay = 0.5f;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private GameObject[] uiRadar;
 
     public void SwitchToCombat(List<FishData> fishDatas)
     {
@@ -37,11 +38,14 @@ public class StartCombat : MonoBehaviour
         yield return new WaitForSeconds(animDuration);
         dangerImage.DOFade(0, 0.8f);
         blackFade.DOFade(0, 1f);
+        for (int i = 0; i < uiRadar.Length; i++)
+        {
+            uiRadar[i].SetActive(false);
+        }
         player.SetActive(false);
         combatScene.SetActive(true);
         healthBarExplo.SetActive(false);
         lightBar.localPosition = newLightBarPos;
-        Debug.Log(newLightBarPos);
         oxygenBar.localPosition = newOxygenBarPos;
         //combatManagerReference._fishDatas.Clear();
         combatManagerReference._fishDatas = fishDatas;

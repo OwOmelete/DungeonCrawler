@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Case_Attaque_Gousier_0: 4794681362212722324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

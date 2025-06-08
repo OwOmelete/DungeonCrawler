@@ -54,6 +54,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private RectTransform oxygenBar;
     [SerializeField] private Vector3 lightBarOriginPos;
     [SerializeField] private Vector3 oxygenBarOriginPos;
+    [SerializeField] private GameObject[] uiRadar;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
     private List<EntityInstance> turnOrder = new List<EntityInstance>();
@@ -1949,6 +1950,11 @@ public class CombatManager : MonoBehaviour
             LifeBarEnnemy2Empty[i].enabled = false;
             LifeBarPlayerEmpty[i].enabled = false;
         }
+
+        for (int i = 0; i < uiRadar.Length; i++)
+        {
+            uiRadar[i].SetActive(true);
+        }
         List<int> fishToSupr = new List<int>();
         for (int i = 0; i < turnOrder.Count; i ++)
         {
@@ -1973,8 +1979,8 @@ public class CombatManager : MonoBehaviour
         combatScene.SetActive(false);
         audioManager.SwitchToExplo();
         healthBarExplo.SetActive(true);
-        lightBar.position = lightBarOriginPos;
-        oxygenBar.position = oxygenBarOriginPos;
+        lightBar.localPosition = lightBarOriginPos;
+        oxygenBar.localPosition = oxygenBarOriginPos;
     }
     
     public int SecondaryPlayerCoordsX()

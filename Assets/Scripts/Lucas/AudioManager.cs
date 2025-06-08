@@ -27,8 +27,8 @@ public class AudioManager : MonoBehaviour
         audioSource.DOFade(1, fadeDuration);
     }
 
-    public void OnSelected()
+    public void FadeOff(float fade)
     {
-        
+        audioSource.DOFade(0, fade);
     }
 }

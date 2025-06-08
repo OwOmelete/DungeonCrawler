@@ -47,6 +47,11 @@ public class LightManager : MonoBehaviour
 
         looseLightCoroutine = null;
     }
+
+    public void StopLooseLight()
+    {
+        canLooseLight = false;
+    }
     
     public void AddLight(float value)   // recharge la lumière
     {

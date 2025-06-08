@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fond grille_0: 1328659461679965656
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

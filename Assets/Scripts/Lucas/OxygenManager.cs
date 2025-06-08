@@ -26,6 +26,11 @@ public class OxygenManager : MonoBehaviour
         }
     }
 
+    public void StopLooseOxygen()
+    {
+        canLooseOxygen = false;
+    }
+
     public void RestartCoroutine()
     {
         StartCoroutine(OxygenLossRoutine()); 
@@ -43,7 +48,7 @@ public class OxygenManager : MonoBehaviour
     }
     public void AddOxygen(float value)
     {
-        if (player.oxygen <= 0)
+        if (player.oxygen <= 0 || !canLooseOxygen)
         {
             canLooseOxygen = true;
             player.oxygen += value;
@@ -53,7 +58,6 @@ public class OxygenManager : MonoBehaviour
         }
         else
         {
-            canLooseOxygen = true;
             player.oxygen += value;
             player.oxygen = Mathf.Clamp(player.oxygen, 0, maxOxygen);
             UpdateUi();
