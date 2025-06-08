@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayAnimSelectedButton : MonoBehaviour
 {
-    [SerializeField] private Animator animatorRef;
+    [SerializeField] private Sprite selectedSprite;
+    [SerializeField] private Sprite unselectedSprite;
+    [SerializeField] private Image spriteRendererRef;
+    [SerializeField] private AudioSource audioSourceRef;
     private Coroutine checkCoroutine;
     private bool isAlreadyHere;
     void OnEnable()
@@ -22,13 +26,14 @@ public class PlayAnimSelectedButton : MonoBehaviour
         {
             if (EventSystem.current.currentSelectedGameObject == this.gameObject && !isAlreadyHere)
             {
+                audioSourceRef.Play();
+                spriteRendererRef.sprite = selectedSprite;
                 isAlreadyHere = true;
-                animatorRef.SetBool("isSelected", true);
             }
             else if ( EventSystem.current.currentSelectedGameObject != this.gameObject)
             {
+                spriteRendererRef.sprite = unselectedSprite;
                 isAlreadyHere = false;
-                animatorRef.SetBool("isSelected",false);
             }
             yield return null;
         }

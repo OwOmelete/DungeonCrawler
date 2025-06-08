@@ -15,5 +15,6 @@ public class RandomSoundPlay : MonoBehaviour
     IEnumerator RandomPlayTime()
     {
         yield return new WaitForSeconds(Random.Range(minimumTime, maximumTime));
+        audioSource.Play();
     }
 }

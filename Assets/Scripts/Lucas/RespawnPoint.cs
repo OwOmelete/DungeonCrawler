@@ -34,7 +34,7 @@ public class RespawnPoint : MonoBehaviour
         {
             animator.SetBool("isHere", true);
             canTake = true;
-            StartCoroutine(TakeLight());
+            StartCoroutine(Take());
         }
         
     }
@@ -48,7 +48,7 @@ public class RespawnPoint : MonoBehaviour
     }
     #endregion
     
-    IEnumerator TakeLight()
+    IEnumerator Take()
     {
         while (canTake || check)
         {
@@ -83,5 +83,4 @@ public class RespawnPoint : MonoBehaviour
         imageButtonRef.DOFade(0, timeToDespawn);
         check = false;
     }
-    
 }

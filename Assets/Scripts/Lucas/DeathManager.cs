@@ -21,10 +21,11 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private LightManager lightRef;
     [SerializeField] private Transform enemyParent;
     [SerializeField] private GameObject combatScene;
-    
+    [SerializeField] private AudioSource deathAudio;
     [SerializeField] private Transform lightParent;
     [SerializeField] private Transform oxygenParent;
     [SerializeField] private Transform healParent;
+    
     
     private GameObject[] enemyTab;
     private IaFishExplo[] iaTab;
@@ -90,6 +91,7 @@ public class DeathManager : MonoBehaviour
         imageDeath.gameObject.SetActive(true);
         playerGO.GetComponent<Player>().rotationReference.canMove = false;
         playerGO.SetActive(false);
+        deathAudio.Play();
         StartCoroutine(Respawn());
     }
 

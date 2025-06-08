@@ -12,9 +12,12 @@ public class EnemyChase : MonoBehaviour
     [SerializeField] private float enemyAttackDelay = 1f;
     [SerializeField] private GameObject playerReference;
     [SerializeField] private IaFishExplo iaFishRef;
+    [SerializeField] private AudioSource audioSource;
 
     [SerializeField]
     private SpriteRenderer sr;
+
+    private bool audioAlreadyPlayed = false;
     
     
     private bool playerOnTrigger;
@@ -83,6 +86,11 @@ public class EnemyChase : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
+                    if (!audioAlreadyPlayed)
+                    {
+                        audioAlreadyPlayed = true;
+                        audioSource.Play();
+                    }
                     StartCoroutine(DashToPlayer());
                 }
             }
@@ -96,5 +104,10 @@ public class EnemyChase : MonoBehaviour
         {
             playerOnTrigger = false;
         }
+    }
+
+    private void OnDisable()
+    {
+        audioAlreadyPlayed = false;
     }
 }

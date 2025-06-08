@@ -15,6 +15,7 @@ public class UpgradeRessourcesManager : MonoBehaviour
     [SerializeField] private Image menuBackground;
     [SerializeField] private Image button1;
     [SerializeField] private Image button2;
+    [SerializeField] private AudioSource upgradeAudio;
     
     public void AddRessources()
     {
@@ -45,6 +46,7 @@ public class UpgradeRessourcesManager : MonoBehaviour
 
     IEnumerator CloseMenu()
     {
+        upgradeAudio.Play();
         menuBackground.DOFade(0, 0.5f);
         button1.DOFade(0, 0.5f);
         button2.DOFade(0, 0.5f);

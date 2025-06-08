@@ -10,8 +10,7 @@ public class LightManager : MonoBehaviour
     
     [Header("References")]
     public Light2D playerLight;   // objet light du player pour changer son intensité
-    [SerializeField] private UiBar LightBar;
-    
+
     [Header("Values")]
     public float maxLight = 10;  // capacité maximale de lumière
     [SerializeField] public float minLight = 1;  // capacité minimale de lumière

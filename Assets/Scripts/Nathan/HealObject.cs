@@ -10,15 +10,14 @@ public class HealObject : MonoBehaviour
     #region Variables
     
     [Header("Reference")]
-    [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche
+    [SerializeField] private GameObject interactDisplay;
     [SerializeField] private Animator animator;
     
     [Header("Values")]
-    [SerializeField] private int regen = 5;   // Quantitée de lumière que va regenerer l'objet
-    [SerializeField] private float interactTextFadeDuration = 0.2f; // Temps que va prendre le texte a apparaitre et a disparaitre
-    [SerializeField] private float timeToDespawn = 0.3f;
+    [SerializeField] private int regen = 5;
+    [SerializeField] private float interactTextFadeDuration = 0.2f;
     
-    private bool canTake = false;   // Savoir si on peut prendre l'objet
+    private bool canTake = false;
     [SerializeField] private Player playerRef;
     [HideInInspector] public PlayerDataInstance player;
     
@@ -66,7 +65,6 @@ public class HealObject : MonoBehaviour
     void Heal()
     {
         Destroy(GetComponent<Collider2D>());
-        gameObject.GetComponent<Transform>().DOScale(Vector3.zero, timeToDespawn).SetEase(Ease.OutCubic);
         if (player.hp + regen >= playerRef._playerData.hp)
         {
             player.hp = playerRef._playerData.hp;
@@ -75,11 +73,7 @@ public class HealObject : MonoBehaviour
         {
             player.hp += regen;
         }
-        StartCoroutine(DespawnCoroutine());
-    }
-    IEnumerator DespawnCoroutine()
-    {
-        yield return new WaitForSeconds(timeToDespawn);
         gameObject.SetActive(false);
     }
+    
 }

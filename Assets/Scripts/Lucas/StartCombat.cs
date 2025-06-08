@@ -24,9 +24,11 @@ public class StartCombat : MonoBehaviour
     [SerializeField] private float fadeDelay = 0.5f;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameObject[] uiRadar;
+    [SerializeField] private AudioSource dangerAudio;
 
     public void SwitchToCombat(List<FishData> fishDatas)
     {
+        dangerAudio.Play();
         dangerImage.DOFade(1, 1);
         blackFade.DOFade(1, 1).SetDelay(fadeDelay);
         audioManager.SwitchToCombat();

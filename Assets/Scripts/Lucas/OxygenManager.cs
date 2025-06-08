@@ -7,7 +7,6 @@ using DepthOfField = UnityEngine.Rendering.Universal.DepthOfField;
 public class OxygenManager : MonoBehaviour
 {
     [SerializeField] private float maxBlur = 26f;
-    [SerializeField] private UiBar OxygenBar;
     public float maxOxygen = 100;
     [SerializeField] private float oxygenLoss = 1; 
     public float oxygenLossInterval = 1f;
