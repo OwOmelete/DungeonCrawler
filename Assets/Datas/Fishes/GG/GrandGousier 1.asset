@@ -27,8 +27,8 @@ MonoBehaviour:
   idleSprite: {fileID: 21300000, guid: 83abf35496fa5f546858661a66018339, type: 3}
   attackList: []
   weakPointList:
-  - {fileID: 11400000, guid: 6862fd29c954bc243bcad312e76529fb, type: 2}
-  - {fileID: 11400000, guid: 80b59c300a2ba264e97ab5f01fd5fd49, type: 2}
+  - {fileID: 11400000, guid: 039b468d6c614d044a98d76c8001c3e0, type: 2}
+  - {fileID: 11400000, guid: 2ced636968f0c4040bc41c830dd291bf, type: 2}
   lifeBarList:
   - {fileID: -3088557682233922889, guid: 7434d22cb665b9944953c2a16bcf752e, type: 3}
   - {fileID: 51618535303443264, guid: e121e6e4a78a08249ae9f4a416be359e, type: 3}
@@ -37,7 +37,7 @@ MonoBehaviour:
   - {fileID: 2574076360730479720, guid: 6eb71e8fe75dbed41b22b623d5e3eb87, type: 3}
   - {fileID: -6966700237950822235, guid: fcef8fbf021769742a4bd989b51da80c, type: 3}
   PrevisualisationAttack: {fileID: 5054665362752135790, guid: 36ad7806538d8664e949f4576b4b88ab, type: 3}
-  uiSprite: {fileID: -7309879751514964795, guid: 309522469c3fe3b4a8099d9cf3eb71a1, type: 3}
+  uiSprite: {fileID: -3499547150601310427, guid: feab5c223b6bf8146bcc6677e4a112a7, type: 3}
   attacks:
   - {fileID: 11400000, guid: 4d7b885259b5b134ca6fe7f7a2ce86ae, type: 2}
   - {fileID: 11400000, guid: 5f1043fe548f05c42812cfc3d1224f0e, type: 2}
