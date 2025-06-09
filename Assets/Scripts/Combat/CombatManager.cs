@@ -26,7 +26,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] GameObject UiExplo;
     [SerializeField] LightManager lightManager;
     [SerializeField] OxygenManager oxygenManager;
-    [SerializeField] private DeathManager deathManagerReference;
+    [SerializeField] public DeathManager deathManagerReference;
     [SerializeField] private GameObject Booster;
     [SerializeField] private SpriteRenderer[] LifeBarPlayer;
     [SerializeField] private SpriteRenderer[] LifeBarPlayerEmpty;
@@ -1838,7 +1838,6 @@ public class CombatManager : MonoBehaviour
                     }
                 }
                 EndFight();
-                deathManagerReference.Death();
             }
             else
             {
@@ -1871,16 +1870,24 @@ public class CombatManager : MonoBehaviour
         Destroy(entity.LastPrevisualisation);
         turnOrder.Remove(entity);
         FishDataInstance fish = entity as FishDataInstance;
-        if (turnOrder.Count <= 1 && !combatFinished)
+        if (player.hp > 0 && player.oxygen > 0)
         {
-            _endFight.lastEnnemyDead();
-            StartCoroutine(Dissolve(fish.sr, entity, true));
+            if (turnOrder.Count <= 1 && !combatFinished)
+            {
+                _endFight.lastEnnemyDead();
+                StartCoroutine(Dissolve(fish.sr, entity, true));
             
+            }
+            else
+            {
+                StartCoroutine(Dissolve(fish.sr, entity, false));
+            }
         }
         else
         {
-            StartCoroutine(Dissolve(fish.sr, entity, false));
+            Destroy(entity.prefab);
         }
+        
     }
 
     int NegativeToZero(int value)
