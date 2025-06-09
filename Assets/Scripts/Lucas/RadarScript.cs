@@ -29,7 +29,7 @@ public class RadarScript : MonoBehaviour
         {
             if (parent.GetChild(i).gameObject.activeSelf)
             {
-                Transform currentObject = parent.GetChild(i);
+                Transform currentObject = parent.GetChild(i).GetChild(0);
                 float sqrDistance = (currentObject.position - indicatorTransform.position).sqrMagnitude;
 
                 if (sqrDistance < minSqrDistance)
