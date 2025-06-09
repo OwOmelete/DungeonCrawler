@@ -9,16 +9,19 @@ public class SeaUrchin : MonoBehaviour
     [SerializeField] private float strength = 5000f;
     [SerializeField] private float knockDuration = 0.2f;
     [SerializeField] private int damage = 1;
-
+    [SerializeField] private GameObject triggerTextRef;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
-
+        if (InteractTextManager.INSTANCE.firstSpikeDamage)
+        {
+            InteractTextManager.INSTANCE.firstSpikeDamage = false;
+            triggerTextRef.SetActive(true);
+        }
         Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
         if (rb == null) return;
 
         Vector2 direction = (collision.transform.position - transform.position).normalized;
-        direction.y = Mathf.Abs(direction.y) + 0.5f; 
         direction = direction.normalized;
 
         Vector2 force = direction * strength;

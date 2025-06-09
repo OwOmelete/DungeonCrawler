@@ -9,9 +9,10 @@ public class FadeChangeScene : MonoBehaviour
     [SerializeField] private Image fadeImage;
     [SerializeField] private float timeToFade = 1f;
     [SerializeField] private AudioManager audioManagerRef;
+    [SerializeField] private bool wantToFadeOff = true;
     void Start()
     {
-        fadeImage.DOFade(0f, timeToFade);
+        fadeImage.DOFade(0f, timeToFade).SetEase(Ease.Linear);
         StartCoroutine(WaitForFade());
     }
     IEnumerator WaitForFade()
@@ -23,8 +24,11 @@ public class FadeChangeScene : MonoBehaviour
     public void ChangeScene(int index)
     {
         fadeImage.gameObject.SetActive(true);
-        fadeImage.DOFade(1f,timeToFade);
-        audioManagerRef.FadeOff(timeToFade);
+        fadeImage.DOFade(1f,timeToFade).SetEase(Ease.Linear);
+        if (wantToFadeOff)
+        {
+            audioManagerRef.FadeOff(timeToFade);
+        }
         StartCoroutine(WaitForChangeScene(index));
     }
 

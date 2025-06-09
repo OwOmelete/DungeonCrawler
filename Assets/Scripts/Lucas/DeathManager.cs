@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Mime;
 using DG.Tweening;
 using UnityEngine;
@@ -21,10 +22,11 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private LightManager lightRef;
     [SerializeField] private Transform enemyParent;
     [SerializeField] private GameObject combatScene;
-    
+    [SerializeField] private AudioSource deathAudio;
     [SerializeField] private Transform lightParent;
     [SerializeField] private Transform oxygenParent;
     [SerializeField] private Transform healParent;
+    
     
     private GameObject[] enemyTab;
     private IaFishExplo[] iaTab;
@@ -77,9 +79,12 @@ public class DeathManager : MonoBehaviour
                 isAlive = false;
                 if (combatScene.activeSelf)
                 {
-                    CombatManager.Instance.EndFight();
+                    //Death();
                 }
-                Death();
+                else
+                {
+                    Death();
+                }
             }
             yield return new WaitForSeconds(0.2f);
         }
@@ -90,6 +95,7 @@ public class DeathManager : MonoBehaviour
         imageDeath.gameObject.SetActive(true);
         playerGO.GetComponent<Player>().rotationReference.canMove = false;
         playerGO.SetActive(false);
+        deathAudio.Play();
         StartCoroutine(Respawn());
     }
 

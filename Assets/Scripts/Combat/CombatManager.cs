@@ -57,7 +57,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject[] uiRadar;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
-    private List<EntityInstance> turnOrder = new List<EntityInstance>();
+    public List<EntityInstance> turnOrder = new List<EntityInstance>();
     public bool combatFinished;
     private int currentTurnIndex = 0;
     private bool isPlaying;
@@ -139,6 +139,11 @@ public class CombatManager : MonoBehaviour
         if (currentEntity == player)
         {
             PlayerTurn(player);
+            if (player.oxygen <= 0)
+            {
+                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                killPlayer();
+            }
         }
         else
         {
@@ -765,7 +770,7 @@ public class CombatManager : MonoBehaviour
             
             else if (wantToAttack && !hasAttacked)
             {
-                if (joysticYSave == 1 && !hasAttacked)
+                if (joysticYSave == 1 && !hasAttacked && player.direction != EntityInstance.dir.down)
                 {
                     if (Attack(player.currentAttack, player, player.positionX, player.positionY + 1))
                     {
@@ -776,7 +781,7 @@ public class CombatManager : MonoBehaviour
                         
                     else hasAttacked = false;
                 }
-                else if (joysticYSave == - 1 && !hasAttacked)
+                else if (joysticYSave == - 1 && !hasAttacked && player.direction != EntityInstance.dir.up)
                 {
                     if (Attack(player.currentAttack, player, player.positionX, player.positionY - 1))
                     {
@@ -787,7 +792,7 @@ public class CombatManager : MonoBehaviour
                     else hasAttacked = false;
                     
                 }
-                else if (joysticXSave == 1 && !hasAttacked)
+                else if (joysticXSave == 1 && !hasAttacked && player.direction != EntityInstance.dir.left)
                 {
                     if (Attack(player.currentAttack, player, player.positionX + 1, player.positionY))
                     {
@@ -797,7 +802,7 @@ public class CombatManager : MonoBehaviour
                     }
                     else hasAttacked = false;
                 }
-                else if (joysticXSave == - 1&& !hasAttacked)
+                else if (joysticXSave == - 1&& !hasAttacked && player.direction != EntityInstance.dir.right)
                 {
                     if (Attack(player.currentAttack, player, player.positionX - 1, player.positionY))
                     {
@@ -1847,7 +1852,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void Die(EntityInstance entity)
+    public void Die(EntityInstance entity)
     {
         for (int i = 0; i <= entity.height-1; i++)
         {
@@ -2130,5 +2135,30 @@ public class CombatManager : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
         if(b) Destroy(entity.prefab);
+    }
+
+    public void killPlayer()
+    {
+        combatFinished = true;
+        List<int> indexToSuppr = new List<int>();
+        for (int i = 0; i < turnOrder.Count; i++)
+        {
+            if (turnOrder[i] is FishDataInstance)
+            {
+                indexToSuppr.Add(i);
+            }
+        }
+
+        for (int i = turnOrder.Count-1; i >= 0; i--)
+        {
+            Debug.Log(i);
+            Debug.Log(turnOrder[i]);
+            if (turnOrder[i] != player)
+            {
+                Die(turnOrder[i]); 
+            }
+        }
+        EndFight();
+        deathManagerReference.Death();
     }
 }

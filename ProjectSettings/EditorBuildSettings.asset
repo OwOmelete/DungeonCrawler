@@ -5,51 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/NathanTest.unity
-    guid: 630f2ac773f150540908f299b27cd401
-  - enabled: 0
-    path: Assets/Scenes/EdouardTest.unity
-    guid: acc1a63d20e03cf4e81c3e88ff580b6c
-  - enabled: 0
-    path: Assets/Scenes/CombatTest.unity
-    guid: 88f6fe26877e92a46982e42f26fd174f
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_1.unity
-    guid: 2b59acf04ac67644ab9d090daccea6c1
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_2a.unity
-    guid: 3bf55685c03586848b6d2f2bb082f5d2
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_2b.unity
-    guid: 6cce93ac342e5ea41a0a4141038c18f8
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_3.unity
-    guid: b1092d2f46b82db4a898b864987abd4b
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_4.unity
-    guid: a94e808b230ea674f905244bbccce973
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_5.unity
-    guid: 89ea8e67141611746be9b25ac77eb202
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_6.unity
-    guid: efa35a397ffae0e42ad68def046470b7
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_7.unity
-    guid: dc65d298055907e42a42f53850ecb1e9
-  - enabled: 0
-    path: Assets/Scenes/MockUp 18 mars/MockUp_Scene_8.unity
-    guid: db8912f7526ef3546a942e496e3f0feb
+  - enabled: 1
+    path: Assets/Scenes/FirstPlayable/MainMenu.unity
+    guid: 06116eb8beb0ca04f8ae8194ed9b8114
+  - enabled: 1
+    path: Assets/Scenes/FirstPlayable/StartCinematic.unity
+    guid: f7677d0f84882034989cb8514378af6b
   - enabled: 1
     path: Assets/Scenes/FirstPlayable/Biome_001.unity
     guid: d955d30ac85469747baa8365cee69bd5
   - enabled: 1
     path: Assets/Scenes/FirstPlayable/End.unity
     guid: 11325435befdeb04dac793967c1ffe97
+  - enabled: 1
+    path: Assets/Scenes/FirstPlayable/Credits.unity
+    guid: c5f31f1b0b335de45a4c29438cfcb932
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -11,11 +11,11 @@ public class OxygenRegenZone : MonoBehaviour
     [SerializeField] private OxygenManager oxygenManagerReference;
     [SerializeField] private GameObject interactDisplay;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject triggerTextRef;
     
     [Header("Values")]
     [SerializeField] private float regen = 100;   
     [SerializeField] private float interactTextFadeDuration = 0.2f; 
-    [SerializeField] private float timeToDespawn = 0.3f;
     
     private bool canTake = false; 
     
@@ -58,7 +58,7 @@ public class OxygenRegenZone : MonoBehaviour
     void AddOxygen()
     {
         Destroy(GetComponent<Collider2D>());
-        gameObject.GetComponent<Transform>().DOScale(Vector3.zero, timeToDespawn).SetEase(Ease.OutCubic);
+        
         oxygenManagerReference.canLooseOxygen = false;
         if (oxygenManagerReference.player.light + regen >= oxygenManagerReference.maxOxygen)
         {
@@ -66,11 +66,11 @@ public class OxygenRegenZone : MonoBehaviour
         }
         oxygenManagerReference.AddOxygen(regen);
         oxygenManagerReference.UpdateUi();
-        StartCoroutine(DespawnCoroutine());
-    }
-    IEnumerator DespawnCoroutine()
-    {
-        yield return new WaitForSeconds(timeToDespawn);
+        if (InteractTextManager.INSTANCE.firstPlant)
+        {
+            InteractTextManager.INSTANCE.firstPlant = false;
+            triggerTextRef.SetActive(true);
+        }
         gameObject.SetActive(false);
     }
 }
