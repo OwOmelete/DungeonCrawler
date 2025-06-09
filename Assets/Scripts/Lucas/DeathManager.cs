@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Mime;
 using DG.Tweening;
 using UnityEngine;
@@ -78,9 +79,12 @@ public class DeathManager : MonoBehaviour
                 isAlive = false;
                 if (combatScene.activeSelf)
                 {
-                    CombatManager.Instance.killPlayer();
+                    //Death();
                 }
-                Death();
+                else
+                {
+                    Death();
+                }
             }
             yield return new WaitForSeconds(0.2f);
         }

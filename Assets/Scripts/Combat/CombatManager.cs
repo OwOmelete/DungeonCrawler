@@ -57,7 +57,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject[] uiRadar;
     private List<Fish> fishes = new List<Fish>();
     [HideInInspector] public EntityInstance[,] grid;
-    private List<EntityInstance> turnOrder = new List<EntityInstance>();
+    public List<EntityInstance> turnOrder = new List<EntityInstance>();
     public bool combatFinished;
     private int currentTurnIndex = 0;
     private bool isPlaying;
@@ -139,6 +139,11 @@ public class CombatManager : MonoBehaviour
         if (currentEntity == player)
         {
             PlayerTurn(player);
+            if (player.oxygen <= 0)
+            {
+                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                killPlayer();
+            }
         }
         else
         {
@@ -1847,7 +1852,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void Die(EntityInstance entity)
+    public void Die(EntityInstance entity)
     {
         for (int i = 0; i <= entity.height-1; i++)
         {
@@ -2154,5 +2159,6 @@ public class CombatManager : MonoBehaviour
             }
         }
         EndFight();
+        deathManagerReference.Death();
     }
 }
