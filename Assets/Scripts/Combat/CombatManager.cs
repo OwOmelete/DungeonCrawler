@@ -2131,4 +2131,28 @@ public class CombatManager : MonoBehaviour
         }
         if(b) Destroy(entity.prefab);
     }
+
+    public void killPlayer()
+    {
+        combatFinished = true;
+        List<int> indexToSuppr = new List<int>();
+        for (int i = 0; i < turnOrder.Count; i++)
+        {
+            if (turnOrder[i] is FishDataInstance)
+            {
+                indexToSuppr.Add(i);
+            }
+        }
+
+        for (int i = turnOrder.Count-1; i >= 0; i--)
+        {
+            Debug.Log(i);
+            Debug.Log(turnOrder[i]);
+            if (turnOrder[i] != player)
+            {
+                Die(turnOrder[i]); 
+            }
+        }
+        EndFight();
+    }
 }

@@ -18,7 +18,6 @@ public class SeaUrchin : MonoBehaviour
         if (rb == null) return;
 
         Vector2 direction = (collision.transform.position - transform.position).normalized;
-        direction.y = Mathf.Abs(direction.y) + 0.5f; 
         direction = direction.normalized;
 
         Vector2 force = direction * strength;

@@ -78,7 +78,7 @@ public class DeathManager : MonoBehaviour
                 isAlive = false;
                 if (combatScene.activeSelf)
                 {
-                    CombatManager.Instance.EndFight();
+                    CombatManager.Instance.killPlayer();
                 }
                 Death();
             }

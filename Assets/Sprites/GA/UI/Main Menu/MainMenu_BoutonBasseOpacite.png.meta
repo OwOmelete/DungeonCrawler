@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MainMenu_BoutonBasseOpacite_0: 8741892631537029337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
