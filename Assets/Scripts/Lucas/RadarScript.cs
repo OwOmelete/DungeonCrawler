@@ -77,6 +77,7 @@ public class RadarScript : MonoBehaviour
             {
                 InteractTextManager.INSTANCE.firstRadar = false;
                 triggerTextRef.SetActive(true);
+                triggerTextRef.transform.position = cooldownPlayerGO.transform.position;
             }
         }
     }
