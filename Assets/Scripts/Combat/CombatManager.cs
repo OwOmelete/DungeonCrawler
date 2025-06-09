@@ -765,7 +765,7 @@ public class CombatManager : MonoBehaviour
             
             else if (wantToAttack && !hasAttacked)
             {
-                if (joysticYSave == 1 && !hasAttacked)
+                if (joysticYSave == 1 && !hasAttacked && player.direction != EntityInstance.dir.down)
                 {
                     if (Attack(player.currentAttack, player, player.positionX, player.positionY + 1))
                     {
@@ -776,7 +776,7 @@ public class CombatManager : MonoBehaviour
                         
                     else hasAttacked = false;
                 }
-                else if (joysticYSave == - 1 && !hasAttacked)
+                else if (joysticYSave == - 1 && !hasAttacked && player.direction != EntityInstance.dir.up)
                 {
                     if (Attack(player.currentAttack, player, player.positionX, player.positionY - 1))
                     {
@@ -787,7 +787,7 @@ public class CombatManager : MonoBehaviour
                     else hasAttacked = false;
                     
                 }
-                else if (joysticXSave == 1 && !hasAttacked)
+                else if (joysticXSave == 1 && !hasAttacked && player.direction != EntityInstance.dir.left)
                 {
                     if (Attack(player.currentAttack, player, player.positionX + 1, player.positionY))
                     {
@@ -797,7 +797,7 @@ public class CombatManager : MonoBehaviour
                     }
                     else hasAttacked = false;
                 }
-                else if (joysticXSave == - 1&& !hasAttacked)
+                else if (joysticXSave == - 1&& !hasAttacked && player.direction != EntityInstance.dir.right)
                 {
                     if (Attack(player.currentAttack, player, player.positionX - 1, player.positionY))
                     {
