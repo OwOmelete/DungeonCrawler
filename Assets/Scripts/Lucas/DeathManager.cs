@@ -47,17 +47,17 @@ public class DeathManager : MonoBehaviour
         lightTab = new GameObject[lightParent.childCount];
         for (int i = 0; i < lightParent.childCount; i++)
         {
-            lightTab[i] = lightParent.GetChild(i).GetChild(0).gameObject;
+            lightTab[i] = lightParent.GetChild(i).gameObject;
         }
         oxygenTab = new GameObject[oxygenParent.childCount];
         for (int i = 0; i < oxygenParent.childCount; i++)
         {
-            oxygenTab[i] = oxygenParent.GetChild(i).GetChild(0).gameObject;
+            oxygenTab[i] = oxygenParent.GetChild(i).gameObject;
         }
         healTab = new GameObject[healParent.childCount];
         for (int i = 0; i < healParent.childCount; i++)
         {
-            healTab[i] = healParent.GetChild(i).GetChild(0).gameObject;
+            healTab[i] = healParent.GetChild(i).gameObject;
         }
         
         StartCoroutine(WaitFrame());

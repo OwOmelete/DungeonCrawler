@@ -29,7 +29,7 @@ public class RadarScript : MonoBehaviour
         {
             if (parent.GetChild(i).gameObject.activeSelf)
             {
-                Transform currentObject = parent.GetChild(i).GetChild(0);
+                Transform currentObject = parent.GetChild(i);
                 float sqrDistance = (currentObject.position - indicatorTransform.position).sqrMagnitude;
 
                 if (sqrDistance < minSqrDistance)
@@ -65,11 +65,7 @@ public class RadarScript : MonoBehaviour
             indicatorOxygenTransform.DOScale(Vector3.one, 0.5f);
             indicatorPathTransform.DOScale(Vector3.one, 0.5f);
             cooldownPlayerGO.transform.DOScale(Vector3.one, 0.5f);
-            if (InteractTextManager.INSTANCE.firstRadar)
-            {
-                InteractTextManager.INSTANCE.firstRadar = false;
-                triggerTextRef.SetActive(true);
-            }
+            
             StartCoroutine(UpdateRadar());
             StartCoroutine(MaxTime());
             indicatorHealTransform.gameObject.SetActive(true);
@@ -77,6 +73,11 @@ public class RadarScript : MonoBehaviour
             indicatorOxygenTransform.gameObject.SetActive(true);
             indicatorPathTransform.gameObject.SetActive(true);
             cooldownPlayerGO.SetActive(true);
+            if (InteractTextManager.INSTANCE.firstRadar)
+            {
+                InteractTextManager.INSTANCE.firstRadar = false;
+                triggerTextRef.SetActive(true);
+            }
         }
     }
 
