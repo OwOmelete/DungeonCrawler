@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] audioClipsTab;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float fadeDuration = 0.5f;
+    [SerializeField] private bool isEnd;
 
     private void Awake()
     {

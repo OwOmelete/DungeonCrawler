@@ -8,8 +8,7 @@ public class InteractTextManager : MonoBehaviour
     public bool firstPlant = true;
     public bool firstRadar = true;
     public bool firstSpikeDamage = true;
-    public GameObject actualTrigger
-        ;
+    public GameObject actualTrigger;
 
     private void Start()
     {
