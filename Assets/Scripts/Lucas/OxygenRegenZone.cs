@@ -57,7 +57,6 @@ public class OxygenRegenZone : MonoBehaviour
     
     void AddOxygen()
     {
-        Destroy(GetComponent<Collider2D>());
         
         oxygenManagerReference.canLooseOxygen = false;
         if (oxygenManagerReference.player.light + regen >= oxygenManagerReference.maxOxygen)

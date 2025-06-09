@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,6 +14,18 @@ public class MenuScript : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstButton);
     }
+
+    private void Update()
+    {
+        float joysticX = Input.GetAxis("Horizontal");
+        float joysticY = Input.GetAxis("Vertical");
+        if ((joysticY >= 0.01f || joysticY <= -0.01f  || joysticX >= 0.01f || joysticX <= -0.01f) && !EventSystem.current.currentSelectedGameObject)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(firstButton);
+        }
+    }
+
     public void StartGame()
     {
         fadeChangeSceneRef.ChangeScene(sceneStartIndex);

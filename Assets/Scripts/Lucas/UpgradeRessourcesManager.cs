@@ -18,13 +18,13 @@ public class UpgradeRessourcesManager : MonoBehaviour
     
     public void AddRessources()
     {
-        Time.timeScale = 0;
         upgradeMenu.SetActive(true);
         menuBackground.DOFade(1, 0.5f);
         button1.DOFade(1, 0.5f);
         button2.DOFade(1, 0.5f);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstButton);
+        StartCoroutine(StartMenu());
     }
 
     public void UpgradeLight()
@@ -41,6 +41,12 @@ public class UpgradeRessourcesManager : MonoBehaviour
         oxygenManagerReference.AddOxygen(oxygenManagerReference.maxOxygen);
         Time.timeScale = 1;
         StartCoroutine(CloseMenu());
+    }
+
+    IEnumerator StartMenu()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Time.timeScale = 0;
     }
 
     IEnumerator CloseMenu()

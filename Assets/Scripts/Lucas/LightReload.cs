@@ -57,7 +57,6 @@ public class LightReload : MonoBehaviour
     
     void AddLight()
     {
-        Destroy(GetComponent<Collider2D>());
         lightManagerReference.canLooseLight = false;
         if (lightManagerReference.player.light + regen >= lightManagerReference.maxLight)
         {
