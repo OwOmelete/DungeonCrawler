@@ -65,7 +65,6 @@ public class HealObject : MonoBehaviour
     
     void Heal()
     {
-        Destroy(GetComponent<Collider2D>());
         if (player.hp + regen >= playerRef._playerData.hp)
         {
             player.hp = playerRef._playerData.hp;
