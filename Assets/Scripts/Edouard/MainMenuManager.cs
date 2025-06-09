@@ -24,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
         {
             GoToMainMenu();
         }
+        
     }
 
     public void StartGame()
