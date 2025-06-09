@@ -11,6 +11,7 @@ public class OxygenRegenZone : MonoBehaviour
     [SerializeField] private OxygenManager oxygenManagerReference;
     [SerializeField] private GameObject interactDisplay;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject triggerTextRef;
     
     [Header("Values")]
     [SerializeField] private float regen = 100;   
@@ -65,6 +66,11 @@ public class OxygenRegenZone : MonoBehaviour
         }
         oxygenManagerReference.AddOxygen(regen);
         oxygenManagerReference.UpdateUi();
+        if (InteractTextManager.INSTANCE.firstPlant)
+        {
+            InteractTextManager.INSTANCE.firstPlant = false;
+            triggerTextRef.SetActive(true);
+        }
         gameObject.SetActive(false);
     }
 }

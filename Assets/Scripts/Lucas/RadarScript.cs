@@ -17,6 +17,7 @@ public class RadarScript : MonoBehaviour
     [SerializeField] private Transform pathParent;
     [SerializeField] private LightManager lightManagerRef;
     [SerializeField] private float looseLightValue = 1f;
+    [SerializeField] private GameObject triggerTextRef;
     private float maxRadarTime = 8f;
     private bool isActive;
     
@@ -64,6 +65,11 @@ public class RadarScript : MonoBehaviour
             indicatorOxygenTransform.DOScale(Vector3.one, 0.5f);
             indicatorPathTransform.DOScale(Vector3.one, 0.5f);
             cooldownPlayerGO.transform.DOScale(Vector3.one, 0.5f);
+            if (InteractTextManager.INSTANCE.firstRadar)
+            {
+                InteractTextManager.INSTANCE.firstRadar = false;
+                triggerTextRef.SetActive(true);
+            }
             StartCoroutine(UpdateRadar());
             StartCoroutine(MaxTime());
             indicatorHealTransform.gameObject.SetActive(true);
