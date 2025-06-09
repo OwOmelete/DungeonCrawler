@@ -8,18 +8,35 @@ public class TriggerText : MonoBehaviour
 {
     [SerializeField] private TMP_Text textZoneRef;
     [SerializeField] private Image imageButtonRef;
-    [SerializeField] private string text;
+    [SerializeField] private string[] texts;
     [SerializeField] private float fadeDuration = 0.3f;
     private bool check = true;
+    private int lineCount = 0;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(GetComponent<Collider2D>());
-        check = true;
-        textZoneRef.text = text;
-        imageButtonRef.DOFade(1, fadeDuration);
+        if (other.CompareTag("Player"))
+        {
+            Destroy(GetComponent<Collider2D>());
+            check = true;
+            textZoneRef.text = texts[0];
+            imageButtonRef.DOFade(1, fadeDuration);
+            textZoneRef.DOFade(1, fadeDuration);
+            StartCoroutine(Close());
+        }
+    }
+
+    void ChangeText(int index)
+    {
+        textZoneRef.DOFade(0, fadeDuration);
+        StartCoroutine(WaitForChangeText(index));
+    }
+
+    IEnumerator WaitForChangeText(int index)
+    {
+        yield return new WaitForSeconds(fadeDuration);
+        textZoneRef.text = texts[index];
         textZoneRef.DOFade(1, fadeDuration);
-        StartCoroutine(Close());
     }
 
     IEnumerator Close()
@@ -28,7 +45,16 @@ public class TriggerText : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                EndText();
+                lineCount++; 
+                if (lineCount >= texts.Length)
+                {
+                    EndText();
+                }
+                else
+                {
+                    ChangeText(lineCount);
+                }
+                
             }
             yield return null;
         }
@@ -36,9 +62,15 @@ public class TriggerText : MonoBehaviour
 
     void EndText()
     {
+        check = false;
+        StartCoroutine(CloseText());
+    }
+
+    IEnumerator CloseText()
+    {
         textZoneRef.DOFade(0, fadeDuration);
         imageButtonRef.DOFade(0, fadeDuration);
-        check = false;
+        yield return new WaitForSeconds(fadeDuration);
         Destroy(gameObject);
     }
 }
