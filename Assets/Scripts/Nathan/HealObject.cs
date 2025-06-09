@@ -12,6 +12,7 @@ public class HealObject : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private GameObject interactDisplay;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject triggerTextRef;
     
     [Header("Values")]
     [SerializeField] private int regen = 5;
@@ -72,6 +73,11 @@ public class HealObject : MonoBehaviour
         else
         {
             player.hp += regen;
+        }
+        if (InteractTextManager.INSTANCE.firstPlant)
+        {
+            InteractTextManager.INSTANCE.firstPlant = false;
+            triggerTextRef.SetActive(true);
         }
         gameObject.SetActive(false);
     }
