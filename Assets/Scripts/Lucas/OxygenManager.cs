@@ -14,6 +14,7 @@ public class OxygenManager : MonoBehaviour
     [HideInInspector] public bool canLooseOxygen = true; 
     [HideInInspector] public PlayerDataInstance player;
     private DepthOfField depthOfField;
+    private Coroutine coroutine;
     void Start()
     {
         player.oxygen = maxOxygen;
@@ -32,11 +33,10 @@ public class OxygenManager : MonoBehaviour
 
     public void RestartCoroutine()
     {
-        StartCoroutine(OxygenLossRoutine()); 
+        coroutine = StartCoroutine(OxygenLossRoutine()); 
     }
     private IEnumerator OxygenLossRoutine()
     {
-        
         while (player.oxygen > 0 && canLooseOxygen)
         {
             yield return new WaitForSeconds(oxygenLossInterval);
@@ -44,6 +44,8 @@ public class OxygenManager : MonoBehaviour
             player.oxygen = Mathf.Clamp(player.oxygen, 0, 100);
             UpdateUi();
         }
+
+        coroutine = null;
     }
     public void AddOxygen(float value)
     {
@@ -53,7 +55,11 @@ public class OxygenManager : MonoBehaviour
             player.oxygen += value;
             player.oxygen = Mathf.Clamp(player.oxygen, 0, maxOxygen);
             UpdateUi();
-            StartCoroutine(OxygenLossRoutine());
+            if (coroutine == null)
+            {
+                coroutine = StartCoroutine(OxygenLossRoutine());
+            }
+            
         }
         else
         {
@@ -65,30 +71,6 @@ public class OxygenManager : MonoBehaviour
     
     public void UpdateUi()
     {
-        /*
-        float quarterMaxOxygen = maxOxygen / 4;
-        
-        if (player.oxygen <= quarterMaxOxygen * 3 && player.oxygen > quarterMaxOxygen * 2 )
-        {
-            OxygenBar.ChangeSprite(1);
-        }
-        else if (player.oxygen <= quarterMaxOxygen * 2 && player.oxygen > quarterMaxOxygen)
-        {
-            OxygenBar.ChangeSprite(2);
-        }
-        else if (player.oxygen <= quarterMaxOxygen && player.oxygen > 0)
-        {
-            OxygenBar.ChangeSprite(3);
-        }
-        else if (player.oxygen <= 0)
-        {
-            OxygenBar.ChangeSprite(4);
-        }
-        else
-        {
-            OxygenBar.ChangeSprite(0);
-        }
-        */
         
         if (player.oxygen <= maxOxygen / 5)
         {

@@ -15,6 +15,7 @@ public class RespawnPoint : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private TMP_Text textZoneRef;
     [SerializeField] private Image imageButtonRef;
+    [SerializeField] private Image bgRef;
     
     [Header("Values")]
     [SerializeField] private float interactTextFadeDuration = 0.5f;
@@ -71,6 +72,7 @@ public class RespawnPoint : MonoBehaviour
     void ChangePoint()
     {
         textZoneRef.text = text;
+        bgRef.DOFade(1, interactTextFadeDuration);
         imageButtonRef.DOFade(1, interactTextFadeDuration);
         textZoneRef.DOFade(1, interactTextFadeDuration); 
         deathManagerRef.respawnPosition = transform.position;
@@ -79,6 +81,7 @@ public class RespawnPoint : MonoBehaviour
 
     void EndText()
     {
+        bgRef.DOFade(0, interactTextFadeDuration);
         textZoneRef.DOFade(0, timeToDespawn);
         imageButtonRef.DOFade(0, timeToDespawn);
         check = false;

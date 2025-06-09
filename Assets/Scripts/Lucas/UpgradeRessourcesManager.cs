@@ -11,7 +11,6 @@ public class UpgradeRessourcesManager : MonoBehaviour
     [SerializeField] private LightManager lightManagerReference;
     [SerializeField] private OxygenManager oxygenManagerReference;
     [SerializeField] private float ressourcesMultiplier = 1.05f;
-    [SerializeField] private Player playerRef;
     [SerializeField] private Image menuBackground;
     [SerializeField] private Image button1;
     [SerializeField] private Image button2;
@@ -19,7 +18,7 @@ public class UpgradeRessourcesManager : MonoBehaviour
     
     public void AddRessources()
     {
-        playerRef.canMove = false;
+        Time.timeScale = 0;
         upgradeMenu.SetActive(true);
         menuBackground.DOFade(1, 0.5f);
         button1.DOFade(1, 0.5f);
@@ -32,7 +31,7 @@ public class UpgradeRessourcesManager : MonoBehaviour
     {
         lightManagerReference.maxLight *= ressourcesMultiplier;
         lightManagerReference.AddLight(lightManagerReference.maxLight);
-        playerRef.canMove = true;
+        Time.timeScale = 1;
         StartCoroutine(CloseMenu());
     }
 
@@ -40,7 +39,7 @@ public class UpgradeRessourcesManager : MonoBehaviour
     {
         oxygenManagerReference.maxOxygen *= ressourcesMultiplier;
         oxygenManagerReference.AddOxygen(oxygenManagerReference.maxOxygen);
-        playerRef.canMove = true;
+        Time.timeScale = 1;
         StartCoroutine(CloseMenu());
     }
 

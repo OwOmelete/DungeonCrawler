@@ -1,6 +1,8 @@
 using System.Collections;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class EndLevelPlant : MonoBehaviour
@@ -9,14 +11,22 @@ public class EndLevelPlant : MonoBehaviour
 
     [Header("Reference")] 
     [SerializeField] private FadeChangeScene fadeSceneRef;
-    [SerializeField] private GameObject interactDisplay;    // Texte d'affichage de la touche 
+    [SerializeField] private GameObject interactDisplay;
     [SerializeField] private Animator animator;
+    [SerializeField] private TMP_Text textZoneRef;
+    [SerializeField] private Image imageButtonRef;
+    [SerializeField] private Image bgRef;
 
     [Header("Values")]
-    [SerializeField] private float interactTextFadeDuration = 0.2f; // Temps que va prendre le texte a apparaitre et a disparaitre
+    [SerializeField] private float interactTextFadeDuration = 0.2f;
     [SerializeField] private int sceneIndex;
+    [SerializeField] private float fadeDuration = 0.3f;
+    [SerializeField] private string[] texts;
 
-    private bool canTake = false;   // Savoir si on peut prendre l'objet
+    private bool waitForText = true;
+    private bool canTake = false;
+    private bool check = false;
+    private int lineCount = 0;
 
     #endregion
 
@@ -25,7 +35,6 @@ public class EndLevelPlant : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            animator.SetBool("isHere", true);
             canTake = true;
             StartCoroutine(Take());
         }
@@ -45,17 +54,70 @@ public class EndLevelPlant : MonoBehaviour
     {
         while (canTake)
         {
-            if (Input.GetButtonDown("Interact"))
+            if (!waitForText && !check)
             {
-                ChangeScene();
+                animator.SetBool("isHere", true);
+                check = true;
             }
-
+            else if (!waitForText)
+            {
+                if (Input.GetButtonDown("Interact"))
+                {
+                    StartText();
+                }
+            }
             yield return null;
         }
     }
 
+    void StartText()
+    {
+        canTake = false;
+        textZoneRef.text = texts[0];
+        bgRef.DOFade(1, fadeDuration);
+        imageButtonRef.DOFade(1, fadeDuration);
+        textZoneRef.DOFade(1, fadeDuration);
+        StartCoroutine(Close());
+    }
+    IEnumerator Close()
+    {
+        while (check)
+        {
+            if (Input.GetButtonDown("Interact"))
+            {
+                lineCount++; 
+                if (lineCount >= texts.Length)
+                {
+                    ChangeScene();
+                }
+                else
+                {
+                    ChangeText(lineCount);
+                }
+                
+            }
+            yield return null;
+        }
+    }
     void ChangeScene()
     {
         fadeSceneRef.ChangeScene(sceneIndex);
+    }
+
+    public void WaitForTextFalse()
+    {
+        waitForText = false;
+    }
+    
+    void ChangeText(int index)
+    {
+        textZoneRef.DOFade(0, fadeDuration);
+        StartCoroutine(WaitForChangeText(index));
+    }
+    IEnumerator WaitForChangeText(int index)
+    {
+        yield return new WaitForSeconds(fadeDuration);
+        textZoneRef.text = texts[index];
+        textZoneRef.DOFade(1, fadeDuration);
     }
 }
